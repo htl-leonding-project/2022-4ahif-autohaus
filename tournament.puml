@@ -1,0 +1,26 @@
+@startuml
+left to right direction
+skinparam actorStyle awesome
+actor Spielleiter as s
+package Team as team{
+  actor SpielerX as x
+  actor "SpielerY" as y
+}
+
+
+package Ablauf as ablauf {
+  usecase "Spielpan Erstellung " as UC1
+  usecase "Spielplan Generierung" as UC2
+  usecase "Spielpaln Auswertung" as UC3
+  usecase "Spiel Durchführen" as UC4
+  usecase "Ergebnis Auswertung" as UC5
+}
+
+ablauf <-- team
+s --> UC1
+s --> UC2
+s --> UC3
+s --> UC4
+s --> UC5
+
+@enduml
