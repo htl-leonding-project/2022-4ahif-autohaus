@@ -9,9 +9,9 @@ package Team as team{
 
 
 package Ablauf as ablauf {
-  usecase "Spielpan Erstellung " as UC1
+  usecase "Spielplan Erstellung " as UC1
   usecase "Spielplan Generierung" as UC2
-  usecase "Spielpaln Auswertung" as UC3
+  usecase "Spielplan Auswertung" as UC3
   usecase "Spiel Durchführen" as UC4
   usecase "Ergebnis Auswertung" as UC5
 }
