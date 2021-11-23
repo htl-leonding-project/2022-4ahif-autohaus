@@ -1,7 +1,35 @@
 @startuml
 
-class match{
+class Match{
 
 }
+
+class Competition{
+
+}
+
+class Team{
+
+}
+
+class Player{
+    -Team: team
+}
+
+class Node{
+
+}
+
+class Phase{
+
+}
+
+Player -left- Team
+Match -- Team
+Phase -- Match
+Competition -- Phase
+Phase -- Node
+Match -left- Node
+
 
 @enduml

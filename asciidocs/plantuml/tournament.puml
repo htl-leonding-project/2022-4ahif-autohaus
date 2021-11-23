@@ -2,25 +2,17 @@
 left to right direction
 skinparam actorStyle awesome
 actor Spielleiter as s
-package Team as team{
-  actor SpielerX as x
-  actor "SpielerY" as y
+
+rectangle Ablauf as ablauf {
+  usecase "Teams eingeben" as teameingabe
+  usecase "Spielplan generieren" as spielplangenerierung
+  usecase "Ergebnisse auswerten" as ergebnisseeintragen
+  usecase "Spielergebnisse auswerten" as ergebnisseauswerten
 }
 
-
-package Ablauf as ablauf {
-  usecase "Spielplan Erstellung " as UC1
-  usecase "Spielplan Generierung" as UC2
-  usecase "Spielplan Auswertung" as UC3
-  usecase "Spiel Durchführen" as UC4
-  usecase "Ergebnis Auswertung" as UC5
-}
-
-ablauf <-- team
-s --> UC1
-s --> UC2
-s --> UC3
-s --> UC4
-s --> UC5
+s -- teameingabe
+s -- spielplangenerierung
+s -- ergebnisseeintragen
+s -- ergebnisseauswerten
 
 @enduml
