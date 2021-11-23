@@ -23,5 +23,5 @@ include::plantuml/tournament.puml[]
 
 == Protokolle
 
-link:2021-11-22-ersteschritte.adoc[Protokoll-2021-11-22]
+link:asciidoc/2021-11-22-ersteschritte.adoc[Protokoll-2021-11-22]
 

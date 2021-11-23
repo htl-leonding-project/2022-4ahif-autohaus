@@ -45,9 +45,9 @@ endif::backend-html5[]
 
 == Besprochene Themen
 
-image:20211122_01.png[width=600px]
+image:../images/20211122_01.png[width=600px]
 
-image:20211121_02.png[width=600px]
+image:../images/20211121_02.png[width=600px]
 
 
 == Vereinbarungen und Entscheidungen
