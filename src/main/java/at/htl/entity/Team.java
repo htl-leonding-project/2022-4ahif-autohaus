@@ -14,13 +14,15 @@ public class Team {
     Long teamID;
     String teamName;
     Competition competition;
+    Player player;
     //endregion
 
     //region Constructor
-    public Team(Long teamID, String teamName, Competition competition) {
+    public Team(Long teamID, String teamName, Competition competition,Player player) {
         this.teamID = teamID;
         this.teamName = teamName;
         this.competition = competition;
+        this.player = player;
     }
 
     public Team() {
@@ -51,5 +53,14 @@ public class Team {
     public void setCompetition(Competition competition) {
         this.competition = competition;
     }
+
+    public Player getPlayer() {
+        return player;
+    }
+
+    public void setPlayer(Player player) {
+        this.player = player;
+    }
+
     //endregion
 }
