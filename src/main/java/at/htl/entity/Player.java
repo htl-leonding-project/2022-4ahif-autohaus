@@ -16,16 +16,13 @@ public class Player {
     LocalDate dob;
     String firstName;
     String lastName;
-    Team teamID;
     //endregion
 
     //region Constructor
-    public Player(Long spielerID, LocalDate dob, String firstName, String lastName, Team teamID) {
-        this.playerID = spielerID;
+    public Player(LocalDate dob, String firstName, String lastName) {
         this.dob = dob;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.teamID = teamID;
     }
 
     public Player() {
@@ -63,14 +60,6 @@ public class Player {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
-    }
-
-    public Team getTeamID() {
-        return teamID;
-    }
-
-    public void setTeamID(Team teamID) {
-        this.teamID = teamID;
     }
     //endregion
 }

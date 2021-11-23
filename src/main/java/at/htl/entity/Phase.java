@@ -18,8 +18,7 @@ public class Phase {
     //endregion
 
     //region Constructor
-    public Phase(Long phasenID, String phasenName, Node node, Competition competition) {
-        this.phaseID = phasenID;
+    public Phase(String phasenName, Node node, Competition competition) {
         this.phasenName = phasenName;
         this.node = node;
         this.competition = competition;

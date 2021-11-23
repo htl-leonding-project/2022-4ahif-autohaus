@@ -18,8 +18,7 @@ public class Competition {
     //endregion
 
     //region Constructor
-    public Competition(Long competitionID, String nameOfTheCompetition, LocalDate dateOfTheCompetition) {
-        this.competitionID = competitionID;
+    public Competition(String nameOfTheCompetition, LocalDate dateOfTheCompetition) {
         this.nameOfTheCompetition = nameOfTheCompetition;
         this.dateOfTheCompetition = dateOfTheCompetition;
     }

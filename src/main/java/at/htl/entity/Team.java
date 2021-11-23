@@ -18,8 +18,7 @@ public class Team {
     //endregion
 
     //region Constructor
-    public Team(Long teamID, String teamName, Competition competition,Player player) {
-        this.teamID = teamID;
+    public Team(String teamName, Competition competition,Player player) {
         this.teamName = teamName;
         this.competition = competition;
         this.player = player;
