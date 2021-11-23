@@ -1,9 +1,17 @@
 package at.htl.entity;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Phase {
 
     //region fields
-    Long phasenID;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Long phaseID;
     String phasenName;
     Node node;
     Competition competition;
@@ -11,7 +19,7 @@ public class Phase {
 
     //region Constructor
     public Phase(Long phasenID, String phasenName, Node node, Competition competition) {
-        this.phasenID = phasenID;
+        this.phaseID = phasenID;
         this.phasenName = phasenName;
         this.node = node;
         this.competition = competition;
@@ -23,11 +31,11 @@ public class Phase {
 
     //region Getter and Setter
     public Long getPhasenID() {
-        return phasenID;
+        return phaseID;
     }
 
     public void setPhasenID(Long phasenID) {
-        this.phasenID = phasenID;
+        this.phaseID = phasenID;
     }
 
     public String getPhasenName() {

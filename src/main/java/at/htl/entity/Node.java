@@ -1,8 +1,16 @@
 package at.htl.entity;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Node {
 
     //region fields
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long nodeID;
     Node rightNode;
     Node leftNode;

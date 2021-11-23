@@ -1,11 +1,18 @@
 package at.htl.entity;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.time.LocalDate;
 
+@Entity
 public class Player {
 
     //region fields
-    Long spielerID;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Long playerID;
     LocalDate dob;
     String firstName;
     String lastName;
@@ -14,7 +21,7 @@ public class Player {
 
     //region Constructor
     public Player(Long spielerID, LocalDate dob, String firstName, String lastName, Team teamID) {
-        this.spielerID = spielerID;
+        this.playerID = spielerID;
         this.dob = dob;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -27,11 +34,11 @@ public class Player {
 
     //region Getter and Setter
     public Long getSpielerID() {
-        return spielerID;
+        return playerID;
     }
 
     public void setSpielerID(Long spielerID) {
-        this.spielerID = spielerID;
+        this.playerID = spielerID;
     }
 
     public LocalDate getDob() {
