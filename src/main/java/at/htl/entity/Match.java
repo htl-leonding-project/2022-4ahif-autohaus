@@ -20,8 +20,7 @@ public class Match {
     //endregion
 
     //region Constructor
-    public Match(Long matchID, Team team1, Team team2, int pointsOfTeam1, int pointsOfTeam2, Phase phase) {
-        this.matchID = matchID;
+    public Match(Team team1, Team team2, int pointsOfTeam1, int pointsOfTeam2, Phase phase) {
         this.team1 = team1;
         this.team2 = team2;
         this.pointsOfTeam1 = pointsOfTeam1;

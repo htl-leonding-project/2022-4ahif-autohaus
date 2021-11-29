@@ -20,8 +20,7 @@ public class Node {
     //endregion
 
     //region Constructor
-    public Node(Long nodeID, Node rightNode, Node leftNode, Node parentNode, Match match, Phase phase) {
-        this.nodeID = nodeID;
+    public Node(Node rightNode, Node leftNode, Node parentNode, Match match, Phase phase) {
         this.rightNode = rightNode;
         this.leftNode = leftNode;
         this.parentNode = parentNode;
