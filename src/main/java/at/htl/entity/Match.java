@@ -1,9 +1,6 @@
 package at.htl.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Match {
@@ -12,11 +9,15 @@ public class Match {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long matchID;
+    @ManyToOne
     Team team1;
+    @ManyToOne
     Team team2;
     int pointsOfTeam1;
     int pointsOfTeam2;
+    @ManyToOne
     Phase phase;
+
     //endregion
 
     //region Constructor

@@ -1,9 +1,6 @@
 package at.htl.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Node {
@@ -12,10 +9,15 @@ public class Node {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long nodeID;
+    @ManyToOne
     Node rightNode;
+    @ManyToOne
     Node leftNode;
+    @ManyToOne
     Node parentNode;
+    @ManyToOne
     Match match;
+    @ManyToOne
     Phase phase;
     //endregion
 

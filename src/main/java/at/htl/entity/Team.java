@@ -1,9 +1,6 @@
 package at.htl.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Team {
@@ -13,7 +10,9 @@ public class Team {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long teamID;
     String teamName;
+    @ManyToOne
     Competition competition;
+    @ManyToOne
     Player player;
     //endregion
 
