@@ -12,6 +12,10 @@ public class Node {
     public Node() {
     }
 
+    public Node(Node parentNode) {
+        setParentNode(parentNode);
+    }
+
     public Node getLeftNode() {
         return leftNode;
     }
@@ -34,6 +38,10 @@ public class Node {
 
     public void setParentNode(Node parentNode) {
         this.parentNode = parentNode;
+        if(this.parentNode.getLeftNode() == null)
+            this.parentNode.setLeftNode(this);
+        else if(this.parentNode.getRightNode() == null)
+            this.parentNode.setRightNode(this);
     }
 
     public Match getCurMatch() {
@@ -50,5 +58,10 @@ public class Node {
 
     public void setPhase(Phase phase) {
         this.phase = phase;
+    }
+
+    public void setChildMatchWinners() {
+        setCurMatch(new Match(this.leftNode.getCurMatch().getWinningTeam(),
+                this.rightNode.getCurMatch().getWinningTeam()));
     }
 }

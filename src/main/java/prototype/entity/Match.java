@@ -13,6 +13,11 @@ public class Match {
     public Match() {
     }
 
+    public Match(Team team1, Team team2) {
+        this.team1 = team1;
+        this.team2 = team2;
+    }
+
     //region Getter & Setter
     public Team getTeam1() {
         return team1;

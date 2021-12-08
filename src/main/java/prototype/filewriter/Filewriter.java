@@ -7,11 +7,13 @@ import java.io.IOException;
 
 public class Filewriter {
 
+    File file = new File("asciidocs/plantuml/Result.puml");
+
     public void writeResult(String team01, String team02, int[] result){
-        File file = new File("asciidocs/plantuml/Result.puml");
+
         String resStr = result[0] + ":" + result[1];
         try{
-            BufferedWriter writer = new BufferedWriter(new FileWriter(file));
+            BufferedWriter writer = new BufferedWriter(new FileWriter(file,true));
             writer.write(
                     "@startsalt\n" +
             "{\n" +
