@@ -52,4 +52,10 @@ public class Match {
 
         return null;//Bei Gleichstand noch unklar
     }
+
+    public String getMatchResultString() {
+        return getTeam1().getName() +" vs. "+getTeam2().getName()
+                +" "+getResultOfMatch()[0]
+                +":"+getResultOfMatch()[1];
+    }
 }
