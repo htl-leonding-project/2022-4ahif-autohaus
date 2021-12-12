@@ -5,7 +5,8 @@ public class Tournament {
     //erst einmal leer lassen
     String name;
 
-    public Tournament(String s) {
+    public Tournament(String name) {
+        this.name = name;
     }
 
     public Tournament() {

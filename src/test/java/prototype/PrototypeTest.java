@@ -169,6 +169,10 @@ public class PrototypeTest {
         Phase phase02 = new Phase(2);
         Phase phase03 = new Phase(3);
 
+        phase01.setTournament(tournament);
+        phase02.setTournament(tournament);
+        phase03.setTournament(tournament);
+
         node01.setPhase(phase03);
         node02.setPhase(phase03);
         node03.setPhase(phase03);
@@ -200,6 +204,8 @@ public class PrototypeTest {
 
         node11.getParentNode().setChildMatchWinners();
         node12.getParentNode().setChildMatchWinners();
+
+        node21.getCurMatch().setResultOfMatch(new int[]{1,0});
 
         filewriter.writeFinalResult(node21);
 
