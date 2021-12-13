@@ -101,16 +101,16 @@ public class PrototypeTest {
 
     @Test
     public void AutomaticChildNodeSet(){
-        //Phase phase1 = new Phase("FirstRound"); Phasen haben noch keine Funktion
-        //Phase phase2 = new Phase("SecondRound");
+        Phase phase1 = new Phase("FirstRound"); //Phasen haben noch keine Funktion
+        Phase phase2 = new Phase("SecondRound");
 
         Node node01 = new Node();
         Node node02 = new Node();
         Node node03 = new Node();
 
-        //node01.setPhase(phase1);
-        //node02.setPhase(phase1);
-        //node03.setPhase(phase2);
+        node01.setPhase(phase1);
+        node02.setPhase(phase1);
+        node03.setPhase(phase2);
 
         node01.setParentNode(node03);
         node02.setParentNode(node03);
@@ -125,9 +125,6 @@ public class PrototypeTest {
         match02.setResultOfMatch(new int[]{3,1});
 
         node03.setChildMatchWinners();
-
-        Filewriter fw = new Filewriter();
-        fw.writeFinalResult(node03);
 
         assertThat(node03.getCurMatch().getTeam1().getName()).isEqualTo("Team2");
         assertThat(node03.getCurMatch().getTeam2().getName()).isEqualTo("Team3");
