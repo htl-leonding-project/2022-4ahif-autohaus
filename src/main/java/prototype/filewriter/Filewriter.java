@@ -37,20 +37,21 @@ public class Filewriter {
         Node currentNode = finalNode;
         Stack<Node> nodeStack = new Stack<>();
         try{
-            BufferedWriter writer = new BufferedWriter(new FileWriter(file,true));
-            writer.write("@startmindmap\n title "+finalNode.getPhase().getTournament().getName()+"\n");
-            while(currentNode != null || nodeStack.size() > 0) {
-                while (currentNode != null) {
-                    writer.write(constructString(currentNode));
-                    nodeStack.push(currentNode);
-                    currentNode = currentNode.getLeftNode();
+                BufferedWriter writer = new BufferedWriter(new FileWriter(file,true));
+                writer.write("@startmindmap\n title "+finalNode.getPhase().getTournament().getName()+"\n");
+                while(currentNode != null || nodeStack.size() > 0) {
+                    while (currentNode != null) {
+                        writer.write(constructString(currentNode));
+                        nodeStack.push(currentNode);
+                        currentNode = currentNode.getLeftNode();
+                    }
+                    currentNode = nodeStack.pop();
+                    currentNode = currentNode.getRightNode();
                 }
-                currentNode = nodeStack.pop();
-                currentNode = currentNode.getRightNode();
-            }
-            writer.write("caption Winner is: "+finalNode.getCurMatch().getWinningTeam().getName() + "\n");
-            writer.write("@endmindmap\n");
-            writer.close();
+                writer.write("caption Winner is: "+finalNode.getCurMatch().getWinningTeam().getName() + "\n");
+                writer.write("@endmindmap\n");
+                writer.close();
+
 
         } catch (IOException e) {
             e.printStackTrace();
