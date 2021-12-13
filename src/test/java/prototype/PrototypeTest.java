@@ -126,9 +126,6 @@ public class PrototypeTest {
 
         node03.setChildMatchWinners();
 
-        Filewriter fw = new Filewriter();
-        fw.writeFinalResult(node03);
-
         assertThat(node03.getCurMatch().getTeam1().getName()).isEqualTo("Team2");
         assertThat(node03.getCurMatch().getTeam2().getName()).isEqualTo("Team3");
     }
