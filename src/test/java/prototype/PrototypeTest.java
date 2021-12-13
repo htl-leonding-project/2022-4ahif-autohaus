@@ -199,6 +199,9 @@ public class PrototypeTest {
         node11.getCurMatch().setResultOfMatch(new int[]{3,2});
         node12.getCurMatch().setResultOfMatch(new int[]{1,2});
 
+        filewriter.writeIntermediateResult(node11);
+        filewriter.writeIntermediateResult(node12);
+
         node11.getParentNode().setChildMatchWinners();
         node12.getParentNode().setChildMatchWinners();
 

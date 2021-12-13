@@ -58,6 +58,23 @@ public class Filewriter {
         }
     }
 
+    public void writeIntermediateResult(Node node){
+        try{
+            BufferedWriter writer = new BufferedWriter(new FileWriter(file,true));
+            writer.write("@startmindmap\n title "+node.getPhase().getTournament().getName()+"\n");
+            writer.write("- "+node.getCurMatch().getMatchResultString()+"\n");
+            writer.write("-- "+node.getLeftNode().getCurMatch().getMatchResultString()+"\n");
+            writer.write("-- "+node.getRightNode().getCurMatch().getMatchResultString()+"\n");
+            writer.write("caption Winner is: "+node.getCurMatch().getWinningTeam().getName() + "\n");
+            writer.write("@endmindmap\n");
+            writer.close();
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public String constructString(Node node){
         String line = "";
         for (int i = 0; i < node.getPhase().getLevel(); i++){
