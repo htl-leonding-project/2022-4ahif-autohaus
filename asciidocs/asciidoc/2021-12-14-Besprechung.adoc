@@ -43,7 +43,9 @@ ifdef::backend-html5[]
 
 Am Bildschirm wurde vor der Klasse gezeigt was bis jetzt getan wurde.
 
+Result.puml, FileWriter und die PrototypeTest's wurden vorrangig gezeigt.
+
 == Vereinbarungen und Entscheidungen
 
-Result.puml wird auf einen HTML-Webseite geschrieben.
-Tournaments mit Hilfe der Datenbank dynamisch machen.
+Result.puml wird mit Hilfe einer Java-Api erstellt.
+Tournaments werden mit Hilfe der Datenbank dynamisch.
