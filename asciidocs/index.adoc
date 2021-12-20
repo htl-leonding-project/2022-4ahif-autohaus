@@ -26,3 +26,5 @@ include::plantuml/tournament.puml[]
 * link:asciidoc/2021-11-22-ersteschritte.adoc[Protokoll-2021-11-22]
 
 * link:asciidoc/2021-12-06-Besprechung.adoc[Protokoll-2021-12-06]
+
+* link:asciidoc/2021-12-14-Besprechung.adoc[Protokoll-2021-12-14]
