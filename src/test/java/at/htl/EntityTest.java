@@ -1,4 +1,4 @@
-package prototype;
+package at.htl;
 
 import org.junit.jupiter.api.Test;
 import at.htl.entity.*;
@@ -7,7 +7,7 @@ import at.htl.filewriter.Filewriter;
 import static org.assertj.core.api.Assertions.*;
 
 
-public class PrototypeTest {
+public class EntityTest {
 
     @Test
     public void getWinningTeamTest(){
