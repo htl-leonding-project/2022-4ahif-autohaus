@@ -3,14 +3,6 @@ package at.htl.entity;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 
-@NamedQueries({
-        @NamedQuery(
-                name = "Match.findAll",
-                query = "select m from Match m"
-        )
-})
-
-
 public class Match {
 
     Team team1;
