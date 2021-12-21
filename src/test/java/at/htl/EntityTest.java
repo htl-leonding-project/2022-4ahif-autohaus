@@ -4,6 +4,9 @@ import org.junit.jupiter.api.Test;
 import at.htl.entity.*;
 import at.htl.filewriter.Filewriter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.*;
 
 
@@ -166,9 +169,12 @@ public class EntityTest {
         Phase phase02 = new Phase(2);
         Phase phase03 = new Phase(3);
 
-        phase01.setTournament(tournament);
-        phase02.setTournament(tournament);
-        phase03.setTournament(tournament);
+        List<Phase> phases = new ArrayList<>();
+        phases.add(phase01);
+        phases.add(phase02);
+        phases.add(phase03);
+
+        tournament.setPhases(phases);
 
         node01.setPhase(phase03);
         node02.setPhase(phase03);
@@ -199,15 +205,15 @@ public class EntityTest {
         node11.getCurMatch().setResultOfMatch(new int[]{3,2});
         node12.getCurMatch().setResultOfMatch(new int[]{1,2});
 
-        filewriter.writeIntermediateResult(node11);
-        filewriter.writeIntermediateResult(node12);
+        filewriter.writeIntermediateResult(node11, tournament);
+        filewriter.writeIntermediateResult(node12, tournament);
 
         node11.getParentNode().setChildMatchWinners();
         node12.getParentNode().setChildMatchWinners();
 
         node21.getCurMatch().setResultOfMatch(new int[]{1,0});
 
-        filewriter.writeFinalResult(node21);
+        filewriter.writeFinalResult(node21, tournament);
 
     }
 }

@@ -1,6 +1,7 @@
 package at.htl.filewriter;
 
 import at.htl.entity.Node;
+import at.htl.entity.Tournament;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -32,13 +33,13 @@ public class Filewriter {
         }
     }
 
-    public void writeFinalResult(Node finalNode){
+    public void writeFinalResult(Node finalNode, Tournament t){
 
         Node currentNode = finalNode;
         Stack<Node> nodeStack = new Stack<>();
         try{
                 BufferedWriter writer = new BufferedWriter(new FileWriter(file,true));
-                writer.write("@startmindmap\n title "+finalNode.getPhase().getTournament().getName()+"\n");
+                writer.write("@startmindmap\n title "+t.getName()+"\n");
                 while(currentNode != null || nodeStack.size() > 0) {
                     while (currentNode != null) {
                         writer.write(constructString(currentNode));
@@ -58,10 +59,10 @@ public class Filewriter {
         }
     }
 
-    public void writeIntermediateResult(Node node){
+    public void writeIntermediateResult(Node node, Tournament t){
         try{
             BufferedWriter writer = new BufferedWriter(new FileWriter(file,true));
-            writer.write("@startmindmap\n title "+node.getPhase().getTournament().getName()+"\n");
+            writer.write("@startmindmap\n title "+t.getName()+"\n");
             writer.write("- "+node.getCurMatch().getMatchResultString()+"\n");
             writer.write("-- "+node.getLeftNode().getCurMatch().getMatchResultString()+"\n");
             writer.write("-- "+node.getRightNode().getCurMatch().getMatchResultString()+"\n");
