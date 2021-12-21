@@ -1,10 +1,13 @@
 package at.htl.entity;
 
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
+import javax.persistence.*;
 
+@Entity
 public class Match {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Long id;
     Team team1;
     Team team2;
     int[] resultOfMatch = new int[2];
