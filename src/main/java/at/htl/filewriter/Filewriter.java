@@ -1,6 +1,6 @@
-package prototype.filewriter;
+package at.htl.filewriter;
 
-import prototype.entity.Node;
+import at.htl.entity.Node;
 
 import java.io.BufferedWriter;
 import java.io.File;

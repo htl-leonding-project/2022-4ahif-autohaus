@@ -1,4 +1,4 @@
-package prototype.entity;
+package at.htl.entity;
 
 public class Tournament {
 

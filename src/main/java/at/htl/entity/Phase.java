@@ -1,64 +1,43 @@
 package at.htl.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
-@Entity
 public class Phase {
 
-    //region fields
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long phaseID;
-    String phasenName;
-    Node node;
-    Competition competition;
-    //endregion
-
-    //region Constructor
-    public Phase(String phasenName, Node node, Competition competition) {
-        this.phasenName = phasenName;
-        this.node = node;
-        this.competition = competition;
-    }
+    Tournament tournament;
+    String nameOfPhase;
+    int level;
 
     public Phase() {
     }
-    //endregion
 
-    //region Getter and Setter
-    public Long getPhasenID() {
-        return phaseID;
+    public Phase(int level) {
+        this.level = level;
     }
 
-    public void setPhasenID(Long phasenID) {
-        this.phaseID = phasenID;
+    public Phase(String nameOfPhase) {
+        this.nameOfPhase = nameOfPhase;
     }
 
-    public String getPhasenName() {
-        return phasenName;
+    public String getNameOfPhase() {
+        return nameOfPhase;
     }
 
-    public void setPhasenName(String phasenName) {
-        this.phasenName = phasenName;
+    public void setNameOfPhase(String nameOfPhase) {
+        this.nameOfPhase = nameOfPhase;
     }
 
-    public Node getNode() {
-        return node;
+    public int getLevel() {
+        return level;
     }
 
-    public void setNode(Node node) {
-        this.node = node;
+    public void setLevel(int level) {
+        this.level = level;
     }
 
-    public Competition getCompetition() {
-        return competition;
+    public Tournament getTournament() {
+        return tournament;
     }
 
-    public void setCompetition(Competition competition) {
-        this.competition = competition;
+    public void setTournament(Tournament tournament) {
+        this.tournament = tournament;
     }
-    //endregion
 }

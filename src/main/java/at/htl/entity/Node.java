@@ -1,54 +1,19 @@
 package at.htl.entity;
 
-import javax.persistence.*;
-
-@Entity
 public class Node {
 
-    //region fields
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long nodeID;
-    @ManyToOne
-    Node rightNode;
-    @ManyToOne
     Node leftNode;
-    @ManyToOne
+    Node rightNode;
     Node parentNode;
-    @ManyToOne
-    Match match;
-    @ManyToOne
+//    Node centerNode;  //nur bei "kleinen Finale"
+    Match curMatch;
     Phase phase;
-    //endregion
-
-    //region Constructor
-    public Node(Node rightNode, Node leftNode, Node parentNode, Match match, Phase phase) {
-        this.rightNode = rightNode;
-        this.leftNode = leftNode;
-        this.parentNode = parentNode;
-        this.match = match;
-        this.phase = phase;
-    }
 
     public Node() {
     }
-    //endregion
 
-    //region Getter and Setter
-    public Long getNodeID() {
-        return nodeID;
-    }
-
-    public void setNodeID(Long nodeID) {
-        this.nodeID = nodeID;
-    }
-
-    public Node getRightNode() {
-        return rightNode;
-    }
-
-    public void setRightNode(Node rightNode) {
-        this.rightNode = rightNode;
+    public Node(Node parentNode) {
+        setParentNode(parentNode);
     }
 
     public Node getLeftNode() {
@@ -59,20 +24,32 @@ public class Node {
         this.leftNode = leftNode;
     }
 
+    public Node getRightNode() {
+        return rightNode;
+    }
+
+    public void setRightNode(Node rightNode) {
+        this.rightNode = rightNode;
+    }
+
     public Node getParentNode() {
         return parentNode;
     }
 
     public void setParentNode(Node parentNode) {
         this.parentNode = parentNode;
+        if(this.parentNode.getLeftNode() == null)
+            this.parentNode.setLeftNode(this);
+        else if(this.parentNode.getRightNode() == null)
+            this.parentNode.setRightNode(this);
     }
 
-    public Match getMatch() {
-        return match;
+    public Match getCurMatch() {
+        return curMatch;
     }
 
-    public void setMatch(Match match) {
-        this.match = match;
+    public void setCurMatch(Match curMatch) {
+        this.curMatch = curMatch;
     }
 
     public Phase getPhase() {
@@ -82,5 +59,9 @@ public class Node {
     public void setPhase(Phase phase) {
         this.phase = phase;
     }
-    //endregion
+
+    public void setChildMatchWinners() {
+        setCurMatch(new Match(this.leftNode.getCurMatch().getWinningTeam(),
+                this.rightNode.getCurMatch().getWinningTeam()));
+    }
 }

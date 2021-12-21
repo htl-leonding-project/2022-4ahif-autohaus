@@ -1,8 +1,8 @@
 package prototype;
 
 import org.junit.jupiter.api.Test;
-import prototype.entity.*;
-import prototype.filewriter.Filewriter;
+import at.htl.entity.*;
+import at.htl.filewriter.Filewriter;
 
 import static org.assertj.core.api.Assertions.*;
 
