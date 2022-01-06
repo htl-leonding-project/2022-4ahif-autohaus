@@ -1,16 +1,20 @@
 package at.htl.entity;
 
+import io.quarkus.hibernate.orm.panache.PanacheEntity;
+
 import javax.persistence.*;
 
 @Entity
-public class Match {
+public class Match extends PanacheEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
-    Team team1;
-    Team team2;
-    int[] resultOfMatch = new int[2];
+    public Long id;
+    @Column(length = 20)
+    public Team team1;
+    @Column(length = 20)
+    public Team team2;
+    public int[] resultOfMatch = new int[2];
     //resultOfMatch[0] -> GoalsTeam1
     //resultOfMatch[1] -> GoalsTeam2
 

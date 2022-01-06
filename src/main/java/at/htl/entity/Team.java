@@ -1,9 +1,6 @@
 package at.htl.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Team {
@@ -11,6 +8,7 @@ public class Team {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
+    @Column(length = 20)
     String name;
     int points;
 

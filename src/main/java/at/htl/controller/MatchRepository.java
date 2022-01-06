@@ -8,7 +8,7 @@ import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
 
 @ApplicationScoped
-public class MatchRepository {
+public class MatchRepository{
 
     @Inject
     EntityManager entityManager;

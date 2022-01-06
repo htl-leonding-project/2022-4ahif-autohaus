@@ -1,7 +1,10 @@
 package at.htl.entity;
 
+import javax.persistence.Column;
+
 public class Phase {
 
+    @Column(length = 30)
     String nameOfPhase;
     int level;
 

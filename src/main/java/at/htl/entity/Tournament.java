@@ -1,10 +1,12 @@
 package at.htl.entity;
 
+import javax.persistence.Column;
 import java.util.List;
 
 public class Tournament {
 
     //erst einmal leer lassen
+    @Column(length = 20)
     String name;
 
     List<Phase>phases;
