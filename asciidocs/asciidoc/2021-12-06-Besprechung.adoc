@@ -43,11 +43,17 @@ ifdef::backend-html5[]
 
 image:../images/20211206_01.png[width=600px]
 
+Funktionsweise des ko-Systems wurde durchgedacht
+
 image:../images/20211206_02.png[width=600px]
+
+Spielablauf eines Turniers:
 
 image:../images/20211206_03.png[width=600px]
 
 
 == Vereinbarungen und Entscheidungen
+
+Vereinbarungen sind die einzelnen Punkte die auf dem folgendem Bild aufgelistet worden.
 
 image:../images/20211206_Vereinbarung.png[width=600px]

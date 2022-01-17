@@ -34,21 +34,33 @@ ifdef::backend-html5[]
 |von-bis
 |Mo. 17.01.2022 - 3.EH
 |Dauer
-|30 min
+|25 min
 |===
 
 
 
 == Besprochene Themen
 
-Die bereits erledigten Schritte wurden besprochen und vor der Klasse auf der Tafel gezeigt.
+* Die bereits erledigten Schritte wurden besprochen und vor der Klasse auf der Tafel gezeigt.
 
-Dazu sind wir noch auf Github die Commits durchgegangen.
+* Dazu sind wir noch auf Github die Commits durchgegangen.
 
-diagram.puml, FileWriter und die PrototypeTest's wurden vorrangig gezeigt.
+* diagram.puml, FileWriter und die PrototypeTest's wurden vorrangig gezeigt.
+
+image::../images/diagram.png[]
+
 
 == Vereinbarungen und Entscheidungen
 
-bis wann
-unittest
-überarbeitung des datenmodel
+* Bei den Repository Klassen Panache implementieren.
+
+* Protokolle überarbeiten und falls notwendig neu schreiben.
+
+* Diagram vergleichen mit dem alten Klassendiagram vergleichen und falls notwendig fehlende Felder oder Methoden hinzufügen.
+
+* Eine Gruppenphase mit UnitTests simulieren.
+Diese UnitTests auf einen eigenen Branch pushen -> wenn alles korrekt ist, branch nach main mergen danach gruppenphase-branch löschen
+
+* Überlegen mit welcher Frontend Technologie wir  arbeiten möchten
+
+

@@ -45,18 +45,7 @@ Am Bildschirm wurde vor der Klasse gezeigt was bis jetzt getan wurde.
 
 tournament.puml, Unittest(EntityTest) und die PrototypeTest's wurden  gezeigt.
 
-image::../images/diagram.png[]
-
 == Vereinbarungen und Entscheidungen
 
-Bei den Repository Klassen Panache implementieren.
-
-Protokolle überarbeiten und falls notwendig neu schreiben.
-
-Diagram vergleichen mit dem alten Klassendiagram vergleichen und falls notwendig fehlende Felder oder Methoden hinzufügen.
-
-Eine Gruppenphase mit UnitTests simulieren.
-Diese UnitTests auf einen eigenen Branch pushen -> wenn alles korrekt ist, branch nach main mergen danach gruppenphase-branch löschen
-
-Überlegen mit welcher Frontend Technologie wir  arbeiten möchten
-
+Result.puml wird mit Hilfe einer Java-Api erstellt.
+Tournaments werden mit Hilfe der Datenbank dynamisch.
