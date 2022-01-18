@@ -1,8 +1,8 @@
 package at.htl;
 
+import at.htl.filewriter.*;
 import org.junit.jupiter.api.Test;
 import at.htl.entity.*;
-import at.htl.filewriter.Filewriter;
 
 import java.util.ArrayList;
 import java.util.List;
