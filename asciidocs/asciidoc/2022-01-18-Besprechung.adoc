@@ -1,5 +1,5 @@
-= Besprechungsprotokoll 14.12.2021
-1.0, 2021-12-14
+= Besprechungsprotokoll 18.01.2022
+1.0, 2022-18-01
 ifndef::imagesdir[:imagesdir: ../images]
 :icons: font
 //:sectnums:    // Nummerierung der Überschriften / section numbering
@@ -17,8 +17,6 @@ ifdef::backend-html5[]
 
 |Christoph Handel
 
-|Lukas Baumgartner (nur kurz)
-
 |Joachim Pelzeder
 
 |Thomas W. Stütz
@@ -32,20 +30,21 @@ ifdef::backend-html5[]
 |Unterricht
 
 |von-bis
-|Di. 20.12.2021 - 10.EH
+|DI. 18.01.2022 - 10.EH
 |Dauer
-|30 min
+|10 min
 |===
 
 
 
 == Besprochene Themen
 
-Am Bildschirm wurde vor der Klasse gezeigt was bis jetzt getan wurde.
-
-tournament.puml, Unittest(EntityTest) und die PrototypeTest's wurden  gezeigt.
+* Gruppenphase Diagram wurde besprochen
 
 == Vereinbarungen und Entscheidungen
 
-Result.puml wird mit Hilfe einer Java-Api erstellt.
-Tournaments werden mit Hilfe der Datenbank dynamisch.
+* Vereinbarung ist, wir sollten bis nächste Woche Mittwoch eine Gruppenphase mit Hilfe von UnitTests simulieren,
+falls fehlerhaft, reden wir darüber.
+
+
+
