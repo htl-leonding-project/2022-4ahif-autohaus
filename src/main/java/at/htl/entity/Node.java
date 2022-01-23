@@ -1,12 +1,11 @@
 package at.htl.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import io.quarkus.hibernate.orm.panache.PanacheEntity;
+
+import javax.persistence.*;
 
 @Entity
-public class Node {
+public class Node extends PanacheEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
