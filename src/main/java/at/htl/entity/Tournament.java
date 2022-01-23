@@ -1,9 +1,11 @@
 package at.htl.entity;
 
+import io.quarkus.hibernate.orm.panache.PanacheEntity;
+
 import javax.persistence.Column;
 import java.util.List;
 
-public class Tournament {
+public class Tournament extends PanacheEntity {
 
     //erst einmal leer lassen
     @Column(length = 20)

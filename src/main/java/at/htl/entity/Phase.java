@@ -1,8 +1,10 @@
 package at.htl.entity;
 
+import io.quarkus.hibernate.orm.panache.PanacheEntity;
+
 import javax.persistence.Column;
 
-public class Phase {
+public class Phase extends PanacheEntity {
 
     @Column(length = 30)
     String nameOfPhase;
