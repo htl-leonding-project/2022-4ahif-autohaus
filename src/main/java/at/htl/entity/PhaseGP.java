@@ -49,5 +49,17 @@ public class PhaseGP {
     public void setPhasenName(String phasenName) {
         this.phasenName = phasenName;
     }
+
+    public void addNode(NodeGP node){
+        this.nodes.add(node);
+    }
+
+    public List<NodeGP> getNodes(){
+        return nodes;
+    }
+
+    public void setNodes(List<NodeGP> nodes){
+        this.nodes = nodes;
+    }
     //endregion
 }

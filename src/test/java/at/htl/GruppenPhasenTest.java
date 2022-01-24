@@ -1,5 +1,6 @@
 package at.htl;
 
+import at.htl.comparator.TeamComparator;
 import at.htl.entity.*;
 import io.quarkus.test.junit.QuarkusTest;
 import org.junit.jupiter.api.Test;
@@ -15,6 +16,8 @@ public class GruppenPhasenTest {
     @Test
     public void getWinningTeamTest(){
 
+        List<TeamGP> allTeams = new ArrayList<TeamGP>();
+        GruppeGP winningGroup = new GruppeGP();
         //region Gruppe 1
 
         //region Teams 1
@@ -57,6 +60,10 @@ public class GruppenPhasenTest {
         //region Phasen
         PhaseGP phase1 = new PhaseGP("Gruppenspiele");
         PhaseGP phase2 = new PhaseGP("Gruppenspiele");
+        PhaseGP phase3 = new PhaseGP("Gruppenspiele");
+        PhaseGP phase4 = new PhaseGP("Gruppenspiele");
+        PhaseGP phase5 = new PhaseGP("Gruppenspiele");
+        PhaseGP phase6 = new PhaseGP("Gruppenspiele");
         //endregion
 
         //endregion
@@ -88,26 +95,23 @@ public class GruppenPhasenTest {
         MatchGP match12 = new MatchGP(team7,team8);
         //endregion
 
-        //region List of Matches
-        List<MatchGP> matches3 = new ArrayList<>();
-        matches3.add(match7);
-        matches3.add(match8);
-        matches3.add(match9);
-
-        List<MatchGP> matches4 = new ArrayList<>();
-        matches4.add(match10);
-        matches4.add(match11);
-        matches4.add(match12);
+        //region Phase1
+        phase1.addNode(new NodeGP(){MatchGP m = match1;});
+        phase1.addNode(new NodeGP(){MatchGP m = match2;});
+        phase1.addNode(new NodeGP(){MatchGP m = match3;});
+        phase1.addNode(new NodeGP(){MatchGP m = match4;});
+        phase1.addNode(new NodeGP(){MatchGP m = match5;});
+        phase1.addNode(new NodeGP(){MatchGP m = match6;});
         //endregion
 
-        //region Phasen
-        PhaseGP phase3 = new PhaseGP("Gruppenspiele");
-        PhaseGP phase4 = new PhaseGP("Gruppenspiele");
+        //region Phase2
+        phase2.addNode(new NodeGP(){MatchGP m = match7;});
+        phase2.addNode(new NodeGP(){MatchGP m = match8;});
+        phase2.addNode(new NodeGP(){MatchGP m = match9;});
+        phase2.addNode(new NodeGP(){MatchGP m = match10;});
+        phase2.addNode(new NodeGP(){MatchGP m = match11;});
+        phase2.addNode(new NodeGP(){MatchGP m = match12;});
         //endregion
-
-        //endregion
-
-        //region setPoints
 
         team1.setPoints(1);
         team2.setPoints(2);
@@ -118,49 +122,44 @@ public class GruppenPhasenTest {
         team7.setPoints(7);
         team8.setPoints(8);
 
-        assertThat(match1.getWinningTeam().getName()).isEqualTo(listofGroup2);
-
+        //region Phase3
+        phase3.addNode(new NodeGP(){MatchGP m = new MatchGP(){TeamGP t1 = team1; TeamGP t2 = team5;};});
+        phase3.addNode(new NodeGP(){MatchGP m = new MatchGP(){TeamGP t1 = team1; TeamGP t2 = team6;};});
+        phase3.addNode(new NodeGP(){MatchGP m = new MatchGP(){TeamGP t1 = team1; TeamGP t2 = team7;};});
+        phase3.addNode(new NodeGP(){MatchGP m = new MatchGP(){TeamGP t1 = team1; TeamGP t2 = team8;};});
         //endregion
 
-        //region NodesG1
-        NodeGP topG1 = new NodeGP();
-        topG1.setLeftNode(new NodeGP(){MatchGP m = match1;});
-        topG1.setRightNode(new NodeGP(){MatchGP m = match2;});
-        topG1.setCenterNode(new NodeGP(){MatchGP m = match3;});
-
-        NodeGP bottomG1 = new NodeGP();
-        bottomG1.setLeftNode(new NodeGP(){MatchGP m = match4;});
-        bottomG1.setRightNode(new NodeGP(){MatchGP m = match5;});
-        bottomG1.setCenterNode(new NodeGP(){MatchGP m = match6;});
+        //region Phase4
+        phase3.addNode(new NodeGP(){MatchGP m = new MatchGP(){TeamGP t1 = team2; TeamGP t2 = team5;};});
+        phase3.addNode(new NodeGP(){MatchGP m = new MatchGP(){TeamGP t1 = team2; TeamGP t2 = team6;};});
+        phase3.addNode(new NodeGP(){MatchGP m = new MatchGP(){TeamGP t1 = team2; TeamGP t2 = team7;};});
+        phase3.addNode(new NodeGP(){MatchGP m = new MatchGP(){TeamGP t1 = team2; TeamGP t2 = team8;};});
         //endregion
 
-        //region NodesG2
-        NodeGP topG2 = new NodeGP();
-        topG2.setLeftNode(new NodeGP(){MatchGP m = match7;});
-        topG2.setRightNode(new NodeGP(){MatchGP m = match8;});
-        topG2.setCenterNode(new NodeGP(){MatchGP m = match9;});
-
-        NodeGP bottomG2 = new NodeGP();
-        bottomG2.setLeftNode(new NodeGP(){MatchGP m = match10;});
-        bottomG2.setRightNode(new NodeGP(){MatchGP m = match11;});
-        bottomG2.setCenterNode(new NodeGP(){MatchGP m = match12;});
+        //region Phase5
+        phase3.addNode(new NodeGP(){MatchGP m = new MatchGP(){TeamGP t1 = team3; TeamGP t2 = team5;};});
+        phase3.addNode(new NodeGP(){MatchGP m = new MatchGP(){TeamGP t1 = team3; TeamGP t2 = team6;};});
+        phase3.addNode(new NodeGP(){MatchGP m = new MatchGP(){TeamGP t1 = team3; TeamGP t2 = team7;};});
+        phase3.addNode(new NodeGP(){MatchGP m = new MatchGP(){TeamGP t1 = team3; TeamGP t2 = team8;};});
         //endregion
 
-        //region NodeP1
-        NodeGP nodeP1 = new NodeGP();
-        nodeP1.setCurMatch(new MatchGP(team1,team5));
-        nodeP1.setCurMatch(new MatchGP(team1,team6));
-        nodeP1.setCurMatch(new MatchGP(team1,team7));
-        nodeP1.setCurMatch(new MatchGP(team1,team8));
+        //region Phase6
+        phase3.addNode(new NodeGP(){MatchGP m = new MatchGP(){TeamGP t1 = team4; TeamGP t2 = team5;};});
+        phase3.addNode(new NodeGP(){MatchGP m = new MatchGP(){TeamGP t1 = team4; TeamGP t2 = team6;};});
+        phase3.addNode(new NodeGP(){MatchGP m = new MatchGP(){TeamGP t1 = team4; TeamGP t2 = team7;};});
+        phase3.addNode(new NodeGP(){MatchGP m = new MatchGP(){TeamGP t1 = team4; TeamGP t2 = team8;};});
         //endregion
 
-        //region NodeP2
-        NodeGP nodeP2 = new NodeGP();
-        nodeP2.setCurMatch(new MatchGP(team2,team5));
-        nodeP2.setCurMatch(new MatchGP(team2,team6));
-        nodeP2.setCurMatch(new MatchGP(team2,team7));
-        nodeP2.setCurMatch(new MatchGP(team2,team8));
-        //endregion
+        allTeams.addAll(group2.getTeams());
+        allTeams.addAll(group1.getTeams());
+
+        allTeams.sort(new TeamComparator());
+
+        winningGroup.setTeams(allTeams.subList(0,4));
+
+        for (TeamGP cur: winningGroup.getTeams()) {
+            System.out.println(cur.getName() + ": " + cur.getPoints());
+        }
 
     }
 }
