@@ -5,7 +5,7 @@ import io.quarkus.hibernate.orm.panache.PanacheEntity;
 import javax.persistence.*;
 
 @Entity
-public class MatchGP extends PanacheEntity {
+public class MatchGP  {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

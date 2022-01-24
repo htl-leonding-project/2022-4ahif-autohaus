@@ -6,7 +6,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-public class PhaseGP extends PanacheEntity {
+public class PhaseGP {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

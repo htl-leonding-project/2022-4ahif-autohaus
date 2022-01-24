@@ -6,7 +6,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-public class GruppeGP extends PanacheEntity {
+public class GruppeGP {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

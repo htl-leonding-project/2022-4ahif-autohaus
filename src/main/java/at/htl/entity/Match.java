@@ -3,13 +3,15 @@ package at.htl.entity;
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
-public class Match extends PanacheEntity {
+@Table(name = "lc_match")
+public class Match{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Long id;
+    private Long id;
     @ManyToOne
     public Team team1;
     @ManyToOne
@@ -53,6 +55,15 @@ public class Match extends PanacheEntity {
 
     public void setPointsTeam2(int amount){ this.pointsTeam2 = amount; }
     //endregion
+
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public Team getWinningTeam(){
         if(pointsTeam1 > pointsTeam2)
