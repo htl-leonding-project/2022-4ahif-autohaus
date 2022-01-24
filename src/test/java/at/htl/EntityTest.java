@@ -22,7 +22,8 @@ public class EntityTest {
         Match match = new Match();
         match.setTeam1(team01);
         match.setTeam2(team02);
-        match.setResultOfMatch(new int[]{0,1});
+        match.setPointsTeam1(0);
+        match.setPointsTeam2(1);
 
         assertThat(match.getWinningTeam().getName()).isEqualTo(name2);
     }
@@ -45,15 +46,18 @@ public class EntityTest {
 
         match01.setTeam1(team01);
         match01.setTeam2(team02);
-        match01.setResultOfMatch(new int[]{3,1});
+        match01.setPointsTeam1(3);
+        match01.setPointsTeam2(1);
 
         match02.setTeam1(team03);
         match02.setTeam2(team04);
-        match02.setResultOfMatch(new int[]{1,3});
+        match02.setPointsTeam1(1);
+        match02.setPointsTeam2(3);
 
         match03.setTeam1(match01.getWinningTeam());
         match03.setTeam2(match02.getWinningTeam());
-        match03.setResultOfMatch(new int[]{3,4});
+        match03.setPointsTeam1(3);
+        match03.setPointsTeam2(4);
 
         assertThat(match03.getWinningTeam().getName()).isEqualTo("team04");
     }
@@ -88,14 +92,17 @@ public class EntityTest {
 
         match01.setTeam1(team01);
         match01.setTeam2(team02);
-        match01.setResultOfMatch(new int[]{3,1});
+        match01.setPointsTeam1(3);
+        match01.setPointsTeam2(1);
 
         match02.setTeam1(team03);
         match02.setTeam2(team04);
-        match02.setResultOfMatch(new int[]{1,3});
+        match02.setPointsTeam1(1);
+        match02.setPointsTeam2(3);
 
         parentNode.setCurMatch(new Match(match01.getWinningTeam(), match02.getWinningTeam()));
-        parentNode.getCurMatch().setResultOfMatch(new int[]{3,4});
+        parentNode.getCurMatch().setPointsTeam1(3);
+        parentNode.getCurMatch().setPointsTeam2(4);
 
         assertThat(left.getCurMatch().getWinningTeam().getName()).isEqualTo("team01");
         assertThat(right.getCurMatch().getWinningTeam().getName()).isEqualTo("team04");
@@ -124,8 +131,11 @@ public class EntityTest {
         node01.setCurMatch(match01);
         node02.setCurMatch(match02);
 
-        match01.setResultOfMatch(new int[]{1,2});
-        match02.setResultOfMatch(new int[]{3,1});
+        match01.setPointsTeam1(1);
+        match01.setPointsTeam2(2);
+
+        match02.setPointsTeam1(3);
+        match02.setPointsTeam2(1);
 
         node03.setChildMatchWinners();
 
@@ -192,18 +202,28 @@ public class EntityTest {
         node03.setCurMatch(new Match(team05, team06));
         node04.setCurMatch(new Match(team07, team08));
 
-        node01.getCurMatch().setResultOfMatch(new int[]{0,1});
-        node02.getCurMatch().setResultOfMatch(new int[]{2,1});
-        node03.getCurMatch().setResultOfMatch(new int[]{3,0});
-        node04.getCurMatch().setResultOfMatch(new int[]{1,2});
+        node01.getCurMatch().setPointsTeam1(0);
+        node01.getCurMatch().setPointsTeam2(1);
+
+        node02.getCurMatch().setPointsTeam1(2);
+        node02.getCurMatch().setPointsTeam2(1);
+
+        node03.getCurMatch().setPointsTeam1(3);
+        node03.getCurMatch().setPointsTeam2(0);
+
+        node04.getCurMatch().setPointsTeam1(1);
+        node04.getCurMatch().setPointsTeam2(2);
 
         node01.getParentNode().setChildMatchWinners();
         node02.getParentNode().setChildMatchWinners();
         node03.getParentNode().setChildMatchWinners();
         node04.getParentNode().setChildMatchWinners();
 
-        node11.getCurMatch().setResultOfMatch(new int[]{3,2});
-        node12.getCurMatch().setResultOfMatch(new int[]{1,2});
+        node11.getCurMatch().setPointsTeam1(3);
+        node11.getCurMatch().setPointsTeam2(2);
+
+        node12.getCurMatch().setPointsTeam1(1);
+        node12.getCurMatch().setPointsTeam1(2);
 
         filewriter.writeIntermediateResult(node11, tournament);
         filewriter.writeIntermediateResult(node12, tournament);
@@ -211,7 +231,8 @@ public class EntityTest {
         node11.getParentNode().setChildMatchWinners();
         node12.getParentNode().setChildMatchWinners();
 
-        node21.getCurMatch().setResultOfMatch(new int[]{1,0});
+        node21.getCurMatch().setPointsTeam1(1);
+        node21.getCurMatch().setPointsTeam2(0);
 
         filewriter.writeFinalResult(node21, tournament);
 
