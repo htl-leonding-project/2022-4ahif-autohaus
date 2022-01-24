@@ -3,6 +3,7 @@ package at.htl.entity;
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -13,16 +14,23 @@ public class PhaseGP {
     private Long id;
     private String phasenName;
     @OneToMany
-    private List<MatchGP> matches;
+    List<NodeGP> nodes = new ArrayList<NodeGP>();
 
     //region Constructor
-    public PhaseGP(String phasenName, List<MatchGP> matches) {
+
+
+    public PhaseGP(String phasenName) {
         this.phasenName = phasenName;
-        this.matches = matches;
+    }
+
+    public PhaseGP(String phasenName, List<NodeGP> nodes) {
+        this.phasenName = phasenName;
+        this.nodes = nodes;
     }
 
     public PhaseGP() {
     }
+
     //endregion
 
     //region Getter and Setter
@@ -40,14 +48,6 @@ public class PhaseGP {
 
     public void setPhasenName(String phasenName) {
         this.phasenName = phasenName;
-    }
-
-    public List<MatchGP> getMatches() {
-        return matches;
-    }
-
-    public void setMatches(List<MatchGP> matches) {
-        this.matches = matches;
     }
     //endregion
 }
