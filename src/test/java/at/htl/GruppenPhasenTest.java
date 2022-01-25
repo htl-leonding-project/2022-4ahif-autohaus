@@ -16,6 +16,7 @@ public class GruppenPhasenTest {
     @Test
     public void getWinningTeamTest(){
 
+        TournamentGP tournament = new TournamentGP();
         List<TeamGP> allTeams = new ArrayList<TeamGP>();
         GruppeGP winningGroup = new GruppeGP();
         //region Gruppe 1
@@ -61,9 +62,6 @@ public class GruppenPhasenTest {
         PhaseGP phase1 = new PhaseGP("Gruppenspiele");
         PhaseGP phase2 = new PhaseGP("Gruppenspiele");
         PhaseGP phase3 = new PhaseGP("Gruppenspiele");
-        PhaseGP phase4 = new PhaseGP("Gruppenspiele");
-        PhaseGP phase5 = new PhaseGP("Gruppenspiele");
-        PhaseGP phase6 = new PhaseGP("Gruppenspiele");
         //endregion
 
         //endregion
@@ -150,6 +148,11 @@ public class GruppenPhasenTest {
         phase3.addNode(new NodeGP(){MatchGP m = new MatchGP(){TeamGP t1 = team4; TeamGP t2 = team8;};});
         //endregion
 
+        tournament.addPhase(phase1);
+        tournament.addPhase(phase2);
+        tournament.addPhase(phase3);
+
+
         allTeams.addAll(group2.getTeams());
         allTeams.addAll(group1.getTeams());
 
@@ -160,6 +163,8 @@ public class GruppenPhasenTest {
         for (TeamGP cur: winningGroup.getTeams()) {
             System.out.println(cur.getName() + ": " + cur.getPoints());
         }
+
+
 
     }
 }
