@@ -4,6 +4,7 @@ import io.quarkus.hibernate.orm.panache.PanacheEntity;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Entity
 public class GruppeGP {
@@ -50,6 +51,18 @@ public class GruppeGP {
 
     public void setTeams(List<TeamGP> teams) {
         this.teams = teams;
+    }
+
+    public String getGroupMap() {
+
+        String returnString = String.format("""
+                map %s {
+                %s
+                }""", this.getGruppenName(),
+                this.getTeams().stream().map(t -> t.getNameAndAbbr()).collect(Collectors.joining("\n")));
+
+        return returnString;
+
     }
     //endregion
 }

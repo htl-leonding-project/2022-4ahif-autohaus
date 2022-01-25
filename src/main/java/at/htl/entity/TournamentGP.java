@@ -19,6 +19,8 @@ public class TournamentGP {
 
     List<PhaseGP>phases = new ArrayList<PhaseGP>();
 
+    List<GruppeGP> groups = new ArrayList<GruppeGP>();
+
     public TournamentGP(String name) {
         this.name = name;
     }
@@ -43,4 +45,14 @@ public class TournamentGP {
     public void setName(String name) {
         this.name = name;
     }
+
+    public List<GruppeGP> getGroups() {
+        return groups;
+    }
+
+    public void setGroups(List<GruppeGP> groups) {
+        this.groups = groups;
+    }
+
+    public void addGroup(GruppeGP group){this.groups.add(group);}
 }

@@ -2,6 +2,7 @@ package at.htl;
 
 import at.htl.comparator.TeamComparator;
 import at.htl.entity.*;
+import at.htl.filewriter.FilewriterGP;
 import io.quarkus.test.junit.QuarkusTest;
 import org.junit.jupiter.api.Test;
 
@@ -22,10 +23,10 @@ public class GruppenPhasenTest {
         //region Gruppe 1
 
         //region Teams 1
-        TeamGP team1 = new TeamGP("Portugal",0);
-        TeamGP team2 = new TeamGP("Serbien",0);
-        TeamGP team3 = new TeamGP("Republik Irland",0);
-        TeamGP team4 = new TeamGP("Luxemburg",0);
+        TeamGP team1 = new TeamGP("Portugal", "PRT",0);
+        TeamGP team2 = new TeamGP("Serbien","SRB",0);
+        TeamGP team3 = new TeamGP("Republik Irland","IRL",0);
+        TeamGP team4 = new TeamGP("Luxemburg","LUX",0);
         //endregion
 
         //region Group 1
@@ -34,8 +35,10 @@ public class GruppenPhasenTest {
         listofGroup1.add(team2);
         listofGroup1.add(team3);
         listofGroup1.add(team4);
-        GruppeGP group1 = new GruppeGP("Gruppe A", listofGroup1);
+        GruppeGP group1 = new GruppeGP("Gruppe.A", listofGroup1);
         //endregion
+
+        tournament.addGroup(group1);
 
         //region Matches
         MatchGP match1 = new MatchGP(team1,team2);
@@ -69,10 +72,10 @@ public class GruppenPhasenTest {
         //region Gruppe 2
 
         //region Teams 2
-        TeamGP team5 = new TeamGP("Spanien",0);
-        TeamGP team6 = new TeamGP("Schweden",0);
-        TeamGP team7 = new TeamGP("Griechenland",0);
-        TeamGP team8 = new TeamGP("Georgien",0);
+        TeamGP team5 = new TeamGP("Spanien","ESP",0);
+        TeamGP team6 = new TeamGP("Schweden","SWE",0);
+        TeamGP team7 = new TeamGP("Griechenland","GRC",0);
+        TeamGP team8 = new TeamGP("Georgien","GEO",0);
         //endregion
 
         //region Group 1
@@ -81,8 +84,10 @@ public class GruppenPhasenTest {
         listofGroup2.add(team6);
         listofGroup2.add(team7);
         listofGroup2.add(team8);
-        GruppeGP group2 = new GruppeGP("Gruppe A", listofGroup2);
+        GruppeGP group2 = new GruppeGP("Gruppe.B", listofGroup2);
         //endregion
+
+        tournament.addGroup(group2);
 
         //region Matches
         MatchGP match7 = new MatchGP(team5,team6);
@@ -125,23 +130,17 @@ public class GruppenPhasenTest {
         phase3.addNode(new NodeGP(){MatchGP m = new MatchGP(){TeamGP t1 = team1; TeamGP t2 = team6;};});
         phase3.addNode(new NodeGP(){MatchGP m = new MatchGP(){TeamGP t1 = team1; TeamGP t2 = team7;};});
         phase3.addNode(new NodeGP(){MatchGP m = new MatchGP(){TeamGP t1 = team1; TeamGP t2 = team8;};});
-        //endregion
 
-        //region Phase4
         phase3.addNode(new NodeGP(){MatchGP m = new MatchGP(){TeamGP t1 = team2; TeamGP t2 = team5;};});
         phase3.addNode(new NodeGP(){MatchGP m = new MatchGP(){TeamGP t1 = team2; TeamGP t2 = team6;};});
         phase3.addNode(new NodeGP(){MatchGP m = new MatchGP(){TeamGP t1 = team2; TeamGP t2 = team7;};});
         phase3.addNode(new NodeGP(){MatchGP m = new MatchGP(){TeamGP t1 = team2; TeamGP t2 = team8;};});
-        //endregion
 
-        //region Phase5
         phase3.addNode(new NodeGP(){MatchGP m = new MatchGP(){TeamGP t1 = team3; TeamGP t2 = team5;};});
         phase3.addNode(new NodeGP(){MatchGP m = new MatchGP(){TeamGP t1 = team3; TeamGP t2 = team6;};});
         phase3.addNode(new NodeGP(){MatchGP m = new MatchGP(){TeamGP t1 = team3; TeamGP t2 = team7;};});
         phase3.addNode(new NodeGP(){MatchGP m = new MatchGP(){TeamGP t1 = team3; TeamGP t2 = team8;};});
-        //endregion
 
-        //region Phase6
         phase3.addNode(new NodeGP(){MatchGP m = new MatchGP(){TeamGP t1 = team4; TeamGP t2 = team5;};});
         phase3.addNode(new NodeGP(){MatchGP m = new MatchGP(){TeamGP t1 = team4; TeamGP t2 = team6;};});
         phase3.addNode(new NodeGP(){MatchGP m = new MatchGP(){TeamGP t1 = team4; TeamGP t2 = team7;};});
@@ -164,7 +163,8 @@ public class GruppenPhasenTest {
             System.out.println(cur.getName() + ": " + cur.getPoints());
         }
 
-
+        FilewriterGP filewriterGP = new FilewriterGP();
+        filewriterGP.writeResults(tournament);
 
     }
 }

@@ -7,6 +7,7 @@ revealjs.zip
 gh-pages/
 .idea/
 asciidocs/plantuml/Result.puml
+asciidocs/plantuml/ResultGP.puml
 *.iml
 .DS_Store
 .env

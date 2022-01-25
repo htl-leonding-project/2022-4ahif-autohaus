@@ -1,108 +1,16 @@
 @startuml
 left to right direction
-map Gruppe.1{
- Portugal => PRT
- Serbien => SRB
- Luxemburg => LUX
- Irland => IRL
+
+map Gruppe.A {
+Portugal=>PRT
+Serbien=>SRB
+Republik Irland=>IRL
+Luxemburg=>LUX
 }
-
-map Match.1{
-    PRT =>
-    SRB =>
+map Gruppe.B {
+Spanien=>ESP
+Schweden=>SWE
+Griechenland=>GRC
+Georgien=>GEO
 }
-
-map Match.2{
-    PRT =>
-    IRL =>
-}
-
-map Match.3{
-    PRT =>
-    LUX =>
-}
-
-map Match.4{
-    SRB =>
-    IRL =>
-}
-
-map Match.5{
-    SRB =>
-    LUX =>
-}
-
-map Match.6{
-    IRL =>
-    LUX =>
-}
-
-map Gruppe.1.Win{
-    Portugal => PRT
-     Serbien => SRB
-     Luxemburg => LUX
-     Irland => IRL
-}
-
-Gruppe.1 --> Match.1
-Match.1 -- Match.2
-Match.2 -- Match.3
-Gruppe.1 --> Match.4
-Match.4 -- Match.5
-Match.5 -- Match.6
-Match.3 -- Gruppe.1.Win
-Match.6 -- Gruppe.1.Win
-
-map Gruppe.2{
- Portugal => PRT
- Serbien => SRB
- Luxemburg => LUX
- Irland => IRL
-}
-
-map Match.7{
-    PRT =>
-    SRB =>
-}
-
-map Match.8{
-    PRT =>
-    IRL =>
-}
-
-map Match.9{
-    PRT =>
-    LUX =>
-}
-
-map Match.10{
-    SRB =>
-    IRL =>
-}
-
-map Match.11{
-    SRB =>
-    LUX =>
-}
-
-map Match.12{
-    IRL =>
-    LUX =>
-}
-
-map Gruppe.2.Win{
-    Portugal => PRT
-     Serbien => SRB
-     Luxemburg => LUX
-     Irland => IRL
-}
-
-Gruppe.2 --> Match.7
-Match.7 -- Match.8
-Match.8 -- Match.9
-Gruppe.2 --> Match.10
-Match.10 -- Match.11
-Match.11 -- Match.12
-Match.9 -- Gruppe.2.Win
-Match.12 -- Gruppe.2.Win
 @enduml
