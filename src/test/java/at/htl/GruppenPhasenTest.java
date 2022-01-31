@@ -99,21 +99,21 @@ public class GruppenPhasenTest {
         //endregion
 
         //region Phase1
-        phase1.addNode(new NodeGP(){MatchGP m = match1;});
-        phase1.addNode(new NodeGP(){MatchGP m = match2;});
-        phase1.addNode(new NodeGP(){MatchGP m = match3;});
-        phase1.addNode(new NodeGP(){MatchGP m = match4;});
-        phase1.addNode(new NodeGP(){MatchGP m = match5;});
-        phase1.addNode(new NodeGP(){MatchGP m = match6;});
+        phase1.addNode(new NodeGP(match1));
+        phase1.addNode(new NodeGP(match2));
+        phase1.addNode(new NodeGP(match3));
+        phase1.addNode(new NodeGP(match4));
+        phase1.addNode(new NodeGP(match5));
+        phase1.addNode(new NodeGP(match6));
         //endregion
 
         //region Phase2
-        phase2.addNode(new NodeGP(){MatchGP m = match7;});
-        phase2.addNode(new NodeGP(){MatchGP m = match8;});
-        phase2.addNode(new NodeGP(){MatchGP m = match9;});
-        phase2.addNode(new NodeGP(){MatchGP m = match10;});
-        phase2.addNode(new NodeGP(){MatchGP m = match11;});
-        phase2.addNode(new NodeGP(){MatchGP m = match12;});
+        phase2.addNode(new NodeGP(match7));
+        phase2.addNode(new NodeGP(match8));
+        phase2.addNode(new NodeGP(match9));
+        phase2.addNode(new NodeGP(match10));
+        phase2.addNode(new NodeGP(match11));
+        phase2.addNode(new NodeGP(match12));
         //endregion
 
         team1.setPoints(1);
@@ -126,30 +126,30 @@ public class GruppenPhasenTest {
         team8.setPoints(8);
 
         //region Phase3
-        phase3.addNode(new NodeGP(){MatchGP m = new MatchGP(){TeamGP t1 = team1; TeamGP t2 = team5;};});
-        phase3.addNode(new NodeGP(){MatchGP m = new MatchGP(){TeamGP t1 = team1; TeamGP t2 = team6;};});
-        phase3.addNode(new NodeGP(){MatchGP m = new MatchGP(){TeamGP t1 = team1; TeamGP t2 = team7;};});
-        phase3.addNode(new NodeGP(){MatchGP m = new MatchGP(){TeamGP t1 = team1; TeamGP t2 = team8;};});
+        phase3.addNode(new NodeGP(new MatchGP(team1, team5)));
+        phase3.addNode(new NodeGP(new MatchGP(team1, team6)));
+        phase3.addNode(new NodeGP(new MatchGP(team1, team7)));
+        phase3.addNode(new NodeGP(new MatchGP(team1, team8)));
 
-        phase3.addNode(new NodeGP(){MatchGP m = new MatchGP(){TeamGP t1 = team2; TeamGP t2 = team5;};});
-        phase3.addNode(new NodeGP(){MatchGP m = new MatchGP(){TeamGP t1 = team2; TeamGP t2 = team6;};});
-        phase3.addNode(new NodeGP(){MatchGP m = new MatchGP(){TeamGP t1 = team2; TeamGP t2 = team7;};});
-        phase3.addNode(new NodeGP(){MatchGP m = new MatchGP(){TeamGP t1 = team2; TeamGP t2 = team8;};});
+        phase3.addNode(new NodeGP(new MatchGP(team2, team5)));
+        phase3.addNode(new NodeGP(new MatchGP(team2, team6)));
+        phase3.addNode(new NodeGP(new MatchGP(team2, team7)));
+        phase3.addNode(new NodeGP(new MatchGP(team2, team8)));
 
-        phase3.addNode(new NodeGP(){MatchGP m = new MatchGP(){TeamGP t1 = team3; TeamGP t2 = team5;};});
-        phase3.addNode(new NodeGP(){MatchGP m = new MatchGP(){TeamGP t1 = team3; TeamGP t2 = team6;};});
-        phase3.addNode(new NodeGP(){MatchGP m = new MatchGP(){TeamGP t1 = team3; TeamGP t2 = team7;};});
-        phase3.addNode(new NodeGP(){MatchGP m = new MatchGP(){TeamGP t1 = team3; TeamGP t2 = team8;};});
+        phase3.addNode(new NodeGP(new MatchGP(team3, team5)));
+        phase3.addNode(new NodeGP(new MatchGP(team3, team6)));
+        phase3.addNode(new NodeGP(new MatchGP(team3, team7)));
+        phase3.addNode(new NodeGP(new MatchGP(team3, team8)));
 
-        phase3.addNode(new NodeGP(){MatchGP m = new MatchGP(){TeamGP t1 = team4; TeamGP t2 = team5;};});
-        phase3.addNode(new NodeGP(){MatchGP m = new MatchGP(){TeamGP t1 = team4; TeamGP t2 = team6;};});
-        phase3.addNode(new NodeGP(){MatchGP m = new MatchGP(){TeamGP t1 = team4; TeamGP t2 = team7;};});
-        phase3.addNode(new NodeGP(){MatchGP m = new MatchGP(){TeamGP t1 = team4; TeamGP t2 = team8;};});
+        phase3.addNode(new NodeGP(new MatchGP(team4, team5)));
+        phase3.addNode(new NodeGP(new MatchGP(team4, team6)));
+        phase3.addNode(new NodeGP(new MatchGP(team4, team7)));
+        phase3.addNode(new NodeGP(new MatchGP(team4, team8)));
         //endregion
 
         tournament.addPhase(phase1);
         tournament.addPhase(phase2);
-        tournament.addPhase(phase3);
+        //tournament.addPhase(phase3);
 
 
         allTeams.addAll(group2.getTeams());

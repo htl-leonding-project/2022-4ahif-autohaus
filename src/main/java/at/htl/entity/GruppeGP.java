@@ -58,7 +58,8 @@ public class GruppeGP {
         String returnString = String.format("""
                 map %s {
                 %s
-                }""", this.getGruppenName(),
+                }
+                """, this.getGruppenName(),
                 this.getTeams().stream().map(t -> t.getNameAndAbbr()).collect(Collectors.joining("\n")));
 
         return returnString;

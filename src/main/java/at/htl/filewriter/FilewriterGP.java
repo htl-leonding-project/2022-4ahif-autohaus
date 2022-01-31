@@ -1,6 +1,7 @@
 package at.htl.filewriter;
 
 import at.htl.entity.GruppeGP;
+import at.htl.entity.NodeGP;
 import at.htl.entity.PhaseGP;
 import at.htl.entity.TournamentGP;
 
@@ -28,6 +29,14 @@ public class FilewriterGP {
                     .stream()
                     .map(g -> g.getGroupMap())
                     .collect(Collectors.joining("\n"));
+
+            content += tournament
+                    .getPhases()
+                    .stream()
+                    .map(p -> p.getNodes())
+                    .collect(Collectors.toList())
+                    .stream().map(nL -> nL.stream().map(n -> n.getMatchTable()).collect(Collectors.joining("\n")))
+                    .collect(Collectors.joining());
 
             content += """
                     

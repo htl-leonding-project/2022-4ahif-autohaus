@@ -1,6 +1,7 @@
 package at.htl.entity;
 
 import javax.persistence.*;
+import java.util.stream.Collectors;
 
 @Entity
 public class NodeGP {
@@ -22,6 +23,9 @@ public class NodeGP {
     PhaseGP phase;
 
     public NodeGP() {
+    }
+    public NodeGP(MatchGP cur) {
+        curMatch = cur;
     }
 
 
@@ -80,5 +84,18 @@ public class NodeGP {
     public void setChildMatchWinners() {
         setCurMatch(new MatchGP(this.leftNode.getCurMatch().getWinningTeam(),
                 this.rightNode.getCurMatch().getWinningTeam()));
+    }
+
+    public String getMatchTable(){
+        String returnString = String.format("""
+                map Match.%svs%s {
+                %s => 
+                %s => 
+                }
+                """,this.getCurMatch().getTeam1().getAbbr(), this.getCurMatch().getTeam2().getAbbr(),
+                this.getCurMatch().getTeam1().getName(),
+                this.getCurMatch().getTeam2().getName());
+
+        return returnString;
     }
 }

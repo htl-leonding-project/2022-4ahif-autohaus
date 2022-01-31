@@ -60,5 +60,6 @@ public class MatchGP  {
     public void setTeam2(TeamGP team2) {
         this.team2 = team2;
     }
+
     //endregion
 }

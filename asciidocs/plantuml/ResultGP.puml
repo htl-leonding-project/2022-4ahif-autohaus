@@ -1,228 +1,76 @@
 @startuml
 left to right direction
 
-map SIEGER #GOLD{
-    1 => Portugal
-    2 => Luxemburg
-    3 => Serbien
-    4 => Irland
+map Gruppe.A {
+Portugal=>PRT
+Serbien=>SRB
+Republik Irland=>IRL
+Luxemburg=>LUX
 }
 
-map Gruppe.3 #aqua{
-    Portugal => PRT
-     Irland => IRL
-     Luxemburg => LUX
-     Serbien => SRB
+map Gruppe.B {
+Spanien=>ESP
+Schweden=>SWE
+Griechenland=>GRC
+Georgien=>GEO
+}
+map Match.PRTvsSRB {
+Portugal =>
+Serbien =>
 }
 
-map Match.13 #aqua{
-    PRT =>
-    SRB =>
-}
-map Match.14 #aqua{
-    PRT =>
-    IRL =>
-}
-map Match.15 #aqua{
-    PRT =>
-    PRT1 =>
-}
-map Match.16 #aqua{
-    PRT =>
-    LUX =>
+map Match.PRTvsIRL {
+Portugal =>
+Republik Irland =>
 }
 
-map Match.17 #aqua{
-    IRL =>
-    SRB =>
-}
-map Match.18 #aqua{
-    IRL =>
-    IRL1 =>
+map Match.PRTvsLUX {
+Portugal =>
+Luxemburg =>
 }
 
-map Match.19 #aqua{
-    PRT =>
-    SRB =>
+map Match.SRBvsIRL {
+Serbien =>
+Republik Irland =>
 }
 
-map Match.20 #aqua{
-    PRT =>
-    SRB =>
+map Match.SRBvsLUX {
+Serbien =>
+Luxemburg =>
 }
 
-Gruppe.3 --> Match.13
-Match.13 -- Match.14
-Match.14 -- Match.15
-Gruppe.3 --> Match.17
-Match.17 -- Match.18
-Match.15 -- Match.16
-Match.18 -- Match.19
-Match.19 -- Match.20
-
-
-map Gruppe.4 #salmon{
-    Serbien => SRB
-      Irland => IRL
-    Portugal => PRT
-     Luxemburg => LUX
+map Match.IRLvsLUX {
+Republik Irland =>
+Luxemburg =>
+}
+map Match.ESPvsSWE {
+Spanien =>
+Schweden =>
 }
 
-map Match.21 #salmon{
-    LUX =>
-    SRB =>
+map Match.ESPvsGRC {
+Spanien =>
+Griechenland =>
 }
 
-map Match.22 #salmon{
-    LUX =>
-    IRL =>
-}
-map Match.23 #salmon{
-    LUX =>
-    PRT =>
-}
-map Match.24 #salmon{
-    LUX =>
-    LUX1 =>
-}
-map Match.25 #salmon{
-    SRB =>
-    SRB1 =>
-
-}
-map Match.26 #salmon{
-    SRB =>
-    IRL =>
-
-}
-map Match.27 #salmon{
-    SRB =>
-    PRT =>
-
-}
-map Match.28 #salmon{
-    SRB =>
-    LUX =>
-
+map Match.ESPvsGEO {
+Spanien =>
+Georgien =>
 }
 
-Gruppe.4 --> Match.21
-Match.21 -- Match.22
-Match.22 -- Match.23
-Gruppe.4 --> Match.25
-Match.25 -- Match.26
-Match.23 -- Match.24
-Match.26 -- Match.27
-Match.27 -- Match.28
-
-map Gruppe.2#salmon{
- Portugal => PRT
- Serbien => SRB
- Luxemburg => LUX
- Irland => IRL
+map Match.SWEvsGRC {
+Schweden =>
+Griechenland =>
 }
 
-map Match.7#salmon{
-    PRT =>
-    SRB =>
+map Match.SWEvsGEO {
+Schweden =>
+Georgien =>
 }
 
-map Match.8#salmon{
-    PRT =>
-    IRL =>
+map Match.GRCvsGEO {
+Griechenland =>
+Georgien =>
 }
 
-map Match.9#salmon{
-    PRT =>
-    LUX =>
-}
-
-map Match.10#salmon{
-    SRB =>
-    IRL =>
-}
-
-map Match.11#salmon{
-    SRB =>
-    LUX =>
-}
-
-map Match.12#salmon{
-    IRL =>
-    LUX =>
-}
-
-map Gruppe.2.Win#salmon{
-     Serbien => SRB
-      Irland => IRL
-    Portugal => PRT
-     Luxemburg => LUX
-}
-
-Gruppe.2 --> Match.7
-Match.7 -- Match.8
-Match.8 -- Match.9
-Gruppe.2 --> Match.10
-Match.10 -- Match.11
-Match.11 -- Match.12
-Match.9 -- Gruppe.2.Win
-Match.12 -- Gruppe.2.Win
-
-map Gruppe.1 #aqua{
- Portugal => PRT
- Serbien => SRB
- Luxemburg => LUX
- Irland => IRL
-}
-
-map Match.1#aqua{
-    PRT =>
-    SRB =>
-}
-
-map Match.2#aqua{
-    PRT =>
-    IRL =>
-}
-
-map Match.3#aqua{
-    PRT =>
-    LUX =>
-}
-
-map Match.4#aqua{
-    SRB =>
-    IRL =>
-}
-
-map Match.5#aqua{
-    SRB =>
-    LUX =>
-}
-
-map Match.6#aqua{
-    IRL =>
-    LUX =>
-}
-
-map Gruppe.1.Win#aqua{
-    Portugal => PRT
-     Irland => IRL
-     Luxemburg => LUX
-     Serbien => SRB
-}
-
-Gruppe.1 --> Match.1
-Match.1 -- Match.2
-Match.2 -- Match.3
-Gruppe.1 --> Match.4
-Match.4 -- Match.5
-Match.5 -- Match.6
-Match.3 -- Gruppe.1.Win
-Match.6 -- Gruppe.1.Win
-
-Match.16 -- SIEGER
-Match.20 -- SIEGER
-Match.24 -- SIEGER
-Match.28 -- SIEGER
 @enduml
