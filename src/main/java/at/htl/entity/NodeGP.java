@@ -98,4 +98,11 @@ public class NodeGP {
 
         return returnString;
     }
+
+    public String getMatchName(){
+        String matchString = String.format("Match.%svs%s"
+                , this.getCurMatch().getTeam1().getAbbr()
+                , this.getCurMatch().getTeam2().getAbbr());
+        return matchString;
+    }
 }

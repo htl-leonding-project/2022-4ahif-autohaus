@@ -1,11 +1,14 @@
 package at.htl.entity;
 
+import org.hibernate.mapping.Collection;
+
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class TournamentGP {
 
@@ -55,4 +58,22 @@ public class TournamentGP {
     }
 
     public void addGroup(GruppeGP group){this.groups.add(group);}
+
+    public String getConnections(){
+        String connections = "";
+
+        for (PhaseGP phase: phases) {
+            for (NodeGP node: phase.getNodes()) {
+                for(GruppeGP group: groups){
+                    if(group.getTeams().contains(node.getCurMatch().getTeam1())){
+                        connections += String.format("""
+                        %s -- %s
+                        """, group.getGruppenName(), node.getMatchName());
+                    }
+                }
+
+            }
+        }
+        return connections;
+    }
 }

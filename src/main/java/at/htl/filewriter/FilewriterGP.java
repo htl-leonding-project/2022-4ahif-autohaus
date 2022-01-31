@@ -38,6 +38,8 @@ public class FilewriterGP {
                     .stream().map(nL -> nL.stream().map(n -> n.getMatchTable()).collect(Collectors.joining("\n")))
                     .collect(Collectors.joining());
 
+            content += tournament.getConnections();
+
             content += """
                     
                     @enduml

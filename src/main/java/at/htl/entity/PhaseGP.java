@@ -61,5 +61,6 @@ public class PhaseGP {
     public void setNodes(List<NodeGP> nodes){
         this.nodes = nodes;
     }
+
     //endregion
 }

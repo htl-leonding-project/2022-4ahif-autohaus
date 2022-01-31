@@ -72,5 +72,17 @@ map Match.GRCvsGEO {
 Griechenland =>
 Georgien =>
 }
+Gruppe.A -- Match.PRTvsSRB
+Gruppe.A -- Match.PRTvsIRL
+Gruppe.A -- Match.PRTvsLUX
+Gruppe.A -- Match.SRBvsIRL
+Gruppe.A -- Match.SRBvsLUX
+Gruppe.A -- Match.IRLvsLUX
+Gruppe.B -- Match.ESPvsSWE
+Gruppe.B -- Match.ESPvsGRC
+Gruppe.B -- Match.ESPvsGEO
+Gruppe.B -- Match.SWEvsGRC
+Gruppe.B -- Match.SWEvsGEO
+Gruppe.B -- Match.GRCvsGEO
 
 @enduml
