@@ -1,13 +1,9 @@
 package at.htl.filewriter;
 
-import at.htl.entity.GruppeGP;
-import at.htl.entity.NodeGP;
-import at.htl.entity.PhaseGP;
 import at.htl.entity.TournamentGP;
 
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.List;
 import java.util.stream.Collectors;
 
 public class FilewriterGP {
