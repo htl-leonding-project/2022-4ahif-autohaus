@@ -89,12 +89,12 @@ public class NodeGP {
     public String getMatchTable(){
         String returnString = String.format("""
                 map Match.%svs%s {
-                %s => 
-                %s => 
+                %s => %d
+                %s => %d
                 }
                 """,this.getCurMatch().getTeam1().getAbbr(), this.getCurMatch().getTeam2().getAbbr(),
-                this.getCurMatch().getTeam1().getName(),
-                this.getCurMatch().getTeam2().getName());
+                this.getCurMatch().getTeam1().getName(), this.getCurMatch().getTeam1Points(),
+                this.getCurMatch().getTeam2().getName(), this.getCurMatch().getTeam2Points());
 
         return returnString;
     }

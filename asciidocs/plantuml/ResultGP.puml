@@ -2,75 +2,75 @@
 left to right direction
 
 map Gruppe.A {
-Republik Irland=>IRL
 Serbien=>SRB
-Luxemburg=>LUX
 Portugal=>PRT
+Republik Irland=>IRL
+Luxemburg=>LUX
 }
 
 map Gruppe.B {
+Schweden=>SWE
 Griechenland=>GRC
 Spanien=>ESP
 Georgien=>GEO
-Schweden=>SWE
 }
 map Match.PRTvsSRB {
-Portugal =>
-Serbien =>
+Portugal => 2
+Serbien => 3
 }
 
 map Match.PRTvsIRL {
-Portugal =>
-Republik Irland =>
+Portugal => 1
+Republik Irland => 3
 }
 
 map Match.PRTvsLUX {
-Portugal =>
-Luxemburg =>
+Portugal => 3
+Luxemburg => 2
 }
 
 map Match.SRBvsIRL {
-Serbien =>
-Republik Irland =>
+Serbien => 3
+Republik Irland => 1
 }
 
 map Match.SRBvsLUX {
-Serbien =>
-Luxemburg =>
+Serbien => 1
+Luxemburg => 2
 }
 
 map Match.IRLvsLUX {
-Republik Irland =>
-Luxemburg =>
+Republik Irland => 2
+Luxemburg => 1
 }
 map Match.ESPvsSWE {
-Spanien =>
-Schweden =>
+Spanien => 0
+Schweden => 3
 }
 
 map Match.ESPvsGRC {
-Spanien =>
-Griechenland =>
+Spanien => 3
+Griechenland => 1
 }
 
 map Match.ESPvsGEO {
-Spanien =>
-Georgien =>
+Spanien => 1
+Georgien => 0
 }
 
 map Match.SWEvsGRC {
-Schweden =>
-Griechenland =>
+Schweden => 2
+Griechenland => 3
 }
 
 map Match.SWEvsGEO {
-Schweden =>
-Georgien =>
+Schweden => 2
+Georgien => 1
 }
 
 map Match.GRCvsGEO {
-Griechenland =>
-Georgien =>
+Griechenland => 3
+Georgien => 2
 }
 Gruppe.A -- Match.PRTvsSRB
 Gruppe.A -- Match.PRTvsIRL

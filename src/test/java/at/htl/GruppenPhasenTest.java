@@ -49,6 +49,25 @@ public class GruppenPhasenTest {
         MatchGP match4 = new MatchGP(team2,team3);
         MatchGP match5 = new MatchGP(team2,team4);
         MatchGP match6 = new MatchGP(team3,team4);
+
+        match1.setTeam1Points(2);
+        match1.setTeam2Points(3);
+        match1.endMatch();
+        match2.setTeam1Points(1);
+        match2.setTeam2Points(3);
+        match2.endMatch();
+        match3.setTeam1Points(3);
+        match3.setTeam2Points(2);
+        match3.endMatch();
+        match4.setTeam1Points(3);
+        match4.setTeam2Points(1);
+        match4.endMatch();
+        match5.setTeam1Points(1);
+        match5.setTeam2Points(2);
+        match5.endMatch();
+        match6.setTeam1Points(2);
+        match6.setTeam2Points(1);
+        match6.endMatch();
         //endregion
 
         //region List of Matches
@@ -100,6 +119,25 @@ public class GruppenPhasenTest {
         MatchGP match12 = new MatchGP(team7,team8);
         //endregion
 
+        match7.setTeam1Points(0);
+        match7.setTeam2Points(3);
+        match7.endMatch();
+        match8.setTeam1Points(3);
+        match8.setTeam2Points(1);
+        match8.endMatch();
+        match9.setTeam1Points(1);
+        match9.setTeam2Points(0);
+        match9.endMatch();
+        match10.setTeam1Points(2);
+        match10.setTeam2Points(3);
+        match10.endMatch();
+        match11.setTeam1Points(2);
+        match11.setTeam2Points(1);
+        match11.endMatch();
+        match12.setTeam1Points(3);
+        match12.setTeam2Points(2);
+        match12.endMatch();
+
         //region Phase1
         phase1.addNode(new NodeGP(match1));
         phase1.addNode(new NodeGP(match2));
@@ -117,15 +155,6 @@ public class GruppenPhasenTest {
         phase2.addNode(new NodeGP(match11));
         phase2.addNode(new NodeGP(match12));
         //endregion
-
-        team1.setPoints(1);
-        team2.setPoints(6);
-        team3.setPoints(8);
-        team4.setPoints(3);
-        team5.setPoints(5);
-        team6.setPoints(2);
-        team7.setPoints(7);
-        team8.setPoints(4);
 
         //region Phase3
         /*phase3.addNode(new NodeGP(new MatchGP(team1, team5)));
