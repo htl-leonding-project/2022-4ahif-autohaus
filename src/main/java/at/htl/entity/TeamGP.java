@@ -66,4 +66,6 @@ public class TeamGP  {
     public String getNameAndAbbr() {
         return this.getName() + "=>"+ this.getAbbr();
     }
+
+    public void incrementPoints(int amount){this.points+=amount;}
 }

@@ -14,6 +14,8 @@ public class MatchGP  {
     private TeamGP team1;
     @ManyToOne
     private TeamGP team2;
+    private int team1Points = 0;
+    private int team2Points = 0;
 
     public TeamGP getWinningTeam(){
         if(team1.getPoints() > team2.getPoints())
@@ -27,20 +29,20 @@ public class MatchGP  {
     }
 
     //region Constructor
+
     public MatchGP(TeamGP team1, TeamGP team2) {
         this.team1 = team1;
         this.team2 = team2;
     }
-
     public MatchGP() {
     }
-    //endregion
 
+    //endregion
     //region Getter and Setter
+
     public Long getId() {
         return id;
     }
-
     public void setId(Long id) {
         this.id = id;
     }
@@ -59,6 +61,35 @@ public class MatchGP  {
 
     public void setTeam2(TeamGP team2) {
         this.team2 = team2;
+    }
+
+    public int getTeam1Points() {
+        return team1Points;
+    }
+
+    public void setTeam1Points(int team1Points) {
+        this.team1Points = team1Points;
+    }
+
+    public void increaseTeam1Points(){
+        this.team1Points++;
+    }
+
+    public int getTeam2Points() {
+        return team2Points;
+    }
+
+    public void setTeam2Points(int team2Points) {
+        this.team2Points = team2Points;
+    }
+
+    public void increaseTeam2Points(){
+        this.team2Points++;
+    }
+
+    public void endMatch(){
+        team1.incrementPoints(team1Points);
+        team2.incrementPoints(team2Points);
     }
 
     //endregion
