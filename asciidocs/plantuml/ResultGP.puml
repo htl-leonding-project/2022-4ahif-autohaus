@@ -2,17 +2,17 @@
 left to right direction
 
 map Gruppe.A {
-Portugal=>PRT
-Serbien=>SRB
 Republik Irland=>IRL
+Serbien=>SRB
 Luxemburg=>LUX
+Portugal=>PRT
 }
 
 map Gruppe.B {
-Spanien=>ESP
-Schweden=>SWE
 Griechenland=>GRC
+Spanien=>ESP
 Georgien=>GEO
+Schweden=>SWE
 }
 map Match.PRTvsSRB {
 Portugal =>

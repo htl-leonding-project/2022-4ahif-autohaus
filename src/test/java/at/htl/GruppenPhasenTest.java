@@ -8,12 +8,14 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 @QuarkusTest
 public class GruppenPhasenTest {
 
+    Random random = new Random();
     @Test
     public void getWinningTeamTest(){
 
@@ -117,16 +119,16 @@ public class GruppenPhasenTest {
         //endregion
 
         team1.setPoints(1);
-        team2.setPoints(2);
-        team3.setPoints(3);
-        team4.setPoints(4);
+        team2.setPoints(6);
+        team3.setPoints(8);
+        team4.setPoints(3);
         team5.setPoints(5);
-        team6.setPoints(6);
+        team6.setPoints(2);
         team7.setPoints(7);
-        team8.setPoints(8);
+        team8.setPoints(4);
 
         //region Phase3
-        phase3.addNode(new NodeGP(new MatchGP(team1, team5)));
+        /*phase3.addNode(new NodeGP(new MatchGP(team1, team5)));
         phase3.addNode(new NodeGP(new MatchGP(team1, team6)));
         phase3.addNode(new NodeGP(new MatchGP(team1, team7)));
         phase3.addNode(new NodeGP(new MatchGP(team1, team8)));
@@ -144,23 +146,45 @@ public class GruppenPhasenTest {
         phase3.addNode(new NodeGP(new MatchGP(team4, team5)));
         phase3.addNode(new NodeGP(new MatchGP(team4, team6)));
         phase3.addNode(new NodeGP(new MatchGP(team4, team7)));
-        phase3.addNode(new NodeGP(new MatchGP(team4, team8)));
+        phase3.addNode(new NodeGP(new MatchGP(team4, team8)));*/
         //endregion
 
         tournament.addPhase(phase1);
         tournament.addPhase(phase2);
         //tournament.addPhase(phase3);
 
+        group1.getTeams().sort(new TeamComparator());
+        group2.getTeams().sort(new TeamComparator());
 
-        allTeams.addAll(group2.getTeams());
-        allTeams.addAll(group1.getTeams());
-
-        allTeams.sort(new TeamComparator());
-
-        winningGroup.setTeams(allTeams.subList(0,4));
-
-        for (TeamGP cur: winningGroup.getTeams()) {
+        for (TeamGP cur: group1.getTeams()) {
             System.out.println(cur.getName() + ": " + cur.getPoints());
+        }
+        System.out.println();
+        for (TeamGP cur: group2.getTeams()) {
+            System.out.println(cur.getName() + ": " + cur.getPoints());
+        }
+        System.out.println();
+
+        for (TeamGP group1Team : group1.getTeams()){
+            for(TeamGP group2Team : group2.getTeams()){
+                MatchGP currentMatch = new MatchGP(group1Team, group2Team);
+                currentMatch.setTeam1Points(random.nextInt()%5);
+                currentMatch.setTeam2Points(random.nextInt()%5);
+                currentMatch.endMatch();
+                phase3.addNode(new NodeGP(currentMatch));
+            }
+        }
+
+        List<TeamGP> winners = new ArrayList<TeamGP>();
+        winners.addAll(group1.getTeams());
+        winners.addAll(group2.getTeams());
+
+        winners.sort(new TeamComparator());
+
+        winningGroup.setTeams(winners.subList(0,4));
+
+        for (TeamGP current:winningGroup.getTeams()) {
+            System.out.println(current.getName() + ": " + current.getPoints());
         }
 
         FilewriterGP filewriterGP = new FilewriterGP();
