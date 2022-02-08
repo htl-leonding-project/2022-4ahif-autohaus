@@ -26,8 +26,7 @@ image::Ausgangslage.png[]
 
 
 == Zielsetzung
-4.1 AllgemeineZiele
- Die Planung, Verwaltung und Durchführung verschiedener Arten von Turnieren, sowie verschiedene Arten von Spielsystemen (Gruppen-, KO-System).
+Die Planung, Verwaltung und Durchführung verschiedener Arten von Turnieren, sowie verschiedene Arten von Spielsystemen (Gruppen-, KO-System).
 
 === Besprochene Vorlage
 
