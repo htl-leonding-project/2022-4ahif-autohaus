@@ -7,9 +7,7 @@ import javax.persistence.*;
 @Entity
 public class Team extends PanacheEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
+
     @Column(length = 20)
     String name;
     int points;

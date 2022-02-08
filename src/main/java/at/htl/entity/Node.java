@@ -2,22 +2,21 @@ package at.htl.entity;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Node extends PanacheEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
+    @ManyToOne
     Node leftNode;
+    @ManyToOne
     Node rightNode;
+    @ManyToOne
     Node parentNode;
 //    Node centerNode;  //nur bei "kleinen Finale"
+    @ManyToOne
     Match curMatch;
+    @ManyToOne
     Phase phase;
 
     public Node() {
