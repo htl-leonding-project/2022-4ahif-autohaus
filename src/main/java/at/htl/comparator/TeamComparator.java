@@ -1,7 +1,6 @@
 package at.htl.comparator;
 
 import at.htl.entity.Team;
-import at.htl.entity.TeamGP;
 
 import java.util.Comparator;
 

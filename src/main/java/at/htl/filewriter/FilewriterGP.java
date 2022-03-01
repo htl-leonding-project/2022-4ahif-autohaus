@@ -1,7 +1,6 @@
 package at.htl.filewriter;
 
 import at.htl.entity.Tournament;
-import at.htl.entity.TournamentGP;
 
 import java.io.FileWriter;
 import java.io.IOException;
