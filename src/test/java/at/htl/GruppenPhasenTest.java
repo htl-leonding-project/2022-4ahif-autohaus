@@ -76,7 +76,7 @@ public class GruppenPhasenTest {
         matches1.add(match2);
         matches1.add(match3);
 
-        List<MatchGP> matches2 = new ArrayList<>();
+        List<Match> matches2 = new ArrayList<>();
         matches1.add(match4);
         matches1.add(match5);
         matches1.add(match6);
