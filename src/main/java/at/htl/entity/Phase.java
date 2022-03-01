@@ -2,13 +2,13 @@ package at.htl.entity;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
+import javax.persistence.*;
 
 @Entity
-public class Phase extends PanacheEntity {
-
-
+public class Phase  {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     @Column(length = 30)
     String nameOfPhase;
     int level;

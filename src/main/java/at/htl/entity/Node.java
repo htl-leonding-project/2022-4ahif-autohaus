@@ -5,8 +5,11 @@ import io.quarkus.hibernate.orm.panache.PanacheEntity;
 import javax.persistence.*;
 
 @Entity
-public class Node extends PanacheEntity {
+public class Node {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Long id;
     @ManyToOne
     Node leftNode;
     @ManyToOne
@@ -24,6 +27,14 @@ public class Node extends PanacheEntity {
 
     public Node(Node parentNode) {
         setParentNode(parentNode);
+    }
+
+    public Phase getPhase() {
+        return phase;
+    }
+
+    public void setPhase(Phase phase) {
+        this.phase = phase;
     }
 
     public Node getLeftNode() {
@@ -60,14 +71,6 @@ public class Node extends PanacheEntity {
 
     public void setCurMatch(Match curMatch) {
         this.curMatch = curMatch;
-    }
-
-    public Phase getPhase() {
-        return phase;
-    }
-
-    public void setPhase(Phase phase) {
-        this.phase = phase;
     }
 
     public void setChildMatchWinners() {

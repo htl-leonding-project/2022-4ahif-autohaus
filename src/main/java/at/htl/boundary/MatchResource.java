@@ -1,8 +1,10 @@
 package at.htl.boundary;
 
+import at.htl.controller.MatchRepository;
 import at.htl.entity.Match;
-import com.fasterxml.classmate.members.ResolvedParameterizedMember;
+import io.quarkus.hibernate.orm.panache.PanacheRepository;
 
+import javax.inject.Inject;
 import javax.transaction.Transactional;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -12,16 +14,18 @@ import java.util.List;
 
 @Path("/matches")
 public class MatchResource {
-
     /**
      * Gibt alle Matches zurück
      * @return
      */
+    @Inject
+    MatchRepository matchRepository;
+
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAll()
     {
-        List<Match> matches = Match.listAll();
+        List<Match> matches = matchRepository.listAll();
         return Response.ok(matches).build();
     }
 
@@ -34,7 +38,7 @@ public class MatchResource {
     @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getById(@PathParam("id") Long id){
-        return Match.findByIdOptional(id)
+        return matchRepository.findByIdOptional(id)
                 .map(ma -> Response.ok(ma).build())
                 .orElse(Response.status(Response.Status.NOT_FOUND).build());
     }
@@ -50,8 +54,8 @@ public class MatchResource {
     public Response getMatchPerTeam(@PathParam("team1") String team1)
     {
         return Response
-                .ok(Match.list("Select m from match where m.team1 = ?1 order by id",
-                "Desc",team1))
+                .ok(matchRepository.list("Select m from match where m.team1 = ?1 order by id",
+                        "Desc",team1))
                 .build();
     }
 
@@ -65,9 +69,9 @@ public class MatchResource {
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public Response createMatch(Match match){
-        Match.persist(match);
-        if (match.isPersistent()){
-            return Response.created(URI.create("/matches"+match.id)).build();
+        matchRepository.persist(match);
+        if (matchRepository.isPersistent(match)){
+            return Response.created(URI.create("/matches"+match.getId())).build();
         }
         return Response.status(Response.Status.BAD_REQUEST).build();
     }
@@ -81,14 +85,16 @@ public class MatchResource {
     @Path("{id}")
     @Transactional
     public Response deleteById(@PathParam("id") Long id){
-        boolean deleted = Match.deleteById(id);
+        boolean deleted = matchRepository.deleteById(id);
         if (deleted){
             return Response.noContent().build();
         }
         return Response.status(Response.Status.BAD_REQUEST).build();
     }
 
+
 }
+
 
 
 

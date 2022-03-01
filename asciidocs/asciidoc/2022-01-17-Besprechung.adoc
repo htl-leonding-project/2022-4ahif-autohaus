@@ -1,5 +1,5 @@
-= Besprechungsprotokoll 17.01.2022
-1.0, 2022-01-17
+= Besprechungsprotokoll 14.12.2021
+1.0, 2021-12-20
 ifndef::imagesdir[:imagesdir: ../images]
 :icons: font
 //:sectnums:    // Nummerierung der Überschriften / section numbering
@@ -56,10 +56,10 @@ image::../images/diagram.png[]
 
 * Protokolle überarbeiten und falls notwendig neu schreiben.
 
-* Diagram mit dem alten Klassendiagram vergleichen und falls notwendig fehlende Felder oder Methoden hinzufügen.
+* Diagram vergleichen mit dem alten Klassendiagram vergleichen und falls notwendig fehlende Felder oder Methoden hinzufügen.
 
 * Eine Gruppenphase mit UnitTests simulieren.
-Diese UnitTests auf einen eigenen Branch pushen -> wenn alles korrekt ist, branch mit main mergen danach gruppenphase-branch löschen
+Diese UnitTests auf einen eigenen Branch pushen -> wenn alles korrekt ist, branch nach main mergen danach gruppenphase-branch löschen
 
 * Überlegen mit welcher Frontend Technologie wir  arbeiten möchten
 

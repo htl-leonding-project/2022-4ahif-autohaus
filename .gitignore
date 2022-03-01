@@ -6,8 +6,8 @@ asciidocs/revealjs/
 revealjs.zip
 gh-pages/
 .idea/
-asciidocs/plantuml/Result.puml
 *.iml
 .DS_Store
 .env
-/db
+/db!/asciidocs/plantuml/ResultGP.puml
+/db/

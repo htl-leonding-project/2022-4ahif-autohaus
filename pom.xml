@@ -8,13 +8,13 @@
   <properties>
     <compiler-plugin.version>3.8.1</compiler-plugin.version>
     <maven.compiler.parameters>true</maven.compiler.parameters>
-    <maven.compiler.source>11</maven.compiler.source>
-    <maven.compiler.target>11</maven.compiler.target>
+    <maven.compiler.source>16</maven.compiler.source>
+    <maven.compiler.target>16</maven.compiler.target>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <quarkus.platform.artifact-id>quarkus-bom</quarkus.platform.artifact-id>
     <quarkus.platform.group-id>io.quarkus.platform</quarkus.platform.group-id>
-    <quarkus.platform.version>2.6.3.Final</quarkus.platform.version>
+    <quarkus.platform.version>2.3.0.Final</quarkus.platform.version>
     <surefire-plugin.version>3.0.0-M5</surefire-plugin.version>
   </properties>
   <dependencyManagement>
@@ -43,7 +43,7 @@
     </dependency>
     <dependency>
       <groupId>io.quarkus</groupId>
-      <artifactId>quarkus-jdbc-derby</artifactId>
+      <artifactId>quarkus-jdbc-postgresql</artifactId>
     </dependency>
     <dependency>
       <groupId>io.quarkus</groupId>
@@ -51,8 +51,16 @@
     </dependency>
     <dependency>
       <groupId>io.quarkus</groupId>
+      <artifactId>quarkus-jdbc-derby</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>io.quarkus</groupId>
       <artifactId>quarkus-junit5</artifactId>
       <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>io.quarkus</groupId>
+      <artifactId>quarkus-resteasy-qute</artifactId>
     </dependency>
     <dependency>
       <groupId>io.rest-assured</groupId>
@@ -65,17 +73,16 @@
       <version>3.21.0</version>
       <scope>test</scope>
     </dependency>
-    <!-- https://mvnrepository.com/artifact/net.sourceforge.plantuml/plantuml -->
     <dependency>
       <groupId>net.sourceforge.plantuml</groupId>
       <artifactId>plantuml</artifactId>
       <version>1.2021.16</version>
     </dependency>
-      <dependency>
-          <groupId>io.quarkus</groupId>
-          <artifactId>quarkus-hibernate-orm-panache</artifactId>
-          <version>2.5.4.Final</version>
-      </dependency>
+    <dependency>
+      <groupId>io.quarkus</groupId>
+      <artifactId>quarkus-hibernate-orm-panache</artifactId>
+      <version>2.5.4.Final</version>
+    </dependency>
   </dependencies>
   <build>
     <plugins>

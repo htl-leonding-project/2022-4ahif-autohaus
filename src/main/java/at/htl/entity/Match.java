@@ -3,19 +3,22 @@ package at.htl.entity;
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
 
 import javax.persistence.*;
+import java.util.List;
 
-@Entity(name = "V_MATCH")
-public class Match extends PanacheEntity {
+@Entity
+@Table(name = "lc_match")
+public class Match{
 
-
-    @JoinColumn()
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     @ManyToOne
     public Team team1;
-    @JoinColumn()
     @ManyToOne
     public Team team2;
-    @Transient
-    public int[] resultOfMatch = new int[2];
+    public int pointsTeam1;
+    public int pointsTeam2;
+
     //resultOfMatch[0] -> GoalsTeam1
     //resultOfMatch[1] -> GoalsTeam2
 
@@ -44,19 +47,28 @@ public class Match extends PanacheEntity {
         this.team2 = team2;
     }
 
-    public int[] getResultOfMatch() {
-        return resultOfMatch;
-    }
+    public int getPointsTeam1(){return this.pointsTeam1;}
 
-    public void setResultOfMatch(int[] resultOfMatch) {
-        this.resultOfMatch = resultOfMatch;
-    }
+    public void setPointsTeam1(int amount){ this.pointsTeam1 = amount; }
+
+    public int getPointsTeam2(){return this.pointsTeam2;}
+
+    public void setPointsTeam2(int amount){ this.pointsTeam2 = amount; }
     //endregion
 
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public Team getWinningTeam(){
-        if(resultOfMatch[0] > resultOfMatch[1])
+        if(pointsTeam1 > pointsTeam2)
             return team1;
-        else if (resultOfMatch[1] > resultOfMatch[0])
+        else if (pointsTeam2 > pointsTeam1)
             return team2;
 
         return null;//Bei Gleichstand noch unklar
@@ -64,7 +76,7 @@ public class Match extends PanacheEntity {
 
     public String getMatchResultString() {
         return getTeam1().getName() +" vs. "+getTeam2().getName()
-                +" "+getResultOfMatch()[0]
-                +":"+getResultOfMatch()[1];
+                +" "+getPointsTeam1()
+                +":"+getPointsTeam2();
     }
 }
