@@ -16,7 +16,7 @@ public class Tournament  {
     private Long id;
     //erst einmal leer lassen
     @Column(length = 20)
-    String name;
+    public String name;
 
     List<Phase>phases;
 
