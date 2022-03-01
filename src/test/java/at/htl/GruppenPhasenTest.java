@@ -21,7 +21,7 @@ public class GruppenPhasenTest {
 
         Tournament tournament = new Tournament();
         List<Team> allTeams = new ArrayList<Team>();
-        Group winningGroup = new Group();
+        GroupGP winningGroup = new GroupGP();
         //region Gruppe 1
 
         //region Teams 1
@@ -37,7 +37,7 @@ public class GruppenPhasenTest {
         listofGroup1.add(team2);
         listofGroup1.add(team3);
         listofGroup1.add(team4);
-        Group group1 = new Group("Gruppe.A", listofGroup1);
+        GroupGP group1 = new GroupGP("Gruppe.A", listofGroup1);
         //endregion
 
         tournament.addGroup(group1);
@@ -105,7 +105,7 @@ public class GruppenPhasenTest {
         listofGroup2.add(team6);
         listofGroup2.add(team7);
         listofGroup2.add(team8);
-        Group group2 = new Group("Gruppe.B", listofGroup2);
+        GroupGP group2 = new GroupGP("Gruppe.B", listofGroup2);
         //endregion
 
         tournament.addGroup(group2);

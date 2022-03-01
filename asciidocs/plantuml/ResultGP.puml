@@ -1,0 +1,88 @@
+@startuml
+left to right direction
+
+map Gruppe.A {
+Serbien=>SRB
+Portugal=>PRT
+Republik Irland=>IRL
+Luxemburg=>LUX
+}
+
+map Gruppe.B {
+Schweden=>SWE
+Griechenland=>GRC
+Spanien=>ESP
+Georgien=>GEO
+}
+map Match.PRTvsSRB {
+Portugal => 2
+Serbien => 3
+}
+
+map Match.PRTvsIRL {
+Portugal => 1
+Republik Irland => 3
+}
+
+map Match.PRTvsLUX {
+Portugal => 3
+Luxemburg => 2
+}
+
+map Match.SRBvsIRL {
+Serbien => 3
+Republik Irland => 1
+}
+
+map Match.SRBvsLUX {
+Serbien => 1
+Luxemburg => 2
+}
+
+map Match.IRLvsLUX {
+Republik Irland => 2
+Luxemburg => 1
+}
+map Match.ESPvsSWE {
+Spanien => 0
+Schweden => 3
+}
+
+map Match.ESPvsGRC {
+Spanien => 3
+Griechenland => 1
+}
+
+map Match.ESPvsGEO {
+Spanien => 1
+Georgien => 0
+}
+
+map Match.SWEvsGRC {
+Schweden => 2
+Griechenland => 3
+}
+
+map Match.SWEvsGEO {
+Schweden => 2
+Georgien => 1
+}
+
+map Match.GRCvsGEO {
+Griechenland => 3
+Georgien => 2
+}
+Gruppe.A -- Match.PRTvsSRB
+Gruppe.A -- Match.PRTvsIRL
+Gruppe.A -- Match.PRTvsLUX
+Gruppe.A -- Match.SRBvsIRL
+Gruppe.A -- Match.SRBvsLUX
+Gruppe.A -- Match.IRLvsLUX
+Gruppe.B -- Match.ESPvsSWE
+Gruppe.B -- Match.ESPvsGRC
+Gruppe.B -- Match.ESPvsGEO
+Gruppe.B -- Match.SWEvsGRC
+Gruppe.B -- Match.SWEvsGEO
+Gruppe.B -- Match.GRCvsGEO
+
+@enduml

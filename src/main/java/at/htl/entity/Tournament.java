@@ -1,7 +1,5 @@
 package at.htl.entity;
 
-import io.quarkus.hibernate.orm.panache.PanacheEntity;
-
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,7 +18,7 @@ public class Tournament  {
     String name;
 
     List<Phase> phases = new ArrayList<>();
-    List<Group> GPgroups = new ArrayList<>();
+    List<GroupGP> GPgroups = new ArrayList<>();
 
     public Tournament(String name) {
         this.name = name;
@@ -47,22 +45,22 @@ public class Tournament  {
         this.name = name;
     }
 
-    public List<Group> getGroups() {
+    public List<GroupGP> getGroups() {
         return GPgroups;
     }
 
-    public void setGroups(List<Group> groups) {
+    public void setGroups(List<GroupGP> groups) {
         this.GPgroups = groups;
     }
 
-    public void addGroup(Group group){this.GPgroups.add(group);}
+    public void addGroup(GroupGP group){this.GPgroups.add(group);}
 
     public String GPGetConnections(){
         String connections = "";
 
         for (Phase phase: phases) {
             for (Node node: phase.getGPNodes()) {
-                for(Group group: GPgroups){
+                for(GroupGP group: GPgroups){
                     if(group.getTeams().contains(node.getCurMatch().getTeam1())){
                         connections += String.format("""
                         %s -- %s

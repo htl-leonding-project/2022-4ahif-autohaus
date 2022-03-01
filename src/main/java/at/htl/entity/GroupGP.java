@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Entity
-public class Group {
+public class GroupGP {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,12 +16,12 @@ public class Group {
 
     //region Constructor
 
-    public Group(String groupName, List<Team> teams) {
+    public GroupGP(String groupName, List<Team> teams) {
         this.groupName = groupName;
         this.teams = teams;
     }
 
-    public Group() {
+    public GroupGP() {
     }
 
     //endregion
