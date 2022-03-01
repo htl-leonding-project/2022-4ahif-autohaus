@@ -54,6 +54,19 @@ public class Match{
     public int getPointsTeam2(){return this.pointsTeam2;}
 
     public void setPointsTeam2(int amount){ this.pointsTeam2 = amount; }
+
+    public void increasePointsTeam1(){
+        this.pointsTeam1++;
+    }
+
+    public void increasePointsTeam2(){
+        this.pointsTeam2++;
+    }
+
+    public void endMatch(){
+        team1.incrementPoints(pointsTeam1);
+        team2.incrementPoints(pointsTeam2);
+    }
     //endregion
 
 
