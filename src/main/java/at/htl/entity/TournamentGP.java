@@ -19,7 +19,7 @@ public class TournamentGP {
 
     List<PhaseGP>phases = new ArrayList<PhaseGP>();
 
-    List<GroupGP> groups = new ArrayList<GroupGP>();
+    List<Group> groups = new ArrayList<Group>();
 
     public TournamentGP(String name) {
         this.name = name;
@@ -46,22 +46,22 @@ public class TournamentGP {
         this.name = name;
     }
 
-    public List<GroupGP> getGroups() {
+    public List<Group> getGroups() {
         return groups;
     }
 
-    public void setGroups(List<GroupGP> groups) {
+    public void setGroups(List<Group> groups) {
         this.groups = groups;
     }
 
-    public void addGroup(GroupGP group){this.groups.add(group);}
+    public void addGroup(Group group){this.groups.add(group);}
 
     public String getConnections(){
         String connections = "";
 
         for (PhaseGP phase: phases) {
             for (NodeGP node: phase.getNodes()) {
-                for(GroupGP group: groups){
+                for(Group group: groups){
                     if(group.getTeams().contains(node.getCurMatch().getTeam1())){
                         connections += String.format("""
                         %s -- %s

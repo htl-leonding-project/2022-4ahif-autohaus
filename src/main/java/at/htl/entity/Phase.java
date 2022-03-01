@@ -65,4 +65,8 @@ public class Phase  {
     public void setGPNodes(List<Node> GPNodes) {
         this.GPNodes = GPNodes;
     }
+
+    public void addNode(Node node){
+        this.GPNodes.add(node);
+    }
 }

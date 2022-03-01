@@ -1,13 +1,14 @@
 package at.htl.comparator;
 
+import at.htl.entity.Team;
 import at.htl.entity.TeamGP;
 
 import java.util.Comparator;
 
-public class TeamComparator implements Comparator<TeamGP> {
+public class TeamComparator implements Comparator<Team> {
 
     @Override
-    public int compare(TeamGP team1, TeamGP team2) {
+    public int compare(Team team1, Team team2) {
         if(team1.getPoints() > team2.getPoints())
             return -1;
         return 1;

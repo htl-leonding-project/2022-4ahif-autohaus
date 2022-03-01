@@ -30,6 +30,8 @@ public class Node {
         setParentNode(parentNode);
     }
 
+    public Node(Match match) {this.curMatch = match;}
+
     public Phase getPhase() {
         return phase;
     }

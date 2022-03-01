@@ -5,23 +5,23 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Entity
-public class GroupGP {
+public class Group {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String groupName;
     @OneToMany
-    private List<TeamGP> teams;
+    private List<Team> teams;
 
     //region Constructor
 
-    public GroupGP(String groupName, List<TeamGP> teams) {
+    public Group(String groupName, List<Team> teams) {
         this.groupName = groupName;
         this.teams = teams;
     }
 
-    public GroupGP() {
+    public Group() {
     }
 
     //endregion
@@ -43,11 +43,11 @@ public class GroupGP {
         this.groupName = groupName;
     }
 
-    public List<TeamGP> getTeams() {
+    public List<Team> getTeams() {
         return teams;
     }
 
-    public void setTeams(List<TeamGP> teams) {
+    public void setTeams(List<Team> teams) {
         this.teams = teams;
     }
 
