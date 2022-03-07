@@ -1,5 +1,5 @@
 = Besprechungsprotokoll 14.12.2021
-1.0, 2021-12-20
+1.0, 2021-12-14
 ifndef::imagesdir[:imagesdir: ../images]
 :icons: font
 //:sectnums:    // Nummerierung der Überschriften / section numbering
