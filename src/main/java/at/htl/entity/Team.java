@@ -14,12 +14,20 @@ public class Team  {
     String name;
     int points;
 
+    private String abbr; //Abbreviation
+
     //region Constructor
     public Team() {
     }
 
     public Team(String name) {
         this.name = name;
+        this.points = 0;
+    }
+
+    public Team(String name, String abbr) {
+        this.name = name;
+        this.abbr = abbr;
         this.points = 0;
     }
     //endregion
@@ -39,6 +47,27 @@ public class Team  {
     public void setName(String name) {
         this.name = name;
     }
-    //endregion
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getAbbr() {
+        return abbr;
+    }
+
+    public void setAbbr(String abbr) {
+        this.abbr = abbr;
+    }
+
+    //endregion
+    public String getNameAndAbbr() {
+        return this.getName() + "=>"+ this.getAbbr();
+    }
+
+    public void incrementPoints(int amount){this.points+=amount;}
 }

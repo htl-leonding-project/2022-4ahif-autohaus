@@ -1,6 +1,6 @@
 package at.htl.filewriter;
 
-import at.htl.entity.TournamentGP;
+import at.htl.entity.Tournament;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 
 public class FilewriterGP {
 
-    public void writeResults(TournamentGP tournament){
+    public void writeResults(Tournament tournament){
 
         try{
             FileWriter file = new FileWriter("asciidocs/plantuml/ResultGP.puml");
@@ -29,12 +29,12 @@ public class FilewriterGP {
             content += tournament
                     .getPhases()
                     .stream()
-                    .map(p -> p.getNodes())
+                    .map(p -> p.getGPNodes())
                     .collect(Collectors.toList())
-                    .stream().map(nL -> nL.stream().map(n -> n.getMatchTable()).collect(Collectors.joining("\n")))
+                    .stream().map(nL -> nL.stream().map(n -> n.getMatchTableGP()).collect(Collectors.joining("\n")))
                     .collect(Collectors.joining());
 
-            content += tournament.getConnections();
+            content += tournament.GPGetConnections();
 
             content += """
                     

@@ -449,3 +449,44 @@ caption Winner is: team05
 --- team07 vs. team08 1:2
 caption Winner is: team02
 @endmindmap
+@startsalt
+{
+{T
++ Tournament
+++ team01 vs. team02 0:1
+}
+}
+@endsalt
+@startsalt
+{
+{T
++ Tournament
+++ team03 vs. team04 3:1
+}
+}
+@endsalt
+@startmindmap
+ title Test-Tournament
+- team02 vs. team03 3:2
+-- team01 vs. team02 0:1
+-- team03 vs. team04 2:1
+caption Winner is: team02
+@endmindmap
+@startmindmap
+ title Test-Tournament
+- team05 vs. team08 2:0
+-- team05 vs. team06 3:0
+-- team07 vs. team08 1:2
+caption Winner is: team05
+@endmindmap
+@startmindmap
+ title Test-Tournament
+- team02 vs. team05 1:0
+-- team02 vs. team03 3:2
+--- team01 vs. team02 0:1
+--- team03 vs. team04 2:1
+-- team05 vs. team08 2:0
+--- team05 vs. team06 3:0
+--- team07 vs. team08 1:2
+caption Winner is: team02
+@endmindmap
