@@ -23,7 +23,7 @@ public class TournamentResource {
     public static class Templates {
         public static native TemplateInstance tournament(Tournament tournament);
         public static native TemplateInstance error(String msg);
-        public static native TemplateInstance create(Tournament tournament);
+        public static native TemplateInstance create();
     }
 
     @GET
@@ -33,7 +33,12 @@ public class TournamentResource {
         return Templates.tournament(tournament);
     }
 
-
+    @GET
+    @Path("create")
+    @Produces(MediaType.TEXT_HTML)
+    public TemplateInstance create() {
+        return Templates.create();
+    }
 
     @GET
     @Path("error")
