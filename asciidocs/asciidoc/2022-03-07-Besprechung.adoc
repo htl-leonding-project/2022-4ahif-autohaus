@@ -1,0 +1,74 @@
+= Besprechungsprotokoll 07.03.2022
+1.0, 2022-03-07
+ifndef::imagesdir[:imagesdir: ../images]
+:icons: font
+//:sectnums:    // Nummerierung der Überschriften / section numbering
+//:toc: left
+
+//Need this blank line after ifdef, don't know why...
+ifdef::backend-html5[]
+
+// https://fontawesome.com/v4.7.0/icons/
+
+
+.Teilnehmer
+|===
+|anwesend
+
+|Christoph Handel
+
+|Joachim Pelzeder
+
+|Lukas Baumgartner
+
+|Thomas W. Stütz
+
+|===
+
+.Ort und Zeit
+[cols=2*]
+|===
+|Ort
+|Unterricht
+
+|von-bis
+|Mo. 07.03.2022 - 2.EH & 3. EH
+|Dauer
+|50 min
+|===
+
+
+
+== Besprochene Themen
+
+* Das Pflichtenheft von der leo-competition Gruppe aus dem Vorjahr wurde angeschaut.
+
+* Das Klassenmodell der vorherigen Gruppe wurde kopiert und auf der Plantuml-Webseite angeschaut.
+
+* GithubRepo htl.leonding-college/asciidoctor-convert-action wurde gezeigt.
+
+* Verweise auf andere adoc Files wurde gezeigt mit Hilfe von '<'<create-quarkus-app.adoc#,Creating ...>>
+bzw. mit Asciidoctor include
+
+== Vereinbarungen und Entscheidungen
+
+* Es wurde vereinbart das eine Ist-Zustandsanalyse gemacht wird.
+* IST-Zustandsanalyse: Alle erhaltenen Datenmodelle und Images werden in ein File gespeichert.
+Mit Beschreibung wo wir es die Daten herhaben etc.
+
+* Die Github Pages werden aktualisiert.
+
+* Alle Tabellen werden mit 'T_' anfangen, auch die Felder werden überarbeitet.
+(Phase: id = T_P_Id). Auch beim ERD.
+
+* Ein Turnier mit Unittests durchspielen.
+
+* Ein Klassendiagram + Objektdiagram
+
+* Im Utrak wird alles eingetragen, damit klar ist wer was macht.
+Bzw. die Plannung klar für alle ist.
+
+* Der main Branch muss immer funktionsfähig sein.
+
+* Nach Fertigstellung der Diagramme werden diese besprochen.
+
