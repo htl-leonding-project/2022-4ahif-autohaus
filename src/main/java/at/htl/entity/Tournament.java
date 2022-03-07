@@ -1,23 +1,26 @@
 package at.htl.entity;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Table(name = "T_Tournament")
+@Entity
 public class Tournament  {
 
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "T_ID")
     private Long id;
     //erst einmal leer lassen
-    @Column(length = 20)
+    @Column(name = "T_Name",length = 20)
     String name;
-
+    @Column(name = "T_Phases")
+    @OneToMany
     List<Phase> phases = new ArrayList<>();
+    @Column(name = "T_GPGroups")
+    @OneToMany
     List<GroupGP> GPgroups = new ArrayList<>();
 
     public Tournament(String name) {

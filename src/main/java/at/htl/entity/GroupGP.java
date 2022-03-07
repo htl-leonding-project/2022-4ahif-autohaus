@@ -5,13 +5,17 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Entity
+@Table(name = "T_GroupGP")
 public class GroupGP {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "G_ID")
     private Long id;
+    @Column(name = "G_GroupName")
     private String groupName;
     @OneToMany
+    @JoinColumn(name = "G_Teams")
     private List<Team> teams;
 
     //region Constructor

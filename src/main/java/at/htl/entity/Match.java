@@ -6,17 +6,22 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "lc_match")
+@Table(name = "T_Match")
 public class Match{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "M_ID")
     private Long id;
     @ManyToOne
+    @JoinColumn(name = "M_Team1")
     public Team team1;
     @ManyToOne
+    @JoinColumn(name = "M_Team2")
     public Team team2;
+    @Column(name = "M_PointsTeam1")
     public int pointsTeam1;
+    @Column(name = "M_PointsTeam2")
     public int pointsTeam2;
 
     //resultOfMatch[0] -> GoalsTeam1
