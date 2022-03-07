@@ -4,8 +4,10 @@ import at.htl.comparator.TeamComparator;
 import at.htl.entity.*;
 import at.htl.filewriter.FilewriterGP;
 import io.quarkus.test.junit.QuarkusTest;
+import net.sourceforge.plantuml.SourceStringReader;
 import org.junit.jupiter.api.Test;
 
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -19,7 +21,7 @@ public class GruppenPhasenTest {
     @Test
     public void getWinningTeamTest(){
 
-        Tournament tournament = new Tournament();
+        Tournament tournament = new Tournament("TestGPTournament");
         List<Team> allTeams = new ArrayList<Team>();
         GroupGP winningGroup = new GroupGP();
         //region Gruppe 1
