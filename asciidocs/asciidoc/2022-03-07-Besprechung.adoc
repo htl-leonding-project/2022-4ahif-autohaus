@@ -56,7 +56,7 @@ bzw. mit Asciidoctor include
 * IST-Zustandsanalyse: Alle erhaltenen Datenmodelle und Images werden in ein File gespeichert.
 Mit Beschreibung wo wir es die Daten herhaben etc.
 
-* Die Github Pages werden aktualisiert.
+* Die Github Pages werden aktualisiert. Die Protokolle werden ebenfalls auf der GH-Page dargestellt.
 
 * Alle Tabellen werden mit 'T_' anfangen, auch die Felder werden überarbeitet.
 (Phase: id = T_P_Id). Auch beim ERD.
@@ -65,7 +65,7 @@ Mit Beschreibung wo wir es die Daten herhaben etc.
 
 * Ein Klassendiagram + Objektdiagram
 
-* Im Utrak wird alles eingetragen, damit klar ist wer was macht.
+* Im Youtrack wird alles eingetragen, damit klar ist wer was macht.
 Bzw. die Plannung klar für alle ist.
 
 * Der main Branch muss immer funktionsfähig sein.
