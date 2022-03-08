@@ -7,15 +7,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Table(name = "T_Phase")
 public class Phase  {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "P_ID")
     private Long id;
-    @Column(length = 30)
+    @Column(name = "P_NameOfPhase",length = 30)
     String nameOfPhase;
+    @Column(name = "P_Level")
     int level;
-
     @OneToMany
+    @JoinColumn(name = "P_GPNodes")
     List<Node> GPNodes = new ArrayList<>();
 
     public Phase() {

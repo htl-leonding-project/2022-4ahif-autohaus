@@ -2,19 +2,21 @@ package at.htl.entity;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
 
-import javax.json.bind.annotation.JsonbTransient;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "T_Team")
 public class Team  {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "T_ID")
     Long id;
-    @Column(length = 20)
+    @Column(name = "T_Name",length = 20)
     String name;
+    @Column(name = "T_Points")
     int points;
-
+    @Column(name = "T_Abbr")
     private String abbr; //Abbreviation
 
     //region Constructor
@@ -66,7 +68,6 @@ public class Team  {
     }
 
     //endregion
-    @JsonbTransient
     public String getNameAndAbbr() {
         return this.getName() + "=>"+ this.getAbbr();
     }
