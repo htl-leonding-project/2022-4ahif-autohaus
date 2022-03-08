@@ -3,12 +3,12 @@ package at.htl.filewriter;
 import at.htl.entity.Tournament;
 import net.sourceforge.plantuml.GeneratedImage;
 import net.sourceforge.plantuml.SourceFileReader;
+import org.jboss.logging.Logger;
 
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
-import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 public class FilewriterGP {
@@ -63,12 +63,13 @@ public class FilewriterGP {
             SourceFileReader reader = new SourceFileReader(source);
             List<GeneratedImage> list = reader.getGeneratedImages();
             File png = list.get(0).getPngFile();
-            if(png.createNewFile())
-                LOG.info(String.format("new file %s created",png.getName()));
-            else
-                LOG.info("File already exists");
+            png.renameTo(new File("asciidocs/images/generated-diagrams/"+png.getName()));
+            if(png.createNewFile()) {
+                LOG.info(String.format("new file %s created", png.getName()));
+            }else
+                LOG.error("File already exists");
         }catch(IOException e){
-            LOG.info("no file to convert!");
+            LOG.error("no file to convert!");
         }
     }
 
