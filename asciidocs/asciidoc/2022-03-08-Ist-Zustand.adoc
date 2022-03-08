@@ -1,0 +1,55 @@
+= Ist-Zustands Protokoll 08.03.2022
+1.0, 2022-03-07
+ifndef::imagesdir[:imagesdir: ../images]
+:icons: font
+//:sectnums:    // Nummerierung der Überschriften / section numbering
+//:toc: left
+
+//Need this blank line after ifdef, don't know why...
+ifdef::backend-html5[]
+
+// https://fontawesome.com/v4.7.0/icons/
+
+* link:../index.adoc[Gh-Page]
+
+== Erhaltene Images
+
+=== 2021-11-22
+
+Von: Professor Stütz im Rahmen einer Besprechung
+link:2021-11-22-ersteschritte.adoc[Protokoll-2021-11-22]
+
+image::20211122_01.png[width=600px]
+image::20211121_02.png[width=600px]
+
+=== 2021-12-06
+
+Von: Professor Stütz im Rahmen einer Besprechung
+link:2021-12-06-Besprechung.adoc[Protokoll-2021-12-06]
+
+image::20211206_01.png[width=600px]
+image::20211206_02.png[width=600px]
+image::20211206_03.png[width=600px]
+image::Ausgangslage.png[width=600px]
+
+=== 2022-01-17
+
+Von IntelliJ generiertes Diagram für K.O.-System
+
+image::diagram.png[]
+
+== Diagramme
+
+CLD für Gruppenphase -> cld_groupphase.puml
+
+image::cld_gruppenphase.png[]
+
+CLD für K.O.-System -> cld_ko_system.puml
+
+image::cld_ko_system.png[]
+
+== Andere erhaltene Dokumente
+
+* Pflichtenheft einer früheren Gruppe.
+
+* Zugang auf das Repo + Pflichtenheft einer früheren Gruppe.
