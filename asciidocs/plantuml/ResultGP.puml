@@ -1,4 +1,4 @@
-@startuml TestGPTournament.png
+@startuml TestGPTournament2.png
 left to right direction
 
 map Gruppe.A {

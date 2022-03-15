@@ -65,8 +65,8 @@ Mit Beschreibung wo wir es die Daten herhaben etc.
 
 * Ein Klassendiagram + Objektdiagram
 
-* Im Youtrack wird alles eingetragen, damit klar ist wer was macht.
-Bzw. die Plannung klar für alle ist.
+* Im Youtrack wird alles eingetragen, damit klar ist, wer was macht.
+Bzw. die Planung klar für alle ist.
 
 * Der main Branch muss immer funktionsfähig sein.
 
