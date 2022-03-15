@@ -63,7 +63,7 @@ public class Filewriter {
                 currentNode = currentNode.getRightNode();
             }
             content+= String.format("""
-                caption Winner is: %s "
+                caption Winner is: %s 
                 @endmindmap
                 """,finalNode.getCurMatch().getWinningTeam().getName()
             );
@@ -91,7 +91,7 @@ public class Filewriter {
                     caption Winner is: %s
                     @endmindmap
                                             
-                            """,
+                    """,
                     t.getName(),
                     node.getCurMatch().getMatchResultString(),
                     node.getLeftNode().getCurMatch().getMatchResultString(),
