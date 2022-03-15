@@ -143,12 +143,12 @@ public class EntityTest {
         assertThat(node03.getCurMatch().getTeam2().getName()).isEqualTo("Team3");
     }
 
-    @Test
+    /*@Test
     public void testFileWriter01(){
         Filewriter filewriter = new Filewriter();
         filewriter.writeResult("team01", "team02" , new int[]{0,1});
         filewriter.writeResult("team03", "team04" , new int[]{3,1});
-    }
+    }*/
 
     @Test
     public void testFileWriter02(){
