@@ -2,8 +2,9 @@
 1.0, 2022-03-07
 ifndef::imagesdir[:imagesdir: ../images]
 :icons: font
-//:sectnums:    // Nummerierung der Überschriften / section numbering
-//:toc: left
+:figure-caption!:
+:sectnums:    // Nummerierung der Überschriften / section numbering
+:toc: left
 
 //Need this blank line after ifdef, don't know why...
 ifdef::backend-html5[]
@@ -12,6 +13,24 @@ ifdef::backend-html5[]
 
 * link:../index.adoc[Gh-Page]
 
+== Diagramme
+
+=== Use Case Diagram
+
+[plantuml]
+----
+include::../plantuml/use_case.puml[title="use-case-diagram"]
+----
+
+=== CLD Group & K.O.
+image::cld_gruppenphase.png[title="cld_groupphase"]
+
+image::cld_ko_system.png[title="cld_ko_system"]
+
+=== Current Diagram from IntelliJ (08.03.2022)
+
+image::diagram.png[title="generated-diagram-2022-03-08"]
+
 == Erhaltene Images
 
 === 2021-11-22
@@ -19,34 +38,18 @@ ifdef::backend-html5[]
 Von: Professor Stütz im Rahmen einer Besprechung
 link:2021-11-22-ersteschritte.adoc[Protokoll-2021-11-22]
 
-image::20211122_01.png[width=600px]
-image::20211121_02.png[width=600px]
+image::20211122_01.png[title="what-to-do-2021-11-22"]
+
+image::20211121_02.png[title="use-case-2021-11-22"]
 
 === 2021-12-06
 
 Von: Professor Stütz im Rahmen einer Besprechung
 link:2021-12-06-Besprechung.adoc[Protokoll-2021-12-06]
 
-image::20211206_01.png[width=600px]
-image::20211206_02.png[width=600px]
-image::20211206_03.png[width=600px]
-image::Ausgangslage.png[width=600px]
-
-=== 2022-01-17
-
-Von IntelliJ generiertes Diagram für K.O.-System
-
-image::diagram.png[]
-
-== Diagramme
-
-CLD für Gruppenphase -> cld_groupphase.puml
-
-image::cld_gruppenphase.png[]
-
-CLD für K.O.-System -> cld_ko_system.puml
-
-image::cld_ko_system.png[]
+image::20211206_01.png[title="how-to-start-a-project-2021-12-16"]
+image::20211206_02.png[title="groupphase-2021-12-16"]
+image::20211206_03.png[title="ko-system-2021-12-16"]
 
 == Andere erhaltene Dokumente
 
