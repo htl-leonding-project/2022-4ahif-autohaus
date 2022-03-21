@@ -1,0 +1,3 @@
+SLIDES=true
+INPUTPATH=/
+OUTPUTPATH=dist
