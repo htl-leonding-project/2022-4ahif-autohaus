@@ -11,11 +11,3 @@ gh-pages/
 .env
 /db!/asciidocs/plantuml/ResultGP.puml
 /db/
-*.iws
-*.eml
-out/
-.svn
-log/*.log
-tmp/**
-node_modules/
-.sass-cache
