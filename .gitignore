@@ -11,3 +11,5 @@ gh-pages/
 .env
 /db!/asciidocs/plantuml/ResultGP.puml
 /db/
+/dist
+/asciidocs/slides/revealjs
