@@ -1,0 +1,4 @@
+SLIDES=true
+INPUTPATH=asciidocs
+OUTPUTPATH=dist
+BRANCH=RevealJS
