@@ -14,6 +14,11 @@ ifdef::backend-html5[]
 // print the toc here (not at the default position)
 //toc::[]
 
+== Tournament-Management Slides
+:hide-uri-scheme:
+
+https://htl-leonding-project.github.io/2022-4ahif-leo-competition/slides/demo.html#/
+
 == Ausgangslage
 „LeoTurnier“ ist ein Turnierverwaltungsprogramm, das verschieden Arten von Spielsystemen (KO-System, Gruppen-System) verwaltet. Momentan wird die ganze Turniersimulierung durch UnitTests(wie besprochen) durchgeführt.
 
