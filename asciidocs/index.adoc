@@ -56,18 +56,18 @@ include::plantuml/use_case.puml[]
 
 == Protokolle
 
-* xref:asciidoc/2021-11-22-ersteschritte.adoc[Protokoll-2021-11-22]
+* xref:asciidoc/2021-11-22-ersteschritte.html[Protokoll-2021-11-22]
 
-* xref:asciidoc/2021-12-06-Besprechung.adoc[Protokoll-2021-12-06]
+* xref:asciidoc/2021-12-06-Besprechung.html[Protokoll-2021-12-06]
 
-* xref:asciidoc/2021-12-14-Besprechung.adoc[Protokoll-2021-12-14]
+* xref:asciidoc/2021-12-14-Besprechung.html[Protokoll-2021-12-14]
 
-* xref:asciidoc/2022-01-17-Besprechung.adoc[Protokoll-2022-01-17]
+* xref:asciidoc/2022-01-17-Besprechung.html[Protokoll-2022-01-17]
 
-* xref:asciidoc/2022-01-18-Besprechung.adoc[Protokoll-2022-01-18]
+* xref:asciidoc/2022-01-18-Besprechung.html[Protokoll-2022-01-18]
 
-* xref:asciidoc/2022-03-07-Besprechung.adoc[Protokoll-2022-03-07]
+* xref:asciidoc/2022-03-07-Besprechung.html[Protokoll-2022-03-07]
 
 == Ist-Zustands-Analyse
 
-* xref:asciidoc/2022-03-08-Ist-Zustand.adoc[Ist-Zustand-Analyse-2022-03-08]
+* xref:asciidoc/2022-03-08-Ist-Zustand.html[Ist-Zustand-Analyse-2022-03-08]
