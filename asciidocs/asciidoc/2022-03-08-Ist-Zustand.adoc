@@ -1,4 +1,4 @@
-Ist-Zustands Protokoll 08.03.2022
+= Ist-Zustands Protokoll 08.03.2022
 1.0, 2022-03-07
 ifndef::imagesdir[:imagesdir: ../images]
 :icons: font
@@ -11,7 +11,7 @@ ifdef::backend-html5[]
 
 // https://fontawesome.com/v4.7.0/icons/
 
-* link:../index.adoc[Gh-Page]
+* link:../index.html[Gh-Page]
 
 == Diagramme
 
