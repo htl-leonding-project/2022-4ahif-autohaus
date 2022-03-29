@@ -13,7 +13,7 @@ public class Filewriter {
 
     File file = new File("asciidocs/plantuml/Result.puml");
 
-    public void writeResult(String team01, String team02, int[] result){
+    /*public void writeResult(String team01, String team02, int[] result){
 
         String resStr = result[0] + ":" + result[1];
         try{
@@ -31,7 +31,7 @@ public class Filewriter {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
+    }*/
 
     public void writeFinalResult(Node finalNode, Tournament t){
 
