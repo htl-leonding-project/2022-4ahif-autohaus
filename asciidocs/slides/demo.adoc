@@ -1,6 +1,7 @@
 = Tournament-Management
 ifndef::imagesdir[:imagesdir: ../images]
 
+image::BierPong.webp[background, size=cover]
 
 * „LeoTurnier“ grundsätzlich ein Turnierverwaltungsprogramm
 * Verschieden Arten von Spielsystemen (KO-System, Gruppen-System)
