@@ -7,10 +7,17 @@ ifndef::imagesdir[:imagesdir: ../images]
 
 == Ausgangssituation
 
+„LeoTurnier“ ist ein Turnierverwaltungsprogramm, das verschieden Arten von Spielsystemen (KO-System, Gruppen-System) verwaltet. Momentan wird die ganze Turniersimulierung durch UnitTests(wie besprochen) durchgeführt.
+
 == Problem
 
 Turniere und Wettbewerbe können nur schwer geplant, verwaltet und visualisiert werden.
 
 == Aufgabenstellung
 
+[white]
 == Ziele
+
+Unser großes Ziel ist es, ein Turnier je nach Spielart(Ko-System, Gruppenphase) durchführen zu können.
+
+//image::BierPong.webp[background, size=cover]
