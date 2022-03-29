@@ -1,4 +1,14 @@
-= Some Slide
+= Tournament-Management
 ifndef::imagesdir[:imagesdir: ../images]
 
-Testing filter by changing documentation file
+
+* „LeoTurnier“ grundsätzlich ein Turnierverwaltungsprogramm
+* Verschieden Arten von Spielsystemen (KO-System, Gruppen-System)
+
+== Ausgangssituation
+
+== Problem
+
+== Aufgabenstellung
+
+== Ziele
