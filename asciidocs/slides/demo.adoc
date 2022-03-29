@@ -9,6 +9,8 @@ ifndef::imagesdir[:imagesdir: ../images]
 
 == Problem
 
+Turniere und Wettbewerbe können nur schwer geplant, verwaltet und visualisiert werden.
+
 == Aufgabenstellung
 
 == Ziele
