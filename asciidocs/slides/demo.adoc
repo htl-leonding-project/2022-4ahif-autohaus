@@ -13,4 +13,7 @@ Turniere und Wettbewerbe können nur schwer geplant, verwaltet und visualisiert 
 
 == Aufgabenstellung
 
+Es wird eine Applikation erstellt, die das Planen, Verwalten und Durchführen von Turnieren
+für den Benutzer vereinfacht.
+
 == Ziele
