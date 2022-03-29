@@ -23,6 +23,11 @@ für den Benutzer vereinfacht.
 
 Unser großes Ziel ist es, ein Turnier je nach Spielart(Ko-System, Gruppenphase) durchführen zu können.
 
+== Klassendiagram (Ko-System)
+
+image::KO_cld.png[]
+
+
 == Klassendiagram (Gruppenphase)
 
-image::cld_gruppenphase.png[]
+image::newest_cld.png[]
