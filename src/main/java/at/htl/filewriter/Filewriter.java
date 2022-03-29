@@ -20,7 +20,7 @@ public class Filewriter {
     private static final String ORIGIN = "asciidocs/plantuml/Result.puml";
     private static final String TARGET = "asciidocs/images/generated-diagrams/";
 
-    public void writeResult(String team01, String team02, int[] result){
+    /*public void writeResult(String team01, String team02, int[] result){
 
         String resStr = result[0] + ":" + result[1];
         try{
@@ -38,7 +38,7 @@ public class Filewriter {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
+    }*/
 
     public void writeFinalResult(Node finalNode, Tournament t){
 
