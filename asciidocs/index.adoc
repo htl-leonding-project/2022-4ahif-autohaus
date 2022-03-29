@@ -1,5 +1,5 @@
 = Tournament-Management
-Handel Pelzeder Baumgartner
+Handel, Pelzeder Baumgartner
 1.0.2, 2022-03-15
 ifndef::imagesdir[:imagesdir: images]
 //:toc-placement!:  // prevents the generation of the doc at this position, so it can be printed afterwards
@@ -17,7 +17,7 @@ ifdef::backend-html5[]
 == Tournament-Management Slides
 :hide-uri-scheme:
 
-https://htl-leonding-project.github.io/2022-4ahif-leo-competition/slides/demo.html#/
+link:slides/demo.html#/[open Slides]
 
 == Ausgangslage
 „LeoTurnier“ ist ein Turnierverwaltungsprogramm, das verschieden Arten von Spielsystemen (KO-System, Gruppen-System) verwaltet. Momentan wird die ganze Turniersimulierung durch UnitTests(wie besprochen) durchgeführt.
