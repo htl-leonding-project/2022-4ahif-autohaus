@@ -3,20 +3,12 @@ ifndef::imagesdir[:imagesdir: ../images]
 
 image::BierPong.webp[background, size=cover]
 
-== Tournament-Management
-
-image::holz.jpg[background, size=cover]
-
-
-* „LeoTurnier“ grundsätzlich ein Turnierverwaltungsprogramm
-* Verschieden Arten von Spielsystemen (KO-System, Gruppen-System)
-
 == Ausgangssituation
 
 image::holz.jpg[background, size=cover]
 
-
-„LeoTurnier“ ist ein Turnierverwaltungsprogramm, das verschieden Arten von Spielsystemen (KO-System, Gruppen-System) verwaltet. Momentan wird die ganze Turniersimulierung durch UnitTests(wie besprochen) durchgeführt.
+„LeoTurnier“ ist ein Turnierverwaltungsprogramm, das verschieden Arten von Spielsystemen
+(KO-System, Gruppen-System) verwaltet.
 
 == Problem
 
@@ -28,14 +20,15 @@ Turniere und Wettbewerbe können nur schwer geplant, verwaltet und visualisiert 
 
 image::holz.jpg[background, size=cover]
 
-Es wird eine Applikation erstellt, die das Planen, Verwalten und Durchführen von Turnieren
+Eine Applikation erstellen, die das Planen, Verwalten und Durchführen von Turnieren
 für den Benutzer vereinfacht.
 
 == Ziele
 
 image::holz.jpg[background, size=cover]
 
-Unser großes Ziel ist es, ein Turnier je nach Spielart(Ko-System, Gruppenphase) durchführen zu können.
+Vereinfachung von Turnierplanung, -verwaltung und Durchführung.
+Verschieden Arten von Spielsystemen (KO-System, Gruppen-System).
 
 == Klassendiagram (Ko-System)
 
@@ -43,10 +36,8 @@ image::holz.jpg[background, size=cover]
 
 image::KO_cld.png[]
 
-
 == Klassendiagram (Gruppenphase)
 
 image::holz.jpg[background, size=cover]
-
 
 image::newest_cld.png[]
