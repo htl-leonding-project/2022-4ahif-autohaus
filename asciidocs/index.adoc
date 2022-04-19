@@ -1,6 +1,8 @@
 = Tournament-Management
-Handel, Pelzeder Baumgartner
-1.0.2, 2022-03-15
+
+Handel Pelzeder Baumgartner
+1.0.3, 2022-03-28
+
 ifndef::imagesdir[:imagesdir: images]
 //:toc-placement!:  // prevents the generation of the doc at this position, so it can be printed afterwards
 :sourcedir: ../src/main/java
