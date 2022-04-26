@@ -30,6 +30,10 @@ image::holz.jpg[background, size=cover]
 Vereinfachung von Turnierplanung, -verwaltung und Durchführung.
 Verschieden Arten von Spielsystemen (KO-System, Gruppen-System).
 
+== Use-Case Diagram
+
+image::use_case.png[border:none]
+
 == Klassendiagram (Ko-System)
 
 image::holz.jpg[background, size=cover]
