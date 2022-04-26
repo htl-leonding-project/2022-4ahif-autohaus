@@ -4,8 +4,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 2.0.16">
-<meta name="author" content="Handel Pelzeder Baumgartner">
+<meta name="generator" content="Asciidoctor 2.0.17">
 <link rel="icon" type="image/png" href="themes/favicon.png">
 <title>Tournament-Management</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
@@ -195,7 +194,8 @@ body.toc2.toc-right{padding-left:0;padding-right:20em}}
 #content h1>a.link:hover,h2>a.link:hover,h3>a.link:hover,#toctitle>a.link:hover,.sidebarblock>.content>.title>a.link:hover,h4>a.link:hover,h5>a.link:hover,h6>a.link:hover{color:#a53221}
 details,.audioblock,.imageblock,.literalblock,.listingblock,.stemblock,.videoblock{margin-bottom:1.25em}
 details{margin-left:1.25rem}
-details>summary{cursor:pointer;display:block;position:relative;line-height:1.6;margin-bottom:.625rem;-webkit-tap-highlight-color:transparent}
+details>summary{cursor:pointer;display:block;position:relative;line-height:1.6;margin-bottom:.625rem;outline:none;-webkit-tap-highlight-color:transparent}
+details>summary::-webkit-details-marker{display:none}
 details>summary::before{content:"";border:solid transparent;border-left:solid;border-width:.3em 0 .3em .5em;position:absolute;top:.5em;left:-1.25rem;transform:translateX(15%)}
 details[open]>summary::before{border:solid transparent;border-top:solid;border-width:.5em .3em 0;transform:translateY(15%)}
 details>summary::after{content:"";width:1.25rem;height:1em;position:absolute;top:.3em;left:-1.25rem}
@@ -237,9 +237,8 @@ pre.prettyprint li:not(:first-child) code[data-lang]::before{display:none}
 table.linenotable{border-collapse:separate;border:0;margin-bottom:0;background:none}
 table.linenotable td[class]{color:inherit;vertical-align:top;padding:0;line-height:inherit;white-space:normal}
 table.linenotable td.code{padding-left:.75em}
-table.linenotable td.linenos{border-right:1px solid;opacity:.35;padding-right:.5em}
-pre.pygments .lineno{border-right:1px solid;opacity:.35;display:inline-block;margin-right:.75em}
-pre.pygments .lineno::before{content:"";margin-right:-.125em}
+table.linenotable td.linenos,pre.pygments .linenos{border-right:1px solid;opacity:.35;padding-right:.5em;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}
+pre.pygments span.linenos{display:inline-block;margin-right:.75em}
 .quoteblock{margin:0 1em 1.25em 1.5em;display:table}
 .quoteblock:not(.excerpt)>.title{margin-left:-1.5em;margin-bottom:.75em}
 .quoteblock blockquote,.quoteblock p{color:rgba(0,0,0,.85);font-size:1.15rem;line-height:1.75;word-spacing:.1em;letter-spacing:0;font-style:italic;text-align:justify}
@@ -276,7 +275,7 @@ table.frame-none>colgroup+*>:first-child>*,table.frame-sides>colgroup+*>:first-c
 table.frame-none>:last-child>:last-child>*,table.frame-sides>:last-child>:last-child>*{border-bottom-width:0}
 table.frame-none>*>tr>:first-child,table.frame-ends>*>tr>:first-child{border-left-width:0}
 table.frame-none>*>tr>:last-child,table.frame-ends>*>tr>:last-child{border-right-width:0}
-table.stripes-all tr,table.stripes-odd tr:nth-of-type(odd),table.stripes-even tr:nth-of-type(even),table.stripes-hover tr:hover{background:#f8f8f7}
+table.stripes-all>*>tr,table.stripes-odd>*>tr:nth-of-type(odd),table.stripes-even>*>tr:nth-of-type(even),table.stripes-hover>*>tr:hover{background:#f8f8f7}
 th.halign-left,td.halign-left{text-align:left}
 th.halign-right,td.halign-right{text-align:right}
 th.halign-center,td.halign-center{text-align:center}
@@ -292,10 +291,11 @@ ol{margin-left:1.75em}
 ul li ol{margin-left:1.5em}
 dl dd{margin-left:1.125em}
 dl dd:last-child,dl dd:last-child>:last-child{margin-bottom:0}
-ol>li p,ul>li p,ul dd,ol dd,.olist .olist,.ulist .ulist,.ulist .olist,.olist .ulist{margin-bottom:.625em}
+li p,ul dd,ol dd,.olist .olist,.ulist .ulist,.ulist .olist,.olist .ulist{margin-bottom:.625em}
 ul.checklist,ul.none,ol.none,ul.no-bullet,ol.no-bullet,ol.unnumbered,ul.unstyled,ol.unstyled{list-style-type:none}
 ul.no-bullet,ol.no-bullet,ol.unnumbered{margin-left:.625em}
 ul.unstyled,ol.unstyled{margin-left:0}
+li>p:empty:only-child::before{content:"";display:inline-block}
 ul.checklist>li>p:first-child{margin-left:-1em}
 ul.checklist>li>p:first-child>.fa-square-o:first-child,ul.checklist>li>p:first-child>.fa-check-square-o:first-child{width:1.25em;font-size:.8em;position:relative;bottom:.125em}
 ul.checklist>li>p:first-child>input[type=checkbox]:first-child{margin-right:.25em}
@@ -338,8 +338,6 @@ sup.footnote a:active,sup.footnoteref a:active{text-decoration:underline}
 #footnotes .footnote a:first-of-type{font-weight:bold;text-decoration:none;margin-left:-1.05em}
 #footnotes .footnote:last-of-type{margin-bottom:0}
 #content #footnotes{margin-top:-.625em;margin-bottom:0;padding:.75em 0}
-.gist .file-data>table{border:0;background:#fff;width:100%;margin-bottom:0}
-.gist .file-data>table td.line-data{width:99%}
 div.unbreakable{page-break-inside:avoid}
 .big{font-size:larger}
 .small{font-size:smaller}
@@ -451,36 +449,48 @@ pre.rouge .hll * {
 <body class="article toc2 toc-left">
 <div id="header">
 <h1>Tournament-Management</h1>
-<div class="details">
-<span id="author" class="author">Handel Pelzeder Baumgartner</span><br>
-<span id="revnumber">version 1.0.2,</span>
-<span id="revdate">2022-03-15</span>
-</div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
-<li><a href="#_ausgangslage">1. Ausgangslage</a></li>
-<li><a href="#_ist_zustand">2. Ist-Zustand</a></li>
-<li><a href="#_zielsetzung">3. Zielsetzung</a>
+<li><a href="#_tournament_management_slides">1. Tournament-Management Slides</a></li>
+<li><a href="#_ausgangslage">2. Ausgangslage</a></li>
+<li><a href="#_ist_zustand">3. Ist-Zustand</a></li>
+<li><a href="#_zielsetzung">4. Zielsetzung</a>
 <ul class="sectlevel2">
-<li><a href="#_besprochene_vorlage">3.1. Besprochene Vorlage</a></li>
+<li><a href="#_besprochene_vorlage">4.1. Besprochene Vorlage</a></li>
 </ul>
 </li>
-<li><a href="#_klassendiagramme">4. Klassendiagramme</a>
+<li><a href="#_klassendiagramme">5. Klassendiagramme</a>
 <ul class="sectlevel2">
-<li><a href="#_klassendiagram_ko_system">4.1. Klassendiagram (KO System)</a></li>
-<li><a href="#_klassendiagram_gruppenphase">4.2. Klassendiagram (Gruppenphase)</a></li>
+<li><a href="#_klassendiagram_ko_system">5.1. Klassendiagram (KO System)</a></li>
+<li><a href="#_klassendiagram_gruppenphase">5.2. Klassendiagram (Gruppenphase)</a></li>
 </ul>
 </li>
-<li><a href="#_turnierablauf">5. Turnierablauf</a></li>
-<li><a href="#_protokolle">6. Protokolle</a></li>
-<li><a href="#_ist_zustands_analyse">7. Ist-Zustands-Analyse</a></li>
+<li><a href="#_turnierablauf">6. Turnierablauf</a></li>
+<li><a href="#_protokolle">7. Protokolle</a></li>
+<li><a href="#_ist_zustands_analyse">8. Ist-Zustands-Analyse</a></li>
 </ul>
 </div>
 </div>
 <div id="content">
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Handel Pelzeder Baumgartner
+1.0.3, 2022-03-28</p>
+</div>
+</div>
+</div>
 <div class="sect1">
-<h2 id="_ausgangslage"><a class="anchor" href="#_ausgangslage"></a>1. Ausgangslage</h2>
+<h2 id="_tournament_management_slides"><a class="anchor" href="#_tournament_management_slides"></a>1. Tournament-Management Slides</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="slides/demo.html#/">open Slides</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_ausgangslage"><a class="anchor" href="#_ausgangslage"></a>2. Ausgangslage</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>„LeoTurnier“ ist ein Turnierverwaltungsprogramm, das verschieden Arten von Spielsystemen (KO-System, Gruppen-System) verwaltet. Momentan wird die ganze Turniersimulierung durch UnitTests(wie besprochen) durchgeführt.</p>
@@ -488,7 +498,7 @@ pre.rouge .hll * {
 </div>
 </div>
 <div class="sect1">
-<h2 id="_ist_zustand"><a class="anchor" href="#_ist_zustand"></a>2. Ist-Zustand</h2>
+<h2 id="_ist_zustand"><a class="anchor" href="#_ist_zustand"></a>3. Ist-Zustand</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Derzeit wird alles über Papier bzw. mit Hilfe von Standard-Büro-Applikationen durchgeführt. Es gibt also keine automatische Datenerfassung sondern nur eine Erfassung auf Papier, vereinfacht gesagt werden die Teams und Gruppen einfach auf ein Papier geschrieben.
@@ -502,13 +512,13 @@ pre.rouge .hll * {
 </div>
 </div>
 <div class="sect1">
-<h2 id="_zielsetzung"><a class="anchor" href="#_zielsetzung"></a>3. Zielsetzung</h2>
+<h2 id="_zielsetzung"><a class="anchor" href="#_zielsetzung"></a>4. Zielsetzung</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Die Planung, Verwaltung und Durchführung verschiedener Arten von Turnieren, sowie verschiedene Arten von Spielsystemen (Gruppen-, KO-System).</p>
 </div>
 <div class="sect2">
-<h3 id="_besprochene_vorlage"><a class="anchor" href="#_besprochene_vorlage"></a>3.1. Besprochene Vorlage</h3>
+<h3 id="_besprochene_vorlage"><a class="anchor" href="#_besprochene_vorlage"></a>4.1. Besprochene Vorlage</h3>
 <div class="imageblock">
 <div class="content">
 <img src="images/GP.png" alt="GP">
@@ -518,10 +528,10 @@ pre.rouge .hll * {
 </div>
 </div>
 <div class="sect1">
-<h2 id="_klassendiagramme"><a class="anchor" href="#_klassendiagramme"></a>4. Klassendiagramme</h2>
+<h2 id="_klassendiagramme"><a class="anchor" href="#_klassendiagramme"></a>5. Klassendiagramme</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_klassendiagram_ko_system"><a class="anchor" href="#_klassendiagram_ko_system"></a>4.1. Klassendiagram (KO System)</h3>
+<h3 id="_klassendiagram_ko_system"><a class="anchor" href="#_klassendiagram_ko_system"></a>5.1. Klassendiagram (KO System)</h3>
 <div class="imageblock">
 <div class="content">
 <img src="images/KO_cld.png" alt="KO cld">
@@ -529,7 +539,7 @@ pre.rouge .hll * {
 </div>
 </div>
 <div class="sect2">
-<h3 id="_klassendiagram_gruppenphase"><a class="anchor" href="#_klassendiagram_gruppenphase"></a>4.2. Klassendiagram (Gruppenphase)</h3>
+<h3 id="_klassendiagram_gruppenphase"><a class="anchor" href="#_klassendiagram_gruppenphase"></a>5.2. Klassendiagram (Gruppenphase)</h3>
 <div class="imageblock">
 <div class="content">
 <img src="images/newest_cld.png" alt="newest cld">
@@ -539,49 +549,49 @@ pre.rouge .hll * {
 </div>
 </div>
 <div class="sect1">
-<h2 id="_turnierablauf"><a class="anchor" href="#_turnierablauf"></a>5. Turnierablauf</h2>
+<h2 id="_turnierablauf"><a class="anchor" href="#_turnierablauf"></a>6. Turnierablauf</h2>
 <div class="sectionbody">
 <div class="imageblock">
 <div class="content">
-<img src="images/diag-b447aa2bc1617dfcf33e5201f61cca7e.png" alt="Diagram" width="382" height="345">
+<img src="images/diag-b447aa2bc1617dfcf33e5201f61cca7e.png" alt="Diagram" width="376" height="339">
 </div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_protokolle"><a class="anchor" href="#_protokolle"></a>6. Protokolle</h2>
+<h2 id="_protokolle"><a class="anchor" href="#_protokolle"></a>7. Protokolle</h2>
 <div class="sectionbody">
 <div class="ulist">
 <ul>
 <li>
-<p><a href="asciidoc/2021-11-22-ersteschritte.adoc">Protokoll-2021-11-22</a></p>
+<p><a href="asciidoc/2021-11-22-ersteschritte.html">Protokoll-2021-11-22</a></p>
 </li>
 <li>
-<p><a href="asciidoc/2021-12-06-Besprechung.adoc">Protokoll-2021-12-06</a></p>
+<p><a href="asciidoc/2021-12-06-Besprechung.html">Protokoll-2021-12-06</a></p>
 </li>
 <li>
-<p><a href="asciidoc/2021-12-14-Besprechung.adoc">Protokoll-2021-12-14</a></p>
+<p><a href="asciidoc/2021-12-14-Besprechung.html">Protokoll-2021-12-14</a></p>
 </li>
 <li>
-<p><a href="asciidoc/2022-01-17-Besprechung.adoc">Protokoll-2022-01-17</a></p>
+<p><a href="asciidoc/2022-01-17-Besprechung.html">Protokoll-2022-01-17</a></p>
 </li>
 <li>
-<p><a href="asciidoc/2022-01-18-Besprechung.adoc">Protokoll-2022-01-18</a></p>
+<p><a href="asciidoc/2022-01-18-Besprechung.html">Protokoll-2022-01-18</a></p>
 </li>
 <li>
-<p><a href="asciidoc/2022-03-07-Besprechung.adoc">Protokoll-2022-03-07</a></p>
+<p><a href="asciidoc/2022-03-07-Besprechung.html">Protokoll-2022-03-07</a></p>
 </li>
 </ul>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_ist_zustands_analyse"><a class="anchor" href="#_ist_zustands_analyse"></a>7. Ist-Zustands-Analyse</h2>
+<h2 id="_ist_zustands_analyse"><a class="anchor" href="#_ist_zustands_analyse"></a>8. Ist-Zustands-Analyse</h2>
 <div class="sectionbody">
 <div class="ulist">
 <ul>
 <li>
-<p><a href="asciidoc/2022-03-08-Ist-Zustand.adoc">Ist-Zustand-Analyse-2022-03-08</a></p>
+<p><a href="asciidoc/2022-03-08-Ist-Zustand.html">Ist-Zustand-Analyse-2022-03-08</a></p>
 </li>
 </ul>
 </div>
@@ -590,8 +600,7 @@ pre.rouge .hll * {
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0.2<br>
-Last updated 2022-03-21 09:45:57 UTC
+Last updated 2022-04-26 13:14:25 UTC
 </div>
 </div>
 </body>
