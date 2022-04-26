@@ -34,10 +34,10 @@ Verschieden Arten von Spielsystemen (KO-System, Gruppen-System).
 
 image::holz.jpg[background, size=cover]
 
-image::KO_cld.png[border = 0]
+image::KO_cld.png[border:none]
 
 == Klassendiagram (Gruppenphase)
 
 image::holz.jpg[background, size=cover]
 
-image::newest_cld.png[border = 0]
+image::newest_cld.png[border:none]
