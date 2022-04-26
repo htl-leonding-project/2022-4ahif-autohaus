@@ -1,0 +1,18 @@
+@startuml
+left to right direction
+skinparam actorStyle awesome
+actor Spielleiter as s
+
+rectangle Ablauf as ablauf {
+  usecase "Teams eingeben" as teameingabe
+  usecase "Spielplan generieren" as spielplangenerierung
+  usecase "Ergebnisse auswerten" as ergebnisseeintragen
+  usecase "Spielergebnisse auswerten" as ergebnisseauswerten
+}
+
+s -- teameingabe
+s -- spielplangenerierung
+s -- ergebnisseeintragen
+s -- ergebnisseauswerten
+
+@enduml

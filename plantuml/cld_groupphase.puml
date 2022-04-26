@@ -1,0 +1,57 @@
+@startuml
+
+class TournamentGP{
+    Long : id
+    String : name
+    List<PhaseGP> : phases
+    List<GroupGP> : groups
+}
+
+class GroupGP{
+    Long : id
+    String : groupName
+    List<TeamGP> : teams
+}
+
+class PhaseGP{
+    Long : id
+    String : phaseName
+    List<NodeGP> : nodes
+}
+
+class MatchGP{
+    Long : id
+    TeamGP : team1
+    TeamGP : team2
+}
+
+class TeamGP{
+    Long : id
+    String : name
+    int : points
+}
+
+class NodeGP{
+    Long : id
+    NodeGP : leftNode
+    NodeGP : rightNode
+    NodeGP : parentNode
+    NodeGP : centerNode
+    MatchGP : curMatch
+    PhaseGP : phase
+}
+
+TournamentGP "1" -left-> "*" PhaseGP : has
+TournamentGP "1" --> "*" GroupGP :has
+PhaseGP "1" --> "*" NodeGP : has
+NodeGP "1" -down-> "1" MatchGP : points at
+NodeGP "1" <-- "*" NodeGP
+NodeGP "1" <-- "*" NodeGP
+NodeGP "1" <-- "*" NodeGP
+NodeGP "1" <-- "*" NodeGP
+MatchGP "1" -right-> "2" TeamGP : has
+TeamGP "*" <-right- "1" GroupGP : has
+
+
+
+@enduml
