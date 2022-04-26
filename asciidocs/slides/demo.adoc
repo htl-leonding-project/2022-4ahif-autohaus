@@ -41,7 +41,3 @@ image::KO_cld.png[border = 0]
 image::holz.jpg[background, size=cover]
 
 image::newest_cld.png[border = 0]
-
-== Ist Zustandsanalyse
-
-link:: ../asciidoc/2022-03-08-Ist-Zustand.adoc[open Slides]
