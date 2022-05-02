@@ -29,15 +29,14 @@ ifdef::backend-html5[]
 [cols=2*]
 |===
 |Ort
-|XXX
+|HTBLA Leonding
 
 |von-bis
-|XXX
+|XXXX
 |Dauer
-|XX min
+|XXXX
 |===
 
 == Besprochene Themen
 
 == Vereinbarungen und Entscheidungen
-
