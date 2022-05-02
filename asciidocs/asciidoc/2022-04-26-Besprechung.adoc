@@ -1,5 +1,5 @@
-= Besprechungsprotokoll 24.06.2022
-1.0, yyyy-MM-dd
+= Besprechungsprotokoll 26.04.2022
+1.0, 2022-04-26
 ifndef::imagesdir[:imagesdir: ../images]
 :icons: font
 //:sectnums:    // Nummerierung der Überschriften / section numbering
@@ -32,18 +32,30 @@ ifdef::backend-html5[]
 |HTBLA Leonding
 
 |von-bis
-|16:00
+|16:00 - 17:15
 |Dauer
 |75 min
 |===
 
 == Besprochene Themen
 
-Die Tests sollten den Spielleiter simulieren, das heißt die Teamanzhal sollte variabel sein können.
+Es wurden die Slides besprochen. Grafiken sollten größer werden und die Border soll
+entfernt werden.
+
+Danach wurden die Tests der K.O.-Phase sowie der Gruppenphase besprochen.
+
+Die Diagramme die nach Durchführung der Tests erstellt wurden, wurden hergezeigt.
+
+Die Tests sollten den Spielleiter simulieren,
+das heißt die Teamanzahl sollte variabel sein.
 
 == Vereinbarungen und Entscheidungen
 
+* Schriftfarbe auf den Slides gehört geändert.
+
 * Es gehören Unit Tests gemacht zum Testen der API
+
+* Das Programm sollte in der Lage sein K.O. Phasen mit 4 oder 8 Teams durchzuführen.
 
 * keine hardcoded urls Filewriter -> in den application.properties speichern
 

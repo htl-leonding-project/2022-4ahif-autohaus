@@ -83,6 +83,11 @@
       <artifactId>quarkus-hibernate-orm-panache</artifactId>
       <version>2.5.4.Final</version>
     </dependency>
+    <dependency>
+      <groupId>org.jboss.logging</groupId>
+      <artifactId>jboss-logging</artifactId>
+      <version>3.4.3.Final</version>
+    </dependency>
   </dependencies>
   <build>
     <plugins>
