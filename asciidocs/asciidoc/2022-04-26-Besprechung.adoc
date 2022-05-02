@@ -1,0 +1,22 @@
+Border entfernen
+
+Bilder vergrößern
+
+repo git-intro-slides
+
+---
+Use-case Diagramm ändern
+
+Turnier vorbereiten
+
+...
+
+Turnier durchführen
+
+---
+Schriftfarbe von schwarz auf dunkelbraun zu schwarz auf weiß ändern
+
+Klassendiagram -> Klassendiagramm
+
+Protokolle mit Tabellen machen
+

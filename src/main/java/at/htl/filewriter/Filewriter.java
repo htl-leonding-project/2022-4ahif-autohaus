@@ -45,7 +45,7 @@ public class Filewriter {
         Node currentNode = finalNode;
         Stack<Node> nodeStack = new Stack<>();
         try{
-            FileWriter file = new FileWriter("asciidocs/plantuml/Result.puml");
+            FileWriter file = new FileWriter(ORIGIN);
 
             String content = String.format("""
                 @startmindmap %s.png
