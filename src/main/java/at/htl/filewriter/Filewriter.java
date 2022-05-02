@@ -4,6 +4,7 @@ import at.htl.entity.Node;
 import at.htl.entity.Tournament;
 import net.sourceforge.plantuml.GeneratedImage;
 import net.sourceforge.plantuml.SourceFileReader;
+import org.eclipse.microprofile.config.inject.ConfigProperty;
 import org.jboss.logging.Logger;
 
 import java.io.BufferedWriter;
@@ -17,8 +18,11 @@ public class Filewriter {
 
     private static final Logger LOG = Logger.getLogger("FileWriter");
 
-    private static final String ORIGIN = "asciidocs/plantuml/Result.puml";
-    private static final String TARGET = "asciidocs/images/generated-diagrams/";
+    @ConfigProperty(name = "filewriter.origin")
+    private String ORIGIN;
+
+    @ConfigProperty(name = "filewriter.target")
+    private String TARGET;
 
     /*public void writeResult(String team01, String team02, int[] result){
 
