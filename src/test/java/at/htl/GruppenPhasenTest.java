@@ -9,19 +9,19 @@ import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Random;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@QuarkusTest
 public class GruppenPhasenTest {
 
     Random random = new Random();
     @Test
-    public void getWinningTeamTest(){
+    public void GPTest(){
 
-        Tournament tournament = new Tournament("TestGPTournament");
+        Tournament tournament = new Tournament("TestGPTournament2");
         List<Team> allTeams = new ArrayList<Team>();
         GroupGP winningGroup = new GroupGP();
         //region Gruppe 1
@@ -184,8 +184,10 @@ public class GruppenPhasenTest {
         tournament.addPhase(phase2);
         //tournament.addPhase(phase3);
 
-        group1.getTeams().sort(new TeamComparator());
-        group2.getTeams().sort(new TeamComparator());
+        //group1.getTeams().sort(new TeamComparator());
+        group1.getTeams().sort(Comparator.comparingInt(Team::getPoints));
+        //group2.getTeams().sort(new TeamComparator());
+        group2.getTeams().sort(Comparator.comparingInt(Team::getPoints));
 
         for (Team cur: group1.getTeams()) {
             System.out.println(cur.getName() + ": " + cur.getPoints());
@@ -210,9 +212,9 @@ public class GruppenPhasenTest {
         winners.addAll(group1.getTeams());
         winners.addAll(group2.getTeams());
 
-        winners.sort(new TeamComparator());
+        winners.sort(Comparator.comparingInt(Team::getPoints));
 
-        winningGroup.setTeams(winners.subList(0,4));
+        winningGroup.setTeams(winners.subList(4,8));
 
         for (Team current:winningGroup.getTeams()) {
             System.out.println(current.getName() + ": " + current.getPoints());
