@@ -9,6 +9,10 @@ import java.util.List;
 
 public class DynamicKOTests {
 
+    //TODO: Teams automatisch zu zufälligen Matches zuweisen
+    //TODO: Node Verbindungen automatisch erstellen
+    //TODO: Phasen Level und Nodes automatisch zuweisen
+
     @Test
     public void fourTeamsDiagramTest() {
         Filewriter filewriter = new Filewriter();
