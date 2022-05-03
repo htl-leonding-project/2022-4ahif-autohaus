@@ -1,6 +1,5 @@
 :customcss: css/presentation.css
 
-
 == [red]#Leo Competition#
 ifndef::imagesdir[:imagesdir: ../images]
 
@@ -27,12 +26,12 @@ Verschieden Arten von Spielsystemen (KO-System, Gruppen-System).
 
 == Use-Case Diagram
 
-image::use_case.png[border:0]
+image::use_case.png[]
 
 == Klassendiagram (Ko-System)
 
-image::KO_cld.png[border:none]
+image::KO_cld.png[]
 
 == Klassendiagram (Gruppenphase)
 
-image::newest_cld.png[border:none]
+image::newest_cld.png[]
