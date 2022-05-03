@@ -7,8 +7,6 @@ import java.util.List;
 @Table(name = "T_Tournament")
 @Entity
 public class Tournament  {
-
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "T_ID")
@@ -74,5 +72,10 @@ public class Tournament  {
             }
         }
         return connections;
+    }
+
+    @Override
+    public String toString() {
+        return "Tournament "+ name;
     }
 }

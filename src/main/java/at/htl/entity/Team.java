@@ -73,4 +73,9 @@ public class Team  {
     }
 
     public void incrementPoints(int amount){this.points+=amount;}
+
+    @Override
+    public String toString() {
+        return name;
+    }
 }

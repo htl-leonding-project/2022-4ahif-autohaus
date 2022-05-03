@@ -1,34 +1,18 @@
-@startmindmap Sixteen-Teams-Test.png
-title Sixteen-Teams-Test
+@startmindmap Eight-Teams-Test.png
+title Eight-Teams-Test
 
-- team01 vs. team12 1:0
+- team01 vs. team08 1:0
 
--- team01 vs. team06 1:0
+-- team01 vs. team04 1:0
 
---- team01 vs. team04 3:1
+--- team01 vs. team02 2:1
 
----- team01 vs. team02 2:1
+--- team03 vs. team04 0:3
 
----- team03 vs. team04 0:3
+-- team06 vs. team08 1:2
 
---- team06 vs. team08 3:2
+--- team05 vs. team06 0:1
 
----- team05 vs. team06 0:1
-
----- team07 vs. team08 1:3
-
--- team12 vs. team16 2:1
-
---- team10 vs. team12 1:2
-
----- team09 vs. team10 0:4
-
----- team11 vs. team12 0:2
-
---- team13 vs. team16 0:1
-
----- team13 vs. team14 3:2
-
----- team15 vs. team16 0:1
+--- team07 vs. team08 1:3
 caption Winner is: team01
 @endmindmap
