@@ -1,6 +1,5 @@
 package at.htl;
 
-import at.htl.comparator.TeamComparator;
 import at.htl.entity.*;
 import at.htl.filewriter.FilewriterGP;
 import io.quarkus.test.junit.QuarkusTest;
