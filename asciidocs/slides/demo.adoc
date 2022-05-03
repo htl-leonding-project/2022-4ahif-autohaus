@@ -1,47 +1,38 @@
-== Leo Competition
+:customcss: css/presentation.css
+
+
+== [red]#Leo Competition#
 ifndef::imagesdir[:imagesdir: ../images]
 
 image::BierPong.webp[background, size=cover]
 
 == Ausgangssituation
 
-image::holz.jpg[background, size=cover]
-
 „LeoTurnier“ ist ein Turnierverwaltungsprogramm, das verschieden Arten von Spielsystemen
 (KO-System, Gruppen-System) verwaltet.
 
 == Problem
 
-image::holz.jpg[background, size=cover]
-
 Turniere und Wettbewerbe können nur schwer geplant, verwaltet und visualisiert werden.
 
 == Aufgabenstellung
-
-image::holz.jpg[background, size=cover]
 
 Eine Applikation erstellen, die das Planen, Verwalten und Durchführen von Turnieren
 für den Benutzer vereinfacht.
 
 == Ziele
 
-image::holz.jpg[background, size=cover]
-
 Vereinfachung von Turnierplanung, -verwaltung und Durchführung.
 Verschieden Arten von Spielsystemen (KO-System, Gruppen-System).
 
 == Use-Case Diagram
 
-image::use_case.png[border:none]
+image::use_case.png[border:0]
 
 == Klassendiagram (Ko-System)
-
-image::holz.jpg[background, size=cover]
 
 image::KO_cld.png[border:none]
 
 == Klassendiagram (Gruppenphase)
-
-image::holz.jpg[background, size=cover]
 
 image::newest_cld.png[border:none]
