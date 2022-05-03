@@ -13,6 +13,13 @@ public class DynamicKOTests {
     //TODO: Node Verbindungen automatisch erstellen
     //TODO: Phasen Level und Nodes automatisch zuweisen
 
+    /**
+    Es werden vier Teams erstellt.
+    Ein Turnier nach K.O.-Phasen System wird erstellt und durchgeführt.
+    Die Spielergebnisse werden vom Test vorgegeben und sollten den Turnierleiter simulieren.
+
+    Das "Four-Teams-Test.png" ist das Ergebnis.
+     */
     @Test
     public void fourTeamsDiagramTest() {
         Filewriter filewriter = new Filewriter();
@@ -37,12 +44,14 @@ public class DynamicKOTests {
         node01.setPhase(phase1);
         node02.setPhase(phase1);
 
+        //Spielergebnisse werden gesetzt
         match12.setPointsTeam1(2);
         match12.setPointsTeam2(1);
 
         match34.setPointsTeam1(0);
         match34.setPointsTeam2(3);
 
+        //Die Beiden Gewinner spielen gegeneinander
         Match match03 = new Match(match12.getWinningTeam(), match34.getWinningTeam());
 
         node03.setCurMatch(match03);
@@ -63,6 +72,13 @@ public class DynamicKOTests {
         filewriter.writeFinalResult(node03, tournament);
     }
 
+    /**
+    Es werden acht Teams erstellt.
+    Ein Turnier nach K.O.-System wird erstellt und ausgespielt.
+    Die Spielergebnisse werden vom Test vorgegeben und sollten den Turnierleiter simulieren.
+
+    Das "Eight-Teams-Test.png" ist das Ergebnis.
+     */
     @Test
     public void eightTeamsDiagramTest() {
         Filewriter filewriter = new Filewriter();
@@ -78,6 +94,8 @@ public class DynamicKOTests {
         Team team07 = new Team("team07");
         Team team08 = new Team("team08");
 
+        //Namensgebung der Matches
+        //match12 -> team01 spielt gegen team02
         Match match12 = new Match(team01, team02);
         Match match34 = new Match(team03, team04);
         Match match56 = new Match(team05, team06);
@@ -100,6 +118,7 @@ public class DynamicKOTests {
         node04.setPhase(phase1);
         node05.setPhase(phase1);
 
+        //Die Spielergebnisse werden gesetzt
         match12.setPointsTeam1(2);
         match12.setPointsTeam2(1);
 
@@ -112,6 +131,7 @@ public class DynamicKOTests {
         match78.setPointsTeam1(1);
         match78.setPointsTeam2(3);
 
+        //Halbfinale
         Match match03 = new Match(match12.getWinningTeam(), match34.getWinningTeam());
         Match match06 = new Match(match56.getWinningTeam(), match78.getWinningTeam());
 
@@ -142,6 +162,7 @@ public class DynamicKOTests {
         node03.setParentNode(node07);
         node06.setParentNode(node07);
 
+        //Finalspiel
         Match match07 = new Match(match03.getWinningTeam(), match06.getWinningTeam());
 
         match07.setPointsTeam1(1);
@@ -150,9 +171,16 @@ public class DynamicKOTests {
         node07.setCurMatch(match07);
 
         node07.setPhase(phase3);
-
         filewriter.writeFinalResult(node07, tournament);
     }
+
+    /**
+    Wie bei den Tests darüber, wird ein Turnier nach K.O.-System simuliert.
+    Es werden zu Beginn 16 Teams erstellt.
+    Der Test gibt die Spielergebnisse vor, was den Turnierleiter simulieren sollte.
+
+    Das Ergebiss ist die "Sixteen-Teams-Test.png" Grafik.
+     */
 
     @Test
     public void sixteenTeamsDiagramTest() {
