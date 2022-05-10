@@ -53,8 +53,6 @@ das heißt die Teamanzahl sollte variabel sein.
 
 * Schriftfarbe auf den Slides gehört geändert.
 
-* Es gehören Unit Tests gemacht zum Testen der API
-
 * Das Programm sollte in der Lage sein K.O. Phasen mit 4 oder 8 Teams durchzuführen.
 
 * keine hardcoded urls Filewriter -> in den application.properties speichern

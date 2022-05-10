@@ -12,6 +12,7 @@ public class Team  {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "T_ID")
     Long id;
+
     @Column(name = "T_Name",length = 20)
     String name;
     @Column(name = "T_Points")
