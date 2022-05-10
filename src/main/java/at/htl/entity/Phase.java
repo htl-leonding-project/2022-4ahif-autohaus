@@ -17,6 +17,7 @@ public class Phase  {
     String nameOfPhase;
     @Column(name = "P_Level")
     int level;
+
     @OneToMany
     @JoinColumn(name = "P_GPNodes")
     List<Node> GPNodes = new ArrayList<>();
@@ -71,5 +72,10 @@ public class Phase  {
 
     public void addNode(Node node){
         this.GPNodes.add(node);
+    }
+
+    @Override
+    public String toString() {
+        return "Phase level "+level;
     }
 }

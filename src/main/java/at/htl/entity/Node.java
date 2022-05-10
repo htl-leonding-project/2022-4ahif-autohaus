@@ -116,4 +116,9 @@ public class Node {
                 , this.getCurMatch().getTeam2().getAbbr());
         return matchString;
     }
+
+    @Override
+    public String toString() {
+        return curMatch + " in "+phase;
+    }
 }

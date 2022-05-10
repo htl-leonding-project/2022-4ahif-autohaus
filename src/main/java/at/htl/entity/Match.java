@@ -97,4 +97,9 @@ public class Match{
                 +" "+getPointsTeam1()
                 +":"+getPointsTeam2();
     }
+
+    @Override
+    public String toString() {
+        return "Match: "+team1+":"+pointsTeam1+" "+team2+":"+pointsTeam2;
+    }
 }
