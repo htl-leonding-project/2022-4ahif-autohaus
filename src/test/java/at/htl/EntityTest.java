@@ -12,6 +12,8 @@ import static org.assertj.core.api.Assertions.*;
 
 public class EntityTest {
 
+    /**
+     * Mithilfe dieses Tests wird genau ein Match simuliert bestehend aus genau zwei Teams**/
     @Test
     public void getWinningTeamTest(){
         final String name1 = "team01";
@@ -28,6 +30,8 @@ public class EntityTest {
         assertThat(match.getWinningTeam().getName()).isEqualTo(name2);
     }
 
+    /**
+     * Dieser Test wird verwendet, um ein Turnier zu simulieren, mit mehr als ein Match**/
     @Test
     public void getWinningTeamOfMoreThanOneMatch(){
         final String name1 = "team01";
@@ -62,6 +66,8 @@ public class EntityTest {
         assertThat(match03.getWinningTeam().getName()).isEqualTo("team04");
     }
 
+    /**
+     * Zusätzlich zu den normalen Tests beinhaltet dieser Test, Nodes um die Matches danach zeichnen zu können**/
     @Test
     public void getWinningTeamWithNodes(){
         final String name1 = "team01";
@@ -109,6 +115,8 @@ public class EntityTest {
         assertThat(parentNode.getCurMatch().getWinningTeam().getName()).isEqualTo("team04");
     }
 
+    /**
+     * Dieser Test simuliert ein Turnier mit Phasen**/
     @Test
     public void AutomaticChildNodeSet(){
         Phase phase1 = new Phase("FirstRound"); //Phasen haben noch keine Funktion
@@ -149,7 +157,9 @@ public class EntityTest {
         filewriter.writeResult("team01", "team02" , new int[]{0,1});
         filewriter.writeResult("team03", "team04" , new int[]{3,1});
     }*/
-
+    /**
+     * Dieser Test simuliert ein Turnier mit 8 Matches mithilfe von Nodes. Nachdem der Test den Matches Nodes
+     * hinzugefügt hat, wird alles an den filewriter weitergegeben.**/
     @Test
     public void testFileWriter02(){
         Filewriter filewriter = new Filewriter();
@@ -195,7 +205,6 @@ public class EntityTest {
         node12.setPhase(phase02);
 
         node21.setPhase(phase01);
-
 
         node01.setCurMatch(new Match(team01, team02));
         node02.setCurMatch(new Match(team03, team04));
