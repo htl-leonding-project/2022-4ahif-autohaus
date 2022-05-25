@@ -3,6 +3,7 @@ package at.htl;
 import at.htl.controller.TeamRepository;
 import at.htl.controller.TournamentRepository;
 import at.htl.entity.*;
+import at.htl.filewriter.Filewriter;
 import io.quarkus.test.junit.QuarkusTest;
 import org.junit.jupiter.api.Test;
 
@@ -50,7 +51,14 @@ public class KOSystemTest {
         nodeThree.getCurMatch().setPointsTeam1(0);
         nodeThree.getCurMatch().setPointsTeam2(1);
 
+        nodeThree.setLeftNode(nodeOne);
+        nodeThree.setRightNode(nodeTwo);
+
         TournamentRepo.persist(smallMatch);
+
+        Filewriter filewriter = new Filewriter();
+
+        filewriter.writeFinalResult(nodeThree, smallMatch);
     }
 
 

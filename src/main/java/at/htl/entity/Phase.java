@@ -72,6 +72,7 @@ public class Phase  {
 
     public void addNode(Node node){
         this.GPNodes.add(node);
+        node.setPhase(this);
     }
 
     @Override

@@ -18,11 +18,11 @@ public class Filewriter {
 
     private static final Logger LOG = Logger.getLogger("FileWriter");
 
-    @ConfigProperty(name = "filewriter.origin")
-    private String ORIGIN;
+    //@ConfigProperty(name = "filewriter.origin")
+    private String ORIGIN = "asciidocs/plantuml/Result.puml";
 
-    @ConfigProperty(name = "filewriter.target")
-    private String TARGET;
+    //@ConfigProperty(name = "filewriter.target")
+    private String TARGET = "asciidocs/images/generated-diagrams/";
 
     /*public void writeResult(String team01, String team02, int[] result){
 
