@@ -54,6 +54,7 @@ public class Node {
 
     public void setLeftNode(Node leftNode) {
         this.leftNode = leftNode;
+        leftNode.setParentNode(this);
     }
 
     public Node getRightNode() {
@@ -62,6 +63,7 @@ public class Node {
 
     public void setRightNode(Node rightNode) {
         this.rightNode = rightNode;
+        rightNode.setParentNode(this);
     }
 
     public Node getParentNode() {
