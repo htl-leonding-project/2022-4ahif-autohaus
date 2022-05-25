@@ -1,18 +1,10 @@
-@startmindmap Eight-Teams-Test.png
-title Eight-Teams-Test
+@startmindmap Four-Teams-Test.png
+title Four-Teams-Test
 
-- team01 vs. team08 1:0
+- team01 vs. team04 1:0
 
--- team01 vs. team04 1:0
+-- team01 vs. team02 2:1
 
---- team01 vs. team02 2:1
-
---- team03 vs. team04 0:3
-
--- team06 vs. team08 1:2
-
---- team05 vs. team06 0:1
-
---- team07 vs. team08 1:3
+-- team03 vs. team04 0:3
 caption Winner is: team01
 @endmindmap

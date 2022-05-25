@@ -3,10 +3,10 @@ left to right direction
 skinparam actorStyle awesome
 actor Spielleiter as s
 
-rectangle Ablauf as ablauf {
+rectangle Use-Case-Diagram as ablauf {
   usecase "Teams eingeben" as teameingabe
   usecase "Spielplan generieren" as spielplangenerierung
-  usecase "Ergebnisse auswerten" as ergebnisseeintragen
+  usecase "Ergebnisse eingeben" as ergebnisseeintragen
   usecase "Spielergebnisse auswerten" as ergebnisseauswerten
 }
 
