@@ -12,22 +12,22 @@ public class Node {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "N_ID")
     Long id;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "N_LeftNode")
     Node leftNode;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "N_RightNode")
     Node rightNode;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "N_ParentNode")
     Node parentNode;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "N_CenterNode")
     Node centerNode;  //nur bei "kleinen Finale"
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "N_CurMatch")
     Match curMatch;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "N_Phase")
     Phase phase;
 

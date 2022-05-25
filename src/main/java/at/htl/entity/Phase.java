@@ -18,7 +18,7 @@ public class Phase  {
     @Column(name = "P_Level")
     int level;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "P_GPNodes")
     List<Node> GPNodes = new ArrayList<>();
 

@@ -15,10 +15,10 @@ public class Tournament  {
     @Column(name = "T_Name",length = 20)
     String name;
     @Column(name = "T_Phases")
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     List<Phase> phases = new ArrayList<>();
     @Column(name = "T_GPGroups")
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     List<GroupGP> GPgroups = new ArrayList<>();
 
     public Tournament(String name) {

@@ -14,7 +14,7 @@ public class GroupGP {
     private Long id;
     @Column(name = "G_GroupName")
     private String groupName;
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "G_Teams")
     private List<Team> teams;
 
