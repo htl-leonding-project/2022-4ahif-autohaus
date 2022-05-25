@@ -15,7 +15,7 @@ public class EntityTest {
     /**
      * Mithilfe dieses Tests wird genau ein Match simuliert bestehend aus genau zwei Teams**/
     @Test
-    public void getWinningTeamTest(){
+    public void test_match_two_teams(){
         final String name1 = "team01";
         final String name2 = "team02";
 
@@ -33,7 +33,7 @@ public class EntityTest {
     /**
      * Dieser Test wird verwendet, um ein Turnier zu simulieren, mit mehr als ein Match**/
     @Test
-    public void getWinningTeamOfMoreThanOneMatch(){
+    public void test_match_four_teams(){
         final String name1 = "team01";
         final String name2 = "team02";
         final String name3 = "team03";
@@ -69,7 +69,7 @@ public class EntityTest {
     /**
      * Zusätzlich zu den normalen Tests beinhaltet dieser Test, Nodes um die Matches danach zeichnen zu können**/
     @Test
-    public void getWinningTeamWithNodes(){
+    public void test_match_four_teams_with_nodes(){
         final String name1 = "team01";
         final String name2 = "team02";
         final String name3 = "team03";
@@ -118,7 +118,7 @@ public class EntityTest {
     /**
      * Dieser Test simuliert ein Turnier mit Phasen**/
     @Test
-    public void AutomaticChildNodeSet(){
+    public void test_match_with_phases(){
         Phase phase1 = new Phase("FirstRound"); //Phasen haben noch keine Funktion
         Phase phase2 = new Phase("SecondRound");
 
@@ -161,7 +161,7 @@ public class EntityTest {
      * Dieser Test simuliert ein Turnier mit 8 Matches mithilfe von Nodes. Nachdem der Test den Matches Nodes
      * hinzugefügt hat, wird alles an den filewriter weitergegeben.**/
     @Test
-    public void testFileWriter02(){
+    public void test_filewriter_eight_matches(){
         Filewriter filewriter = new Filewriter();
 
         Tournament tournament = new Tournament("Test-Tournament");
