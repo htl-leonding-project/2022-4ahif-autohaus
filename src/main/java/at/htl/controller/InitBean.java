@@ -6,13 +6,15 @@ import io.quarkus.runtime.StartupEvent;
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.event.Observes;
 import javax.inject.Inject;
+import javax.transaction.Transactional;
 
 @ApplicationScoped
 public class InitBean {
     @Inject
     TeamRepository teamRepository;
 
-    void init(@Observes StartupEvent event) {
+    @Transactional
+    void startup(@Observes StartupEvent event) {
         Team team1 = new Team("Lask Linz","Lask");
         teamRepository.persist(team1);
         Team team2 = new Team("Real Madrid","RM");
