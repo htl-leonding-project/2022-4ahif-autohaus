@@ -13,10 +13,10 @@ public class Match{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "M_ID")
     private Long id;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "M_Team1")
     public Team team1;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "M_Team2")
     public Team team2;
     @Column(name = "M_PointsTeam1")
