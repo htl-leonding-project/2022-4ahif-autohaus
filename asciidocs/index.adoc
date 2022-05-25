@@ -75,3 +75,7 @@ include::plantuml/use_case.puml[]
 == Ist-Zustands-Analyse
 
 * xref:asciidoc/2022-03-08-Ist-Zustand.html[Ist-Zustand-Analyse-2022-03-08]
+
+== Unit Tests
+
+Zurzeit stehen drei Tests zur Verfügung um ein Turnier simulieren zu können.

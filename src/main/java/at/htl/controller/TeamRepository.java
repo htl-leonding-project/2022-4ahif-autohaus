@@ -10,5 +10,4 @@ import javax.persistence.EntityManager;
 @ApplicationScoped
 public class TeamRepository implements PanacheRepository<Team> {
 
-
 }
