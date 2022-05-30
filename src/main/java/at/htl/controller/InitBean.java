@@ -31,5 +31,21 @@ public class InitBean {
         teamRepository.persist(team7);
         Team team8 = new Team("Manchester City","MC");
         teamRepository.persist(team8);
+        Team team9 = new Team("Atletico Madrid","AM");
+        teamRepository.persist(team9);
+        Team team10 = new Team("FC Liverpool","FCL");
+        teamRepository.persist(team10);
+        Team team11 = new Team("AS Rom","ASR");
+        teamRepository.persist(team11);
+        Team team12 = new Team("FC Arsenal","FCA");
+        teamRepository.persist(team12);
+        Team team13 = new Team("AC Mailand","ACM");
+        teamRepository.persist(team13);
+        Team team14 = new Team("Inter Mailand","IM");
+        teamRepository.persist(team14);
+        Team team15 = new Team("FC Porto","FCP");
+        teamRepository.persist(team15);
+        Team team16 = new Team("Ajax Amsterdam","AA");
+        teamRepository.persist(team16);
     }
 }
