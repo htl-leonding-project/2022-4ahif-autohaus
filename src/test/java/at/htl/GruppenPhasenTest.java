@@ -18,7 +18,7 @@ public class GruppenPhasenTest {
 
     Random random = new Random();
     @Test
-    public void GPTest(){
+    public void GP_eight_teams(){
 
         Tournament tournament = new Tournament("TestGPTournament2");
         List<Team> allTeams = new ArrayList<Team>();

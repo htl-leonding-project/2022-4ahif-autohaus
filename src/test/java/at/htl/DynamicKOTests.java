@@ -21,7 +21,7 @@ public class DynamicKOTests {
     Das "Four-Teams-Test.png" ist das Ergebnis.
      */
     @Test
-    public void fourTeamsDiagramTest() {
+    public void KO_four_teams() {
         Filewriter filewriter = new Filewriter();
 
         Tournament tournament = new Tournament("Four-Teams-Test");
@@ -80,7 +80,7 @@ public class DynamicKOTests {
     Das "Eight-Teams-Test.png" ist das Ergebnis.
      */
     @Test
-    public void eightTeamsDiagramTest() {
+    public void KO_eight_teams() {
         Filewriter filewriter = new Filewriter();
 
         Tournament tournament = new Tournament("Eight-Teams-Test");
@@ -183,7 +183,7 @@ public class DynamicKOTests {
      */
 
     @Test
-    public void sixteenTeamsDiagramTest() {
+    public void KO_sixteen_teams() {
         Filewriter filewriter = new Filewriter();
 
         Tournament tournament = new Tournament("Sixteen-Teams-Test");
