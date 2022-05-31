@@ -61,5 +61,10 @@ public class KOSystemTest {
         filewriter.writeFinalResult(nodeThree, smallMatch);
     }
 
+    @Test
+    public void Setup_Test(){
+
+    }
+
 
 }

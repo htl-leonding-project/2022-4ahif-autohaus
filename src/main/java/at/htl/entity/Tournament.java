@@ -14,8 +14,7 @@ public class Tournament  {
     //erst einmal leer lassen
     @Column(name = "T_Name",length = 20)
     String name;
-    @Column(name = "T_Phases")
-    @OneToMany(cascade = CascadeType.ALL)
+    @Transient
     List<Phase> phases = new ArrayList<>();
     @Column(name = "T_GPGroups")
     @OneToMany(cascade = CascadeType.ALL)
