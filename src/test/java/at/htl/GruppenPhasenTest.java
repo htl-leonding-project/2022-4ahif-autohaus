@@ -1,11 +1,13 @@
 package at.htl;
 
+import at.htl.controller.TeamRepository;
 import at.htl.entity.*;
 import at.htl.filewriter.FilewriterGP;
 import io.quarkus.test.junit.QuarkusTest;
 import net.sourceforge.plantuml.SourceStringReader;
 import org.junit.jupiter.api.Test;
 
+import javax.inject.Inject;
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -14,7 +16,11 @@ import java.util.Random;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+@QuarkusTest
 public class GruppenPhasenTest {
+
+    @Inject
+    TeamRepository teamRepository;
 
     Random random = new Random();
     @Test
@@ -24,12 +30,27 @@ public class GruppenPhasenTest {
         List<Team> allTeams = new ArrayList<Team>();
         GroupGP winningGroup = new GroupGP();
         //region Gruppe 1
+        List<Team> teams =  teamRepository.findAll().stream().toList();
+        int teamListCountFromDb = (int) teamRepository.count();
+
+        List<Integer> randomNumbers = null;
+
+        for (int i = 0; i < 8; i++) {
+            randomNumbers = new ArrayList<Integer>();
+            while (randomNumbers.size() < 8) {
+                int randomNumber = random.nextInt(teamListCountFromDb);
+                if (!randomNumbers.contains(randomNumber)) {
+                    randomNumbers.add(randomNumber);
+                }
+            }
+        }
+
 
         //region Teams 1
-        Team team1 = new Team("Portugal", "PRT");
-        Team team2 = new Team("Serbien","SRB");
-        Team team3 = new Team("Republik Irland","IRL");
-        Team team4 = new Team("Luxemburg","LUX");
+        Team team1 = teams.get(randomNumbers.get(0));
+        Team team2 = teams.get(randomNumbers.get(1));
+        Team team3 = teams.get(randomNumbers.get(2));
+        Team team4 = teams.get(randomNumbers.get(3));
         //endregion
 
         //region Group 1
@@ -94,10 +115,13 @@ public class GruppenPhasenTest {
         //region Gruppe 2
 
         //region Teams 2
-        Team team5 = new Team("Spanien","ESP");
-        Team team6 = new Team("Schweden","SWE");
-        Team team7 = new Team("Griechenland","GRC");
-        Team team8 = new Team("Georgien","GEO");
+
+        //region Teams 1
+        Team team5 = teams.get(randomNumbers.get(4));
+        Team team6 = teams.get(randomNumbers.get(5));
+        Team team7 = teams.get(randomNumbers.get(6));
+        Team team8 = teams.get(randomNumbers.get(7));
+        //endregion
         //endregion
 
         //region Group 1
