@@ -15,10 +15,13 @@ public class Team  {
 
     @Column(name = "T_Name",length = 20)
     String name;
-    @Column(name = "T_Points")
+    @Transient
     int points;
     @Column(name = "T_Abbr")
     private String abbr; //Abbreviation
+
+    @Column(name = "T_Overall_Wins")
+    private int winAmount;
 
     //region Constructor
     public Team() {
@@ -74,6 +77,18 @@ public class Team  {
     }
 
     public void incrementPoints(int amount){this.points+=amount;}
+
+    public int getWinAmount() {
+        return winAmount;
+    }
+
+    public void setWinAmount(int amount) {
+        this.winAmount = amount;
+    }
+
+    public void incrementWinAmount(){
+        this.winAmount++;
+    }
 
     @Override
     public String toString() {

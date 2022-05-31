@@ -84,10 +84,14 @@ public class Match{
     }
 
     public Team getWinningTeam(){
-        if(pointsTeam1 > pointsTeam2)
+        if(pointsTeam1 > pointsTeam2) {
+            team1.incrementWinAmount();
             return team1;
-        else if (pointsTeam2 > pointsTeam1)
+        }
+        else if (pointsTeam2 > pointsTeam1) {
+            team2.incrementWinAmount();
             return team2;
+        }
 
         return null;//Bei Gleichstand noch unklar
     }

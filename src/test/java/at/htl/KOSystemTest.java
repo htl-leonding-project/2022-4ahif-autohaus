@@ -9,6 +9,10 @@ import org.junit.jupiter.api.Test;
 
 import javax.inject.Inject;
 import javax.transaction.Transactional;
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @QuarkusTest
 @Transactional
@@ -26,8 +30,13 @@ public class KOSystemTest {
         Phase phaseOne = new Phase(1);
         Phase phaseTwo = new Phase(2);
 
-        Node nodeOne = new Node(new Match(TeamRepo.findById(1L), TeamRepo.findById(2L)));
-        Node nodeTwo = new Node(new Match(TeamRepo.findById(3L), TeamRepo.findById(4L)));
+        List<Team> teams = new ArrayList<>();
+        for(int i=1; i<5; i++){
+            teams.add(TeamRepo.findById((long)i));
+        }
+
+        Node nodeOne = new Node(new Match(teams.get(0), teams.get(1)));
+        Node nodeTwo = new Node(new Match(teams.get(2), teams.get(3)));
 
         nodeOne.getCurMatch().setPointsTeam1(2);
         nodeOne.getCurMatch().setPointsTeam2(1);
@@ -54,17 +63,13 @@ public class KOSystemTest {
         nodeThree.setLeftNode(nodeOne);
         nodeThree.setRightNode(nodeTwo);
 
+        TeamRepo.persist(teams);
         TournamentRepo.persist(smallMatch);
 
         Filewriter filewriter = new Filewriter();
 
         filewriter.writeFinalResult(nodeThree, smallMatch);
+
+        assertEquals(TeamRepo.findById(4L).getWinAmount(), 2);
     }
-
-    @Test
-    public void Setup_Test(){
-
-    }
-
-
 }
