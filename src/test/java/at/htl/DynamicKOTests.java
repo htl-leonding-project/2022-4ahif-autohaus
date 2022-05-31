@@ -343,6 +343,7 @@ public class DynamicKOTests {
 
         Match match15 = new Match(match13.getWinningTeam(), match14.getWinningTeam());
 
+
         match15.setPointsTeam1(1);
         match15.setPointsTeam2(0);
 
