@@ -25,13 +25,16 @@ public class GruppenPhasenTest {
         List<Team> allTeams = new ArrayList<Team>();
         GroupGP winningGroup = new GroupGP();
         //region Gruppe 1
+        Random random = new Random();
+
         List<Team> teams =  teamRepository.listAll();
         int nrOfTeams = (int) teamRepository.count();
 
         List<Integer> randomNumbers = null;
 
         // zufälliges befüllen der Gruppen
-        for (int i = 0; i < 8; i++) {
+        for(int i = 0; i < 8; i++)
+        {
             randomNumbers = new LinkedList<Integer>();
             while (randomNumbers.size() < 8) {
                 int randomNumber = random.nextInt(nrOfTeams);
@@ -40,7 +43,6 @@ public class GruppenPhasenTest {
                 }
             }
         }
-
 
         //region Teams 1
         Team team1 = teams.get(randomNumbers.get(0));
