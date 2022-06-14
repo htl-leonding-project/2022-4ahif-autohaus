@@ -60,4 +60,3 @@ TestSuit??? JUnit5 geht vllt nicht mehr
 Wer gewonnen hat plus ein Feld mit den Punkten eventuell noch mit einem Description Feld
 
 == Vereinbarungen und Entscheidungen
-

@@ -1,8 +1,7 @@
 package at.htl.boundary;
 
-import at.htl.controller.MatchRepository;
+import at.htl.control.MatchRepository;
 import at.htl.entity.Match;
-import io.quarkus.hibernate.orm.panache.PanacheRepository;
 
 import javax.inject.Inject;
 import javax.transaction.Transactional;

@@ -1,6 +1,6 @@
 package at.htl.boundary;
 
-import at.htl.controller.TeamRepository;
+import at.htl.control.TeamRepository;
 import at.htl.entity.Team;
 import io.quarkus.qute.CheckedTemplate;
 import io.quarkus.qute.TemplateInstance;
@@ -10,7 +10,6 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
 import java.util.List;
 
 @Path("teams")

@@ -1,18 +1,13 @@
 package at.htl;
 
-import at.htl.controller.TeamRepository;
+import at.htl.control.TeamRepository;
 import at.htl.entity.*;
 import at.htl.filewriter.FilewriterGP;
 import io.quarkus.test.junit.QuarkusTest;
-import net.sourceforge.plantuml.SourceStringReader;
 import org.junit.jupiter.api.Test;
 
 import javax.inject.Inject;
-import java.io.ByteArrayOutputStream;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -30,15 +25,16 @@ public class GruppenPhasenTest {
         List<Team> allTeams = new ArrayList<Team>();
         GroupGP winningGroup = new GroupGP();
         //region Gruppe 1
-        List<Team> teams =  teamRepository.findAll().stream().toList();
-        int teamListCountFromDb = (int) teamRepository.count();
+        List<Team> teams =  teamRepository.listAll();
+        int nrOfTeams = (int) teamRepository.count();
 
         List<Integer> randomNumbers = null;
 
+        // zufälliges befüllen der Gruppen
         for (int i = 0; i < 8; i++) {
-            randomNumbers = new ArrayList<Integer>();
+            randomNumbers = new LinkedList<Integer>();
             while (randomNumbers.size() < 8) {
-                int randomNumber = random.nextInt(teamListCountFromDb);
+                int randomNumber = random.nextInt(nrOfTeams);
                 if (!randomNumbers.contains(randomNumber)) {
                     randomNumbers.add(randomNumber);
                 }

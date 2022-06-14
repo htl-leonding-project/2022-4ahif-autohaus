@@ -1,4 +1,4 @@
-package at.htl.controller;
+package at.htl.control;
 
 import at.htl.entity.Team;
 import io.quarkus.runtime.StartupEvent;
