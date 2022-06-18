@@ -1,7 +1,7 @@
 package at.htl;
 
-import at.htl.controller.TeamRepository;
-import at.htl.controller.TournamentRepository;
+import at.htl.control.TeamRepository;
+import at.htl.control.TournamentRepository;
 import at.htl.entity.*;
 import at.htl.filewriter.Filewriter;
 import io.quarkus.test.junit.QuarkusTest;
@@ -25,6 +25,7 @@ public class KOSystemTest {
 
     @Test
     public void Match_Test() {
+
         Tournament smallMatch = new Tournament("smallMatch");
 
         Phase phaseOne = new Phase(1);

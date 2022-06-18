@@ -1,4 +1,4 @@
-package at.htl.controller;
+package at.htl.control;
 
 import at.htl.entity.Tournament;
 import io.quarkus.hibernate.orm.panache.PanacheRepository;

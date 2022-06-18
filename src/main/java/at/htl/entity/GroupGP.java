@@ -12,6 +12,7 @@ public class GroupGP {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "G_ID")
     private Long id;
+
     @Column(name = "G_GroupName")
     private String groupName;
     @OneToMany(cascade = CascadeType.ALL)
