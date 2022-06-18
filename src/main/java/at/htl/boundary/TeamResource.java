@@ -28,7 +28,7 @@ public class TeamResource {
     @CheckedTemplate
     public static class Templates {
         public static native TemplateInstance teamList(List<Team> teams);
-        public static native TemplateInstance addTeam();
+        public static native TemplateInstance addTeam(boolean failed);
     }
 
     @GET
@@ -44,7 +44,7 @@ public class TeamResource {
     @Path("/addTeam")
     @Produces(MediaType.TEXT_HTML)
     public TemplateInstance addTeam(){
-        return Templates.addTeam();
+        return Templates.addTeam(false);
     }
 
     @Path("/addTeam")
@@ -57,21 +57,29 @@ public class TeamResource {
             , @FormParam("name") String name
             , @FormParam("abbr") String abbr
     ) {
-        if (name == null || abbr == null) {
-            return Response.status(Response.Status.NOT_FOUND).build();
-        }
-        try {
-            Team newTeam = new Team(name, abbr);
-            teamRepo.persist(newTeam);
-        } catch (Exception e) {
-            log.error("Exception '" + e.getMessage() + "' raised");
+        if (name.equals("") || abbr.equals("")) {
 
-            return Response
-                    .status(Response.Status.OK).build();
+            Templates.addTeam(true);
+            return Response.status(301)
+                    .location(URI.create("/teams/addTeam"))
+                    .build();
         }
+        else {
+            try {
+                Team newTeam = new Team(name, abbr);
+                teamRepo.persist(newTeam);
+            } catch (Exception e) {
+                log.error("Exception '" + e.getMessage() + "' raised");
 
-        return Response.status(301)
-                .location(URI.create("/"))
-                .build();
+                Templates.addTeam(true);
+                return Response.status(301)
+                        .location(URI.create("/teams/addTeam"))
+                        .build();
+            }
+
+            return Response.status(301)
+                    .location(URI.create("/"))
+                    .build();
+        }
     }
 }

@@ -1,20 +1,12 @@
 package at.htl.control;
 
 import at.htl.entity.Team;
-import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 import io.quarkus.hibernate.orm.panache.PanacheRepository;
 
 import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
-<<<<<<< HEAD:src/main/java/at/htl/controller/TeamRepository.java
-import javax.persistence.EntityManager;
+import javax.persistence.PersistenceException;
 import java.util.ArrayList;
 import java.util.List;
-=======
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Random;
->>>>>>> df541ecf21b1ddb3088d598354cdbfa15acdc9de:src/main/java/at/htl/control/TeamRepository.java
 
 @ApplicationScoped
 public class TeamRepository implements PanacheRepository<Team> {
@@ -24,5 +16,13 @@ public class TeamRepository implements PanacheRepository<Team> {
             teams.add(this.findById((long)i));
         }
         return teams;
+    }
+
+    @Override
+    public void persist(Team team) {
+        if(this.find("name = ?1 and abbr = ?2", team.getName(), team.getAbbr()).count() > 0) {
+            throw new PersistenceException();
+        }
+        PanacheRepository.super.persist(team);
     }
 }
