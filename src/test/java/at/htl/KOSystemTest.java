@@ -31,10 +31,7 @@ public class KOSystemTest {
         Phase phaseOne = new Phase(1);
         Phase phaseTwo = new Phase(2);
 
-        List<Team> teams = new ArrayList<>();
-        for(int i=1; i<5; i++){
-            teams.add(TeamRepo.findById((long)i));
-        }
+        List<Team> teams = TeamRepo.setTeamsForTournament(4);
 
         Node nodeOne = new Node(new Match(teams.get(0), teams.get(1)));
         Node nodeTwo = new Node(new Match(teams.get(2), teams.get(3)));
