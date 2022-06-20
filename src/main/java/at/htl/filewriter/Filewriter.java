@@ -4,6 +4,7 @@ import at.htl.entity.Node;
 import at.htl.entity.Tournament;
 import net.sourceforge.plantuml.GeneratedImage;
 import net.sourceforge.plantuml.SourceFileReader;
+import org.apache.commons.io.FileUtils;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 import org.jboss.logging.Logger;
 
@@ -23,6 +24,7 @@ public class Filewriter {
 
     //@ConfigProperty(name = "filewriter.target")
     private String TARGET = "asciidocs/images/generated-diagrams/";
+    private String TARGET_FOR_WEB = "src/main/resources/META-INF/resources/img/";
 
     /*public void writeResult(String team01, String team02, int[] result){
 
@@ -139,6 +141,11 @@ public class Filewriter {
                 LOG.info(String.format("new file %s created", png.getName()));
             }else
                 LOG.error("File already exists");
+
+            File webPng = new File(TARGET_FOR_WEB+png.getName());
+            png.createNewFile();
+
+            FileUtils.copyFile(new File(TARGET+png.getName()), new File(TARGET_FOR_WEB+png.getName()));
 
             png.delete();
         }catch(IOException e){
