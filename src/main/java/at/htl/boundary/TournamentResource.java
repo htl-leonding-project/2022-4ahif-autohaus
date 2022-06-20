@@ -3,8 +3,10 @@ package at.htl.boundary;
 import javax.inject.Inject;
 import javax.transaction.Transactional;
 import javax.ws.rs.*;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.UriInfo;
 
 import at.htl.control.TeamRepository;
 import at.htl.control.TournamentRepository;
@@ -36,6 +38,8 @@ public class TournamentResource {
     @CheckedTemplate
     public static class Templates {
         public static native TemplateInstance TeamsSelect();
+
+        public static native TemplateInstance teamSelection();
     }
 
     @GET
@@ -44,6 +48,13 @@ public class TournamentResource {
     public TemplateInstance getTeams(){
 
         return TournamentResource.Templates.TeamsSelect();
+    }
+
+    @GET
+    @Path("/TeamSelection")
+    @Produces(MediaType.TEXT_HTML)
+    public TemplateInstance selectTeam(){
+        return TournamentResource.Templates.teamSelection();
     }
 
     public Tournament randomGroups(List<Team> teams, int teamsToCreate){
@@ -117,5 +128,28 @@ public class TournamentResource {
                 .temporaryRedirect(URI.create("/groups"))
                 .status(301)
                 .build();
+    }
+
+    @Path("/teamSelection")
+    @POST
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    @Transactional
+    public Response show(
+            @Context UriInfo uriInfo
+            , @FormParam("name") String name
+    ) {
+        if (name.equals("")) {
+
+            TournamentResource.Templates.teamSelection();
+            return Response.status(301)
+                    .location(URI.create("/teams/addTeam"))
+                    .build();
+        }
+        else {
+            return Response.status(301)
+                    .location(URI.create("/TeamSelection/{name}"))
+                    .build();
+        }
     }
 }
