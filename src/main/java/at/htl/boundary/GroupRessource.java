@@ -2,6 +2,7 @@ package at.htl.boundary;
 
 import at.htl.control.GroupRepository;
 import at.htl.control.TeamRepository;
+import at.htl.control.TournamentRepository;
 import at.htl.entity.GroupGP;
 import at.htl.entity.Team;
 import at.htl.entity.Tournament;
@@ -14,6 +15,8 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -27,6 +30,8 @@ public class GroupRessource {
 
     @Inject
     GroupRepository groupRepository;
+    @Inject
+    TournamentRepository tournamentRepository;
 
     Tournament tournament = new Tournament("BierPong");
     Random random = new Random();
@@ -71,25 +76,35 @@ public class GroupRessource {
 
     @GET
     @Produces(MediaType.TEXT_HTML)
-    public TemplateInstance getAllGroups(){
-        teams = teamRepository.listAll();
+    public Response getAllGroups(){
+        /*teams = teamRepository.listAll();
         nrOfTeams=teamRepository.listAll().size();
         randomGroups();
         List<GroupGP> groups = new ArrayList<>();
-        groups.addAll(tournament.getGroups());
+        groups.addAll(tournament.getGroups());*/
 
-        return GroupRessource.Templates
-                .groups(groups,tournament);
+        Tournament tournament = tournamentRepository.findByName("BierPong");
+        if(tournament == null) {
+            return Response.status(404).build();
+        }
+        List<GroupGP> groups = new ArrayList<>(tournament.getGroups());
+        return Response
+                .ok(GroupRessource.Templates.groups(groups,tournament))
+                .build();
     }
 
     //post method that creates a group when pushing a button
     @POST
     @Produces(MediaType.TEXT_HTML)
-    public TemplateInstance createGroup(String groupName){
+    public Response createGroup(String groupName){
         GroupGP group = new GroupGP(groupName,teams);
         tournament.addGroup(group);
         groupRepository.persist(group);
-        return getAllGroups();
+        return Response
+                .temporaryRedirect(URI.create("/groups"))
+                .status(301)
+                .build();
+
     }
 
 }

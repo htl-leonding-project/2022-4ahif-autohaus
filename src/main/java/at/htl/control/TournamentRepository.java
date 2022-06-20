@@ -10,7 +10,6 @@ import java.util.List;
 
 @ApplicationScoped
 public class TournamentRepository implements PanacheRepository<Tournament> {
-
     @Inject
     MatchRepository matchRepository;
 
@@ -45,5 +44,9 @@ public class TournamentRepository implements PanacheRepository<Tournament> {
         nodes.add(node1);
         nodes.add(node2);
         nodes.add(node3);
+    }
+
+    public Tournament findByName(String name) {
+        return find("name", name).firstResult();
     }
 }
