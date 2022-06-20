@@ -76,6 +76,11 @@ public class Tournament  {
 
     @Override
     public String toString() {
-        return "Tournament "+ name;
+        return "Tournament{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", phases=" + phases +
+                ", GPgroups=" + GPgroups +
+                '}';
     }
 }
