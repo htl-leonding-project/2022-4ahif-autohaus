@@ -1,5 +1,6 @@
 package at.htl;
 
+import at.htl.control.MatchRepository;
 import at.htl.control.TeamRepository;
 import at.htl.control.TournamentRepository;
 import at.htl.entity.*;
@@ -22,6 +23,8 @@ public class KOSystemTest {
     TournamentRepository TournamentRepo;
     @Inject
     TeamRepository TeamRepo;
+    @Inject
+    MatchRepository MatchRepo;
 
     @Test
     public void Match_Test() {
@@ -38,9 +41,11 @@ public class KOSystemTest {
 
         nodeOne.getCurMatch().setPointsTeam1(2);
         nodeOne.getCurMatch().setPointsTeam2(1);
+        MatchRepo.persist(nodeOne.getCurMatch());
 
         nodeTwo.getCurMatch().setPointsTeam1(0);
         nodeTwo.getCurMatch().setPointsTeam2(2);
+        MatchRepo.persist(nodeTwo.getCurMatch());
 
         Node nodeThree = new Node(new Match(
                 nodeOne.getCurMatch().getWinningTeam(),
@@ -57,6 +62,7 @@ public class KOSystemTest {
 
         nodeThree.getCurMatch().setPointsTeam1(0);
         nodeThree.getCurMatch().setPointsTeam2(1);
+        MatchRepo.persist(nodeThree.getCurMatch());
 
         nodeThree.setLeftNode(nodeOne);
         nodeThree.setRightNode(nodeTwo);
@@ -69,5 +75,17 @@ public class KOSystemTest {
         filewriter.writeFinalResult(nodeThree, smallMatch);
 
         assertEquals(TeamRepo.findById(4L).getWinAmount(), 2);
+    }
+
+    @Test
+    public void TestTreeBuilding(){
+        Tournament t1 = new Tournament("treeSmall");
+        List<Team> teams = TeamRepo.setTeamsForTournament(4);
+        Node finalnode;
+
+        finalnode = TournamentRepo.setUpTournament(t1.getName(), teams);
+
+        Filewriter newFile = new Filewriter();
+        newFile.writeFinalResult(finalnode, t1);
     }
 }
