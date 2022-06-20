@@ -6,6 +6,7 @@ import io.quarkus.hibernate.orm.panache.PanacheRepository;
 import javax.enterprise.context.ApplicationScoped;
 import javax.persistence.PersistenceException;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 @ApplicationScoped
@@ -14,6 +15,14 @@ public class TeamRepository implements PanacheRepository<Team> {
         List<Team> teams = new ArrayList<>();
         for(int i=1; i<amount+1; i++){
             teams.add(this.findById((long)i));
+        }
+        return teams;
+    }
+
+    public List<Team> getTeamsByIds(List<Integer> ids){
+        List<Team> teams = new LinkedList<>();
+        for (int id:ids) {
+            teams.add(this.findById((long)id));
         }
         return teams;
     }
