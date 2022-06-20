@@ -7,6 +7,7 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
+import java.io.File;
 
 import at.htl.control.TeamRepository;
 import at.htl.control.TournamentRepository;
@@ -19,6 +20,7 @@ import io.quarkus.qute.CheckedTemplate;
 import io.quarkus.qute.Template;
 import io.quarkus.qute.TemplateInstance;
 
+import java.io.File;
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -38,7 +40,7 @@ public class TournamentResource {
     @CheckedTemplate
     public static class Templates {
         public static native TemplateInstance TeamsSelect();
-        public static native TemplateInstance teamSelection();
+        public static native TemplateInstance tournamentSelection();
         public static native TemplateInstance showEndResult(String name);
     }
 
@@ -51,12 +53,13 @@ public class TournamentResource {
     }
 
     @GET
-    @Path("/TeamSelection")
+    @Path("/tournamentSelection")
     @Produces(MediaType.TEXT_HTML)
     public TemplateInstance selectTeam() {
-        return TournamentResource.Templates.teamSelection();
+        return TournamentResource.Templates.tournamentSelection();
     }
 
+    @GET
     @Path("/showEndResult/{name}")
     @Produces(MediaType.TEXT_HTML)
     public TemplateInstance showEndResult(@PathParam("name") String name){
@@ -136,7 +139,7 @@ public class TournamentResource {
                 .build();
     }
 
-    @Path("/teamSelection")
+    @Path("/tournamentSelection")
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
@@ -145,16 +148,18 @@ public class TournamentResource {
             @Context UriInfo uriInfo
             , @FormParam("name") String name
     ) {
-        if (name.equals("")) {
+        File image = new File("asciidocs/images/generated-diagrams/"+name+".png");
 
-            TournamentResource.Templates.teamSelection();
+        if (name.equals("") || !image.exists()) {
+
+            TournamentResource.Templates.tournamentSelection();
             return Response.status(301)
-                    .location(URI.create("/teams/addTeam"))
+                    .location(URI.create("tournaments/tournamentSelection"))
                     .build();
         }
         else {
             return Response.status(301)
-                    .location(URI.create("/TeamSelection/{name}"))
+                    .location(URI.create("tournaments/showEndResult/"+name))
                     .build();
         }
     }
