@@ -142,9 +142,6 @@ public class Filewriter {
             }else
                 LOG.error("File already exists");
 
-            File webPng = new File(TARGET_FOR_WEB+png.getName());
-            png.createNewFile();
-
             FileUtils.copyFile(new File(TARGET+png.getName()), new File(TARGET_FOR_WEB+png.getName()));
 
             png.delete();
