@@ -36,6 +36,7 @@ public class TournamentResource {
     @CheckedTemplate
     public static class Templates {
         public static native TemplateInstance TeamsSelect();
+        public static native TemplateInstance showEndResult(String name);
     }
 
     @GET
@@ -44,6 +45,13 @@ public class TournamentResource {
     public TemplateInstance getTeams(){
 
         return TournamentResource.Templates.TeamsSelect();
+    }
+
+    @GET
+    @Path("/showEndResult/{name}")
+    @Produces(MediaType.TEXT_HTML)
+    public TemplateInstance showEndResult(@PathParam("name") String name){
+        return TournamentResource.Templates.showEndResult(name);
     }
 
     public Tournament randomGroups(List<Team> teams, int teamsToCreate){

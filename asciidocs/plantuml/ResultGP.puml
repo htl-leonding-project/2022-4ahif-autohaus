@@ -2,87 +2,87 @@
 left to right direction
 
 map Gruppe.A {
-FC Barcelona=>FCB
-FC Arsenal=>FCA
 Atletico Madrid=>AM
-AC Mailand=>ACM
+Real Madrid=>RM
+Chelsea=>C
+FC Liverpool=>FCL
 }
 
 map Gruppe.B {
 Lask Linz=>Lask
-Red Bull Salzburg=>RBS
-Inter Mailand=>IM
-AS Rom=>ASR
+Ajax Amsterdam=>AA
+FC Barcelona=>FCB
+FC Arsenal=>FCA
 }
-map Match.FCAvsACM {
-FC Arsenal => 2
-AC Mailand => 3
-}
-
-map Match.FCAvsAM {
-FC Arsenal => 1
-Atletico Madrid => 3
+map Match.RMvsFCL {
+Real Madrid => 2
+FC Liverpool => 3
 }
 
-map Match.FCAvsFCB {
-FC Arsenal => 3
-FC Barcelona => 2
+map Match.RMvsC {
+Real Madrid => 1
+Chelsea => 3
 }
 
-map Match.ACMvsAM {
-AC Mailand => 3
+map Match.RMvsAM {
+Real Madrid => 3
+Atletico Madrid => 2
+}
+
+map Match.FCLvsC {
+FC Liverpool => 3
+Chelsea => 1
+}
+
+map Match.FCLvsAM {
+FC Liverpool => 1
+Atletico Madrid => 2
+}
+
+map Match.CvsAM {
+Chelsea => 2
 Atletico Madrid => 1
 }
-
-map Match.ACMvsFCB {
-AC Mailand => 1
-FC Barcelona => 2
+map Match.AAvsFCB {
+Ajax Amsterdam => 0
+FC Barcelona => 3
 }
 
-map Match.AMvsFCB {
-Atletico Madrid => 2
-FC Barcelona => 1
-}
-map Match.RBSvsIM {
-Red Bull Salzburg => 0
-Inter Mailand => 3
+map Match.AAvsFCA {
+Ajax Amsterdam => 3
+FC Arsenal => 1
 }
 
-map Match.RBSvsASR {
-Red Bull Salzburg => 3
-AS Rom => 1
-}
-
-map Match.RBSvsLask {
-Red Bull Salzburg => 1
+map Match.AAvsLask {
+Ajax Amsterdam => 1
 Lask Linz => 0
 }
 
-map Match.IMvsASR {
-Inter Mailand => 2
-AS Rom => 3
+map Match.FCBvsFCA {
+FC Barcelona => 2
+FC Arsenal => 3
 }
 
-map Match.IMvsLask {
-Inter Mailand => 2
+map Match.FCBvsLask {
+FC Barcelona => 2
 Lask Linz => 1
 }
 
-map Match.ASRvsLask {
-AS Rom => 3
+map Match.FCAvsLask {
+FC Arsenal => 3
 Lask Linz => 2
 }
-Gruppe.A -- Match.FCAvsACM
-Gruppe.A -- Match.FCAvsAM
-Gruppe.A -- Match.FCAvsFCB
-Gruppe.A -- Match.ACMvsAM
-Gruppe.A -- Match.ACMvsFCB
-Gruppe.A -- Match.AMvsFCB
-Gruppe.B -- Match.RBSvsIM
-Gruppe.B -- Match.RBSvsASR
-Gruppe.B -- Match.RBSvsLask
-Gruppe.B -- Match.IMvsASR
-Gruppe.B -- Match.IMvsLask
-Gruppe.B -- Match.ASRvsLask
+Gruppe.A -- Match.RMvsFCL
+Gruppe.A -- Match.RMvsC
+Gruppe.A -- Match.RMvsAM
+Gruppe.A -- Match.FCLvsC
+Gruppe.A -- Match.FCLvsAM
+Gruppe.A -- Match.CvsAM
+Gruppe.B -- Match.AAvsFCB
+Gruppe.B -- Match.AAvsFCA
+Gruppe.B -- Match.AAvsLask
+Gruppe.B -- Match.FCBvsFCA
+Gruppe.B -- Match.FCBvsLask
+Gruppe.B -- Match.FCAvsLask
 
 @enduml
