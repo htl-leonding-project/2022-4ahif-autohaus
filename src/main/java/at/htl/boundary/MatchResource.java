@@ -2,24 +2,34 @@ package at.htl.boundary;
 
 import at.htl.control.MatchRepository;
 import at.htl.entity.Match;
+import at.htl.entity.Team;
+import io.quarkus.qute.CheckedTemplate;
+import io.quarkus.qute.TemplateInstance;
 
 import javax.inject.Inject;
 import javax.transaction.Transactional;
 import javax.ws.rs.*;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.UriInfo;
 import java.net.URI;
 import java.util.List;
 
 @Path("/matches")
 public class MatchResource {
+
+    @Inject
+    MatchRepository matchRepository;
+
+    @CheckedTemplate
+    public static class Templates {
+        public static native TemplateInstance matchResult(Match match);
+    }
     /**
      * Gibt alle Matches zurück
      * @return
      */
-    @Inject
-    MatchRepository matchRepository;
-
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAll()
@@ -91,6 +101,35 @@ public class MatchResource {
         return Response.status(Response.Status.BAD_REQUEST).build();
     }
 
+    @Path("/matchResult/{id}")
+    @POST
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    @Transactional
+    public Response create(
+            @Context UriInfo uriInfo
+            , @PathParam("id") Long id
+            , @FormParam("team1") String team1
+            , @FormParam("team2") String team2
+    ) {
+        if (team1.equals("") || team2.equals("")) {
+
+            MatchResource.Templates.matchResult(null);
+            return Response.status(301)
+                    .location(URI.create("/matches/matchResult"))
+                    .build();
+        }
+        else {
+            Match match = matchRepository.findById(id);
+
+            match.setPointsTeam1(Integer.parseInt(team1));
+            match.setPointsTeam2(Integer.parseInt(team2));
+
+            return Response.status(301)
+                    .location(URI.create("/"))
+                    .build();
+        }
+    }
 
 }
 

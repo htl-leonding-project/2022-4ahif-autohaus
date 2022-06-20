@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <style>
         .button {
             border: none;
@@ -41,8 +41,20 @@
     </style>
 </head>
 <body>
-<h1>Spielergebniss eintragen</h1>
-<button class="button button1">Gewonnen</button>
-<button class="button button2">Verloren</button>
+
+<div class="banner lead">
+    Spielergebniss eintragen - {match.team1.getName()} vs. {match.team2.getName()}
+</div>
+
+<div class="container">
+    <form action="/matches/addResult/{match.getId()}" method="post" name="addForm" enctype="application/x-www-form-urlencoded">
+        <label for="team1">Punkte {match.team1.getName()}:</label>
+        <input class="form-control" type="text" name="team1" id="team1Id">
+        <br>
+        <label for="team2">Punkte {match.team2.getName()}:</label>
+        <input class="form-control" type="text" name="team2" id="team2Id">
+        <button style="margin-top: 10px" class="btn btn-success" type="submit">Speichern</button>
+    </form>
+</div>
 </body>
 </html>
