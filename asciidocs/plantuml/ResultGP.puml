@@ -2,87 +2,87 @@
 left to right direction
 
 map Gruppe.A {
-Inter Mailand=>IM
-Manchester United=>MU
-FC Porto=>FCP
+Lask Linz=>Lask
+Real Madrid=>RM
 FC Barcelona=>FCB
+Manchester City=>MC
 }
 
 map Gruppe.B {
-Real Madrid=>RM
+Atletico Madrid=>AM
 FC Liverpool=>FCL
-Rapid Wien=>RW
-Chelsea=>C
+FC Porto=>FCP
+Inter Mailand=>IM
 }
-map Match.MUvsFCB {
-Manchester United => 2
+map Match.RMvsMC {
+Real Madrid => 2
+Manchester City => 3
+}
+
+map Match.RMvsFCB {
+Real Madrid => 1
 FC Barcelona => 3
 }
 
-map Match.MUvsFCP {
-Manchester United => 1
+map Match.RMvsLask {
+Real Madrid => 3
+Lask Linz => 2
+}
+
+map Match.MCvsFCB {
+Manchester City => 3
+FC Barcelona => 1
+}
+
+map Match.MCvsLask {
+Manchester City => 1
+Lask Linz => 2
+}
+
+map Match.FCBvsLask {
+FC Barcelona => 2
+Lask Linz => 1
+}
+map Match.FCLvsFCP {
+FC Liverpool => 0
 FC Porto => 3
 }
 
-map Match.MUvsIM {
-Manchester United => 3
-Inter Mailand => 2
+map Match.FCLvsIM {
+FC Liverpool => 3
+Inter Mailand => 1
 }
 
-map Match.FCBvsFCP {
-FC Barcelona => 3
-FC Porto => 1
-}
-
-map Match.FCBvsIM {
-FC Barcelona => 1
-Inter Mailand => 2
+map Match.FCLvsAM {
+FC Liverpool => 1
+Atletico Madrid => 0
 }
 
 map Match.FCPvsIM {
 FC Porto => 2
-Inter Mailand => 1
-}
-map Match.FCLvsRW {
-FC Liverpool => 0
-Rapid Wien => 3
+Inter Mailand => 3
 }
 
-map Match.FCLvsC {
-FC Liverpool => 3
-Chelsea => 1
+map Match.FCPvsAM {
+FC Porto => 2
+Atletico Madrid => 1
 }
 
-map Match.FCLvsRM {
-FC Liverpool => 1
-Real Madrid => 0
+map Match.IMvsAM {
+Inter Mailand => 3
+Atletico Madrid => 2
 }
-
-map Match.RWvsC {
-Rapid Wien => 2
-Chelsea => 3
-}
-
-map Match.RWvsRM {
-Rapid Wien => 2
-Real Madrid => 1
-}
-
-map Match.CvsRM {
-Chelsea => 3
-Real Madrid => 2
-}
-Gruppe.A -- Match.MUvsFCB
-Gruppe.A -- Match.MUvsFCP
-Gruppe.A -- Match.MUvsIM
-Gruppe.A -- Match.FCBvsFCP
-Gruppe.A -- Match.FCBvsIM
-Gruppe.A -- Match.FCPvsIM
-Gruppe.B -- Match.FCLvsRW
-Gruppe.B -- Match.FCLvsC
-Gruppe.B -- Match.FCLvsRM
-Gruppe.B -- Match.RWvsC
-Gruppe.B -- Match.RWvsRM
-Gruppe.B -- Match.CvsRM
+Gruppe.A -- Match.RMvsMC
+Gruppe.A -- Match.RMvsFCB
+Gruppe.A -- Match.RMvsLask
+Gruppe.A -- Match.MCvsFCB
+Gruppe.A -- Match.MCvsLask
+Gruppe.A -- Match.FCBvsLask
+Gruppe.B -- Match.FCLvsFCP
+Gruppe.B -- Match.FCLvsIM
+Gruppe.B -- Match.FCLvsAM
+Gruppe.B -- Match.FCPvsIM
+Gruppe.B -- Match.FCPvsAM
+Gruppe.B -- Match.IMvsAM
 
 @enduml
