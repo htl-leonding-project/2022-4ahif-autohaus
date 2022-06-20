@@ -47,9 +47,6 @@ public class TournamentRepository implements PanacheRepository<Tournament> {
         nodes.add(node2);
         nodes.add(node3);
 
-        node3.setCurMatch(new Match(node1.getCurMatch().getTeam1(), node2.getCurMatch().getTeam2()));
-        node3.getCurMatch().setPointsTeam1(1);
-
         return nodes;
     }
 
