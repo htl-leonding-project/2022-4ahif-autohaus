@@ -85,7 +85,9 @@ public class GroupRessource {
 
         Tournament tournament = tournamentRepository.findByName("BierPong");
         if(tournament == null) {
-            return Response.status(404).build();
+            return Response
+                .ok(GroupRessource.Templates.groups(new LinkedList<>(), new Tournament("No Tournament found")))
+                .build();
         }
         List<GroupGP> groups = new ArrayList<>(tournament.getGroups());
         return Response

@@ -9,8 +9,10 @@ import javax.ws.rs.core.Response;
 import at.htl.control.TeamRepository;
 import at.htl.control.TournamentRepository;
 import at.htl.entity.GroupGP;
+import at.htl.entity.Node;
 import at.htl.entity.Team;
 import at.htl.entity.Tournament;
+import at.htl.filewriter.Filewriter;
 import io.quarkus.qute.CheckedTemplate;
 import io.quarkus.qute.Template;
 import io.quarkus.qute.TemplateInstance;
@@ -84,6 +86,7 @@ public class TournamentResource {
             Team team = teams.get(randomNumbers.get(j));
             listofGroup1.add(team);
         }
+
         /*Team team2 = teams.get(randomNumbers.get(1));
         Team team3 = teams.get(randomNumbers.get(2));
         Team team4 = teams.get(randomNumbers.get(3))
@@ -95,17 +98,21 @@ public class TournamentResource {
 
         tournament.addGroup(group1);
         tournamentRepository.persist(tournament);
+
+        Node finalNode = tournamentRepository.setUpTournament(listofGroup1);
+        Filewriter newFile = new Filewriter();
+        newFile.writeFinalResult(finalNode, tournament);
+
         return tournament;
     }
 
-    @GET
+    @POST
     @Transactional
     @Path("create/{nrOfTeams}")
     public Response createGroup(@PathParam("nrOfTeams") int nrOfTeams){
         List<Team> teams = teamRepository.listAll();
         Tournament tournament = randomGroups(teams, nrOfTeams);
-        List<GroupGP> groups = new ArrayList<>(tournament.getGroups());
-        System.out.println("tournament: ");
+        //List<GroupGP> groups = new ArrayList<>(tournament.getGroups());
         return Response
                 .temporaryRedirect(URI.create("/groups"))
                 .status(301)

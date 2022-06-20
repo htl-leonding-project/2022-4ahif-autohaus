@@ -113,13 +113,23 @@
         <h1>Anzahl der Teams auswählen</h1>
         <p>
             Bitte wählen Sie die Anzahl der Teams aus, die Sie in der LEO-Competition verwenden möchten.
-</div>
-    <div class="right-column">
-           <a href="http://localhost:8080/tournaments/create/4">
-               <button class="btn btn-primary" type="submit">4 x Teams</button>
-           </a>
-            <button class="btn btn-primary" type="submit">8 x Teams</button>
-            <button class="btn btn-primary" type="submit">16 x Teams</button>
+    </div>
+        <div class="right-column">
+            <form action="/tournaments/create/4" method="post">
+                <button class="btn btn-primary" type="submit">4 x Teams</button>
+            </form>
+            <form action="/tournaments/create/8" method="post">
+                <button class="btn btn-primary" type="submit">8 x Teams</button>
+            </form>
+            <form action="/tournaments/create/16" method="post">
+                <button class="btn btn-primary" type="submit">16 x Teams</button>
+            </form>
+               <!--<a href="http://localhost:8080/tournaments/create/4">
+
+               </a>
+                <button class="btn btn-primary" type="submit">8 x Teams</button>
+                <button class="btn btn-primary" type="submit">16 x Teams</button>-->
+        </div>
     </div>
 </body>
 </html>

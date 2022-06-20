@@ -13,8 +13,7 @@ public class TournamentRepository implements PanacheRepository<Tournament> {
     @Inject
     MatchRepository matchRepository;
 
-    public Node setUpTournament (String name, List<Team> teams) {
-        Tournament tournament = new Tournament(name);
+    public Node setUpTournament (List<Team> teams) {
         List<Match> matches = matchRepository.matchTeams(teams);
         List<Node> nodes = new LinkedList<>();
 
