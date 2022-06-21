@@ -111,11 +111,12 @@
 <div class="banner lead">
     LEO-Competition - Tournament Diagram Selection
 </div>
-
+<br>
 <div>
     <form action="/tournaments/createTournament" method="post" name="addForm" enctype="application/x-www-form-urlencoded">
     <div class="row">
         <div class="d-grid gap-2 col-6 mx-auto">
+            <input class="form-control" type="text" name="tournamentName">
             <button type="submit" style="margin-top: 10px" class="btn btn-primary">Start Tournament</button>
             {#for team in teams}
                 <label for="id">{team.name}</label>

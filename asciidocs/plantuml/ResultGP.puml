@@ -2,87 +2,87 @@
 left to right direction
 
 map Gruppe.A {
-Ajax Amsterdam=>AA
-FC Porto=>FCP
-AS Rom=>ASR
-Inter Mailand=>IM
+Manchester City=>MC
+FC Arsenal=>FCA
+Real Madrid=>RM
+Chelsea=>C
 }
 
 map Gruppe.B {
-FC Arsenal=>FCA
-FC Barcelona=>FCB
-Rapid Wien=>RW
-AC Mailand=>ACM
+Atletico Madrid=>AM
+Red Bull Salzburg=>RBS
+FC Liverpool=>FCL
+FC Porto=>FCP
 }
-map Match.FCPvsIM {
-FC Porto => 2
-Inter Mailand => 3
-}
-
-map Match.FCPvsASR {
-FC Porto => 1
-AS Rom => 3
-}
-
-map Match.FCPvsAA {
-FC Porto => 3
-Ajax Amsterdam => 2
-}
-
-map Match.IMvsASR {
-Inter Mailand => 3
-AS Rom => 1
-}
-
-map Match.IMvsAA {
-Inter Mailand => 1
-Ajax Amsterdam => 2
-}
-
-map Match.ASRvsAA {
-AS Rom => 2
-Ajax Amsterdam => 1
-}
-map Match.FCBvsRW {
-FC Barcelona => 0
-Rapid Wien => 3
-}
-
-map Match.FCBvsACM {
-FC Barcelona => 3
-AC Mailand => 1
-}
-
-map Match.FCBvsFCA {
-FC Barcelona => 1
-FC Arsenal => 0
-}
-
-map Match.RWvsACM {
-Rapid Wien => 2
-AC Mailand => 3
-}
-
-map Match.RWvsFCA {
-Rapid Wien => 2
-FC Arsenal => 1
-}
-
-map Match.ACMvsFCA {
-AC Mailand => 3
+map Match.FCAvsC {
 FC Arsenal => 2
+Chelsea => 3
 }
-Gruppe.A -- Match.FCPvsIM
-Gruppe.A -- Match.FCPvsASR
-Gruppe.A -- Match.FCPvsAA
-Gruppe.A -- Match.IMvsASR
-Gruppe.A -- Match.IMvsAA
-Gruppe.A -- Match.ASRvsAA
-Gruppe.B -- Match.FCBvsRW
-Gruppe.B -- Match.FCBvsACM
-Gruppe.B -- Match.FCBvsFCA
-Gruppe.B -- Match.RWvsACM
-Gruppe.B -- Match.RWvsFCA
-Gruppe.B -- Match.ACMvsFCA
+
+map Match.FCAvsRM {
+FC Arsenal => 1
+Real Madrid => 3
+}
+
+map Match.FCAvsMC {
+FC Arsenal => 3
+Manchester City => 2
+}
+
+map Match.CvsRM {
+Chelsea => 3
+Real Madrid => 1
+}
+
+map Match.CvsMC {
+Chelsea => 1
+Manchester City => 2
+}
+
+map Match.RMvsMC {
+Real Madrid => 2
+Manchester City => 1
+}
+map Match.RBSvsFCL {
+Red Bull Salzburg => 0
+FC Liverpool => 3
+}
+
+map Match.RBSvsFCP {
+Red Bull Salzburg => 3
+FC Porto => 1
+}
+
+map Match.RBSvsAM {
+Red Bull Salzburg => 1
+Atletico Madrid => 0
+}
+
+map Match.FCLvsFCP {
+FC Liverpool => 2
+FC Porto => 3
+}
+
+map Match.FCLvsAM {
+FC Liverpool => 2
+Atletico Madrid => 1
+}
+
+map Match.FCPvsAM {
+FC Porto => 3
+Atletico Madrid => 2
+}
+Gruppe.A -- Match.FCAvsC
+Gruppe.A -- Match.FCAvsRM
+Gruppe.A -- Match.FCAvsMC
+Gruppe.A -- Match.CvsRM
+Gruppe.A -- Match.CvsMC
+Gruppe.A -- Match.RMvsMC
+Gruppe.B -- Match.RBSvsFCL
+Gruppe.B -- Match.RBSvsFCP
+Gruppe.B -- Match.RBSvsAM
+Gruppe.B -- Match.FCLvsFCP
+Gruppe.B -- Match.FCLvsAM
+Gruppe.B -- Match.FCPvsAM
 
 @enduml
