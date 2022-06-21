@@ -22,6 +22,8 @@ import io.quarkus.qute.TemplateInstance;
 
 import java.io.File;
 import java.net.URI;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -160,10 +162,15 @@ public class TournamentResource {
     @Transactional
     public Response createTournament(
             @Context UriInfo uriInfo
-            , @FormParam("id") List<Integer> ids
+            , @FormParam("id") List<Integer> ids,
+            @FormParam("tournamentName") String name
     ) {
         List<Node> nodes;
+        String tournamentName;
         if(ids.size() == 4 || ids.size() == 8 || ids.size() == 16){
+            if(name.isEmpty()){
+                tournamentName = "Turnier am "+LocalDateTime.now().format(DateTimeFormatter.ISO_ORDINAL_DATE).toString();
+            }
             nodes = tournamentRepository.setUpTournament(teamRepository.getTeamsByIds(ids));
         }
         return Response.ok().build();
