@@ -30,7 +30,7 @@ import java.util.Random;
 @Path("/tournaments")
 public class TournamentResource {
 
-
+    private final String IMAGE_LOCATION="asciidocs/images/generated-diagrams/";
     @Inject
     TeamRepository teamRepository;
 
@@ -42,6 +42,7 @@ public class TournamentResource {
         public static native TemplateInstance TeamsSelect();
         public static native TemplateInstance tournamentSelection();
         public static native TemplateInstance showEndResult(String name);
+        public static native TemplateInstance createTournament(List<Team> teams);
     }
 
     @GET
@@ -64,6 +65,13 @@ public class TournamentResource {
     @Produces(MediaType.TEXT_HTML)
     public TemplateInstance showEndResult(@PathParam("name") String name){
         return TournamentResource.Templates.showEndResult(name);
+    }
+
+    @GET
+    @Path("/createTournament")
+    @Produces(MediaType.TEXT_HTML)
+    public TemplateInstance createTournament(){
+        return TournamentResource.Templates.createTournament(teamRepository.findAll().list());
     }
 
     public Tournament randomGroups(List<Team> teams, int teamsToCreate){
@@ -119,7 +127,8 @@ public class TournamentResource {
         tournament.addGroup(group1);
         tournamentRepository.persist(tournament);
 
-        Node finalNode = tournamentRepository.setUpTournament(listofGroup1);
+        List<Node> nodes = tournamentRepository.setUpTournament(listofGroup1);
+        Node finalNode = nodes.get(nodes.size()-1);
         Filewriter newFile = new Filewriter();
         newFile.writeFinalResult(finalNode, tournament);
 
@@ -139,6 +148,22 @@ public class TournamentResource {
                 .build();
     }
 
+    @Path("/createTournament")
+    @POST
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    @Transactional
+    public Response createTournament(
+            @Context UriInfo uriInfo
+            , @FormParam("id") List<Integer> ids
+    ) {
+        List<Node> nodes;
+        if(ids.size() == 4 || ids.size() == 8 || ids.size() == 16){
+            nodes = tournamentRepository.setUpTournament(teamRepository.getTeamsByIds(ids));
+        }
+        return Response.ok().build();
+    }
+
     @Path("/tournamentSelection")
     @POST
     @Produces(MediaType.APPLICATION_JSON)
@@ -148,7 +173,7 @@ public class TournamentResource {
             @Context UriInfo uriInfo
             , @FormParam("name") String name
     ) {
-        File image = new File("asciidocs/images/generated-diagrams/"+name+".png");
+        File image = new File(IMAGE_LOCATION+name+".png");
 
         if (name.equals("") || !image.exists()) {
 
