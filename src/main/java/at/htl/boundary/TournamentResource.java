@@ -140,8 +140,13 @@ public class TournamentResource {
     @Transactional
     @Path("create/{nrOfTeams}")
     public Response createGroup(@PathParam("nrOfTeams") int nrOfTeams){
+        if(nrOfTeams %4!= 0){
+            return Response.status(Response.Status.BAD_REQUEST).build();
+        }
         List<Team> teams = teamRepository.listAll();
-        Tournament tournament = randomGroups(teams, nrOfTeams);
+        for (int i = 0; i < nrOfTeams/4; i++) {
+            Tournament tournament = randomGroups(teams, 4);
+        }
         //List<GroupGP> groups = new ArrayList<>(tournament.getGroups());
         return Response
                 .temporaryRedirect(URI.create("/groups"))

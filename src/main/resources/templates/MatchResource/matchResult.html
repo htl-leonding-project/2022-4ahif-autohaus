@@ -49,15 +49,21 @@
 <body>
 
 <div class="banner lead">
+<<<<<<< HEAD
     Spielergebnis eintragen - {match.team1.getName()} vs. {match.team2.getName()}
+=======
+    <a href="http://localhost:8080" class="d-flex justify-content-center">
+    Spielergebniss eintragen - {match.team1.getName()} vs. {match.team2.getName()}
+    </a>
+>>>>>>> 319cb4a1b1d44560c1695b753e93c43f04d54b07
 </div>
 
 <div class="container">
-    <form action="/matches/addResult/{match.getId()}" method="post" name="addForm" enctype="application/x-www-form-urlencoded">
-        <label for="team1">Punkte {match.team1.getName()}:</label>
+    <form action="/matches/matchResult/{match.getId()}" method="post" name="addForm" enctype="application/x-www-form-urlencoded">
+        <label for="team1">Punkte {match.getTeam1().getName()}:</label>
         <input class="form-control" type="text" name="team1" id="team1Id">
         <br>
-        <label for="team2">Punkte {match.team2.getName()}:</label>
+        <label for="team2">Punkte {match.getTeam2().getName()}:</label>
         <input class="form-control" type="text" name="team2" id="team2Id">
         <button style="margin-top: 10px" class="btn btn-success" type="submit">Speichern</button>
     </form>
