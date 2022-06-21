@@ -97,9 +97,8 @@ public class Match{
     }
 
     public String getMatchResultString() {
-        return String.format("""
-                %s: %n
-                %s: %n""", team1.name, pointsTeam1, team2.name, pointsTeam2);
+        return getTeam1().getName() +" "+getPointsTeam1()+" \\n"+getTeam2().getName()
+                +" "+getPointsTeam2();
     }
 
     @Override
