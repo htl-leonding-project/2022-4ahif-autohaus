@@ -1,10 +1,18 @@
-@startmindmap BierPong.png
-title BierPong
+@startmindmap Test-Tournament.png
+title Test-Tournament
 
-- Inter Mailand vs. FC Barcelona 1:0
+- team02 1 \nteam05 0
 
--- Inter Mailand vs. Lask Linz 0:0
+-- team02 3 \nteam03 2
 
--- AC Mailand vs. FC Barcelona 0:0
-caption Winner is: Inter Mailand
+--- team01 0 \nteam02 1
+
+--- team03 2 \nteam04 1
+
+-- team05 2 \nteam08 0
+
+--- team05 3 \nteam06 0
+
+--- team07 1 \nteam08 2
+caption Winner is: team02
 @endmindmap
