@@ -97,9 +97,8 @@ public class Match{
     }
 
     public String getMatchResultString() {
-        return getTeam1().getName() +" vs. "+getTeam2().getName()
-                +" "+getPointsTeam1()
-                +":"+getPointsTeam2();
+        return getTeam1().getName() +" "+getPointsTeam1()+" \\n"+getTeam2().getName()
+                +" "+getPointsTeam2();
     }
 
     @Override
