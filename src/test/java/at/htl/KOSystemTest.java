@@ -81,7 +81,7 @@ public class KOSystemTest {
     public void TestTreeBuilding(){
         Tournament t1 = new Tournament("treeSmall");
         List<Team> teams = TeamRepo.setTeamsForTournament(4);
-        List<Node> finalNode = TournamentRepo.setUpTournament(teams);
+        List<Node> finalNode = TournamentRepo.setUpTournament(t1.getName(), teams);
 
         Filewriter newFile = new Filewriter();
         newFile.writeFinalResult(finalNode.get(finalNode.size()-1), t1);

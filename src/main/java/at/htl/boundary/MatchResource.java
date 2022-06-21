@@ -25,6 +25,7 @@ public class MatchResource {
     @CheckedTemplate
     public static class Templates {
         public static native TemplateInstance matchResult(Match match);
+        public static native TemplateInstance playMatch(Match match);
     }
     /**
      * Gibt alle Matches zurück
@@ -129,6 +130,13 @@ public class MatchResource {
                     .location(URI.create("/"))
                     .build();
         }
+    }
+
+    @Path("/playMatch")
+    @GET
+    @Produces(MediaType.TEXT_HTML)
+    public TemplateInstance playMatch(Match match){
+        return MatchResource.Templates.playMatch(match);
     }
 
 }

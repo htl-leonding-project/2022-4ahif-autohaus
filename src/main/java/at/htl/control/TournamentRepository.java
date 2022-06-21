@@ -13,7 +13,8 @@ public class TournamentRepository implements PanacheRepository<Tournament> {
     @Inject
     MatchRepository matchRepository;
 
-    public List<Node> setUpTournament (List<Team> teams) {
+    public List<Node> setUpTournament (String name, List<Team> teams) {
+
         List<Match> matches = matchRepository.matchTeams(teams);
         List<Node> nodes = new LinkedList<>();
 
@@ -22,6 +23,9 @@ public class TournamentRepository implements PanacheRepository<Tournament> {
         } else if (teams.size() == 8){
             nodes = buildMediumNodeTree(matches);
         }
+
+        matchRepository.persist(matches);
+
         return nodes;
     }
 

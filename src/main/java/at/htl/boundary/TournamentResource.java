@@ -35,7 +35,6 @@ public class TournamentResource {
     private final String IMAGE_LOCATION="asciidocs/images/generated-diagrams/";
     @Inject
     TeamRepository teamRepository;
-
     @Inject
     TournamentRepository tournamentRepository;
 
@@ -129,7 +128,7 @@ public class TournamentResource {
         tournament.addGroup(group1);
         tournamentRepository.persist(tournament);
 
-        List<Node> nodes = tournamentRepository.setUpTournament(listofGroup1);
+        List<Node> nodes = tournamentRepository.setUpTournament(tournament.getName(), listofGroup1);
         Node finalNode = nodes.get(nodes.size()-1);
         Filewriter newFile = new Filewriter();
         newFile.writeFinalResult(finalNode, tournament);
@@ -157,18 +156,20 @@ public class TournamentResource {
     @Transactional
     public Response createTournament(
             @Context UriInfo uriInfo
-            , @FormParam("id") List<Integer> ids,
-            @FormParam("tournamentName") String name
+            , @FormParam("id") List<Integer> ids
+            , @FormParam("tournamentName") String name
     ) {
-        List<Node> nodes;
+        List<Node> nodes = new ArrayList<>();
         String tournamentName;
         if(ids.size() == 4 || ids.size() == 8 || ids.size() == 16){
             if(name.isEmpty()){
                 tournamentName = "Turnier am "+LocalDateTime.now().format(DateTimeFormatter.ISO_ORDINAL_DATE).toString();
             }
-            nodes = tournamentRepository.setUpTournament(teamRepository.getTeamsByIds(ids));
+            tournamentName = name;
+            nodes = tournamentRepository.setUpTournament(tournamentName, teamRepository.getTeamsByIds(ids));
         }
-        return Response.ok().build();
+
+        return Response.status(301).location(URI.create("/matches/playMatch")).build();
     }
 
     @Path("/tournamentSelection")
