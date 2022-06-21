@@ -1,5 +1,6 @@
 package at.htl.control;
 
+import at.htl.entity.Match;
 import at.htl.entity.Team;
 import io.quarkus.runtime.StartupEvent;
 
@@ -14,6 +15,9 @@ import java.util.List;
 public class InitBean {
     @Inject
     TeamRepository teamRepository;
+
+    //@Inject
+    //MatchRepository matchRepository;
 
     @Transactional
     void startup(@Observes StartupEvent event) {
@@ -71,5 +75,7 @@ public class InitBean {
         teams.add(new Team("Zenit St. Petersburg",""));
 */
         teamRepository.persist(teams);
+
+        //matchRepository.persist(new Match(new Team("A","a"),new Team("B","b")));
     }
 }

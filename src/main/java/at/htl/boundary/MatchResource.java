@@ -5,6 +5,7 @@ import at.htl.entity.Match;
 import at.htl.entity.Team;
 import io.quarkus.qute.CheckedTemplate;
 import io.quarkus.qute.TemplateInstance;
+import org.jboss.logging.Logger;
 
 import javax.inject.Inject;
 import javax.transaction.Transactional;
@@ -16,11 +17,14 @@ import javax.ws.rs.core.UriInfo;
 import java.net.URI;
 import java.util.List;
 
-@Path("/matches")
+@Path("matches")
 public class MatchResource {
 
     @Inject
     MatchRepository matchRepository;
+
+    @Inject
+    Logger log;
 
     @CheckedTemplate
     public static class Templates {
@@ -44,7 +48,7 @@ public class MatchResource {
      * @return
      */
     @GET
-    @Path("{id}")
+    @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getById(@PathParam("id") Long id){
         return matchRepository.findByIdOptional(id)
@@ -58,7 +62,7 @@ public class MatchResource {
      * @return
      */
     @GET
-    @Path("team1/{team1}" )
+    @Path("/team1/{team1}" )
     @Produces(MediaType.APPLICATION_JSON)
     public Response getMatchPerTeam(@PathParam("team1") String team1)
     {
@@ -77,6 +81,7 @@ public class MatchResource {
     @Transactional
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
+    @Path("/create")
     public Response createMatch(Match match){
         matchRepository.persist(match);
         if (matchRepository.isPersistent(match)){
@@ -91,7 +96,7 @@ public class MatchResource {
      * @return
      */
     @DELETE
-    @Path("{id}")
+    @Path("/delete/{id}")
     @Transactional
     public Response deleteById(@PathParam("id") Long id){
         boolean deleted = matchRepository.deleteById(id);
@@ -101,12 +106,21 @@ public class MatchResource {
         return Response.status(Response.Status.BAD_REQUEST).build();
     }
 
+    @GET
+    @Path("/matchResult/{id}")
+    @Produces(MediaType.TEXT_HTML)
+    public TemplateInstance matchResult(@PathParam("id") Long id)
+    {
+        return Templates.matchResult(matchRepository.findById(id));
+    }
+
+
     @Path("/matchResult/{id}")
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     @Transactional
-    public Response create(
+    public Response matchResult(
             @Context UriInfo uriInfo
             , @PathParam("id") Long id
             , @FormParam("team1") String team1
@@ -114,16 +128,26 @@ public class MatchResource {
     ) {
         if (team1.equals("") || team2.equals("")) {
 
-            MatchResource.Templates.matchResult(null);
+            Templates.matchResult(matchRepository.findById(id));
             return Response.status(301)
-                    .location(URI.create("/matches/matchResult"))
+                    .location(URI.create("matches/matchResult/{id}"))
                     .build();
-        }
-        else {
-            Match match = matchRepository.findById(id);
+        } else {
+            try {
+                Match match = matchRepository.findById(id);
 
-            match.setPointsTeam1(Integer.parseInt(team1));
-            match.setPointsTeam2(Integer.parseInt(team2));
+                match.setPointsTeam1(Integer.parseInt(team1));
+                match.setPointsTeam2(Integer.parseInt(team2));
+
+                matchRepository.persist(match);
+            } catch(Exception e) {
+                log.error("Exception '" + e.getMessage() + "' raised");
+
+                Templates.matchResult(matchRepository.findById(id));
+                return Response.status(301)
+                        .location(URI.create("/matches/matchResult/{id}"))
+                        .build();
+            }
 
             return Response.status(301)
                     .location(URI.create("/"))
