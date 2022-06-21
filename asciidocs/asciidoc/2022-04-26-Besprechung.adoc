@@ -55,7 +55,7 @@ das heißt die Teamanzahl sollte variabel sein.
 
 * Das Programm sollte in der Lage sein K.O. Phasen mit 4 oder 8 Teams durchzuführen.
 
-* keine hardcoded urls Filewriter -> in den application.properties speichern
+* Keine hardcoded urls Filewriter -> in den application.properties speichern
 
 * Entity Tests keine Getter und Setter testen
 
