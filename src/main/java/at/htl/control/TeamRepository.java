@@ -34,4 +34,10 @@ public class TeamRepository implements PanacheRepository<Team> {
         }
         PanacheRepository.super.persist(team);
     }
+
+    public List<Long> getUnusedTeamIds() {
+        return this.getEntityManager()
+                .createQuery("select id from Team where id not in (select team.id from GroupGP ggp join ggp.teams team)",
+                        Long.class).getResultList();
+    }
 }
