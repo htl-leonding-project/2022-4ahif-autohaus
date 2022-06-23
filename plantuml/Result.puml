@@ -1,10 +1,34 @@
-@startmindmap BierPong.png
-title BierPong
+@startmindmap Sixteen-Teams-Test.png
+title Sixteen-Teams-Test
 
-- FC Porto 1 \nReal Madrid 0
+- team01 1 \nteam12 0
 
--- FC Porto 0 \nChelsea 0
+-- team01 1 \nteam06 0
 
--- Manchester United 0 \nReal Madrid 0
-caption Winner is: FC Porto
+--- team01 3 \nteam04 1
+
+---- team01 2 \nteam02 1
+
+---- team03 0 \nteam04 3
+
+--- team06 3 \nteam08 2
+
+---- team05 0 \nteam06 1
+
+---- team07 1 \nteam08 3
+
+-- team12 2 \nteam16 1
+
+--- team10 1 \nteam12 2
+
+---- team09 0 \nteam10 4
+
+---- team11 0 \nteam12 2
+
+--- team13 0 \nteam16 1
+
+---- team13 3 \nteam14 2
+
+---- team15 0 \nteam16 1
+caption Winner is: team01
 @endmindmap
