@@ -16,8 +16,8 @@ public class InitBean {
     @Inject
     TeamRepository teamRepository;
 
-    //@Inject
-    //MatchRepository matchRepository;
+    @Inject
+    MatchRepository matchRepository;
 
     @Transactional
     void startup(@Observes StartupEvent event) {
@@ -43,6 +43,6 @@ public class InitBean {
 
         teamRepository.persist(teams);
 
-        //matchRepository.persist(new Match(new Team("A","a"),new Team("B","b")));
+        matchRepository.persist(new Match(new Team("A","a"),new Team("B","b")));
     }
 }

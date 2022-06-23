@@ -167,14 +167,16 @@ public class TournamentResource {
         List<Node> nodes = new ArrayList<>();
         String tournamentName;
         if(ids.size() == 4 || ids.size() == 8 || ids.size() == 16){
-            if(name.isEmpty()){
-                tournamentName = "Turnier am "+LocalDateTime.now().format(DateTimeFormatter.ISO_ORDINAL_DATE).toString();
+            if(name == ""){
+                tournamentName = "Turnier am "+LocalDateTime.now().format(DateTimeFormatter.ISO_ORDINAL_DATE);
             }
-            tournamentName = name;
+            else{
+                tournamentName = name;
+            }
             nodes = tournamentRepository.setUpTournament(tournamentName, teamRepository.getTeamsByIds(ids));
         }
 
-        return Response.status(301).location(URI.create("/matches/playMatch")).build();
+        return Response.status(301).location(URI.create("/")).build();
     }
 
     @Path("/tournamentSelection")

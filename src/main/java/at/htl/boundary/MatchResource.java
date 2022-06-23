@@ -156,11 +156,11 @@ public class MatchResource {
         }
     }
 
-    @Path("/playMatch")
+    @Path("/matchResult/{id}")
     @GET
     @Produces(MediaType.TEXT_HTML)
-    public TemplateInstance playMatch(Match match){
-        return MatchResource.Templates.playMatch(match);
+    public TemplateInstance playMatch(Long id){
+        return MatchResource.Templates.playMatch(matchRepository.findById(id));
     }
 
 }

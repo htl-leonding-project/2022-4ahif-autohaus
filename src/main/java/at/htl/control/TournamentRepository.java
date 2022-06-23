@@ -5,6 +5,7 @@ import io.quarkus.hibernate.orm.panache.PanacheRepository;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
+import javax.transaction.Transactional;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -13,9 +14,10 @@ public class TournamentRepository implements PanacheRepository<Tournament> {
     @Inject
     MatchRepository matchRepository;
 
+    @Transactional
     public List<Node> setUpTournament (String name, List<Team> teams) {
-
-        List<Match> matches = matchRepository.matchTeams(teams);
+        Tournament tournament = new Tournament(name);
+        List<Match> matches = matchRepository.matchTeams(teams, tournament);
         List<Node> nodes = new LinkedList<>();
 
         if (teams.size() == 4) {
@@ -25,6 +27,7 @@ public class TournamentRepository implements PanacheRepository<Tournament> {
         }
 
         matchRepository.persist(matches);
+        this.persist(tournament);
 
         return nodes;
     }
