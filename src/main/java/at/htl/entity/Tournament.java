@@ -42,6 +42,14 @@ public class Tournament  {
 
     public void addPhase(Phase phase) {this.phases.add(phase);}
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public String getName() {
         return name;
     }

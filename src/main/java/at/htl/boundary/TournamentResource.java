@@ -44,6 +44,16 @@ public class TournamentResource {
         public static native TemplateInstance tournamentSelection();
         public static native TemplateInstance showEndResult(String name);
         public static native TemplateInstance createTournament(List<Team> teams);
+        public static native TemplateInstance listTournaments(List<Tournament> tournaments);
+    }
+
+    @GET
+    @Produces(MediaType.TEXT_HTML)
+    @Path("/listTournaments")
+    public TemplateInstance getAllTournaments(){
+        return TournamentResource.Templates.listTournaments(
+                tournamentRepository.findAll().list()
+        );
     }
 
     @GET
