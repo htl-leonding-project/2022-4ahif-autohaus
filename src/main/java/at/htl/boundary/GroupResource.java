@@ -23,7 +23,7 @@ import java.util.List;
 import java.util.Random;
 
 @Path("/groups")
-public class GroupRessource {
+public class GroupResource {
 
     @Inject
     TeamRepository teamRepository;
@@ -86,12 +86,12 @@ public class GroupRessource {
         Tournament tournament = tournamentRepository.findByName("BierPong");
         if(tournament == null) {
             return Response
-                .ok(GroupRessource.Templates.groups(new LinkedList<>(), new Tournament("No Tournament found")))
+                .ok(GroupResource.Templates.groups(new LinkedList<>(), new Tournament("No Tournament found")))
                 .build();
         }
         List<GroupGP> groups = new ArrayList<>(tournament.getGroups());
         return Response
-                .ok(GroupRessource.Templates.groups(groups,tournament))
+                .ok(GroupResource.Templates.groups(groups,tournament))
                 .build();
     }
 

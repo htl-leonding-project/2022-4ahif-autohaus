@@ -12,11 +12,16 @@ caption Winner is: Lask Linz
 @startmindmap BierPong.png
 title BierPong
 
-- FC Porto 1 \nReal Madrid 0
+- Rapid Wien 1 \nFC Porto 0
 
--- FC Porto 0 \nChelsea 0
+-- Rapid Wien 0 \nAS Rom 0
 
+<<<<<<< HEAD
 -- Manchester United 0 \nReal Madrid 0
 caption Winner is: FC Porto
 >>>>>>> 6943b73bbfd7b8713d687c8be1422d9627e0969e
+=======
+-- Lask Linz 0 \nFC Porto 0
+caption Winner is: Rapid Wien
+>>>>>>> eacfc673eaa7113e3465970e0d1e40d383a74446
 @endmindmap

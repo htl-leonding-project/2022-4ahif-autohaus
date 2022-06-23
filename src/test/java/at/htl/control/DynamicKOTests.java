@@ -1,4 +1,4 @@
-package at.htl;
+package at.htl.control;
 
 import at.htl.entity.*;
 import at.htl.filewriter.Filewriter;

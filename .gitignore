@@ -14,3 +14,4 @@ gh-pages/
 /dist
 /asciidocs/slides/revealjs
 .png
+asciidocs/plantuml/Result.puml

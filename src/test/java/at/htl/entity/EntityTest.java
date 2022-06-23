@@ -1,4 +1,4 @@
-package at.htl;
+package at.htl.entity;
 
 import at.htl.filewriter.*;
 import org.junit.jupiter.api.Test;
