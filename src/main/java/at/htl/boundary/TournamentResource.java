@@ -151,7 +151,7 @@ public class TournamentResource {
     @Transactional
     public Response createTournament(
             @Context UriInfo uriInfo
-            , @FormParam("id") List<Integer> ids
+            , @FormParam("id") List<Long> ids
             , @FormParam("tournamentName") String name
     ) {
         List<Node> nodes = new ArrayList<>();
