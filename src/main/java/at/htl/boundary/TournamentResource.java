@@ -72,7 +72,7 @@ public class TournamentResource {
     @Path("/createTournament")
     @Produces(MediaType.TEXT_HTML)
     public TemplateInstance createTournament(){
-        return TournamentResource.Templates.createTournament(teamRepository.findAll().list());
+        return TournamentResource.Templates.createTournament(teamRepository.getAllSorted());
     }
 
     public String convertToLetters(int n) {

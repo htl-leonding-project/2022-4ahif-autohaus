@@ -14,6 +14,8 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 import java.net.URI;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 @Path("teams")
@@ -36,7 +38,7 @@ public class TeamResource {
     public TemplateInstance getAllTeams(){
         //List<Team> all = teamRepo.listAll();
         return Templates.teamList(
-                teamRepo.findAll().list()
+                teamRepo.getAllSorted()
         );
     }
 

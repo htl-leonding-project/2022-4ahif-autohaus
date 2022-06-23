@@ -6,6 +6,7 @@ import io.quarkus.hibernate.orm.panache.PanacheRepository;
 import javax.enterprise.context.ApplicationScoped;
 import javax.persistence.PersistenceException;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -38,5 +39,9 @@ public class TeamRepository implements PanacheRepository<Team> {
         return this.getEntityManager()
                 .createQuery("select id from Team where id not in (select team.id from GroupGP ggp join ggp.teams team)",
                         Long.class).getResultList();
+    }
+
+    public List<Team> getAllSorted(){
+        return this.findAll().stream().sorted(Comparator.comparing(Team::getName)).toList();
     }
 }
