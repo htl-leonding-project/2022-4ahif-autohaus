@@ -21,9 +21,9 @@ public class TournamentRepository implements PanacheRepository<Tournament> {
         List<Node> nodes = new LinkedList<>();
 
         if (teams.size() == 4) {
-            nodes = buildSmallNodeTree(matches);
+            tournament.setFinalNode(buildSmallNodeTree(matches));
         } else if (teams.size() == 8){
-            nodes = buildMediumNodeTree(matches);
+            tournament.setFinalNode(buildMediumNodeTree(matches));
         }
 
         matchRepository.persist(matches);
@@ -33,7 +33,7 @@ public class TournamentRepository implements PanacheRepository<Tournament> {
     }
 
 
-    private List<Node> buildSmallNodeTree(List<Match> matches) {
+    private Node buildSmallNodeTree(List<Match> matches) {
 
         Node node1 = new Node(matches.get(0));
         Node node2 = new Node(matches.get(1));
@@ -49,18 +49,13 @@ public class TournamentRepository implements PanacheRepository<Tournament> {
         node2.setPhase(phase1);
         node3.setPhase(phase2);
 
-        List<Node> nodes = new LinkedList<>();
-        nodes.add(node1);
-        nodes.add(node2);
-        nodes.add(node3);
-
         node3.setCurMatch(new Match(node1.getCurMatch().getTeam1(), node2.getCurMatch().getTeam2()));
         node3.getCurMatch().setPointsTeam1(1);
 
-        return nodes;
+        return node3;
     }
 
-    private List<Node> buildMediumNodeTree(List<Match> matches) {
+    private Node buildMediumNodeTree(List<Match> matches) {
 
         Node node1 = new Node(matches.get(0));
         Node node2 = new Node(matches.get(1));
@@ -94,16 +89,7 @@ public class TournamentRepository implements PanacheRepository<Tournament> {
 
         node7.setPhase(phase3);
 
-        List<Node> nodes = new LinkedList<>();
-        nodes.add(node1);
-        nodes.add(node2);
-        nodes.add(node3);
-        nodes.add(node4);
-        nodes.add(node5);
-        nodes.add(node6);
-        nodes.add(node7);
-
-        return nodes;
+        return node7;
     }
 
     public Tournament findByName(String name) {

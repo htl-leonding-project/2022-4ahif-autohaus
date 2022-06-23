@@ -21,6 +21,10 @@ public class Tournament  {
     @OneToMany(cascade = CascadeType.ALL)
     List<GroupGP> GPgroups = new ArrayList<>();
 
+    @JoinColumn(name = "T_FinalNode")
+    @OneToOne(cascade = CascadeType.ALL)
+    Node finalNode;
+
     public Tournament(String name) {
         this.name = name;
     }
@@ -55,6 +59,14 @@ public class Tournament  {
     }
 
     public void addGroup(GroupGP group){this.GPgroups.add(group);}
+
+    public Node getFinalNode() {
+        return finalNode;
+    }
+
+    public void setFinalNode(Node finalNode) {
+        this.finalNode = finalNode;
+    }
 
     public String GPGetConnections(){
         String connections = "";

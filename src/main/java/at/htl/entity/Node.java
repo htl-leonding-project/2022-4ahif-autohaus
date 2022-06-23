@@ -4,14 +4,25 @@ import io.quarkus.hibernate.orm.panache.PanacheEntity;
 
 import javax.persistence.*;
 
+@Entity
+@Table(name = "T_NODE")
 public class Node {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
+
+    @ManyToOne(cascade = CascadeType.ALL)
     Node leftNode;
+    @ManyToOne(cascade = CascadeType.ALL)
     Node rightNode;
+    @ManyToOne
     Node parentNode;
-    Node centerNode;  //nur bei "kleinen Finale"
+    @Transient
+    Node centerNode;
+    @ManyToOne(cascade = CascadeType.ALL)
     Match curMatch;
+    @Transient
     Phase phase;
 
     public Node() {
