@@ -20,10 +20,16 @@ public class TeamRepository implements PanacheRepository<Team> {
     }
 
     public List<Team> getTeamsByIds(List<Integer> ids){
-        return getEntityManager()
+        /*return getEntityManager()
                 .createQuery("SELECT t FROM Team t WHERE t.id IN :ids", Team.class)
                 .setParameter("ids", ids)
-                .getResultList();
+                .getResultList();*/
+
+            List<Team> teams = new LinkedList<>();
+            for (int id:ids) {
+                teams.add(this.findById((long)id));
+            }
+            return teams;
     }
 
     @Override

@@ -118,10 +118,26 @@
         <div class="d-grid gap-2 col-6 mx-auto">
             <input class="form-control" type="text" name="tournamentName">
             <button type="submit" style="margin-top: 10px" class="btn btn-primary">Start Tournament</button>
-            {#for team in teams}
-                <label for="id">{team.name}</label>
-                <input type="checkbox" value="{team.id}" name="id">
-            {/for}
+
+            <table class = "table table-striped">
+                <thead>
+                    <tr>
+                        <th>Team Name</th>
+                        <th>Team Abkürzung</th>
+                        <th>Auswahl</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {#for team in teams}
+                        <tr>
+                            <td>{team.name}</td>
+                            <td>{team.abbr}</td>
+                            <td><input type="checkbox" value="{team.id}" name="id"></td>
+                        </tr>
+                    {/for}
+                </tbody>
+            </table>
+
         </div>
     </div>
     </form>
