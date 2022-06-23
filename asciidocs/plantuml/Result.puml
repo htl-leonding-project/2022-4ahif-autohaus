@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 @startmindmap treeSmall.png
 title treeSmall
 
@@ -7,4 +8,15 @@ title treeSmall
 
 -- FC Barcelona 0 \nRed Bull Salzburg 0
 caption Winner is: Lask Linz
+=======
+@startmindmap BierPong.png
+title BierPong
+
+- FC Porto 1 \nReal Madrid 0
+
+-- FC Porto 0 \nChelsea 0
+
+-- Manchester United 0 \nReal Madrid 0
+caption Winner is: FC Porto
+>>>>>>> 6943b73bbfd7b8713d687c8be1422d9627e0969e
 @endmindmap

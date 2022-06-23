@@ -20,11 +20,10 @@ public class TeamRepository implements PanacheRepository<Team> {
     }
 
     public List<Team> getTeamsByIds(List<Integer> ids){
-        List<Team> teams = new LinkedList<>();
-        for (int id:ids) {
-            teams.add(this.findById((long)id));
-        }
-        return teams;
+        return getEntityManager()
+                .createQuery("SELECT t FROM Team t WHERE t.id IN :ids", Team.class)
+                .setParameter("ids", ids)
+                .getResultList();
     }
 
     @Override
@@ -33,5 +32,11 @@ public class TeamRepository implements PanacheRepository<Team> {
             throw new PersistenceException();
         }
         PanacheRepository.super.persist(team);
+    }
+
+    public List<Long> getUnusedTeamIds() {
+        return this.getEntityManager()
+                .createQuery("select id from Team where id not in (select team.id from GroupGP ggp join ggp.teams team)",
+                        Long.class).getResultList();
     }
 }

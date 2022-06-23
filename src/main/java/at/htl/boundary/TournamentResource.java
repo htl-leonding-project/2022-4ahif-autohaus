@@ -75,60 +75,49 @@ public class TournamentResource {
         return TournamentResource.Templates.createTournament(teamRepository.findAll().list());
     }
 
-    public Tournament randomGroups(List<Team> teams, int teamsToCreate){
+    public String convertToLetters(int n) {
+        if(n == 0) {
+            return "A";
+        }
+        StringBuilder result = new StringBuilder();
+        while (n > 0) {
+            int remainder = n % 26;
+            char letter = (char) (remainder + 'A');
+            result.append(letter);
+            n = n / 26;
+        }
+        return result.toString();
+    }
 
+    public Tournament randomGroups(int teamsInGroup){
         Tournament tournament = tournamentRepository.findByName("BierPong");
         if(tournament == null) {
             tournament = new Tournament("BierPong");
         }
 
-        int nrOfTeams = teams.size();
+        Random random = new Random();
 
-        if(teamsToCreate > nrOfTeams){
+        List<Long> unusedTeams = teamRepository.getUnusedTeamIds();
+        if(teamsInGroup > unusedTeams.size()) {
             return null;
         }
-
-        Random random = new Random();
-        List<Integer> randomNumbers = new LinkedList<>();
-        // zufälliges befüllen der Gruppen
-        int i = 0;
-        while(i < teamsToCreate)
-        {
-            int randomNumber = random.nextInt(nrOfTeams);
-            boolean isDuplicate = false;
-            for(int j = 0; j < i; j++)
-            {
-                if (randomNumbers.contains(randomNumber)) {
-                    isDuplicate = true;
-                    break;
-                }
-            }
-            if(!isDuplicate)
-            {
-                randomNumbers.add(randomNumber);
-                i++;
-            }
+        List<Team> listOfGroup = new ArrayList<>();
+        for (int i = 0; i < teamsInGroup; i++) {
+            int randomNumber = random.nextInt(unusedTeams.size());
+            Long teamId = unusedTeams.remove(randomNumber);
+            Team team = teamRepository.findById(teamId);
+            listOfGroup.add(team);
         }
 
-        List<Team> listofGroup1 = new ArrayList<>();
-        for (int j = 0; j < teamsToCreate; j++) {
-            Team team = teams.get(randomNumbers.get(j));
-            listofGroup1.add(team);
-        }
+        int count = tournament.getGroups().size();
 
-        /*Team team2 = teams.get(randomNumbers.get(1));
-        Team team3 = teams.get(randomNumbers.get(2));
-        Team team4 = teams.get(randomNumbers.get(3))
-        listofGroup1.add(team2);
-        listofGroup1.add(team3);
-        listofGroup1.add(team4);*/
+        GroupGP group = new GroupGP("Gruppe " + convertToLetters(count), listOfGroup);
 
-        GroupGP group1 = new GroupGP("Gruppe A", listofGroup1);
-
-        tournament.addGroup(group1);
+        tournament.addGroup(group);
         tournamentRepository.persist(tournament);
 
-        List<Node> nodes = tournamentRepository.setUpTournament(tournament.getName(), listofGroup1);
+        List<Node> nodes = tournamentRepository.setUpTournament(tournament.getName(), group.getTeams());
+
         Node finalNode = nodes.get(nodes.size()-1);
         Filewriter newFile = new Filewriter();
         newFile.writeFinalResult(finalNode, tournament);
@@ -143,9 +132,10 @@ public class TournamentResource {
         if(nrOfTeams %4!= 0){
             return Response.status(Response.Status.BAD_REQUEST).build();
         }
-        List<Team> teams = teamRepository.listAll();
         for (int i = 0; i < nrOfTeams/4; i++) {
-            Tournament tournament = randomGroups(teams, 4);
+            Tournament tournament = randomGroups(4);
+            //TODO: check if tournament is null when null there are not enough teams to create a group
+
         }
         //List<GroupGP> groups = new ArrayList<>(tournament.getGroups());
         return Response
