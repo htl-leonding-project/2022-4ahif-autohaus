@@ -9,6 +9,7 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 import java.io.File;
 
+import at.htl.control.NodeRepository;
 import at.htl.control.TeamRepository;
 import at.htl.control.TournamentRepository;
 import at.htl.entity.GroupGP;
@@ -37,6 +38,9 @@ public class TournamentResource {
     TeamRepository teamRepository;
     @Inject
     TournamentRepository tournamentRepository;
+
+    @Inject
+    NodeRepository nodeRepository;
 
     @CheckedTemplate
     public static class Templates {
@@ -154,6 +158,17 @@ public class TournamentResource {
                 .build();
     }
 
+    @POST
+    @Transactional
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    @Path("/listTournaments")
+    public Response moveToDiagram(@FormParam("name") String name){
+        return Response.status(301)
+                .location(URI.create("tournaments/showEndResult/"+name))
+                .build();
+    }
+
     @Path("/createTournament")
     @POST
     @Produces(MediaType.APPLICATION_JSON)
@@ -167,8 +182,8 @@ public class TournamentResource {
         List<Node> nodes = new ArrayList<>();
         String tournamentName;
         if(ids.size() == 4 || ids.size() == 8 || ids.size() == 16){
-            if(name == ""){
-                tournamentName = "Turnier am "+LocalDateTime.now().format(DateTimeFormatter.ISO_ORDINAL_DATE);
+            if(name.equals("")){
+                tournamentName = "Turnier_am_"+LocalDateTime.now().format(DateTimeFormatter.BASIC_ISO_DATE);
             }
             else{
                 tournamentName = name;

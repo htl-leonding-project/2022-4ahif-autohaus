@@ -142,9 +142,9 @@
             <th scope="row">{t.getId()}</th>
             <td>{t.getName()}</td>
             <td>
-                <form action="/tournaments/showEndResult/{t.getName()}" method="post" name="addForm"
+                <form action="/tournaments/listTournaments" method="post" name="addForm"
                       enctype="application/x-www-form-urlencoded">
-                    <button style="margin-top: 10px" class="btn btn-primary" type="submit">Anzeigen</button>
+                    <button style="margin-top: 10px" class="btn btn-primary" type="submit" name="name" value="{t.getName()}">Anzeigen</button>
                 </form>
             </td>
             <td>
