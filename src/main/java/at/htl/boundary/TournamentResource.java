@@ -191,7 +191,10 @@ public class TournamentResource {
             nodes = tournamentRepository.setUpTournament(tournamentName, teamRepository.getTeamsByIds(ids));
         }
 
-        return Response.status(301).location(URI.create("/")).build();
+            return Response
+                    .temporaryRedirect(URI.create("/matches/matchResult/" + nodes.get(1).getCurMatch().getId()))
+                    .status(301)
+                    .build();
     }
 
     @Path("/tournamentSelection")

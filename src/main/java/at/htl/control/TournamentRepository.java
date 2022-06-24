@@ -29,12 +29,12 @@ public class TournamentRepository implements PanacheRepository<Tournament> {
             tournament.setFinalNode(buildSmallNodeTree(matches));
         } else if (teams.size() == 8){
             tournament.setFinalNode(buildMediumNodeTree(matches));
+        } else if (teams.size() == 16){
+            tournament.setFinalNode(buildLargeNodeTree(matches));
         }
 
         matchRepository.persist(matches);
         this.persist(tournament);
-
-        filewriter.writeFinalResult(tournament.getFinalNode(), tournament);
 
         return nodeRepository.getNodesAsList(tournament.getFinalNode());
     }
