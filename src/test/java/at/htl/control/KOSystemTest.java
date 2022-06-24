@@ -25,6 +25,8 @@ public class KOSystemTest {
     TeamRepository TeamRepo;
     @Inject
     MatchRepository MatchRepo;
+    @Inject
+    NodeRepository NodeRepo;
 
     @Test
     public void Match_Test() {
@@ -67,12 +69,15 @@ public class KOSystemTest {
         nodeThree.setLeftNode(nodeOne);
         nodeThree.setRightNode(nodeTwo);
 
+        NodeRepo.getNodesAsList(nodeThree);
+
         TeamRepo.persist(teams);
         TournamentRepo.persist(smallMatch);
 
         Filewriter filewriter = new Filewriter();
 
         filewriter.writeFinalResult(nodeThree, smallMatch);
+
 
         assertEquals(TeamRepo.findById(4L).getWinAmount(), 2);
     }

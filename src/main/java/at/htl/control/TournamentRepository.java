@@ -1,6 +1,7 @@
 package at.htl.control;
 
 import at.htl.entity.*;
+import at.htl.filewriter.Filewriter;
 import io.quarkus.hibernate.orm.panache.PanacheRepository;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -16,6 +17,7 @@ public class TournamentRepository implements PanacheRepository<Tournament> {
 
     @Transactional
     public List<Node> setUpTournament (String name, List<Team> teams) {
+        Filewriter filewriter = new Filewriter();
         Tournament tournament = new Tournament(name);
         List<Match> matches = matchRepository.matchTeams(teams, tournament);
         List<Node> nodes = new LinkedList<>();
@@ -28,6 +30,8 @@ public class TournamentRepository implements PanacheRepository<Tournament> {
 
         matchRepository.persist(matches);
         this.persist(tournament);
+
+        filewriter.writeFinalResult(tournament.getFinalNode(), tournament);
 
         return nodes;
     }
@@ -51,6 +55,7 @@ public class TournamentRepository implements PanacheRepository<Tournament> {
 
         node3.setCurMatch(new Match(node1.getCurMatch().getTeam1(), node2.getCurMatch().getTeam2()));
         node3.getCurMatch().setPointsTeam1(1);
+
 
         return node3;
     }
