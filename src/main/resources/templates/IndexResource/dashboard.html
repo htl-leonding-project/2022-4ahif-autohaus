@@ -5,9 +5,9 @@
     <title>LEO-Competition - Dashboard</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta http-equiv="Content-Language" content="en">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport"
-          content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" />
+          content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no"/>
     <meta name="description" content="This is an example dashboard created using build-in elements and components.">
     <meta name="msapplication-tap-highlight" content="no">
     <link href="https://demo.dashboardpack.com/architectui-html-free/main.css" rel="stylesheet">
@@ -136,46 +136,96 @@
 </head>
 <body style="background-color: #0d1c2c">
 
-<div class="banner">
-    <a class="d-flex justify-content-center">LEO-Competition - Dashboard</a>
+<div class="banner bg-midnight-bloom">
+    <a href="http://localhost:8080/dashboard" class="d-flex justify-content-center">LEO-Competition - Dashboard</a>
 </div>
 <br>
 
 <div class="row">
-    <div class="col-md-6 col-xl-4">
+    <div class="col-md-4 col-xl-3">
         <div class="card mb-3 widget-content bg-midnight-bloom">
             <div class="widget-content-wrapper text-white">
                 <div class="widget-content-left">
                     <div class="widget-heading">Turniere</div>
-                    <div class="widget-subheading">gepsicherte</div>
+                    <div class="widget-subheading">gepsichert</div>
                 </div>
                 <div class="widget-content-right">
-                    <div class="widget-numbers text-white"><span>{nrOfTournaments}</span></div>
+                    <div style="margin-left: 100px !important;" class="widget-numbers text-white"><span>
+                            {nrOfTournaments}</span>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <div>
-        <div class="row justify-content-center position">
-            <div class="d-grid gap-2 col-6 mx-auto col-sm">
-                <a class="btn btn-success" href="/teams/addTeam">Team hinzufügen</a>
-                <a class="btn btn-primary" href="/teams">Teams anzeigen</a>
-                <a class="btn btn-success" href="/tournaments/TeamsSelect">Teamanzahl auswählen</a>
-                <a class="btn btn-success" href="/groups">Gruppen anzeigen</a>
-                <a class="btn btn-success" href="/matches/matchResult/1">Ergebnis eintragen</a>
-                <a class="btn btn-success" href="/tournaments/tournamentSelection">Endergebnis Turnier</a>
-                <a class="btn btn-error" href="/tournaments/createTournament">Turnier spielen</a>
-                <a class="btn btn-success" href="/tournaments/listTournaments">Alle Turniere anzeigen</a>
+
+    <div class="col-md-4 col-xl-3">
+        <div class="card mb-3 widget-content bg-midnight-bloom">
+            <div class="widget-content-wrapper text-white">
+                <div class="widget-content-left">
+                    <div class="widget-heading">Teams</div>
+                    <div class="widget-subheading">gepsichert</div>
+                </div>
+                <div class="widget-content-right">
+                    <div style="margin-left: 100px !important;" class="widget-numbers text-white"><span>
+                            {nrOfTeams}</span>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    <footer class="text-center text-lg-start bg-light text-muted">
-        <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
-            © 2022 Copyright:
-            <a class="text-reset fw-bold" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Christoph Handel, Lukas
-                Baumgartner, Joachim Pelzeder</a>
+    <div class="col-md-4 col-xl-3">
+        <div class="card mb-3 widget-content bg-midnight-bloom">
+            <div class="widget-content-wrapper text-white">
+                <div class="widget-content-left">
+                    <div class="widget-heading">Gruppen</div>
+                    <div class="widget-subheading">gepsichert</div>
+                </div>
+                <div class="widget-content-right">
+                    <div style="margin-left: 100px !important;" class="widget-numbers text-white"><span>
+                            {nrOfGroups}</span>
+                    </div>
+                </div>
+            </div>
         </div>
-    </footer>
+    </div>
+    <div class="col-md-4 col-xl-3">
+        <div class="card mb-3 widget-content bg-midnight-bloom">
+            <div class="widget-content-wrapper text-white">
+                <div class="widget-content-left">
+                    <div class="widget-heading">Matches</div>
+                    <div class="widget-subheading">gepsichert</div>
+                </div>
+                <div class="widget-content-right">
+                    <div style="margin-left: 100px !important;" class="widget-numbers text-white"><span>
+                            {nrOfMatches}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="row justify-content-center position">
+    <div class="d-grid gap-2 col-6 mx-auto col-sm">
+        <a class="btn btn-success" href="/teams/addTeam">Team hinzufügen</a>
+        <a class="btn btn-primary" href="/teams">Teams anzeigen</a>
+        <a class="btn btn-success" href="/tournaments/TeamsSelect">Teamanzahl auswählen</a>
+        <a class="btn btn-success" href="/groups">Gruppen anzeigen</a>
+        <a class="btn btn-success" href="/matches/matchResult/1">Ergebnis eintragen</a>
+        <a class="btn btn-success" href="/tournaments/tournamentSelection">Endergebnis Turnier</a>
+        <a class="btn btn-error" href="/tournaments/createTournament">Turnier spielen</a>
+        <a class="btn btn-success" href="/tournaments/listTournaments">Alle Turniere anzeigen</a>
+    </div>
+</div>
+</div>
+<footer class="bg-midnight-bloom text-center text-lg-start bg-light text-muted">
+    <div class="text-center p-4" style="color: white;  background-color: rgba(0, 0, 0, 0.05);">
+        © 2022 Copyright:
+        <a class="text-reset fw-bold" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Christoph Handel, Lukas
+            Baumgartner, Joachim Pelzeder</a>
+    </div>
+</footer>
 </body>
 </html>
 
