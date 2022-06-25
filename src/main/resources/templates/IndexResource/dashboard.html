@@ -132,6 +132,14 @@
             height: 500px;
 
         }
+        .centered {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            /* bring your own prefixes */
+            transform: translate(-50%, -50%);
+        }
+
     </style>
 </head>
 <body style="background-color: #A4ABBD">
@@ -206,16 +214,16 @@
 </div>
 
 
-<div>
-    <div style="margin-top: 45px !important;" class="d-grid gap-2 col-6 mx-auto col-sm">
-        <a class="btn btn-success bg-midnight-bloom" href="/teams/addTeam">Team hinzufügen</a>
-        <a class="btn btn-primary" href="/teams">Teams anzeigen</a>
-        <a class="btn btn-success bg-midnight-bloom" href="/tournaments/TeamsSelect">Teamanzahl auswählen</a>
-        <a class="btn btn-success bg-midnight-bloom" href="/groups">Gruppen anzeigen</a>
-        <a class="btn btn-success bg-midnight-bloom" href="/matches/matchResult/1">Ergebnis eintragen</a>
-        <a class="btn btn-success bg-midnight-bloom" href="/tournaments/tournamentSelection">Endergebnis Turnier</a>
-        <a class="btn btn-primary" href="/tournaments/createTournament">Turnier spielen</a>
-        <a class="btn btn-success bg-midnight-bloom" href="/tournaments/listTournaments">Alle Turniere anzeigen</a>
+<div class="centered col">
+    <div class="d-grid gap-2 col-6 mx-auto col-sm">
+        <a class="btn btn-success bg-midnight-bloom" style="font-size: x-large" href="/teams/addTeam">Team hinzufügen</a>
+        <a class="btn btn-primary" style="font-size: x-large" href="/teams">Teams anzeigen</a>
+        <a class="btn btn-success bg-midnight-bloom" style="font-size: x-large" href="/tournaments/TeamsSelect">Teamanzahl auswählen</a>
+        <a class="btn btn-success bg-midnight-bloom" style="font-size: x-large" href="/groups">Gruppen anzeigen</a>
+        <a class="btn btn-success bg-midnight-bloom" style="font-size: x-large" href="/matches/matchResult/1">Ergebnis eintragen</a>
+        <a class="btn btn-success bg-midnight-bloom" style="font-size: x-large" href="/tournaments/tournamentSelection">Endergebnis Turnier</a>
+        <a class="btn btn-primary" style="font-size: x-large" href="/tournaments/createTournament">Turnier spielen</a>
+        <a class="btn btn-success bg-midnight-bloom" style="font-size: x-large" href="/tournaments/listTournaments">Alle Turniere anzeigen</a>
     </div>
 </div>
 </div>
