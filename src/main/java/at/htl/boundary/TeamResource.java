@@ -80,7 +80,7 @@ public class TeamResource {
             }
 
             return Response.status(301)
-                    .location(URI.create("/"))
+                    .location(URI.create("/dashboard"))
                     .build();
         }
     }

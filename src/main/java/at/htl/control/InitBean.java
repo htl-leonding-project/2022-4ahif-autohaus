@@ -2,6 +2,7 @@ package at.htl.control;
 
 import at.htl.entity.Match;
 import at.htl.entity.Team;
+import at.htl.entity.Tournament;
 import io.quarkus.runtime.StartupEvent;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -19,10 +20,16 @@ public class InitBean {
     @Inject
     MatchRepository matchRepository;
 
+
+    @Inject
+    TournamentRepository tournamentRepository;
+
+
     @Transactional
     void startup(@Observes StartupEvent event) {
 
         List<Team> teams = new ArrayList<>();
+        List<Tournament> tournaments = new ArrayList<>();
 
         teams.add(new Team("Lask Linz","Lask"));
         teams.add(new Team("Real Madrid","RM"));
@@ -43,9 +50,7 @@ public class InitBean {
 
         /*
         teams.add(new Team("AC Mailand",""));
-        teams.add(new Team("Ajax Amsterdam",""));
         teams.add(new Team("Atalanta Bergamo",""));
-        teams.add(new Team("Atletico Madrid",""));
         teams.add(new Team("Benfica Lissabon",""));
         teams.add(new Team("Besiktas Istanbul",""));
         teams.add(new Team("Borussia Dortmund",""));
@@ -76,8 +81,13 @@ public class InitBean {
         teams.add(new Team("Zenit St. Petersburg",""));
 */
 
-        teamRepository.persist(teams);
+        tournaments.add(new Tournament("BierPong Turnier"));
+        tournaments.add(new Tournament("Fußball Turnier"));
+        tournaments.add(new Tournament("Gartenpokal"));
 
+
+        teamRepository.persist(teams);
+        tournamentRepository.persist(tournaments);
         matchRepository.persist(new Match(new Team("A","a"),new Team("B","b")));
     }
 }
