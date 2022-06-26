@@ -28,6 +28,9 @@ public class Match{
     @ManyToOne
     public Tournament tournament;
 
+    @Column(name = "M_PHASE")
+    public int phase;
+
 
     //resultOfMatch[0] -> GoalsTeam1
     //resultOfMatch[1] -> GoalsTeam2
@@ -113,6 +116,14 @@ public class Match{
         }
 
         return null;//Bei Gleichstand noch unklar
+    }
+
+    public int getPhase() {
+        return phase;
+    }
+
+    public void setPhase(int phase) {
+        this.phase = phase;
     }
 
     public String getMatchResultString() {

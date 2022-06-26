@@ -6,6 +6,7 @@ import at.htl.entity.Tournament;
 import io.quarkus.hibernate.orm.panache.PanacheRepository;
 
 import javax.enterprise.context.ApplicationScoped;
+import javax.tools.JavaFileManager;
 import java.util.LinkedList;
 import java.util.List;
 

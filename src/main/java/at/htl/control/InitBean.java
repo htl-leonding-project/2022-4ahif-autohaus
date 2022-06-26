@@ -81,11 +81,6 @@ public class InitBean {
         teams.add(new Team("Zenit St. Petersburg",""));
 */
 
-        tournaments.add(new Tournament("BierPong Turnier"));
-        tournaments.add(new Tournament("Fußball Turnier"));
-        tournaments.add(new Tournament("Gartenpokal"));
-
-
         teamRepository.persist(teams);
         tournamentRepository.persist(tournaments);
         matchRepository.persist(new Match(new Team("A","a"),new Team("B","b")));

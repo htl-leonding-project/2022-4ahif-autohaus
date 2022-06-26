@@ -22,7 +22,7 @@ public class Node {
     Node centerNode;
     @ManyToOne(cascade = CascadeType.ALL)
     Match curMatch;
-    @Transient
+    @ManyToOne(cascade = CascadeType.ALL)
     Phase phase;
 
     public Node() {

@@ -6,12 +6,16 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
 public class Phase  {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     String nameOfPhase;
     int level;
 
+    @Transient
     List<Node> GPNodes = new ArrayList<>();
 
     public Phase() {

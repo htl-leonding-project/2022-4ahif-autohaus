@@ -2,11 +2,67 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <style>
+        .button {
+            border: none;
+            color: white;
+            padding: 16px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            transition-duration: 0.4s;
+            cursor: pointer;
+        }
+
+        .button1 {
+            background-color: white;
+            color: black;
+            border: 2px solid #4CAF50;
+        }
+
+        .button1:hover {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .button2 {
+            background-color: white;
+            color: black;
+            border: 2px solid red;
+        }
+
+        .button2:hover {
+            background-color: red;
+            color: white;
+        }
+
+        a {
+            color: white;
+            text-decoration: none !important;
+        }
+
+    </style>
 </head>
 <body>
-  {match.getTeam1().getName()}
-  <br>
-  {match.getTeam2().getName()}
+
+<div class="banner lead">
+    <a href="http://localhost:8080/dashboard" class="d-flex justify-content-center">
+        Spielergebniss eintragen - {match.team1.getName()} vs. {match.team2.getName()}
+    </a>
+</div>
+
+<div class="container">
+    <form action="/matches/playMatch/{match.getId()}" method="post" name="addForm" enctype="application/x-www-form-urlencoded">
+        <label for="team1">Punkte {match.getTeam1().getName()}:</label>
+        <input class="form-control" type="number" name="team1" id="team1Id" value="{match.getPointsTeam1()}">
+        <br>
+        <label for="team2">Punkte {match.getTeam2().getName()}:</label>
+        <input class="form-control" type="number" name="team2" id="team2Id" value="{match.getPointsTeam2()}">
+        <button style="margin-top: 10px" class="btn btn-success" type="submit">Speichern</button>
+    </form>
+</div>
 </body>
 </html>

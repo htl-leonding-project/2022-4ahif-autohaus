@@ -116,7 +116,7 @@ public class MatchResource {
     }
 
 
-    @Path("/matchResult/{id}")
+    @Path("/playMatch/{id}")
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
@@ -134,32 +134,24 @@ public class MatchResource {
                     .location(URI.create("matches/matchResult/{id}"))
                     .build();
         } else {
-            try {
-                Match match = matchRepository.findById(id);
+            Match match = matchRepository.findById(id);
 
-                match.setPointsTeam1(Integer.parseInt(team1));
-                match.setPointsTeam2(Integer.parseInt(team2));
+            match.setPointsTeam1(Integer.parseInt(team1));
+            match.setPointsTeam2(Integer.parseInt(team2));
 
-                matchRepository.persist(match);
-            } catch(Exception e) {
-                log.error("Exception '" + e.getMessage() + "' raised");
+            matchRepository.persist(match);
 
-                Templates.matchResult(matchRepository.findById(id));
-                return Response.status(301)
-                        .location(URI.create("/matches/matchResult/{id}"))
-                        .build();
-            }
-
+            Templates.matchResult(matchRepository.findById(id));
             return Response.status(301)
-                    .location(URI.create("/"))
+                    .location(URI.create("/tournaments/matchList/"+match.tournament.getId()))
                     .build();
         }
     }
 
-    @Path("/matchResult/{id}")
+    @Path("/playMatch/{id}")
     @GET
     @Produces(MediaType.TEXT_HTML)
-    public TemplateInstance playMatch(Long id){
+    public TemplateInstance playMatch(@PathParam("id") Long id){
         return MatchResource.Templates.playMatch(matchRepository.findById(id));
     }
 

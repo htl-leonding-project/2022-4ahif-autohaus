@@ -12,14 +12,12 @@ import java.io.File;
 import at.htl.control.NodeRepository;
 import at.htl.control.TeamRepository;
 import at.htl.control.TournamentRepository;
-import at.htl.entity.GroupGP;
-import at.htl.entity.Node;
-import at.htl.entity.Team;
-import at.htl.entity.Tournament;
+import at.htl.entity.*;
 import at.htl.filewriter.Filewriter;
 import io.quarkus.qute.CheckedTemplate;
 import io.quarkus.qute.Template;
 import io.quarkus.qute.TemplateInstance;
+import org.jboss.logging.Logger;
 
 import java.io.File;
 import java.net.URI;
@@ -34,10 +32,14 @@ import java.util.Random;
 public class TournamentResource {
 
     private final String IMAGE_LOCATION="asciidocs/images/generated-diagrams/";
+    private int phaseForCurrentTournament = 5;
     @Inject
     TeamRepository teamRepository;
     @Inject
     TournamentRepository tournamentRepository;
+
+    @Inject
+    Logger log;
 
     @Inject
     NodeRepository nodeRepository;
@@ -49,6 +51,7 @@ public class TournamentResource {
         public static native TemplateInstance showEndResult(String name);
         public static native TemplateInstance createTournament(List<Team> teams);
         public static native TemplateInstance listTournaments(List<Tournament> tournaments);
+        public static native TemplateInstance matchList(List<Node> nodes, Long tournamentID);
     }
 
     @GET
@@ -87,6 +90,19 @@ public class TournamentResource {
     @Produces(MediaType.TEXT_HTML)
     public TemplateInstance createTournament(){
         return TournamentResource.Templates.createTournament(teamRepository.getAllSorted());
+    }
+
+    @GET
+    @Path("/matchList/{id}")
+    @Produces(MediaType.TEXT_HTML)
+    public TemplateInstance matchList(@PathParam("id") Long id){
+        return TournamentResource.Templates.matchList
+                (nodeRepository.getNodesAsList
+                        (tournamentRepository.findById(id).getFinalNode())
+                        .stream()
+                        .filter(n -> n.getPhase().getLevel() == phaseForCurrentTournament)
+                        .toList(), id
+                );
     }
 
     public String convertToLetters(int n) {
@@ -179,8 +195,8 @@ public class TournamentResource {
             , @FormParam("id") List<Long> ids
             , @FormParam("tournamentName") String name
     ) {
-        List<Node> nodes = new ArrayList<>();
-        String tournamentName;
+        List<Node> nodes;
+        String tournamentName = "";
         if(ids.size() == 4 || ids.size() == 8 || ids.size() == 16){
             if(name.equals("")){
                 tournamentName = "Turnier_am_"+LocalDateTime.now().format(DateTimeFormatter.BASIC_ISO_DATE);
@@ -189,11 +205,13 @@ public class TournamentResource {
                 tournamentName = name;
             }
             nodes = tournamentRepository.setUpTournament(tournamentName, teamRepository.getTeamsByIds(ids));
+            phaseForCurrentTournament = nodes.get(0).getPhase().getLevel();
+            log.info(phaseForCurrentTournament);
         }
 
             return Response
-                    .temporaryRedirect(URI.create("/matches/matchResult/" + nodes.get(1).getCurMatch().getId()))
                     .status(301)
+                    .location(URI.create("tournaments/matchList/"+tournamentRepository.findByName(tournamentName).getId()))
                     .build();
     }
 
@@ -220,5 +238,53 @@ public class TournamentResource {
                     .location(URI.create("tournaments/showEndResult/"+name))
                     .build();
         }
+    }
+
+    @Path("/matchList/{id}")
+    @POST
+    @Produces(MediaType.APPLICATION_JSON)
+    @Transactional
+    public Response redirect(
+            @Context UriInfo uriInfo,
+            @PathParam("id") long tournamentId
+    ) {
+        Filewriter filewriter = new Filewriter();
+        List<Node> nodes = nodeRepository.getNodesAsList
+                (tournamentRepository
+                        .findById(tournamentId)
+                        .getFinalNode()
+                ).stream()
+                .filter(n -> n.getPhase().getLevel() == phaseForCurrentTournament)
+                .toList();
+
+        for (Node node: nodes) {
+            if(node.getCurMatch().getPointsTeam1() == node.getCurMatch().getPointsTeam2()){
+                return Response.status(301).location(URI.create("tournaments/matchList/"+tournamentId)).build();
+            }
+        }
+
+        if(phaseForCurrentTournament  != 1){
+            for (Node node: nodes) {
+                node.getParentNode().setChildMatchWinners();
+                node.getParentNode().getCurMatch().setTournament(node.getCurMatch().tournament);
+            }
+        }
+
+
+        phaseForCurrentTournament --;
+
+        log.info(phaseForCurrentTournament);
+
+        if(phaseForCurrentTournament == 0){
+            filewriter.writeFinalResult(tournamentRepository.findById(tournamentId).getFinalNode(), tournamentRepository.findById(tournamentId));
+            return Response.status(301)
+                    .location(
+                    URI.create("tournaments/showEndResult/"+tournamentRepository
+                            .findById(tournamentId)
+                            .getName()
+                    )).build();
+        }
+
+        return Response.status(301).location(URI.create("tournaments/matchList/"+tournamentId)).build();
     }
 }
