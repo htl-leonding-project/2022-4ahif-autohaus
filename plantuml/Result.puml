@@ -1,18 +1,18 @@
-@startmindmap TestTurnier.png
-title TestTurnier
+@startmindmap Image_Test.png
+title Image_Test
 
-- FC Liverpool 2 \nFC Arsenal 3
+- FC Barcelona 1 \nFC Arsenal 0
 
--- FC Barcelona 1 \nFC Liverpool 2
+-- FC Barcelona 2 \nAtletico Madrid 1
 
---- FC Barcelona 2 \nChelsea 1
+--- FC Barcelona 3 \nChelsea 1
 
---- Atletico Madrid 1 \nFC Liverpool 2
+--- Atletico Madrid 1 \nFC Liverpool 0
 
--- FC Arsenal 3 \nAjax Amsterdam 0
+-- FC Arsenal 3 \nAjax Amsterdam 1
 
---- AS Rom 0 \nFC Arsenal 1
+--- AS Rom 0 \nFC Arsenal 2
 
---- AC Mailand 1 \nAjax Amsterdam 2
-caption Winner is: FC Arsenal
+--- AC Mailand 0 \nAjax Amsterdam 1
+caption Winner is: FC Barcelona
 @endmindmap

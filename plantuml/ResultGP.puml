@@ -3,86 +3,86 @@ left to right direction
 
 map Gruppe.A {
 Manchester City=>MC
-FC Arsenal=>FCA
-Real Madrid=>RM
-Chelsea=>C
+Inter Mailand=>IM
+Manchester United=>MU
+FC Barcelona=>FCB
 }
 
 map Gruppe.B {
+Rapid Wien=>RW
 Atletico Madrid=>AM
-Red Bull Salzburg=>RBS
-FC Liverpool=>FCL
 FC Porto=>FCP
+Ajax Amsterdam=>AA
 }
-map Match.FCAvsC {
-FC Arsenal => 2
-Chelsea => 3
-}
-
-map Match.FCAvsRM {
-FC Arsenal => 1
-Real Madrid => 3
-}
-
-map Match.FCAvsMC {
-FC Arsenal => 3
+map Match.MCvsMU {
 Manchester City => 2
+Manchester United => 3
 }
 
-map Match.CvsRM {
-Chelsea => 3
-Real Madrid => 1
-}
-
-map Match.CvsMC {
-Chelsea => 1
-Manchester City => 2
-}
-
-map Match.RMvsMC {
-Real Madrid => 2
+map Match.MCvsFCB {
 Manchester City => 1
-}
-map Match.RBSvsFCL {
-Red Bull Salzburg => 0
-FC Liverpool => 3
+FC Barcelona => 3
 }
 
-map Match.RBSvsFCP {
-Red Bull Salzburg => 3
-FC Porto => 1
+map Match.MCvsIM {
+Manchester City => 3
+Inter Mailand => 2
 }
 
-map Match.RBSvsAM {
-Red Bull Salzburg => 1
+map Match.MUvsFCB {
+Manchester United => 3
+FC Barcelona => 1
+}
+
+map Match.MUvsIM {
+Manchester United => 1
+Inter Mailand => 2
+}
+
+map Match.FCBvsIM {
+FC Barcelona => 2
+Inter Mailand => 1
+}
+map Match.AMvsFCP {
 Atletico Madrid => 0
-}
-
-map Match.FCLvsFCP {
-FC Liverpool => 2
 FC Porto => 3
 }
 
-map Match.FCLvsAM {
-FC Liverpool => 2
+map Match.AMvsAA {
+Atletico Madrid => 3
+Ajax Amsterdam => 1
+}
+
+map Match.AMvsRW {
 Atletico Madrid => 1
+Rapid Wien => 0
 }
 
-map Match.FCPvsAM {
-FC Porto => 3
-Atletico Madrid => 2
+map Match.FCPvsAA {
+FC Porto => 2
+Ajax Amsterdam => 3
 }
-Gruppe.A -- Match.FCAvsC
-Gruppe.A -- Match.FCAvsRM
-Gruppe.A -- Match.FCAvsMC
-Gruppe.A -- Match.CvsRM
-Gruppe.A -- Match.CvsMC
-Gruppe.A -- Match.RMvsMC
-Gruppe.B -- Match.RBSvsFCL
-Gruppe.B -- Match.RBSvsFCP
-Gruppe.B -- Match.RBSvsAM
-Gruppe.B -- Match.FCLvsFCP
-Gruppe.B -- Match.FCLvsAM
-Gruppe.B -- Match.FCPvsAM
+
+map Match.FCPvsRW {
+FC Porto => 2
+Rapid Wien => 1
+}
+
+map Match.AAvsRW {
+Ajax Amsterdam => 3
+Rapid Wien => 2
+}
+Gruppe.A -- Match.MCvsMU
+Gruppe.A -- Match.MCvsFCB
+Gruppe.A -- Match.MCvsIM
+Gruppe.A -- Match.MUvsFCB
+Gruppe.A -- Match.MUvsIM
+Gruppe.A -- Match.FCBvsIM
+Gruppe.B -- Match.AMvsFCP
+Gruppe.B -- Match.AMvsAA
+Gruppe.B -- Match.AMvsRW
+Gruppe.B -- Match.FCPvsAA
+Gruppe.B -- Match.FCPvsRW
+Gruppe.B -- Match.AAvsRW
 
 @enduml
