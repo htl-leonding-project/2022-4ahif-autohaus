@@ -1,10 +1,18 @@
-@startmindmap BierPong.png
-title BierPong
+@startmindmap TestTurnier.png
+title TestTurnier
 
-- FC Barcelona 1 \nAjax Amsterdam 0
+- FC Liverpool 2 \nFC Arsenal 3
 
--- FC Barcelona 0 \nAC Mailand 0
+-- FC Barcelona 1 \nFC Liverpool 2
 
--- Rapid Wien 0 \nAjax Amsterdam 0
-caption Winner is: FC Barcelona
+--- FC Barcelona 2 \nChelsea 1
+
+--- Atletico Madrid 1 \nFC Liverpool 2
+
+-- FC Arsenal 3 \nAjax Amsterdam 0
+
+--- AS Rom 0 \nFC Arsenal 1
+
+--- AC Mailand 1 \nAjax Amsterdam 2
+caption Winner is: FC Arsenal
 @endmindmap
