@@ -206,16 +206,16 @@ public class GruppenPhasenTest {
         //tournament.addPhase(phase3);
 
         //group1.getTeams().sort(new TeamComparator());
-        group1.getTeams().sort(Comparator.comparingInt(Team::getPoints));
+        group1.getTeams().sort(Comparator.comparingInt(Team::getWinAmount));
         //group2.getTeams().sort(new TeamComparator());
-        group2.getTeams().sort(Comparator.comparingInt(Team::getPoints));
+        group2.getTeams().sort(Comparator.comparingInt(Team::getWinAmount));
 
         for (Team cur: group1.getTeams()) {
-            System.out.println(cur.getName() + ": " + cur.getPoints());
+            System.out.println(cur.getName() + ": " + cur.getWinAmount());
         }
         System.out.println();
         for (Team cur: group2.getTeams()) {
-            System.out.println(cur.getName() + ": " + cur.getPoints());
+            System.out.println(cur.getName() + ": " + cur.getWinAmount());
         }
         System.out.println();
 
@@ -224,7 +224,8 @@ public class GruppenPhasenTest {
                 Match currentMatch = new Match(group1Team, group2Team);
                 currentMatch.setPointsTeam1(random.nextInt()%5);
                 currentMatch.setPointsTeam2(random.nextInt()%5);
-                currentMatch.endMatch();
+                if(currentMatch.getPointsTeam1() == currentMatch.getPointsTeam2())
+                    currentMatch.setPointsTeam1(currentMatch.pointsTeam1+1);
                 phase3.addNode(new Node(currentMatch));
             }
         }
@@ -233,12 +234,12 @@ public class GruppenPhasenTest {
         winners.addAll(group1.getTeams());
         winners.addAll(group2.getTeams());
 
-        winners.sort(Comparator.comparingInt(Team::getPoints));
+        winners.sort(Comparator.comparingInt(Team::getWinAmount));
 
         winningGroup.setTeams(winners.subList(4,8));
 
         for (Team current:winningGroup.getTeams()) {
-            System.out.println(current.getName() + ": " + current.getPoints());
+            System.out.println(current.getName() + ": " + current.getWinAmount());
         }
 
         FilewriterGP filewriterGP = new FilewriterGP();

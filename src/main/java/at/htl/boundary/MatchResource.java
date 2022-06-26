@@ -121,17 +121,17 @@ public class MatchResource {
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     @Transactional
-    public Response matchResult(
+    public Response playMatch(
             @Context UriInfo uriInfo
             , @PathParam("id") Long id
             , @FormParam("team1") String team1
             , @FormParam("team2") String team2
     ) {
-        if (team1.equals("") || team2.equals("")) {
+        if (team1.equals("") || team2.equals("") || team1.equals(team2)) {
 
             Templates.matchResult(matchRepository.findById(id));
             return Response.status(301)
-                    .location(URI.create("matches/matchResult/{id}"))
+                    .location(URI.create("matches/playMatch/"+id))
                     .build();
         } else {
             Match match = matchRepository.findById(id);

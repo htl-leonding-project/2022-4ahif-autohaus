@@ -15,8 +15,7 @@ public class Team  {
 
     @Column(name = "T_Name",length = 20)
     String name;
-    @Transient
-    int points;
+
     @Column(name = "T_Abbr")
     private String abbr; //Abbreviation
 
@@ -29,23 +28,14 @@ public class Team  {
 
     public Team(String name) {
         this.name = name;
-        this.points = 0;
     }
 
     public Team(String name, String abbr) {
         this.name = name;
         this.abbr = abbr;
-        this.points = 0;
     }
     //endregion
     //region Getter & Setter
-    public int getPoints() {
-        return points;
-    }
-
-    public void setPoints(int points) {
-        this.points = points;
-    }
 
     public String getName() {
         return name;
@@ -75,8 +65,6 @@ public class Team  {
     public String getNameAndAbbr() {
         return this.getName() + "=>"+ this.getAbbr();
     }
-
-    public void incrementPoints(int amount){this.points+=amount;}
 
     public int getWinAmount() {
         return winAmount;

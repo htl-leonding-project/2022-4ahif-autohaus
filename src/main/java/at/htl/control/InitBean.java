@@ -29,7 +29,6 @@ public class InitBean {
     void startup(@Observes StartupEvent event) {
 
         List<Team> teams = new ArrayList<>();
-        List<Tournament> tournaments = new ArrayList<>();
 
         teams.add(new Team("Lask Linz","Lask"));
         teams.add(new Team("Real Madrid","RM"));
@@ -82,7 +81,5 @@ public class InitBean {
 */
 
         teamRepository.persist(teams);
-        tournamentRepository.persist(tournaments);
-        matchRepository.persist(new Match(new Team("A","a"),new Team("B","b")));
     }
 }

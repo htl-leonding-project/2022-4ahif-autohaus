@@ -3,54 +3,110 @@
 <head>
   <meta charset="UTF-8">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-  <style>
-    .button {
-      border: none;
-      color: white;
-      padding: 16px 32px;
-      text-align: center;
-      text-decoration: none;
-      display: inline-block;
-      font-size: 16px;
-      margin: 4px 2px;
-      transition-duration: 0.4s;
-      cursor: pointer;
-    }
+    <style>
+        h1, h2, h3, h4, h5, h6 {
+            margin-bottom: 0.5rem;
+            font-weight: 400;
+            line-height: 1.5;
+        }
 
-    .button1 {
-      background-color: white;
-      color: black;
-      border: 2px solid #4CAF50;
-    }
+        h1 {
+            font-size: 2.5rem;
+        }
 
-    .button1:hover {
-      background-color: #4CAF50;
-      color: white;
-    }
+        h2 {
+            font-size: 2rem
+        }
 
-    .button2 {
-      background-color: white;
-      color: black;
-      border: 2px solid red;
-    }
+        h3 {
+            font-size: 1.75rem
 
-    .button2:hover {
-      background-color: red;
-      color: white;
-    }
+        }
 
-    a {
-      color: white;
-      text-decoration: none !important;
-    }
+        h4 {
+            font-size: 1.5rem
+        }
 
-  </style>
+        h5 {
+            font-size: 1.25rem
+        }
+
+        h6 {
+            font-size: 1rem
+        }
+
+        .lead {
+            font-weight: 300;
+            font-size: 2rem;
+        }
+
+        .banner {
+            font-size: 2.7rem;
+            margin: 0;
+            padding: 2rem 1rem;
+            background-color: #0d1c2c;
+            color: white;
+        }
+
+        code {
+            font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+            font-size: 87.5%;
+            color: #e83e8c;
+            word-break: break-word;
+        }
+
+        .left-column {
+            padding: .75rem;
+            max-width: 75%;
+            min-width: 55%;
+        }
+
+        .right-column {
+            padding: .75rem;
+            max-width: 25%;
+        }
+
+        li {
+            margin: 0.75rem;
+        }
+
+        .right-section {
+            margin-left: 1rem;
+            padding-left: 0.5rem;
+        }
+
+        .right-section h3 {
+            padding-top: 0;
+            font-weight: 200;
+        }
+
+        .right-section ul {
+            border-left: 0.3rem solid #71aeef;
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .provided-code {
+            border-left: 0.3rem solid #71aeef;
+            padding-left: 10px;
+        }
+
+        .provided-code h3 {
+            font-weight: 200;
+        }
+
+        a {
+            color: white;
+            text-decoration: none !important;
+        }
+
+    </style>
 </head>
 <body>
 
 <div class="banner lead">
   <a href="http://localhost:8080/dashboard" class="d-flex justify-content-center">
-    Spielergebniss eintragen
+    Matches in Turnier {nodes.get(0).getCurMatch().getTournament().getName()}
   </a>
 </div>
 
@@ -61,6 +117,7 @@
         <th>Team 1</th>
         <th>Team 2</th>
         <th>Punkte Eintragen</th>
+        <th>Punktestand</th>
       </tr>
     </thead>
     <tbody>
@@ -69,6 +126,7 @@
           <td>{node.getCurMatch().getTeam1().getName}</td>
           <td>{node.getCurMatch().getTeam2().getName}</td>
           <td><a class="btn btn-success bg-midnight-bloom" href="/matches/playMatch/{node.getCurMatch().getId()}">Ergebnis eintragen</a></td>
+          <td>{node.getCurMatch().getPointsTeam1()}:{node.getCurMatch().getPointsTeam2()}</td>
           </tr>
         {/for}
     </tbody>

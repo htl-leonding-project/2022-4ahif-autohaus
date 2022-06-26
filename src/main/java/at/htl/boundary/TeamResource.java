@@ -1,6 +1,8 @@
 package at.htl.boundary;
 
+import at.htl.control.NodeRepository;
 import at.htl.control.TeamRepository;
+import at.htl.control.TournamentRepository;
 import at.htl.entity.Team;
 import io.quarkus.qute.CheckedTemplate;
 import io.quarkus.qute.TemplateInstance;

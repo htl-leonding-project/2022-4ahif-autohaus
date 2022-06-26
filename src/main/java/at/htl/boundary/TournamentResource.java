@@ -146,11 +146,7 @@ public class TournamentResource {
         tournament.addGroup(group);
         tournamentRepository.persist(tournament);
 
-        List<Node> nodes = tournamentRepository.setUpTournament(tournament.getName(), group.getTeams());
-
-        Node finalNode = nodes.get(nodes.size()-1);
-        Filewriter newFile = new Filewriter();
-        newFile.writeFinalResult(finalNode, tournament);
+        tournamentRepository.setUpTournament(tournament.getName(), group.getTeams());
 
         return tournament;
     }
@@ -202,17 +198,30 @@ public class TournamentResource {
                 tournamentName = "Turnier_am_"+LocalDateTime.now().format(DateTimeFormatter.BASIC_ISO_DATE);
             }
             else{
-                tournamentName = name;
+                tournamentName = name.replace(" ", "_");
+
+                if(tournamentRepository.findByName(tournamentName)!= null){
+                    return Response
+                            .status(301)
+                            .location(URI.create("tournaments/createTournament"))
+                            .build();
+                }
+
             }
             nodes = tournamentRepository.setUpTournament(tournamentName, teamRepository.getTeamsByIds(ids));
             phaseForCurrentTournament = nodes.get(0).getPhase().getLevel();
             log.info(phaseForCurrentTournament);
-        }
 
             return Response
                     .status(301)
                     .location(URI.create("tournaments/matchList/"+tournamentRepository.findByName(tournamentName).getId()))
                     .build();
+        }
+        return Response
+                .status(301)
+                .location(URI.create("tournaments/createTournament"))
+                .build();
+
     }
 
     @Path("/tournamentSelection")

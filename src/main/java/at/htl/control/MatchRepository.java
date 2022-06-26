@@ -22,4 +22,9 @@ public class MatchRepository implements PanacheRepository<Match> {
 
         return matches;
     }
+
+    @Override
+    public void persist(Match match) {
+        PanacheRepository.super.persist(match);
+    }
 }

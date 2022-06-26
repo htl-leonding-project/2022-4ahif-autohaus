@@ -120,20 +120,12 @@
 <div class="banner lead">
     <a href="http://localhost:8080/dashboard" class="d-flex justify-content-center">LEO-Competition</a>
 </div>
-<!--
-<select>
-    {#for team in teams}
-        <option value="{team.name}">{team.name}</option>
-    {/for}
-</select>
--->
 <table class="table">
     <thead class="thead-dark">
     <tr>
         <th scope="col">#</th>
-        <th scope="col">Abbreviation</th>
+        <th scope="col">Abkürzung</th>
         <th scope="col">Name</th>
-        <th scope="col">Points</th>
     </tr>
     </thead>
     <tbody>
@@ -142,7 +134,6 @@
         <th scope="row">{team.id}</th>
         <td>{team.abbr}</td>
         <td>{team.name}</td>
-        <td>{team.points}</td>
         </tr>
     {/for}
     </tbody>

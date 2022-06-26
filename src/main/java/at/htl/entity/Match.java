@@ -28,10 +28,6 @@ public class Match{
     @ManyToOne
     public Tournament tournament;
 
-    @Column(name = "M_PHASE")
-    public int phase;
-
-
     //resultOfMatch[0] -> GoalsTeam1
     //resultOfMatch[1] -> GoalsTeam2
 
@@ -82,17 +78,8 @@ public class Match{
         this.tournament = tournament;
     }
 
-    public void increasePointsTeam1(){
-        this.pointsTeam1++;
-    }
-
-    public void increasePointsTeam2(){
-        this.pointsTeam2++;
-    }
-
     public void endMatch(){
-        team1.incrementPoints(pointsTeam1);
-        team2.incrementPoints(pointsTeam2);
+        getWinningTeam().incrementWinAmount();
     }
     //endregion
 
@@ -107,23 +94,11 @@ public class Match{
 
     public Team getWinningTeam(){
         if(pointsTeam1 > pointsTeam2) {
-            team1.incrementWinAmount();
             return team1;
         }
-        else if (pointsTeam2 > pointsTeam1) {
-            team2.incrementWinAmount();
+        else{
             return team2;
         }
-
-        return null;//Bei Gleichstand noch unklar
-    }
-
-    public int getPhase() {
-        return phase;
-    }
-
-    public void setPhase(int phase) {
-        this.phase = phase;
     }
 
     public String getMatchResultString() {
