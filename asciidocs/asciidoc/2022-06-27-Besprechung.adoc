@@ -1,0 +1,74 @@
+= Besprechungsprotokoll 27.06.2022
+1.0, 2022-06-27
+ifndef::imagesdir[:imagesdir: ../images]
+:icons: font
+//:sectnums:    // Nummerierung der Überschriften / section numbering
+//:toc: left
+
+//Need this blank line after ifdef, don't know why...
+ifdef::backend-html5[]
+
+// https://fontawesome.com/v4.7.0/icons/
+
+
+.Teilnehmer
+|===
+|anwesend
+
+|Christoph Handel
+
+|Lukas Baumgartner
+
+|Joachim Pelzeder
+
+|Thomas W. Stütz
+
+|===
+
+.Ort und Zeit
+[cols=2*]
+|===
+|Ort
+|HTBLA Leonding
+
+|von-bis
+|09:08-
+|Dauer
+|XXXX
+|===
+
+== Besprochene Themen
+
+* Finale Präsentation des Projektes.
+
+* Es wurde das erstellen eines Turnieres hergezeigt.
+
+* Selenium um das erstellen eines Turnieres "per Hand" zu beschleunigen.
+
+* Ergebnis eintragen eines Match wurde gezeigt.
+
+== Vereinbarungen und Entscheidungen
+
+* Eventuell ein Feld das man Unentschieden erlaubt oder nicht.
+
+* Ab nächstem Jahr wird nicht mehr über localhost präsentiert (mit Ausnahmen).
+
+* Beim eintragen des Ergebnis eines Matches könnte man den Platz besser nutzen.
+Eventuell mit Team 1 <Tore> : <Tore> Team 2. Oder direkt auf der selben Seite.
+
+* Statt Punktestand sollte "Ergebnis" oder "Spielstand".
+
+* Beim Turnierbaum Teams auch setzen können oder random generieren lassen.(optional)
+
+* Rasperry Pi mit Bildschirm worauf steht
+
+** Wer als nächstes spielen wird. ("In Vorbereitung")
+
+** Aktueller Spielstand, welcher eventuell über Handy oder so vom Schiedsrichter geändert werden kann.
+
+** Geplannte Spiele
+
+** Bereits gespielte Spiele ("Finished")
+
+** Wann & Wo die Spiele stattfinden werden
+
