@@ -1,18 +1,10 @@
-@startmindmap Image_Test.png
-title Image_Test
+@startmindmap Vorzeigespiel.png
+title Vorzeigespiel
 
-- FC Barcelona 1 \nFC Arsenal 0
+- Atletico Madrid 2 \nAC Mailand 1
 
--- FC Barcelona 2 \nAtletico Madrid 1
+-- Atletico Madrid 3 \nAS Rom 2
 
---- FC Barcelona 3 \nChelsea 1
-
---- Atletico Madrid 1 \nFC Liverpool 0
-
--- FC Arsenal 3 \nAjax Amsterdam 1
-
---- AS Rom 0 \nFC Arsenal 2
-
---- AC Mailand 0 \nAjax Amsterdam 1
-caption Winner is: FC Barcelona
+-- AC Mailand 1 \nAjax Amsterdam 0
+caption Winner is: Atletico Madrid
 @endmindmap
