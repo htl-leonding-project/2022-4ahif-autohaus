@@ -55,12 +55,17 @@ public class TournamentResource {
     }
 
     @GET
-    @Produces(MediaType.TEXT_HTML)
-    @Path("/listTournaments")
-    public TemplateInstance getAllTournaments(){
-        return TournamentResource.Templates.listTournaments(
-                tournamentRepository.findAll().list()
-        );
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getAllTournaments(){
+        return Response.ok(
+                tournamentRepository.findAll().list()).build();
+    }
+
+    @GET
+    @Path(value = "/amount")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response amount(){
+        return Response.ok(tournamentRepository.findAll().count()).build();
     }
 
     @GET

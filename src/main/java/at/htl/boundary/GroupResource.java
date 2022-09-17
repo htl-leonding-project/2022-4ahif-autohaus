@@ -75,7 +75,7 @@ public class GroupResource {
     }
 
     @GET
-    @Produces(MediaType.TEXT_HTML)
+    @Produces(MediaType.APPLICATION_JSON)
     public Response getAllGroups(){
         /*teams = teamRepository.listAll();
         nrOfTeams=teamRepository.listAll().size();
@@ -93,6 +93,13 @@ public class GroupResource {
         return Response
                 .ok(GroupResource.Templates.groups(groups,tournament))
                 .build();
+    }
+
+    @GET
+    @Path("/amount")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response amount(){
+        return Response.ok(groupRepository.findAll().count()).build();
     }
 
     //post method that creates a group when pushing a button

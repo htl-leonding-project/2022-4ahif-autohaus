@@ -36,12 +36,16 @@ public class TeamResource {
     }
 
     @GET
-    @Produces(MediaType.TEXT_HTML)
-    public TemplateInstance getAllTeams(){
-        //List<Team> all = teamRepo.listAll();
-        return Templates.teamList(
-                teamRepo.getAllSorted()
-        );
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getAllTeams(){
+        return Response.ok(teamRepo.getAllSorted()).build();
+    }
+
+    @GET
+    @Path(value = "/amount")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getAmount(){
+        return Response.ok(teamRepo.getAllSorted().size()).build();
     }
 
     @GET

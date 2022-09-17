@@ -1,17 +1,17 @@
-@startmindmap Image_Test.png
-title Image_Test
+@startmindmap 8Teams.png
+title 8Teams
 
-- FC Barcelona 1 \nFC Arsenal 0
+- FC Barcelona 1 \nAjax Amsterdam 0
 
--- FC Barcelona 2 \nAtletico Madrid 1
+-- FC Barcelona 1 \nFC Liverpool 0
 
---- FC Barcelona 3 \nChelsea 1
+--- FC Barcelona 1 \nChelsea 0
 
---- Atletico Madrid 1 \nFC Liverpool 0
+--- Atletico Madrid 0 \nFC Liverpool 1
 
--- FC Arsenal 3 \nAjax Amsterdam 1
+-- AS Rom 0 \nAjax Amsterdam 1
 
---- AS Rom 0 \nFC Arsenal 2
+--- AS Rom 2 \nFC Arsenal 0
 
 --- AC Mailand 0 \nAjax Amsterdam 1
 caption Winner is: FC Barcelona

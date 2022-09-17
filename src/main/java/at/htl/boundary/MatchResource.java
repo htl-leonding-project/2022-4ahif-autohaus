@@ -43,6 +43,13 @@ public class MatchResource {
         return Response.ok(matches).build();
     }
 
+    @GET
+    @Path(value = "amount")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response amount(){
+        return Response.ok(matchRepository.listAll().size()).build();
+    }
+
     /**
      * Gibt ein Match per id zurück
      * @param id

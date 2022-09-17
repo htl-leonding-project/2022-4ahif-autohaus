@@ -88,6 +88,10 @@
       <artifactId>jboss-logging</artifactId>
       <version>3.4.3.Final</version>
     </dependency>
+    <dependency>
+      <groupId>io.quarkus</groupId>
+      <artifactId>quarkus-smallrye-openapi</artifactId>
+    </dependency>
   </dependencies>
   <build>
     <plugins>

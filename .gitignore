@@ -15,3 +15,6 @@ gh-pages/
 /asciidocs/slides/revealjs
 .png
 asciidocs/plantuml/Result.puml
+/.angular
+/node_modules
+/.vscode
