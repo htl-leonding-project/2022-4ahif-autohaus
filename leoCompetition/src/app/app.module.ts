@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -8,15 +9,18 @@ import { HomeComponent } from './components/home/home.component';
 
 import { HttpClientModule } from '@angular/common/http';
 import { TeamListComponent } from './components/team-list/team-list.component';
+import { TeamCreationComponent } from './components/team-creation/team-creation.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    TeamListComponent
+    TeamListComponent,
+    TeamCreationComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     AppRoutingModule,
     HttpClientModule,
     CommonModule

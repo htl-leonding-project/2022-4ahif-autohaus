@@ -1,0 +1,26 @@
+ 
+<h1 class="display-2 text-center" style="padding: 0.25em">Neues Team</h1>
+
+<div class="row justify-content-md-center">
+    <div class="col-sm-6 ">
+        <form (ngSubmit)="onSubmit(teamForm)" #teamForm="ngForm">
+            <div class="form-group" style="margin:1em">
+                <label for="nameElement" class="control-label">Name</label>
+                <input id="nameElement" #name="ngModel"type="text" [(ngModel)]="newTeam.name" name="newTeam.name" class="form-control" required>
+                <div [hidden]="name.valid" class="alert alert-danger">
+                    Name muss angegeben werden!
+                </div>
+            </div>
+            <div class="form-group" style="margin:1em">
+                <label for="abbrElement" class="control-label">Abkürzung</label>
+                <input id="abbrElement" #abbr="ngModel" type="text" [(ngModel)]="newTeam.abbr" name="newTeam.abbr" class="form-control" required>
+                <div [hidden]="abbr.valid" class="alert alert-danger">
+                    Abkürzung muss angegeben werden!
+                </div>
+            </div>
+            <div class="form-group" style="margin:1em">
+                <input type="submit" value="Speichern" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
