@@ -68,6 +68,16 @@ public class TournamentResource {
         return Response.ok(tournamentRepository.findAll().count()).build();
     }
 
+    @POST
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Transactional
+    public Response save(Tournament tournament){
+        tournamentRepository.save(new Tournament(tournament.getName()));
+        return Response.ok().build();
+    }
+
+
     @GET
     @Path("/TeamsSelect")
     @Produces(MediaType.TEXT_HTML)

@@ -1,6 +1,7 @@
 package at.htl.entity;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,11 +26,24 @@ public class Tournament  {
     @OneToOne(cascade = CascadeType.ALL)
     Node finalNode;
 
+    @Column(name="T_StartDate")
+    LocalDate startDate;
+
     public Tournament(String name) {
+        this();
         this.name = name;
     }
 
     public Tournament() {
+        this.startDate = LocalDate.now();
+    }
+
+    public LocalDate getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(LocalDate startDate) {
+        this.startDate = startDate;
     }
 
     public List<Phase> getPhases() {

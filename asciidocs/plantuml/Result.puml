@@ -1,18 +1,10 @@
-@startmindmap 8Teams.png
-title 8Teams
+@startmindmap smallMatch.png
+title smallMatch
 
-- FC Barcelona 1 \nAjax Amsterdam 0
+- Lask Linz 0 \nRed Bull Salzburg 1
 
--- FC Barcelona 1 \nFC Liverpool 0
+-- Lask Linz 2 \nReal Madrid 1
 
---- FC Barcelona 1 \nChelsea 0
-
---- Atletico Madrid 0 \nFC Liverpool 1
-
--- AS Rom 0 \nAjax Amsterdam 1
-
---- AS Rom 2 \nFC Arsenal 0
-
---- AC Mailand 0 \nAjax Amsterdam 1
-caption Winner is: FC Barcelona
+-- FC Barcelona 0 \nRed Bull Salzburg 2
+caption Winner is: Red Bull Salzburg
 @endmindmap

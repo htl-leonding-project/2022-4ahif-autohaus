@@ -6,6 +6,7 @@ import io.quarkus.hibernate.orm.panache.PanacheRepository;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
+import javax.persistence.PersistenceException;
 import javax.transaction.Transactional;
 import java.util.LinkedList;
 import java.util.List;
@@ -163,5 +164,14 @@ public class TournamentRepository implements PanacheRepository<Tournament> {
 
     public Tournament findByName(String name) {
         return find("name", name).firstResult();
+    }
+
+    public void save(Tournament tournament){
+        if(this.findByName(tournament.getName()) == null){
+            this.persist(tournament);
+        }
+        else {
+            throw new PersistenceException();
+        }
     }
 }

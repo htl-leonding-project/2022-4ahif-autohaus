@@ -1,0 +1,22 @@
+<div class="container">
+
+    <h1 class="display-2 text-center" style="padding: 0.25em">Tournaments</h1>
+
+    <table class="table table-hover table-responsive-sm table-bordered">
+    <thead>
+        <tr>
+            <th>Gestartet am: </th>
+            <th>Name</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let tournament of tournaments">
+            <th scope="row">{{tournament.startDate}}</th>
+            <th scope="row">{{tournament.name}}</th>
+            <!--<td>{{tournament}}</td>-->
+            <td><button type="button" class="btn btn-success" >Diagram Anzeigen</button></td>
+        </tr>
+    </tbody>
+</table>
+</div>
