@@ -1,0 +1,74 @@
+= Besprechungsprotokoll 20.09.2022
+1.0, 2022-09-20
+ifndef::imagesdir[:imagesdir: ../images]
+:icons: font
+//:sectnums:    // Nummerierung der Überschriften / section numbering
+//:toc: left
+
+//Need this blank line after ifdef, don't know why...
+ifdef::backend-html5[]
+
+// https://fontawesome.com/v4.7.0/icons/
+
+
+.Teilnehmer
+|===
+|anwesend
+
+|Christoph Handel
+
+|Lukas Baumgartner
+
+|Joachim Pelzeder
+
+|Thomas W. Stütz
+
+|===
+
+.Ort und Zeit
+[cols=2*]
+|===
+|Ort
+|HTBLA Leonding
+
+|von-bis
+|15:30
+|Dauer
+|XXXX
+|===
+
+== Besprochene Themen
+
+* Präsentieren des Projektes.
+
+* Selenium bzw. Cypress zum End-To-End Testen. Bevorzugterweise Cypress.
+
+== Vereinbarungen und Entscheidungen
+
+* Gui überarbeiten Turniervorbereitung -> Turnierdurchführung -> Turnierauswertung
+
+* Bei der Turnierdurchführung wird der Spielplan bereits angezeigt.
+
+* Alles mal laufähig machen mit weniger Fokus auf komplexe Spielsysteme. Vorerst
+beim KO-System lassen.
+
+* Ein gezeichneter Entwurf von der GUI mit dem Flow/Ablauf.
+
+* Automatisiertes Testen mit Cypress einbinden.
+
+* Dependencies überarbeiten.
+
+* Filenamen überarbeiten (Camelcase in JAVA).
+
+* Ng-Tournament-Tree verwenden, anstelle von plantuml
+
+* Es muss keine lauffähige Applikation am Ende des Jahres fertig sein.
+
+* Ein geniales Deployment => K8s Cloud
+
+* Eventuelle Kopierfunktion um Turniere mehrmals spielen zu können.
+
+* Mobile Client wird nicht gemacht.
+
+* Responsive Design für Webseite.
+
