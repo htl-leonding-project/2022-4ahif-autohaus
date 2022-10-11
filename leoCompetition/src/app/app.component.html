@@ -14,36 +14,38 @@
     </div>
 </nav>-->
 <div class="container-fluid mt-4" style="text-align: center;">
-<div class="arrow-pointer" style="display: inline-block">
-  <ul class="ps-5" style="text-align: center">
-    <li class="pt-4" style="list-style: none;">
-      <label>Turnier</label>
-    </li>
-    <li style="list-style: none;">
-      <label>Erstellen</label>
-    </li>
-  </ul>
-</div>
-<div class="arrow-pointer" style="display: inline-block">
-  <ul class="ps-5" style="text-align: center">
-    <li class="pt-4" style="list-style: none;">
-      <label>Turnier</label>
-    </li>
-    <li style="list-style: none;">
-      <label>Spielen</label>
-    </li>
-  </ul>
-</div>
-<div class="arrow-pointer" style="display: inline-block">
-  <ul class="ps-5" style="text-align: center">
-    <li class="pt-4" style="list-style: none;">
-      <label>Turnier</label>
-    </li>
-    <li style="list-style: none;">
-      <label>Auswerten</label>
-    </li>
-  </ul>
-</div>
+  <div [ngClass]="{'arrow-pointer': router.url !== '/teams', 'arrow-pointer-active': router.url === '/teams'}" style="display: inline-block">
+    <ul class="ps-5" style="text-align: center">
+      <li class="pt-4" style="list-style: none;">
+        <label>Turnier</label>
+      </li>
+      <li style="list-style: none;">
+        <label>Erstellen</label>
+      </li>
+    </ul>
+  </div>
+
+  <div [ngClass]="{'arrow-pointer': router.url !== '/xx', 'arrow-pointer-active': router.url === '/xx'}" style="display: inline-block">
+    <ul class="ps-5" style="text-align: center">
+      <li class="pt-4" style="list-style: none;">
+        <label>Turnier</label>
+      </li>
+      <li style="list-style: none;">
+        <label>Spielen</label>
+      </li>
+    </ul>
+  </div>
+
+  <div [ngClass]="{'arrow-pointer': router.url !== '/xx', 'arrow-pointer-active': router.url === '/xx'}" style="display: inline-block">
+    <ul class="ps-5" style="text-align: center">
+      <li class="pt-4" style="list-style: none;">
+        <label>Turnier</label>
+      </li>
+      <li style="list-style: none;">
+        <label>Auswerten</label>
+      </li>
+    </ul>
+  </div>
 </div>
 
 <router-outlet></router-outlet>
