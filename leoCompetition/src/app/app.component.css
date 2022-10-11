@@ -1,0 +1,32 @@
+        
+.arrow-pointer {
+    width: 150px;
+    height: 100px;
+    background: #e3b510;
+    position: relative;
+    
+    margin-right: 4rem;
+    font-weight: 400;
+    color: white;
+}
+  
+.arrow-pointer:after {
+    content: '';
+    position: absolute;
+    left: 0; bottom: 0; width: 0; height: 0;
+    border-left: 50px solid white;
+    border-top: 50px solid transparent;
+    border-bottom: 50px solid transparent;
+}
+
+.arrow-pointer:before {
+    content: '';
+    position: absolute;
+    right: -50px;
+    bottom: 0;
+    width: 0;
+    height: 0;
+    border-left: 50px solid #e3b510;
+    border-top: 50px solid transparent;
+    border-bottom: 50px solid transparent;
+}
