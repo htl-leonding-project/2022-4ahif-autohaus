@@ -12,6 +12,7 @@ import { TeamListComponent } from './components/team-list/team-list.component';
 import { TeamCreationComponent } from './components/team-creation/team-creation.component';
 import { TournamentListComponent } from './components/tournament-list/tournament-list.component';
 import { KOTournamentTeamSelectionComponent } from './components/ko-tournament-team-selection/ko-tournament-team-selection.component';
+import { PlayTournamentComponent } from './components/play-tournament/play-tournament.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { KOTournamentTeamSelectionComponent } from './components/ko-tournament-t
     TeamListComponent,
     TeamCreationComponent,
     TournamentListComponent,
-    KOTournamentTeamSelectionComponent
+    KOTournamentTeamSelectionComponent,
+    PlayTournamentComponent
   ],
   imports: [
     BrowserModule,
