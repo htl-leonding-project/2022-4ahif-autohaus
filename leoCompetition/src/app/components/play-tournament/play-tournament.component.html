@@ -1,0 +1,30 @@
+<div>
+    <div class="container">
+        
+            <!--Tree or List -->
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Team 1</th>
+                        <th>Team 2</th>
+                        <th>Endstand</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let match of matches">
+                        <td>{{match.team1.name}}</td>
+                        <td>{{match.team2.name}}</td>
+                        <td>{{match.pointsTeam1}} : {{match.pointsTeam2}}</td>
+                        <td>
+                            <button class="btn btn-primary">Ergebnis bearbeiten</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        
+    </div>
+    <div class="container-fluid" style="text-align: center;">
+        <button [ngClass]="finishedAllMatches == true ? 'btn btn-success' : 'btn btn-success disabled'">Turnier Beenden</button>
+    </div>
+</div>
