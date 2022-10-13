@@ -61,6 +61,31 @@ public class TournamentResource {
                 tournamentRepository.findAll().list()).build();
     }
 
+    /*
+    @GET
+    @Path("/matchList/{id}")
+    @Produces(MediaType.TEXT_HTML)
+    public TemplateInstance matchList(@PathParam("id") Long id){
+        return TournamentResource.Templates.matchList
+                (nodeRepository.getNodesAsList
+                        (tournamentRepository.findById(id).getFinalNode())
+                        .stream()
+                        .filter(n -> n.getPhase().getLevel() == phaseForCurrentTournament)
+                        .toList(), id
+                );
+    }
+     */
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/{tournament}/matches")
+    public Response getAllMatchesFromTournament(@PathParam("tournament")String tournament){
+        return Response
+                .ok(nodeRepository.getNodesAsList(
+                        tournamentRepository.findByName(tournament).getFinalNode())
+                        .stream().filter(n -> n.getPhase().getLevel() == phaseForCurrentTournament)
+                        .toList(),tournament)
+                .build();
+    }
     @GET
     @Path(value = "/amount")
     @Produces(MediaType.APPLICATION_JSON)
