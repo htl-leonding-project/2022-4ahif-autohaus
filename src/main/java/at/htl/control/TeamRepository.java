@@ -35,6 +35,7 @@ public class TeamRepository implements PanacheRepository<Team> {
 
     @Override
     public void persist(Team team) {
+        log.info(team.getName() +", " + team.getAbbr());
         if(this.find("name = ?1 and abbr = ?2", team.getName(), team.getAbbr()).count() > 0) {
             log.error("Team with same attributes already saved");
             throw new PersistenceException();

@@ -3,6 +3,7 @@ package at.htl.control;
 import at.htl.entity.*;
 import at.htl.filewriter.Filewriter;
 import io.quarkus.hibernate.orm.panache.PanacheRepository;
+import org.jboss.logging.Logger;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
@@ -17,14 +18,15 @@ public class TournamentRepository implements PanacheRepository<Tournament> {
     MatchRepository matchRepository;
 
     @Inject
+    Logger log;
+
+    @Inject
     NodeRepository nodeRepository;
 
     @Transactional
     public List<Node> setUpTournament (String name, List<Team> teams) {
-        Filewriter filewriter = new Filewriter();
         Tournament tournament = new Tournament(name);
         List<Match> matches = matchRepository.matchTeams(teams, tournament);
-        List<Node> nodes = new LinkedList<>();
 
         if (teams.size() == 4) {
             tournament.setFinalNode(buildSmallNodeTree(matches));

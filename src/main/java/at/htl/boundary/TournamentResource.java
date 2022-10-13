@@ -69,12 +69,15 @@ public class TournamentResource {
     }
 
     @POST
+    @Path("/{name}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     @Transactional
-    public Response save(Tournament tournament){
-        tournamentRepository.save(new Tournament(tournament.getName()));
-        return Response.ok().build();
+    public Response create(
+            @PathParam("name") String name, List<Team> teams
+    ) {
+        tournamentRepository.setUpTournament(name, teams);
+        return Response.status(Response.Status.OK).build();
     }
 
 

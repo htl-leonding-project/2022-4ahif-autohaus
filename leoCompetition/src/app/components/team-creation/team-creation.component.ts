@@ -3,6 +3,7 @@ import { Team } from 'src/app/models/team.model';
 import { TeamService } from 'src/app/services/team.service';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { TournamentService } from 'src/app/services/tournament.service';
 
 @Component({
   selector: 'app-team-creation',
@@ -16,7 +17,7 @@ export class TeamCreationComponent implements OnInit {
   addedTeams: Team[] = []
   allTeams: Team[] = []
 
-  constructor(private router: Router, private teamService: TeamService) { 
+  constructor(private router: Router, private teamService: TeamService, private tournamentService: TournamentService) { 
     this.newTeam = {id: 0, abbr: "", name: "", winAmount: 0}
   }
 
@@ -28,15 +29,15 @@ export class TeamCreationComponent implements OnInit {
     if(teamForm.valid)
       this.teamService.saveTeam(this.newTeam).subscribe({next:
         data => {
+          this.select({id: this.newTeam.id, name: this.newTeam.name, abbr: this.newTeam.abbr, winAmount: this.newTeam.winAmount});
+          this.newTeam.abbr = "";
+          this.newTeam.name = "";
           this.refreshTeams();
-          this.newTeam.abbr = ""
-          this.newTeam.name = ""
         },
         error: error => {
           alert('Speichern fehlgeschlagen');
         }
       });
-  
   }
 
   refreshTeams(){
@@ -60,5 +61,16 @@ export class TeamCreationComponent implements OnInit {
   deselect(selected: Team){
     this.addedTeams = this.addedTeams.filter((team) => team.id !== selected.id)
     this.refreshTeams();
+  }
+
+  create(){
+    this.tournamentService.saveTournament(this.tournamentName, this.addedTeams).subscribe({next:
+      data => {
+        console.log("done");
+      },
+      error: error => {
+        alert('Speichern fehlgeschlagen');
+      }
+    });
   }
 }
