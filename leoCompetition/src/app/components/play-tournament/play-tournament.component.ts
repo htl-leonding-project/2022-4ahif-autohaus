@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Route } from '@angular/router';
+import { ActivatedRoute, Route, Router } from '@angular/router';
 import { Match } from 'src/app/models/match.model';
 import { MatchService } from 'src/app/services/match.service';
 import { TournamentService } from 'src/app/services/tournament.service';
@@ -14,7 +14,7 @@ export class PlayTournamentComponent implements OnInit {
   finishedAllMatches:Boolean=false;
   matches:Match[]=[];
 
-  constructor(private route: ActivatedRoute, private tournametnService: TournamentService) { }
+  constructor(private route: ActivatedRoute,private router:Router, private tournametnService: TournamentService) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(
@@ -32,6 +32,10 @@ export class PlayTournamentComponent implements OnInit {
           alert('Error loading teams');
         }
       });
+  }
+
+  finishTournament():void{
+    this.router.navigate(['/result]']);
   }
   
 }

@@ -11,6 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { TeamListComponent } from './components/team-list/team-list.component';
 import { TeamCreationComponent } from './components/team-creation/team-creation.component';
 import { PlayTournamentComponent } from './components/play-tournament/play-tournament.component';
+import { TournamentResultComponent } from './components/tournament-result/tournament-result.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { PlayTournamentComponent } from './components/play-tournament/play-tourn
     HomeComponent,
     TeamListComponent,
     TeamCreationComponent,
-    PlayTournamentComponent
+    PlayTournamentComponent,
+    TournamentResultComponent
   ],
   imports: [
     BrowserModule,
