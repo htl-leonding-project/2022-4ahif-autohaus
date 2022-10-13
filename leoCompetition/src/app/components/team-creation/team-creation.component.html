@@ -97,7 +97,7 @@
                 </table>
             </div>
             <div class="form-group" style="margin-top:0.5em; text-align: center;" >
-                <button (click)="create()"
+                <button (click)="create()" routerLink="/play-tournament"
                 [ngClass]="(addedTeams.length==4 || addedTeams.length==8 || addedTeams.length==16) && tName.value != '' ? 'btn btn-success' : 'btn btn-success disabled'">Turnier Starten</button>
             </div>
         </div>

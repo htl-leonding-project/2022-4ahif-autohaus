@@ -66,11 +66,12 @@ export class TeamCreationComponent implements OnInit {
   create(){
     this.tournamentService.saveTournament(this.tournamentName, this.addedTeams).subscribe({next:
       data => {
-        console.log("done");
+        this.router.navigate(['/start-tournament']);
       },
       error: error => {
         alert('Speichern fehlgeschlagen');
       }
     });
+
   }
 }
