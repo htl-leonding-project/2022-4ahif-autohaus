@@ -193,6 +193,5 @@ public class TournamentResource {
                 .status(301)
                 .location(URI.create("tournaments/createTournament"))
                 .build();
-
     }
 }

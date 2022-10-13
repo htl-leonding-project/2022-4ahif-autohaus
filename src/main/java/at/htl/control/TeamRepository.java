@@ -53,4 +53,8 @@ public class TeamRepository implements PanacheRepository<Team> {
     public List<Team> getAllSorted(){
         return this.findAll().stream().sorted(Comparator.comparing(Team::getAbbr)).toList();
     }
+
+    public Team getTeamByAbbr(String abbr){
+        return this.find("abbr=?1", abbr).firstResult();
+    }
 }

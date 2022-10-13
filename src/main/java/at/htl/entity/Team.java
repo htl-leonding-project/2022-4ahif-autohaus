@@ -32,7 +32,7 @@ public class Team  {
 
     public Team(String name, String abbr) {
         this.name = name;
-        this.abbr = abbr;
+        this.abbr = abbr.toUpperCase();
     }
     //endregion
     //region Getter & Setter

@@ -29,7 +29,7 @@ export class TeamCreationComponent implements OnInit {
     if(teamForm.valid)
       this.teamService.saveTeam(this.newTeam).subscribe({next:
         data => {
-          this.select({id: this.newTeam.id, name: this.newTeam.name, abbr: this.newTeam.abbr, winAmount: this.newTeam.winAmount});
+          this.select({id: this.newTeam.id, name: this.newTeam.name, abbr: this.newTeam.abbr.toUpperCase(), winAmount: this.newTeam.winAmount});
           this.newTeam.abbr = "";
           this.newTeam.name = "";
           this.refreshTeams();
