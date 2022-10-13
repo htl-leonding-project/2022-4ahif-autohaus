@@ -44,16 +44,6 @@ public class TournamentResource {
     @Inject
     NodeRepository nodeRepository;
 
-    @CheckedTemplate
-    public static class Templates {
-        public static native TemplateInstance TeamsSelect();
-        public static native TemplateInstance tournamentSelection();
-        public static native TemplateInstance showEndResult(String name);
-        public static native TemplateInstance createTournament(List<Team> teams);
-        public static native TemplateInstance listTournaments(List<Tournament> tournaments);
-        public static native TemplateInstance matchList(List<Node> nodes, Long tournamentID);
-    }
-
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAllTournaments(){
@@ -61,36 +51,18 @@ public class TournamentResource {
                 tournamentRepository.findAll().list()).build();
     }
 
-    /*
-    @GET
-    @Path("/matchList/{id}")
-    @Produces(MediaType.TEXT_HTML)
-    public TemplateInstance matchList(@PathParam("id") Long id){
-        return TournamentResource.Templates.matchList
-                (nodeRepository.getNodesAsList
-                        (tournamentRepository.findById(id).getFinalNode())
-                        .stream()
-                        .filter(n -> n.getPhase().getLevel() == phaseForCurrentTournament)
-                        .toList(), id
-                );
-    }
-     */
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    @Path("/{tournament}/matches")
-    public Response getAllMatchesFromTournament(@PathParam("tournament")String tournament){
-        return Response
-                .ok(nodeRepository.getNodesAsList(
-                        tournamentRepository.findByName(tournament).getFinalNode())
-                        .stream().filter(n -> n.getPhase().getLevel() == phaseForCurrentTournament)
-                        .toList(),tournament)
-                .build();
-    }
     @GET
     @Path(value = "/amount")
     @Produces(MediaType.APPLICATION_JSON)
     public Response amount(){
         return Response.ok(tournamentRepository.findAll().count()).build();
+    }
+
+    @GET
+    @Path("/matches/{name}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getMatches(@PathParam("name") String name){
+        return Response.ok(tournamentRepository.getMatches(tournamentRepository.findByName(name))).build();
     }
 
     @POST
@@ -103,49 +75,6 @@ public class TournamentResource {
     ) {
         tournamentRepository.setUpTournament(name, teams);
         return Response.status(Response.Status.OK).build();
-    }
-
-
-    @GET
-    @Path("/TeamsSelect")
-    @Produces(MediaType.TEXT_HTML)
-    public TemplateInstance getTeams(){
-
-        return TournamentResource.Templates.TeamsSelect();
-    }
-
-    @GET
-    @Path("/tournamentSelection")
-    @Produces(MediaType.TEXT_HTML)
-    public TemplateInstance selectTeam() {
-        return TournamentResource.Templates.tournamentSelection();
-    }
-
-    @GET
-    @Path("/showEndResult/{name}")
-    @Produces(MediaType.TEXT_HTML)
-    public TemplateInstance showEndResult(@PathParam("name") String name){
-        return TournamentResource.Templates.showEndResult(name);
-    }
-
-    @GET
-    @Path("/createTournament")
-    @Produces(MediaType.TEXT_HTML)
-    public TemplateInstance createTournament(){
-        return TournamentResource.Templates.createTournament(teamRepository.getAllSorted());
-    }
-
-    @GET
-    @Path("/matchList/{id}")
-    @Produces(MediaType.TEXT_HTML)
-    public TemplateInstance matchList(@PathParam("id") Long id){
-        return TournamentResource.Templates.matchList
-                (nodeRepository.getNodesAsList
-                        (tournamentRepository.findById(id).getFinalNode())
-                        .stream()
-                        .filter(n -> n.getPhase().getLevel() == phaseForCurrentTournament)
-                        .toList(), id
-                );
     }
 
     public String convertToLetters(int n) {
@@ -265,78 +194,5 @@ public class TournamentResource {
                 .location(URI.create("tournaments/createTournament"))
                 .build();
 
-    }
-
-    @Path("/tournamentSelection")
-    @POST
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-    @Transactional
-    public Response show(
-            @Context UriInfo uriInfo
-            , @FormParam("name") String name
-    ) {
-        File image = new File(IMAGE_LOCATION+name+".png");
-
-        if (name.equals("") || !image.exists()) {
-
-            TournamentResource.Templates.tournamentSelection();
-            return Response.status(301)
-                    .location(URI.create("tournaments/tournamentSelection"))
-                    .build();
-        }
-        else {
-            return Response.status(301)
-                    .location(URI.create("tournaments/showEndResult/"+name))
-                    .build();
-        }
-    }
-
-    @Path("/matchList/{id}")
-    @POST
-    @Produces(MediaType.APPLICATION_JSON)
-    @Transactional
-    public Response redirect(
-            @Context UriInfo uriInfo,
-            @PathParam("id") long tournamentId
-    ) {
-        Filewriter filewriter = new Filewriter();
-        List<Node> nodes = nodeRepository.getNodesAsList
-                (tournamentRepository
-                        .findById(tournamentId)
-                        .getFinalNode()
-                ).stream()
-                .filter(n -> n.getPhase().getLevel() == phaseForCurrentTournament)
-                .toList();
-
-        for (Node node: nodes) {
-            if(node.getCurMatch().getPointsTeam1() == node.getCurMatch().getPointsTeam2()){
-                return Response.status(301).location(URI.create("tournaments/matchList/"+tournamentId)).build();
-            }
-        }
-
-        if(phaseForCurrentTournament  != 1){
-            for (Node node: nodes) {
-                node.getParentNode().setChildMatchWinners();
-                node.getParentNode().getCurMatch().setTournament(node.getCurMatch().tournament);
-            }
-        }
-
-
-        phaseForCurrentTournament --;
-
-        log.info(phaseForCurrentTournament);
-
-        if(phaseForCurrentTournament == 0){
-            filewriter.writeFinalResult(tournamentRepository.findById(tournamentId).getFinalNode(), tournamentRepository.findById(tournamentId));
-            return Response.status(301)
-                    .location(
-                    URI.create("tournaments/showEndResult/"+tournamentRepository
-                            .findById(tournamentId)
-                            .getName()
-                    )).build();
-        }
-
-        return Response.status(301).location(URI.create("tournaments/matchList/"+tournamentId)).build();
     }
 }

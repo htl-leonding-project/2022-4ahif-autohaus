@@ -13,10 +13,10 @@ public class Match{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "M_ID")
     private Long id;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "M_Team1")
     public Team team1;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "M_Team2")
     public Team team2;
     @Column(name = "M_PointsTeam1")
@@ -24,20 +24,10 @@ public class Match{
     @Column(name = "M_PointsTeam2")
     public int pointsTeam2;
 
-    @JoinColumn(name = "M_TOURNAMENT")
-    @ManyToOne
-    public Tournament tournament;
-
     //resultOfMatch[0] -> GoalsTeam1
     //resultOfMatch[1] -> GoalsTeam2
 
     public Match() {
-    }
-
-    public Match(Team team1, Team team2, Tournament tournament) {
-        this.team1 = team1;
-        this.team2 = team2;
-        this.tournament = tournament;
     }
 
     public Match(Team team1, Team team2) {
@@ -69,14 +59,6 @@ public class Match{
     public int getPointsTeam2(){return this.pointsTeam2;}
 
     public void setPointsTeam2(int amount){ this.pointsTeam2 = amount; }
-
-    public Tournament getTournament() {
-        return tournament;
-    }
-
-    public void setTournament(Tournament tournament) {
-        this.tournament = tournament;
-    }
 
     public void endMatch(){
         getWinningTeam().incrementWinAmount();

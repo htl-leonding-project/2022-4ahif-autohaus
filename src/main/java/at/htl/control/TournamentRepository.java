@@ -176,4 +176,10 @@ public class TournamentRepository implements PanacheRepository<Tournament> {
             throw new PersistenceException();
         }
     }
+
+    public List<Match> getMatches(Tournament t) {
+        List<Node> nodes = nodeRepository.getNodesAsList(t.getFinalNode());
+
+        return nodes.stream().map(node -> node.getCurMatch()).toList();
+    }
 }
