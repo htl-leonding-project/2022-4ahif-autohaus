@@ -10,7 +10,7 @@ const routes: Routes = [
   {path: 'home', component: HomeComponent},
   {path: 'teams', component: TeamListComponent},
   {path: 'new-team', component: TeamCreationComponent},
-  {path: 'play-tournament', component: PlayTournamentComponent}
+  {path: 'play-tournament/:name', component: PlayTournamentComponent}
 ];
 
 @NgModule({

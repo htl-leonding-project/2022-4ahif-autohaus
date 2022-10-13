@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Match } from '../models/match.model';
 import { Team } from '../models/team.model';
 import { Tournament } from '../models/tournament.model';
 
@@ -15,6 +16,7 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class TournamentService {
+  
 
   constructor(private httpClient: HttpClient) { }
 
@@ -28,5 +30,9 @@ export class TournamentService {
 
   saveTournament(tournamentName: String, teams: Team[]){
     return this.httpClient.post<Tournament>(API_URL+"/"+tournamentName, teams, httpOptions);
+  }
+
+  getMatchesForTournament(name: String) {
+    return this.httpClient.get<Match[]>(API_URL+"/matches/"+name);
   }
 }
