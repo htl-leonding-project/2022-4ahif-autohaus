@@ -18,9 +18,6 @@ public class Tournament  {
     String name;
     @Transient
     List<Phase> phases = new ArrayList<>();
-    @Column(name = "T_GPGroups")
-    @OneToMany(cascade = CascadeType.ALL)
-    List<GroupGP> GPgroups = new ArrayList<>();
 
     @JoinColumn(name = "T_FinalNode")
     @OneToOne(cascade = CascadeType.ALL)
@@ -72,16 +69,6 @@ public class Tournament  {
         this.name = name;
     }
 
-    public List<GroupGP> getGroups() {
-        return GPgroups;
-    }
-
-    public void setGroups(List<GroupGP> groups) {
-        this.GPgroups = groups;
-    }
-
-    public void addGroup(GroupGP group){this.GPgroups.add(group);}
-
     public Node getFinalNode() {
         return finalNode;
     }
@@ -90,31 +77,12 @@ public class Tournament  {
         this.finalNode = finalNode;
     }
 
-    public String GPGetConnections(){
-        String connections = "";
-
-        for (Phase phase: phases) {
-            for (Node node: phase.getGPNodes()) {
-                for(GroupGP group: GPgroups){
-                    if(group.getTeams().contains(node.getCurMatch().getTeam1())){
-                        connections += String.format("""
-                        %s -- %s
-                        """, group.getGroupName(), node.getMatchNameGP());
-                    }
-                }
-
-            }
-        }
-        return connections;
-    }
-
     @Override
     public String toString() {
         return "Tournament{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", phases=" + phases +
-                ", GPgroups=" + GPgroups +
                 '}';
     }
 }

@@ -91,57 +91,6 @@ public class TournamentResource {
         return result.toString();
     }
 
-    public Tournament randomGroups(int teamsInGroup){
-        Tournament tournament = tournamentRepository.findByName("BierPong");
-        if(tournament == null) {
-            tournament = new Tournament("BierPong");
-        }
-
-        Random random = new Random();
-
-        List<Long> unusedTeams = teamRepository.getUnusedTeamIds();
-        if(teamsInGroup > unusedTeams.size()) {
-            return null;
-        }
-        List<Team> listOfGroup = new ArrayList<>();
-        for (int i = 0; i < teamsInGroup; i++) {
-            int randomNumber = random.nextInt(unusedTeams.size());
-            Long teamId = unusedTeams.remove(randomNumber);
-            Team team = teamRepository.findById(teamId);
-            listOfGroup.add(team);
-        }
-
-        int count = tournament.getGroups().size();
-
-        GroupGP group = new GroupGP("Gruppe " + convertToLetters(count), listOfGroup);
-
-        tournament.addGroup(group);
-        tournamentRepository.persist(tournament);
-
-        tournamentRepository.setUpTournament(tournament.getName(), group.getTeams());
-
-        return tournament;
-    }
-
-    @POST
-    @Transactional
-    @Path("create/{nrOfTeams}")
-    public Response createGroup(@PathParam("nrOfTeams") int nrOfTeams){
-        if(nrOfTeams %4!= 0){
-            return Response.status(Response.Status.BAD_REQUEST).build();
-        }
-        for (int i = 0; i < nrOfTeams/4; i++) {
-            Tournament tournament = randomGroups(4);
-            //TODO: check if tournament is null when null there are not enough teams to create a group
-
-        }
-        //List<GroupGP> groups = new ArrayList<>(tournament.getGroups());
-        return Response
-                .temporaryRedirect(URI.create("/groups"))
-                .status(301)
-                .build();
-    }
-
     @POST
     @Transactional
     @Produces(MediaType.APPLICATION_JSON)
