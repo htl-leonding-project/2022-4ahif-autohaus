@@ -179,7 +179,24 @@ public class TournamentRepository implements PanacheRepository<Tournament> {
 
     public List<Match> getMatches(Tournament t) {
         List<Node> nodes = nodeRepository.getNodesAsList(t.getFinalNode());
+        List<Match> matches = new LinkedList<>();
+        for (Node node: nodes) {
+            if(node.getCurMatch() != null) {
+                matches.add(node.getCurMatch());
+            }
+        }
+        return matches;
+    }
 
-        return nodes.stream().map(node -> node.getCurMatch()).toList();
+    public void endMatch(Tournament t, Match match){
+        List<Node> nodes = nodeRepository.getNodesAsList(t.getFinalNode());
+        Node node = nodes.stream().filter(
+                (Node n) -> n.getCurMatch().getTeam1().equals(match.team1) &&
+                        n.getCurMatch().getTeam2().equals(match.team2)
+        ).findFirst().get();
+        node.getCurMatch().setPointsTeam1(match.getPointsTeam1());
+        node.getCurMatch().setPointsTeam2(match.getPointsTeam2());
+        node.getCurMatch().endMatch();
+        node.getParentNode().setChildMatchWinners();
     }
 }

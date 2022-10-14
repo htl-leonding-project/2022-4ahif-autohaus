@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { GroupService } from 'src/app/services/group.service';
 import { MatchService } from 'src/app/services/match.service';
 import { TeamService } from 'src/app/services/team.service';
 import { TournamentService } from 'src/app/services/tournament.service';
@@ -19,8 +18,7 @@ export class HomeComponent implements OnInit {
   constructor(
     private teamService: TeamService,
     private matchService: MatchService,
-    private tournamentService: TournamentService,
-    private groupService: GroupService 
+    private tournamentService: TournamentService
   ) { }
 
   ngOnInit(): void {
@@ -52,15 +50,6 @@ export class HomeComponent implements OnInit {
       },
       error: error => {
         alert('Error loading tournaments!');
-      }
-    });
-
-    this.groupService.getGroupsAmount().subscribe({next:
-      data => {
-        this.groupsAmount = data;
-      },
-      error: error => {
-        alert('Error loading groups!');
       }
     });
   }

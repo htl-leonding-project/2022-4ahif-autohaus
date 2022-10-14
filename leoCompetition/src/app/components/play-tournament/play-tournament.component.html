@@ -1,31 +1,35 @@
-<div>
-    <div class="container"> 
+<div style="margin-top: 2vh;">
+    <div class="row"> 
+        <div class="col-8">
         <!--Tree or List -->
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Team 1</th>
-                    <th>Team 2</th>
-                    <th>Endstand</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let match of matches">
-                    <td>{{match.team1.name}}</td>
-                    <td>{{match.team2.name}}</td>
-                    <td *ngIf="(match.pointsTeam1 != match.pointsTeam2);else noResult">
-                        {{match.pointsTeam1}} : {{match.pointsTeam2}}
-                    </td>
-                    <ng-template #noResult><td>Gleichstand</td></ng-template>
-                    <td>
-                        <button class="btn btn-primary">Ergebnis bearbeiten</button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-    <div class="container-fluid" style="text-align: center;">
-        <button (click)="finishTournament()" [ngClass]="finishedAllMatches == true ? 'btn btn-success' : 'btn btn-success disabled'">Turnier Beenden</button>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Team 1</th>
+                        <th>Team 2</th>
+                        <th>Endstand</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let match of matches">
+                        <td>{{match.team1.name}}</td>
+                        <td>{{match.team2.name}}</td>
+                        <td *ngIf="(match.pointsTeam1 != match.pointsTeam2);else noResult">
+                            {{match.pointsTeam1}} : {{match.pointsTeam2}}
+                        </td>
+                        <ng-template #noResult><td>Gleichstand</td></ng-template>
+                        <td>
+                            <button class="btn btn-primary">Ergebnis bearbeiten</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col">
+            <div class="container-fluid" style="text-align: center;">
+                <button (click)="finishTournament()" [ngClass]="finishedAllMatches == true ? 'btn btn-success' : 'btn btn-success disabled'">Turnier Beenden</button>
+            </div>
+        </div>
     </div>
 </div>

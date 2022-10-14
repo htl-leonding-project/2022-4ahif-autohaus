@@ -35,4 +35,8 @@ export class TournamentService {
   getMatchesForTournament(name: String) {
     return this.httpClient.get<Match[]>(API_URL+"/matches/"+name);
   }
+
+  finishMatch(tournamentName: string, match: Match){
+    return this.httpClient.post<Tournament>(API_URL+"/finishMatche/"+tournamentName, match, httpOptions);
+  }
 }

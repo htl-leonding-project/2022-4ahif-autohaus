@@ -194,4 +194,15 @@ public class TournamentResource {
                 .location(URI.create("tournaments/createTournament"))
                 .build();
     }
+
+    @POST
+    @Path("finishMatch/{name}")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    @Transactional
+    public Response finishMatch(@PathParam("name") String name, Match match){
+        tournamentRepository.endMatch(tournamentRepository.findByName(name), match);
+        return Response.ok().build();
+    }
+
 }
