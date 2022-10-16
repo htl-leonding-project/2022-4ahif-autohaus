@@ -33,9 +33,11 @@ export class PlayTournamentComponent implements OnInit {
     this.route.params.subscribe(
       params => {
         this.tournamentName = params['name'];
+        this.checkForTournamentCompletion();
+        this.refreshMatches(this.tournamentName);
       }
     )
-    this.refreshMatches(this.tournamentName);
+    
   }
 
   refreshMatches(name: String){
