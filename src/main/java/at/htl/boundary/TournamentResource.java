@@ -77,6 +77,20 @@ public class TournamentResource {
         return Response.status(Response.Status.OK).build();
     }
 
+    @GET
+    @Path("/finished/{name}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Transactional
+    public Response finished(
+            @PathParam("name") String name
+    ) {
+        if(tournamentRepository.findByName(name).getFinalNode().getCurMatch()!=null)
+            if(tournamentRepository.findByName(name).getFinalNode().getCurMatch().getWinningTeam()!= null)
+                return Response.ok(true).build();
+        return Response.ok(false).build();
+    }
+
     public String convertToLetters(int n) {
         if(n == 0) {
             return "A";
@@ -142,16 +156,6 @@ public class TournamentResource {
                 .status(301)
                 .location(URI.create("tournaments/createTournament"))
                 .build();
-    }
-
-    @POST
-    @Path("finishMatch/{name}")
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
-    @Transactional
-    public Response finishMatch(@PathParam("name") String name, Match match){
-        tournamentRepository.endMatch(tournamentRepository.findByName(name), match);
-        return Response.ok().build();
     }
 
 }

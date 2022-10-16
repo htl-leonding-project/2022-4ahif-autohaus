@@ -78,8 +78,11 @@ public class Match{
         if(pointsTeam1 > pointsTeam2) {
             return team1;
         }
-        else{
+        else if(pointsTeam1 < pointsTeam2){
             return team2;
+        }
+        else{
+            return null;
         }
     }
 

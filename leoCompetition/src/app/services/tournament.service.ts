@@ -39,4 +39,8 @@ export class TournamentService {
   finishMatch(tournamentName: string, match: Match){
     return this.httpClient.post<Tournament>(API_URL+"/finishMatche/"+tournamentName, match, httpOptions);
   }
+
+  isLastMatchDone(tournamentName: string){
+    return this.httpClient.get<boolean>(API_URL+"/finished/"+tournamentName)
+  }
 }

@@ -106,15 +106,27 @@ public class Node {
         return returnString;
     }
 
-    public String getMatchNameGP(){
-        String matchString = String.format("Match.%svs%s"
-                , this.getCurMatch().getTeam1().getAbbr()
-                , this.getCurMatch().getTeam2().getAbbr());
-        return matchString;
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     @Override
     public String toString() {
         return curMatch + " in "+phase;
+    }
+
+    public boolean areChildrenComplete(){
+        if(this.leftNode != null && this.rightNode!=null) {
+            if (this.leftNode.getCurMatch().pointsTeam1 != this.leftNode.getCurMatch().pointsTeam2
+                    && this.rightNode.getCurMatch().pointsTeam1 != this.rightNode.getCurMatch().pointsTeam2) {
+                return true;
+            }
+            return false;
+        }
+        return true;
     }
 }

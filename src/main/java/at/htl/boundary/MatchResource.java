@@ -1,10 +1,13 @@
 package at.htl.boundary;
 
 import at.htl.control.MatchRepository;
+import at.htl.control.NodeRepository;
 import at.htl.entity.Match;
+import at.htl.entity.Node;
 import at.htl.entity.Team;
 import io.quarkus.qute.CheckedTemplate;
 import io.quarkus.qute.TemplateInstance;
+import org.hibernate.annotations.UpdateTimestamp;
 import org.jboss.logging.Logger;
 
 import javax.inject.Inject;
@@ -22,6 +25,9 @@ public class MatchResource {
 
     @Inject
     MatchRepository matchRepository;
+
+    @Inject
+    NodeRepository nodeRepository;
 
     @Inject
     Logger log;
@@ -128,6 +134,25 @@ public class MatchResource {
     @Produces(MediaType.TEXT_HTML)
     public TemplateInstance playMatch(@PathParam("id") Long id){
         return MatchResource.Templates.playMatch(matchRepository.findById(id));
+    }
+
+    @Path("/update")
+    @PATCH
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    @Transactional
+    public Response update(Match match){
+        Node current = nodeRepository.getNodeByMatch(match);
+        current.getCurMatch().setPointsTeam1(match.pointsTeam1);
+        current.getCurMatch().setPointsTeam2(match.pointsTeam2);
+        if(current.getParentNode() != null) {
+            log.info(current.getParentNode().getId());
+            if(current.getParentNode().areChildrenComplete()){
+                current.getParentNode().setChildMatchWinners();
+            }
+        }
+
+        return Response.ok().build();
     }
 
 }
