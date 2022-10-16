@@ -43,6 +43,7 @@ export class PlayTournamentComponent implements OnInit {
       {next:
         data =>{
           this.matches = data
+          this.matches.sort((a,b) => a.id - b.id)
         },
         error: error =>{
           alert('Error loading teams');

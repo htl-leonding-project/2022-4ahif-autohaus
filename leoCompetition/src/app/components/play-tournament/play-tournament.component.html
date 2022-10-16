@@ -22,7 +22,7 @@
                         </td>
                         <ng-template #noResult><td>Gleichstand</td></ng-template>
                         <td>
-                            <button class="btn btn-primary" (click)="select(match)">Ergebnis bearbeiten</button>
+                            <button [ngClass]="match.pointsTeam1 == 0 && match.pointsTeam2 == 0 ? 'btn btn-success' : 'btn btn-success disabled'" (click)="select(match)">Ergebnis bearbeiten</button>
                         </td>
                     </tr>
                 </tbody>
@@ -42,7 +42,9 @@
                         <input id="team2Points" #tName="ngModel" type="text" [(ngModel)]="selected.pointsTeam2" name="team2Points" class="form-control" required>
                     </div>
                 </div>
-                <button type="button" (click)="clicked()" class="btn btn-success">Save</button>
+                <div class="row" style="margin: 2vh;">
+                    <button type="button" [ngClass]="selected.id != 0 ? 'btn btn-success' : 'btn btn-success disabled'" (click)="clicked()" class="btn btn-success">Speichern</button>
+                </div>
             </div>
             <div class="container-fluid" style="text-align: center;">
                 <button (click)="finishTournament()" [ngClass]="finishedAllMatches == true ? 'btn btn-success' : 'btn btn-success disabled'">Turnier Beenden</button>
