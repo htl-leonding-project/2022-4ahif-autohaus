@@ -1,10 +1,10 @@
-@startmindmap Space Test.png
-title Space Test
+@startmindmap Uniqueness.png
+title Uniqueness
 
-- AC Mailand 1 \nAtletico Madrid 2
+- Ajax Amsterdam 1 \nAtletico Madrid 0
 
--- Ajax Amsterdam 1 \nAC Mailand 2
+-- Ajax Amsterdam 1 \nAC Mailand 0
 
 -- Atletico Madrid 1 \nAS Rom 0
-caption Winner is: Atletico Madrid
+caption Winner is: Ajax Amsterdam
 @endmindmap
