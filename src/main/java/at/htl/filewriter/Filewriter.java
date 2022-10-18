@@ -20,10 +20,10 @@ public class Filewriter {
     private static final Logger LOG = Logger.getLogger("FileWriter");
 
     //@ConfigProperty(name = "filewriter.origin")
-    private String ORIGIN = "leoCompetition/images/Result.puml";
+    private String ORIGIN = "asciidocs/plantuml/Result.puml";
 
     //@ConfigProperty(name = "filewriter.target")
-    private String TARGET = "leoCompetition/images/generated-diagrams/";
+    private String TARGET = "asciidocs/images/generated-diagrams/";
     private String TARGET_FOR_WEB = "leoCompetition/src/assets/images/generated-diagrams";
 
     /*public void writeResult(String team01, String team02, int[] result){
