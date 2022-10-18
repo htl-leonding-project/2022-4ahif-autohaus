@@ -61,8 +61,7 @@ export class PlayTournamentComponent implements OnInit {
 
     this.matchService.updateMatch(this.selected).subscribe({
       next:
-        data =>{
-          console.log("saved");      
+        data =>{   
           this.refreshMatches(this.tournamentName);
           this.checkForTournamentCompletion();
         },
@@ -85,13 +84,11 @@ export class PlayTournamentComponent implements OnInit {
   }
 
   checkForTournamentCompletion(){
-    console.log(this.tournamentName);
     
     this.tournamentService.isLastMatchDone(this.tournamentName).subscribe({
       next:
         data =>{
           this.finishedAllMatches = data;
-          console.log(data);
       },
       error: error =>{
         alert('Error checking for completion');
