@@ -24,7 +24,7 @@ public class Filewriter {
 
     //@ConfigProperty(name = "filewriter.target")
     private String TARGET = "leoCompetition/images/generated-diagrams/";
-    private String TARGET_FOR_WEB = "src/main/resources/META-INF/resources/img/";
+    private String TARGET_FOR_WEB = "leoCompetition/src/assets/images/generated-diagrams";
 
     /*public void writeResult(String team01, String team02, int[] result){
 
