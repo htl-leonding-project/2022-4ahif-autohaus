@@ -36,7 +36,7 @@
     </ul>
   </div>
 
-  <div [ngClass]="{'arrow-pointer': router.url !== '/result', 'arrow-pointer-active': router.url === '/result'}" style="display: inline-block">
+  <div [ngClass]="{'arrow-pointer': router.url.indexOf('/result'), 'arrow-pointer-active': !router.url.indexOf('/result')}" style="display: inline-block">
     <ul class="ps-5" style="text-align: center">
       <li class="pt-4" style="list-style: none;">
         <label>Turnier</label>

@@ -54,7 +54,7 @@ export class PlayTournamentComponent implements OnInit {
   }
 
   finishTournament():void{
-    this.router.navigate(['/result']);
+    this.router.navigate(['/result/'+this.tournamentName]);
   }
 
   clicked(){

@@ -105,6 +105,16 @@ public class TournamentResource {
         return result.toString();
     }
 
+    @GET
+    @Path("/exists/{name}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response tournamentNameExists(@PathParam("name") String name){
+        if(tournamentRepository.findByName(name) != null)
+            return Response.ok(true).build();
+        return Response.ok(false).build();
+    }
+
     @POST
     @Transactional
     @Produces(MediaType.APPLICATION_JSON)

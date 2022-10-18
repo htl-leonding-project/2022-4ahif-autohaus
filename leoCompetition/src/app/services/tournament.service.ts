@@ -43,4 +43,8 @@ export class TournamentService {
   isLastMatchDone(tournamentName: string){
     return this.httpClient.get<boolean>(API_URL+"/finished/"+tournamentName)
   }
+
+  exists(name: string){
+    return this.httpClient.get<boolean>(API_URL+"/exists/"+name);
+  }
 }

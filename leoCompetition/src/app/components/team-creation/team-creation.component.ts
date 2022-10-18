@@ -16,6 +16,7 @@ export class TeamCreationComponent implements OnInit {
   newTeam: Team;
   addedTeams: Team[] = []
   allTeams: Team[] = []
+  exists: boolean = false;
 
   constructor(private router: Router, private teamService: TeamService, private tournamentService: TournamentService) { 
     this.newTeam = {id: 0, abbr: "", name: "", winAmount: 0}
@@ -64,14 +65,24 @@ export class TeamCreationComponent implements OnInit {
   }
 
   create(){
-    this.tournamentService.saveTournament(this.tournamentName, this.addedTeams).subscribe({next:
+    this.tournamentService.exists(this.tournamentName).subscribe({next:
       data => {
-        this.router.navigate(['play-tournament', this.tournamentName])
-      },
-      error: error => {
-        alert('Speichern fehlgeschlagen');
+        this.exists = data;
+        
+        if(this.exists == false){
+          this.tournamentService.saveTournament(this.tournamentName, this.addedTeams).subscribe({next:
+            data => {
+              this.router.navigate(['play-tournament', this.tournamentName])
+            },
+            error: error => {
+              alert('Speichern fehlgeschlagen');
+            }
+          });
+        }
+        else{
+          alert('Turnier mit diesem namen existiert bereits');
+        }
       }
     });
-
   }
 }
