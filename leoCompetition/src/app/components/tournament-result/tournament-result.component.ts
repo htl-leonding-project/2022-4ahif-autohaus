@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-tournament-result',
@@ -10,7 +10,7 @@ export class TournamentResultComponent implements OnInit {
 
   tournamentName:string="";
 
-  constructor(private route: ActivatedRoute){}
+  constructor(private route: ActivatedRoute, private router: Router){}
 
   ngOnInit(): void {
     this.route.params.subscribe(
@@ -18,5 +18,9 @@ export class TournamentResultComponent implements OnInit {
         this.tournamentName = params['name'];
       }
     )
+  }
+
+  backToStart(){
+      this.router.navigate(['/home']);
   }
 }

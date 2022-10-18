@@ -80,7 +80,7 @@ export class TeamCreationComponent implements OnInit {
           });
         }
         else{
-          alert('Turnier mit diesem namen existiert bereits');
+          alert('Turnier mit diesem Namen existiert bereits');
         }
       }
     });
