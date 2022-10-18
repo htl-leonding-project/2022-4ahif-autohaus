@@ -48,13 +48,22 @@ export class PlayTournamentComponent implements OnInit {
           this.matches.sort((a,b) => a.id - b.id)
         },
         error: error =>{
-          alert('Error loading teams');
+          alert('Error loading matches');
         }
       });
   }
 
   finishTournament():void{
-    this.router.navigate(['/result/'+this.tournamentName]);
+    this.tournamentService.createDiagram(this.tournamentName).subscribe({
+      next:
+        data =>{
+          console.log("Generated Diagram");
+          this.router.navigate(['/result/'+this.tournamentName.replace(' ', '_')]);
+        },
+        error: error =>{
+          alert('Error generating diagram')
+        }
+    })
   }
 
   clicked(){
@@ -66,7 +75,7 @@ export class PlayTournamentComponent implements OnInit {
           this.checkForTournamentCompletion();
         },
         error: error =>{
-          alert('Error loading teams');
+          alert('Error loading matches');
         }
     })
 

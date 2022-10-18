@@ -1,10 +1,10 @@
-@startmindmap Four-Teams-Test.png
-title Four-Teams-Test
+@startmindmap Space Test.png
+title Space Test
 
-- team01 1 \nteam04 0
+- AC Mailand 1 \nAtletico Madrid 2
 
--- team01 2 \nteam02 1
+-- Ajax Amsterdam 1 \nAC Mailand 2
 
--- team03 0 \nteam04 3
-caption Winner is: team01
+-- Atletico Madrid 1 \nAS Rom 0
+caption Winner is: Atletico Madrid
 @endmindmap

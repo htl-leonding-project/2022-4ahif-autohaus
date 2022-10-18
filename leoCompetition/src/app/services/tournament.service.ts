@@ -47,4 +47,8 @@ export class TournamentService {
   exists(name: string){
     return this.httpClient.get<boolean>(API_URL+"/exists/"+name);
   }
+
+  createDiagram(name:string){
+    return this.httpClient.get(API_URL+"/generate/"+name)
+  }
 }

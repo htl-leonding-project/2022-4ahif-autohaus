@@ -41,9 +41,6 @@ public class TournamentResource {
     @Inject
     Logger log;
 
-    @Inject
-    NodeRepository nodeRepository;
-
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAllTournaments(){
@@ -113,6 +110,20 @@ public class TournamentResource {
         if(tournamentRepository.findByName(name) != null)
             return Response.ok(true).build();
         return Response.ok(false).build();
+    }
+
+    @GET
+    @Path("/generate/{name}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response generateDiagram(@PathParam("name") String name){
+        Filewriter filewriter = new Filewriter();
+
+        filewriter.writeFinalResult(
+                tournamentRepository.findByName(name).getFinalNode(),
+                tournamentRepository.findByName(name)
+        );
+        return Response.ok().build();
     }
 
     @POST
