@@ -2,6 +2,7 @@ package at.htl.entity;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,7 +15,7 @@ public class Tournament  {
     @Column(name = "T_ID")
     private Long id;
     //erst einmal leer lassen
-    @Column(name = "T_Name",length = 20)
+    @Column(name = "T_Name",length = 30)
     String name;
     @Transient
     List<Phase> phases = new ArrayList<>();

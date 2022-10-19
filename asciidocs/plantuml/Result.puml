@@ -1,18 +1,27 @@
-@startmindmap TestTournament.png
-title TestTournament
+@startmindmap Uniqueness.png
+    <style>
+    mindmapDiagram{
+        node{
+            BackgroundColor White
 
-- Ajax Amsterdam 2 \nFC Liverpool 0
+        }
+        LineColor Black
+    }
+    </style>
+title Uniqueness
 
--- Ajax Amsterdam 1 \nAS Rom 0
+- AC Mailand 1 \nFC Liverpool 0
 
---- Ajax Amsterdam 1 \nAC Mailand 0
+-- AC Mailand 2 \nAtletico Madrid 0
 
---- Atletico Madrid 0 \nAS Rom 1
+--- Ajax Amsterdam 1 \nAC Mailand 2
+
+--- Atletico Madrid 12 \nAS Rom 7
 
 -- Chelsea 0 \nFC Liverpool 1
 
 --- Chelsea 2 \nFC Arsenal 0
 
 --- FC Barcelona 0 \nFC Liverpool 1
-caption Winner is: Ajax Amsterdam
+caption Winner is: AC Mailand
 @endmindmap

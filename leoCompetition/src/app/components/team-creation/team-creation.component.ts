@@ -4,6 +4,7 @@ import { TeamService } from 'src/app/services/team.service';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { TournamentService } from 'src/app/services/tournament.service';
+import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-team-creation',
@@ -65,24 +66,26 @@ export class TeamCreationComponent implements OnInit {
   }
 
   create(){
-    this.tournamentService.exists(this.tournamentName).subscribe({next:
-      data => {
-        this.exists = data;
-        
-        if(this.exists == false){
-          this.tournamentService.saveTournament(this.tournamentName, this.addedTeams).subscribe({next:
-            data => {
-              this.router.navigate(['play-tournament', this.tournamentName])
-            },
-            error: error => {
-              alert('Speichern fehlgeschlagen');
-            }
-          });
+    if(this.tournamentName != ""){
+      this.tournamentService.exists(this.tournamentName).subscribe({next:
+        data => {
+          this.exists = data;
+          
+          if(this.exists == false){
+            this.tournamentService.saveTournament(this.tournamentName, this.addedTeams).subscribe({next:
+              data => {
+                this.router.navigate(['play-tournament', this.tournamentName])
+              },
+              error: error => {
+                alert('Speichern fehlgeschlagen');
+              }
+            });
+          }
+          else{
+            alert('Turnier mit diesem Namen existiert bereits');
+          }
         }
-        else{
-          alert('Turnier mit diesem Namen existiert bereits');
-        }
-      }
-    });
+      });
+    }
   }
 }

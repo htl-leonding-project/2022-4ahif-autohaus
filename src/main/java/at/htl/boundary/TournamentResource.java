@@ -79,7 +79,7 @@ public class TournamentResource {
         tournamentRepository.setUpTournament(name, teams);
         return Response.status(Response.Status.OK).build();
     }
-
+    
     @GET
     @Path("/finished/{name}")
     @Produces(MediaType.APPLICATION_JSON)
