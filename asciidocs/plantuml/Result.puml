@@ -1,10 +1,18 @@
-@startmindmap Uniqueness.png
-title Uniqueness
+@startmindmap TestTournament.png
+title TestTournament
 
-- Ajax Amsterdam 1 \nAtletico Madrid 0
+- Ajax Amsterdam 2 \nFC Liverpool 0
 
--- Ajax Amsterdam 1 \nAC Mailand 0
+-- Ajax Amsterdam 1 \nAS Rom 0
 
--- Atletico Madrid 1 \nAS Rom 0
+--- Ajax Amsterdam 1 \nAC Mailand 0
+
+--- Atletico Madrid 0 \nAS Rom 1
+
+-- Chelsea 0 \nFC Liverpool 1
+
+--- Chelsea 2 \nFC Arsenal 0
+
+--- FC Barcelona 0 \nFC Liverpool 1
 caption Winner is: Ajax Amsterdam
 @endmindmap

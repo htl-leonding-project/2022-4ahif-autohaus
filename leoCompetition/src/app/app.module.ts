@@ -12,6 +12,7 @@ import { TeamListComponent } from './components/team-list/team-list.component';
 import { TeamCreationComponent } from './components/team-creation/team-creation.component';
 import { PlayTournamentComponent } from './components/play-tournament/play-tournament.component';
 import { TournamentResultComponent } from './components/tournament-result/tournament-result.component';
+import { TournamentListComponent } from './components/tournament-list/tournament-list.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { TournamentResultComponent } from './components/tournament-result/tourna
     TeamListComponent,
     TeamCreationComponent,
     PlayTournamentComponent,
-    TournamentResultComponent
+    TournamentResultComponent,
+    TournamentListComponent
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Tournament } from 'src/app/models/tournament.model';
 import { TournamentService } from 'src/app/services/tournament.service';
 
@@ -9,9 +10,9 @@ import { TournamentService } from 'src/app/services/tournament.service';
 })
 export class TournamentListComponent implements OnInit {
 
-  tournaments: Tournament[] = []
+  tournaments: Tournament[] = [];
 
-  constructor(private tournamentService: TournamentService) { }
+  constructor(private tournamentService: TournamentService, private router: Router) { }
 
   ngOnInit(): void {
     this.refreshData();
@@ -23,9 +24,13 @@ export class TournamentListComponent implements OnInit {
         this.tournaments = data;
       },
       error: error =>{
-        alert('Error loading teams');
+        alert('Error loading tournaments');
       }
     });
+  }
+
+  redirect(name:String){
+    this.router.navigate(['/result/'+name.replace(' ', '_')]);
   }
 
 }

@@ -24,6 +24,9 @@ public class Match{
     @Column(name = "M_PointsTeam2")
     public int pointsTeam2;
 
+    @Column(name = "M_Finished")
+    public boolean finished = false;
+
     //resultOfMatch[0] -> GoalsTeam1
     //resultOfMatch[1] -> GoalsTeam2
 
@@ -72,6 +75,14 @@ public class Match{
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public boolean isFinished() {
+        return finished;
+    }
+
+    public void setFinished(boolean finished) {
+        this.finished = finished;
     }
 
     public Team getWinningTeam(){

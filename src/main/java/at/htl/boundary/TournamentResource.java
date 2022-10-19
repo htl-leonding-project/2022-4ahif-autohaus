@@ -44,8 +44,14 @@ public class TournamentResource {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAllTournaments(){
-        return Response.ok(
-                tournamentRepository.findAll().list()).build();
+        List<Tournament> tournaments = tournamentRepository.findAll().list();
+        List<TournamentDTO> dtoTournaments = new LinkedList<>();
+
+        for (Tournament t: tournaments) {
+            dtoTournaments.add(new TournamentDTO(t.getId(), t.getName(), t.getStartDate()));
+        }
+
+        return Response.ok(dtoTournaments).build();
     }
 
     @GET

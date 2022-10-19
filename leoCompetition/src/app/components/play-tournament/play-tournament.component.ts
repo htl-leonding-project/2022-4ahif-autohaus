@@ -21,7 +21,9 @@ export class PlayTournamentComponent implements OnInit {
     team1: {id: 0, name:"", abbr:"", winAmount:0},
     team2: {id: 0, name:"", abbr:"", winAmount:0},
     pointsTeam1: 0,
-    pointsTeam2: 0}
+    pointsTeam2: 0,
+    finished: false
+  }
 
   constructor(
     private route: ActivatedRoute,
@@ -68,23 +70,29 @@ export class PlayTournamentComponent implements OnInit {
 
   clicked(){
 
-    this.matchService.updateMatch(this.selected).subscribe({
-      next:
-        data =>{   
-          this.refreshMatches(this.tournamentName);
-          this.checkForTournamentCompletion();
-        },
-        error: error =>{
-          alert('Error loading matches');
-        }
-    })
+    if(this.selected.pointsTeam1 != this.selected.pointsTeam2){
+      this.matchService.updateMatch(this.selected).subscribe({
+        next:
+          data =>{   
+            this.refreshMatches(this.tournamentName);
+            this.checkForTournamentCompletion();
+          },
+          error: error =>{
+            alert('Error loading matches');
+          }
+      })
+    }
+    else{
+      alert('Same points not possible')
+    }
 
     this.selected={
       id: 0,
       team1: {id: 0, name:"", abbr:"", winAmount:0},
       team2: {id: 0, name:"", abbr:"", winAmount:0},
       pointsTeam1: 0,
-      pointsTeam2: 0
+      pointsTeam2: 0,
+      finished: false
     }
   }
 

@@ -123,6 +123,8 @@ public class Node {
         if(this.leftNode != null && this.rightNode!=null) {
             if (this.leftNode.getCurMatch().pointsTeam1 != this.leftNode.getCurMatch().pointsTeam2
                     && this.rightNode.getCurMatch().pointsTeam1 != this.rightNode.getCurMatch().pointsTeam2) {
+                this.leftNode.getCurMatch().setFinished(true);
+                this.rightNode.getCurMatch().setFinished(true);
                 return true;
             }
             return false;
