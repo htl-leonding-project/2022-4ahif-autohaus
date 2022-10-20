@@ -18,3 +18,4 @@ asciidocs/plantuml/Result.puml
 /.angular
 /node_modules
 /.vscode
+/leoCompetition/src/assests/images/generated-diagrams/*
