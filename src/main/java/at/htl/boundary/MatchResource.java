@@ -146,10 +146,12 @@ public class MatchResource {
         current.getCurMatch().setPointsTeam1(match.pointsTeam1);
         current.getCurMatch().setPointsTeam2(match.pointsTeam2);
         if(current.getParentNode() != null) {
-            log.info(current.getParentNode().getId());
             if(current.getParentNode().areChildrenComplete()){
                 current.getParentNode().setChildMatchWinners();
             }
+        }
+        else{
+            current.getCurMatch().getWinningTeam().incrementWinAmount();
         }
 
         return Response.ok().build();

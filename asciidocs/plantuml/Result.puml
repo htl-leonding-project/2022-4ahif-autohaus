@@ -1,4 +1,4 @@
-@startmindmap Uniqueness.png
+@startmindmap TestTournament.png
     <style>
     mindmapDiagram{
         node{
@@ -8,20 +8,12 @@
         LineColor Black
     }
     </style>
-title Uniqueness
+title TestTournament
 
-- AC Mailand 1 \nFC Liverpool 0
+- Ajax Amsterdam 0 \nAtletico Madrid 3
 
--- AC Mailand 2 \nAtletico Madrid 0
+-- Ajax Amsterdam 2 \nAC Mailand 0
 
---- Ajax Amsterdam 1 \nAC Mailand 2
-
---- Atletico Madrid 12 \nAS Rom 7
-
--- Chelsea 0 \nFC Liverpool 1
-
---- Chelsea 2 \nFC Arsenal 0
-
---- FC Barcelona 0 \nFC Liverpool 1
-caption Winner is: AC Mailand
+-- Atletico Madrid 5 \nAS Rom 0
+caption Winner is: Atletico Madrid
 @endmindmap

@@ -13,7 +13,7 @@ public class Team  {
     @Column(name = "T_ID")
     Long id;
 
-    @Column(name = "T_Name",length = 20)
+    @Column(name = "T_Name",length = 30)
     String name;
 
     @Column(name = "T_Abbr")
