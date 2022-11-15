@@ -165,7 +165,7 @@ public class TournamentResource {
         }
         //List<GroupGP> groups = new ArrayList<>(tournament.getGroups());
         return Response
-                .temporaryRedirect(URI.create("/groups"))
+                .temporaryRedirect(URI.create("/c.handel/groups"))
                 .status(301)
                 .build();
     }
@@ -177,7 +177,7 @@ public class TournamentResource {
     @Path("/listTournaments")
     public Response moveToDiagram(@FormParam("name") String name){
         return Response.status(301)
-                .location(URI.create("tournaments/showEndResult/"+name))
+                .location(URI.create("/c.handel/tournaments/showEndResult/"+name))
                 .build();
     }
 
@@ -203,7 +203,7 @@ public class TournamentResource {
                 if(tournamentRepository.findByName(tournamentName)!= null){
                     return Response
                             .status(301)
-                            .location(URI.create("tournaments/createTournament"))
+                            .location(URI.create("/c.handel/tournaments/createTournament"))
                             .build();
                 }
 
@@ -214,12 +214,12 @@ public class TournamentResource {
 
             return Response
                     .status(301)
-                    .location(URI.create("tournaments/matchList/"+tournamentRepository.findByName(tournamentName).getId()))
+                    .location(URI.create("/c.handel/tournaments/matchList/"+tournamentRepository.findByName(tournamentName).getId()))
                     .build();
         }
         return Response
                 .status(301)
-                .location(URI.create("tournaments/createTournament"))
+                .location(URI.create("/c.handel/tournaments/createTournament"))
                 .build();
 
     }
@@ -239,12 +239,12 @@ public class TournamentResource {
 
             TournamentResource.Templates.tournamentSelection();
             return Response.status(301)
-                    .location(URI.create("tournaments/tournamentSelection"))
+                    .location(URI.create("/c.handel/tournaments/tournamentSelection"))
                     .build();
         }
         else {
             return Response.status(301)
-                    .location(URI.create("tournaments/showEndResult/"+name))
+                    .location(URI.create("/c.handel/tournaments/showEndResult/"+name))
                     .build();
         }
     }
@@ -268,7 +268,7 @@ public class TournamentResource {
 
         for (Node node: nodes) {
             if(node.getCurMatch().getPointsTeam1() == node.getCurMatch().getPointsTeam2()){
-                return Response.status(301).location(URI.create("tournaments/matchList/"+tournamentId)).build();
+                return Response.status(301).location(URI.create("/c.handel/tournaments/matchList/"+tournamentId)).build();
             }
         }
 
@@ -288,12 +288,12 @@ public class TournamentResource {
             filewriter.writeFinalResult(tournamentRepository.findById(tournamentId).getFinalNode(), tournamentRepository.findById(tournamentId));
             return Response.status(301)
                     .location(
-                    URI.create("tournaments/showEndResult/"+tournamentRepository
+                    URI.create("/c.handel/tournaments/showEndResult/"+tournamentRepository
                             .findById(tournamentId)
                             .getName()
                     )).build();
         }
 
-        return Response.status(301).location(URI.create("tournaments/matchList/"+tournamentId)).build();
+        return Response.status(301).location(URI.create("/c.handel/tournaments/matchList/"+tournamentId)).build();
     }
 }

@@ -103,7 +103,7 @@ public class GroupResource {
         tournament.addGroup(group);
         groupRepository.persist(group);
         return Response
-                .temporaryRedirect(URI.create("/groups"))
+                .temporaryRedirect(URI.create("/c.handel/groups"))
                 .status(301)
                 .build();
 

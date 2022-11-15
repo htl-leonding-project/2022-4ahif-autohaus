@@ -65,7 +65,7 @@ public class TeamResource {
 
             Templates.addTeam(true);
             return Response.status(301)
-                    .location(URI.create("/teams/addTeam"))
+                    .location(URI.create("/c.handel/teams/addTeam"))
                     .build();
         }
         else {
@@ -77,12 +77,12 @@ public class TeamResource {
 
                 Templates.addTeam(true);
                 return Response.status(301)
-                        .location(URI.create("/teams/addTeam"))
+                        .location(URI.create("/c.handel/teams/addTeam"))
                         .build();
             }
 
             return Response.status(301)
-                    .location(URI.create("/dashboard"))
+                    .location(URI.create("/c.handel/dashboard"))
                     .build();
         }
     }
