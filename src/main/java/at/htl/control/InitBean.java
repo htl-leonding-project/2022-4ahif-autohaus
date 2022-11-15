@@ -4,6 +4,8 @@ import at.htl.entity.Match;
 import at.htl.entity.Team;
 import at.htl.entity.Tournament;
 import io.quarkus.runtime.StartupEvent;
+import io.quarkus.runtime.configuration.ProfileManager;
+import org.eclipse.microprofile.config.inject.ConfigProperty;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.event.Observes;
@@ -24,9 +26,14 @@ public class InitBean {
     @Inject
     TournamentRepository tournamentRepository;
 
+    @ConfigProperty(name = "app.create-teams", defaultValue = "false")
+    boolean createTeams;
 
     @Transactional
     void startup(@Observes StartupEvent event) {
+        if(!createTeams) {
+            return;
+        }
 
         List<Team> teams = new ArrayList<>();
 

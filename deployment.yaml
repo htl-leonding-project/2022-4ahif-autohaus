@@ -44,7 +44,10 @@ spec:
     spec:
       containers:
         - name: backend
-          image: ghcr.io/htl-leonding-project/2022-4ahif-leo-competition-backend 
+          image: ghcr.io/htl-leonding-project/2022-4ahif-leo-competition-backend
+          env:
+            - name: APP_CREATE_TEAMS
+              value: "false"
           ports:
             - containerPort: 8080
 ---
