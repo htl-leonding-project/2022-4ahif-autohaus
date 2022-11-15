@@ -1,4 +1,4 @@
-@startmindmap TestTournament.png
+@startmindmap Schulturnier.png
     <style>
     mindmapDiagram{
         node{
@@ -8,12 +8,12 @@
         LineColor Black
     }
     </style>
-title TestTournament
+title Schulturnier
 
-- Ajax Amsterdam 0 \nAtletico Madrid 3
+- Leondinger Schwammerl 2 \nRandomValue16 1
 
--- Ajax Amsterdam 2 \nAC Mailand 0
+-- Leondinger Schwammerl 4 \nSchülerInnenvertretung 2
 
--- Atletico Madrid 5 \nAS Rom 0
-caption Winner is: Atletico Madrid
+-- LehrerInnenTeam 2 \nRandomValue16 3
+caption Winner is: Leondinger Schwammerl
 @endmindmap

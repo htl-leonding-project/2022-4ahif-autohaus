@@ -4,7 +4,6 @@ import { TeamService } from 'src/app/services/team.service';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { TournamentService } from 'src/app/services/tournament.service';
-import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-team-creation',

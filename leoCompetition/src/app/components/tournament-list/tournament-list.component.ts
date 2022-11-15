@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { Tournament } from 'src/app/models/tournament.model';
 import { TournamentService } from 'src/app/services/tournament.service';
 

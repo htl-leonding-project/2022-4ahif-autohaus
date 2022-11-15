@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Route, Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Match } from 'src/app/models/match.model';
-import { Team } from 'src/app/models/team.model';
 import { TournamentService } from 'src/app/services/tournament.service';
-import { FormsModule, NgForm } from '@angular/forms';
 import { MatchService } from 'src/app/services/match.service';
 
 @Component({
