@@ -105,7 +105,7 @@
 <body>
 
 <div class="banner lead">
-  <a href="http://localhost:8080/dashboard" class="d-flex justify-content-center">
+  <a href="/c.handel" class="d-flex justify-content-center">
     Matches in Turnier {nodes.get(0).getCurMatch().getTournament().getName()}
   </a>
 </div>
@@ -125,13 +125,13 @@
           <tr>
           <td>{node.getCurMatch().getTeam1().getName}</td>
           <td>{node.getCurMatch().getTeam2().getName}</td>
-          <td><a class="btn btn-success bg-midnight-bloom" href="/matches/playMatch/{node.getCurMatch().getId()}">Ergebnis eintragen</a></td>
+          <td><a class="btn btn-success bg-midnight-bloom" href="/c.handel/matches/playMatch/{node.getCurMatch().getId()}">Ergebnis eintragen</a></td>
           <td>{node.getCurMatch().getPointsTeam1()}:{node.getCurMatch().getPointsTeam2()}</td>
           </tr>
         {/for}
     </tbody>
   </table>
-    <form action="/tournaments/matchList/{tournamentID}" method="post">
+    <form action="/c.handel/tournaments/matchList/{tournamentID}" method="post">
         <button class="btn btn-primary" type="submit">Phase abschließen</button>
     </form>
 
