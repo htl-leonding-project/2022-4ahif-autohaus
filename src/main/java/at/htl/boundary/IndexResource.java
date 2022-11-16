@@ -1,6 +1,5 @@
 package at.htl.boundary;
 
-import at.htl.control.GroupRepository;
 import at.htl.control.MatchRepository;
 import at.htl.control.TeamRepository;
 import at.htl.control.TournamentRepository;
@@ -24,9 +23,6 @@ public class IndexResource {
     TeamRepository teamRepository;
 
     @Inject
-    GroupRepository groupRepository;
-
-    @Inject
     MatchRepository matchRepository;
 
     @CheckedTemplate
@@ -44,13 +40,12 @@ public class IndexResource {
         long nrOfTournaments = tournamentRepository.listAll().size();
 
         long nrOfTeams = teamRepository.listAll().size();
-        long nrOfGroups = groupRepository.listAll().size();
         long nrOfMatches = matchRepository.listAll().size();
 
         return Response.ok(IndexResource.Templates.dashboard(
                 nrOfTournaments,
                 nrOfTeams,
-                nrOfGroups,
+                0,
                 nrOfMatches)).build();
     }
 }
