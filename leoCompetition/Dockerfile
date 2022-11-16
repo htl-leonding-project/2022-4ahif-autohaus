@@ -5,7 +5,7 @@ COPY package*.json /app/
 RUN npm install
 COPY . /app
 ARG configuration=production
-RUN npm run build -- --output-path=./dist/out --configuration $configuration
+RUN npm run build -- --output-path=./dist/out --configuration $configuration --deploy-url=/c.handel
 
 # Stage 2, use the compiled app, ready for production with Nginx
 FROM nginx
