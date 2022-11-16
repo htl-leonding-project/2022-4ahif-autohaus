@@ -1,0 +1,51 @@
+<!--<nav class="navbar navbar-expand-sm bg-dark navbar-dark">    
+  <div class="container-fluid">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" [routerLink]="'/home'" [routerLinkActive]="'active'">Home</a>
+        </li>
+       <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+      </ul>
+    </div>
+</nav>-->
+<div class="container-fluid mt-4" style="text-align: center;">
+  <div [ngClass]="{'arrow-pointer': router.url !== '/new-team', 'arrow-pointer-active': router.url === '/new-team'}" style="display: inline-block">
+    <ul class="ps-5" style="text-align: center">
+      <li class="pt-4" style="list-style: none;">
+        <label>Turnier</label>
+      </li>
+      <li style="list-style: none;">
+        <label>Erstellen</label>
+      </li>
+    </ul>
+  </div>
+
+  <div [ngClass]="{'arrow-pointer': router.url.indexOf('/play-tournament'), 'arrow-pointer-active': !router.url.indexOf('/play-tournament')}" style="display: inline-block">
+    <ul class="ps-5" style="text-align: center">
+      <li class="pt-4" style="list-style: none;">
+        <label>Turnier</label>
+      </li>
+      <li style="list-style: none;">
+        <label>Spielen</label>
+      </li>
+    </ul>
+  </div>
+
+  <div [ngClass]="{'arrow-pointer': router.url.indexOf('/result'), 'arrow-pointer-active': !router.url.indexOf('/result')}" style="display: inline-block">
+    <ul class="ps-5" style="text-align: center">
+      <li class="pt-4" style="list-style: none;">
+        <label>Turnier</label>
+      </li>
+      <li style="list-style: none;">
+        <label>Auswerten</label>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<router-outlet></router-outlet>

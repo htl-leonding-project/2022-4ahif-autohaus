@@ -72,6 +72,12 @@ include::plantuml/use_case.puml[]
 
 * xref:asciidoc/2022-04-26-Besprechung.html[Protokoll-2022-04-26]
 
+* xref:asciidoc/2022-05-23-Besprechung.html[Protokoll-2022-05-23]
+
+* xref:asciidoc/2022-06-21-Besprechung.html[Protokoll-2022-06-21]
+
+* xref:asciidoc/2022-09-20-Besprechung.html[Protokoll-2022-09-20]
+
 == Ist-Zustands-Analyse
 
 * xref:asciidoc/2022-03-08-Ist-Zustand.html[Ist-Zustand-Analyse-2022-03-08]

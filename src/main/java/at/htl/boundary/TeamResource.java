@@ -29,62 +29,29 @@ public class TeamResource {
     @Inject
     Logger log;
 
-    @CheckedTemplate
-    public static class Templates {
-        public static native TemplateInstance teamList(List<Team> teams);
-        public static native TemplateInstance addTeam(boolean failed);
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getAllTeams(){
+        return Response.ok(teamRepo.getAllSorted()).build();
     }
 
     @GET
-    @Produces(MediaType.TEXT_HTML)
-    public TemplateInstance getAllTeams(){
-        //List<Team> all = teamRepo.listAll();
-        return Templates.teamList(
-                teamRepo.getAllSorted()
-        );
+    @Path(value = "/amount")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getAmount(){
+        return Response.ok(teamRepo.getAllSorted().size()).build();
     }
 
-    @GET
-    @Path("/addTeam")
-    @Produces(MediaType.TEXT_HTML)
-    public TemplateInstance addTeam(){
-        return Templates.addTeam(false);
-    }
-
-    @Path("/addTeam")
     @POST
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    @Consumes(MediaType.APPLICATION_JSON)
     @Transactional
     public Response create(
-            @Context UriInfo uriInfo
-            , @FormParam("name") String name
-            , @FormParam("abbr") String abbr
+            @Context UriInfo uriInfo, Team newTeam
     ) {
-        if (name.equals("") || abbr.equals("")) {
-
-            Templates.addTeam(true);
-            return Response.status(301)
-                    .location(URI.create("/c.handel/api/teams/addTeam"))
-                    .build();
-        }
-        else {
-            try {
-                Team newTeam = new Team(name, abbr);
-                teamRepo.persist(newTeam);
-            } catch (Exception e) {
-                log.error("Exception '" + e.getMessage() + "' raised");
-
-                Templates.addTeam(true);
-                return Response.status(301)
-                        .location(URI.create("/c.handel/api/teams/addTeam"))
-                        .build();
-            }
-
-            return Response.status(301)
-                    .location(URI.create("/c.handel/api/dashboard"))
-                    .build();
-        }
+        teamRepo.persist(new Team(newTeam.getName(), newTeam.getAbbr()));
+        return Response.status(Response.Status.OK).build();
     }
 
 }

@@ -41,68 +41,57 @@ public class TournamentResource {
     @Inject
     Logger log;
 
-    @Inject
-    NodeRepository nodeRepository;
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getAllTournaments(){
+        List<Tournament> tournaments = tournamentRepository.findAll().list();
+        List<TournamentDTO> dtoTournaments = new LinkedList<>();
 
-    @CheckedTemplate
-    public static class Templates {
-        public static native TemplateInstance TeamsSelect();
-        public static native TemplateInstance tournamentSelection();
-        public static native TemplateInstance showEndResult(String name);
-        public static native TemplateInstance createTournament(List<Team> teams);
-        public static native TemplateInstance listTournaments(List<Tournament> tournaments);
-        public static native TemplateInstance matchList(List<Node> nodes, Long tournamentID);
+        for (Tournament t: tournaments) {
+            dtoTournaments.add(new TournamentDTO(t.getId(), t.getName(), t.getStartDate()));
+        }
+
+        return Response.ok(dtoTournaments).build();
     }
 
     @GET
-    @Produces(MediaType.TEXT_HTML)
-    @Path("/listTournaments")
-    public TemplateInstance getAllTournaments(){
-        return TournamentResource.Templates.listTournaments(
-                tournamentRepository.findAll().list()
-        );
+    @Path(value = "/amount")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response amount(){
+        return Response.ok(tournamentRepository.findAll().count()).build();
     }
 
     @GET
-    @Path("/TeamsSelect")
-    @Produces(MediaType.TEXT_HTML)
-    public TemplateInstance getTeams(){
+    @Path("/matches/{name}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getMatches(@PathParam("name") String name){
+        return Response.ok(tournamentRepository.getMatches(tournamentRepository.findByName(name))).build();
+    }
 
-        return TournamentResource.Templates.TeamsSelect();
+    @POST
+    @Path("/{name}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Transactional
+    public Response create(
+            @PathParam("name") String name, List<Team> teams
+    ) {
+        tournamentRepository.setUpTournament(name, teams);
+        return Response.status(Response.Status.OK).build();
     }
 
     @GET
-    @Path("/tournamentSelection")
-    @Produces(MediaType.TEXT_HTML)
-    public TemplateInstance selectTeam() {
-        return TournamentResource.Templates.tournamentSelection();
-    }
-
-    @GET
-    @Path("/showEndResult/{name}")
-    @Produces(MediaType.TEXT_HTML)
-    public TemplateInstance showEndResult(@PathParam("name") String name){
-        return TournamentResource.Templates.showEndResult(name);
-    }
-
-    @GET
-    @Path("/createTournament")
-    @Produces(MediaType.TEXT_HTML)
-    public TemplateInstance createTournament(){
-        return TournamentResource.Templates.createTournament(teamRepository.getAllSorted());
-    }
-
-    @GET
-    @Path("/matchList/{id}")
-    @Produces(MediaType.TEXT_HTML)
-    public TemplateInstance matchList(@PathParam("id") Long id){
-        return TournamentResource.Templates.matchList
-                (nodeRepository.getNodesAsList
-                        (tournamentRepository.findById(id).getFinalNode())
-                        .stream()
-                        .filter(n -> n.getPhase().getLevel() == phaseForCurrentTournament)
-                        .toList(), id
-                );
+    @Path("/finished/{name}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Transactional
+    public Response finished(
+            @PathParam("name") String name
+    ) {
+        if(tournamentRepository.findByName(name).getFinalNode().getCurMatch()!=null)
+            if(tournamentRepository.findByName(name).getFinalNode().getCurMatch().getWinningTeam()!= null)
+                return Response.ok(true).build();
+        return Response.ok(false).build();
     }
 
     public String convertToLetters(int n) {
@@ -119,55 +108,28 @@ public class TournamentResource {
         return result.toString();
     }
 
-    public Tournament randomGroups(int teamsInGroup){
-        Tournament tournament = tournamentRepository.findByName("BierPong");
-        if(tournament == null) {
-            tournament = new Tournament("BierPong");
-        }
-
-        Random random = new Random();
-
-        List<Long> unusedTeams = teamRepository.getUnusedTeamIds();
-        if(teamsInGroup > unusedTeams.size()) {
-            return null;
-        }
-        List<Team> listOfGroup = new ArrayList<>();
-        for (int i = 0; i < teamsInGroup; i++) {
-            int randomNumber = random.nextInt(unusedTeams.size());
-            Long teamId = unusedTeams.remove(randomNumber);
-            Team team = teamRepository.findById(teamId);
-            listOfGroup.add(team);
-        }
-
-        int count = tournament.getGroups().size();
-
-        GroupGP group = new GroupGP("Gruppe " + convertToLetters(count), listOfGroup);
-
-        tournament.addGroup(group);
-        tournamentRepository.persist(tournament);
-
-        tournamentRepository.setUpTournament(tournament.getName(), group.getTeams());
-
-        return tournament;
+    @GET
+    @Path("/exists/{name}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response tournamentNameExists(@PathParam("name") String name){
+        if(tournamentRepository.findByName(name) != null)
+            return Response.ok(true).build();
+        return Response.ok(false).build();
     }
 
-    @POST
-    @Transactional
-    @Path("create/{nrOfTeams}")
-    public Response createGroup(@PathParam("nrOfTeams") int nrOfTeams){
-        if(nrOfTeams %4!= 0){
-            return Response.status(Response.Status.BAD_REQUEST).build();
-        }
-        for (int i = 0; i < nrOfTeams/4; i++) {
-            Tournament tournament = randomGroups(4);
-            //TODO: check if tournament is null when null there are not enough teams to create a group
+    @GET
+    @Path("/generate/{name}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response generateDiagram(@PathParam("name") String name){
+        Filewriter filewriter = new Filewriter();
 
-        }
-        //List<GroupGP> groups = new ArrayList<>(tournament.getGroups());
-        return Response
-                .temporaryRedirect(URI.create("/c.handel/api/groups"))
-                .status(301)
-                .build();
+        filewriter.writeFinalResult(
+                tournamentRepository.findByName(name).getFinalNode(),
+                tournamentRepository.findByName(name)
+        );
+        return Response.ok().build();
     }
 
     @POST
@@ -221,79 +183,6 @@ public class TournamentResource {
                 .status(301)
                 .location(URI.create("/c.handel/api/tournaments/createTournament"))
                 .build();
-
     }
 
-    @Path("/tournamentSelection")
-    @POST
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-    @Transactional
-    public Response show(
-            @Context UriInfo uriInfo
-            , @FormParam("name") String name
-    ) {
-        File image = new File(IMAGE_LOCATION+name+".png");
-
-        if (name.equals("") || !image.exists()) {
-
-            TournamentResource.Templates.tournamentSelection();
-            return Response.status(301)
-                    .location(URI.create("/c.handel/api/tournaments/tournamentSelection"))
-                    .build();
-        }
-        else {
-            return Response.status(301)
-                    .location(URI.create("/c.handel/api/tournaments/showEndResult/"+name))
-                    .build();
-        }
-    }
-
-    @Path("/matchList/{id}")
-    @POST
-    @Produces(MediaType.APPLICATION_JSON)
-    @Transactional
-    public Response redirect(
-            @Context UriInfo uriInfo,
-            @PathParam("id") long tournamentId
-    ) {
-        Filewriter filewriter = new Filewriter();
-        List<Node> nodes = nodeRepository.getNodesAsList
-                (tournamentRepository
-                        .findById(tournamentId)
-                        .getFinalNode()
-                ).stream()
-                .filter(n -> n.getPhase().getLevel() == phaseForCurrentTournament)
-                .toList();
-
-        for (Node node: nodes) {
-            if(node.getCurMatch().getPointsTeam1() == node.getCurMatch().getPointsTeam2()){
-                return Response.status(301).location(URI.create("/c.handel/api/tournaments/matchList/"+tournamentId)).build();
-            }
-        }
-
-        if(phaseForCurrentTournament  != 1){
-            for (Node node: nodes) {
-                node.getParentNode().setChildMatchWinners();
-                node.getParentNode().getCurMatch().setTournament(node.getCurMatch().tournament);
-            }
-        }
-
-
-        phaseForCurrentTournament --;
-
-        log.info(phaseForCurrentTournament);
-
-        if(phaseForCurrentTournament == 0){
-            filewriter.writeFinalResult(tournamentRepository.findById(tournamentId).getFinalNode(), tournamentRepository.findById(tournamentId));
-            return Response.status(301)
-                    .location(
-                    URI.create("/c.handel/api/tournaments/showEndResult/"+tournamentRepository
-                            .findById(tournamentId)
-                            .getName()
-                    )).build();
-        }
-
-        return Response.status(301).location(URI.create("/c.handel/api/tournaments/matchList/"+tournamentId)).build();
-    }
 }

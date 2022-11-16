@@ -1,10 +1,19 @@
-@startmindmap Vorzeigespiel.png
-title Vorzeigespiel
+@startmindmap Schulturnier.png
+    <style>
+    mindmapDiagram{
+        node{
+            BackgroundColor White
 
-- Atletico Madrid 2 \nAC Mailand 1
+        }
+        LineColor Black
+    }
+    </style>
+title Schulturnier
 
--- Atletico Madrid 3 \nAS Rom 2
+- Leondinger Schwammerl 2 \nRandomValue16 1
 
--- AC Mailand 1 \nAjax Amsterdam 0
-caption Winner is: Atletico Madrid
+-- Leondinger Schwammerl 4 \nSch�lerInnenvertretung 2
+
+-- LehrerInnenTeam 2 \nRandomValue16 3
+caption Winner is: Leondinger Schwammerl
 @endmindmap

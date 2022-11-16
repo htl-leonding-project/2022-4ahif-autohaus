@@ -3,9 +3,11 @@ package at.htl.control;
 import at.htl.entity.*;
 import at.htl.filewriter.Filewriter;
 import io.quarkus.hibernate.orm.panache.PanacheRepository;
+import org.jboss.logging.Logger;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
+import javax.persistence.PersistenceException;
 import javax.transaction.Transactional;
 import java.util.LinkedList;
 import java.util.List;
@@ -16,14 +18,15 @@ public class TournamentRepository implements PanacheRepository<Tournament> {
     MatchRepository matchRepository;
 
     @Inject
+    Logger log;
+
+    @Inject
     NodeRepository nodeRepository;
 
     @Transactional
     public List<Node> setUpTournament (String name, List<Team> teams) {
-        Filewriter filewriter = new Filewriter();
         Tournament tournament = new Tournament(name);
         List<Match> matches = matchRepository.matchTeams(teams, tournament);
-        List<Node> nodes = new LinkedList<>();
 
         if (teams.size() == 4) {
             tournament.setFinalNode(buildSmallNodeTree(matches));
@@ -163,5 +166,37 @@ public class TournamentRepository implements PanacheRepository<Tournament> {
 
     public Tournament findByName(String name) {
         return find("name", name).firstResult();
+    }
+
+    public void save(Tournament tournament){
+        if(this.findByName(tournament.getName()) == null){
+            this.persist(tournament);
+        }
+        else {
+            throw new PersistenceException();
+        }
+    }
+
+    public List<Match> getMatches(Tournament t) {
+        List<Node> nodes = nodeRepository.getNodesAsList(t.getFinalNode());
+        List<Match> matches = new LinkedList<>();
+        for (Node node: nodes) {
+            if(node.getCurMatch() != null) {
+                matches.add(node.getCurMatch());
+            }
+        }
+        return matches;
+    }
+
+    public void endMatch(Tournament t, Match match){
+        List<Node> nodes = nodeRepository.getNodesAsList(t.getFinalNode());
+        Node node = nodes.stream().filter(
+                (Node n) -> n.getCurMatch().getTeam1().equals(match.team1) &&
+                        n.getCurMatch().getTeam2().equals(match.team2)
+        ).findFirst().get();
+        node.getCurMatch().setPointsTeam1(match.getPointsTeam1());
+        node.getCurMatch().setPointsTeam2(match.getPointsTeam2());
+        node.getCurMatch().endMatch();
+        node.getParentNode().setChildMatchWinners();
     }
 }

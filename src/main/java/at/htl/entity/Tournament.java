@@ -1,6 +1,8 @@
 package at.htl.entity;
 
 import javax.persistence.*;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,23 +15,33 @@ public class Tournament  {
     @Column(name = "T_ID")
     private Long id;
     //erst einmal leer lassen
-    @Column(name = "T_Name",length = 20)
+    @Column(name = "T_Name",length = 30)
     String name;
     @Transient
     List<Phase> phases = new ArrayList<>();
-    @Column(name = "T_GPGroups")
-    @OneToMany(cascade = CascadeType.ALL)
-    List<GroupGP> GPgroups = new ArrayList<>();
 
     @JoinColumn(name = "T_FinalNode")
     @OneToOne(cascade = CascadeType.ALL)
     Node finalNode;
 
+    @Column(name="T_StartDate")
+    LocalDate startDate;
+
     public Tournament(String name) {
+        this();
         this.name = name;
     }
 
     public Tournament() {
+        this.startDate = LocalDate.now();
+    }
+
+    public LocalDate getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(LocalDate startDate) {
+        this.startDate = startDate;
     }
 
     public List<Phase> getPhases() {
@@ -58,16 +70,6 @@ public class Tournament  {
         this.name = name;
     }
 
-    public List<GroupGP> getGroups() {
-        return GPgroups;
-    }
-
-    public void setGroups(List<GroupGP> groups) {
-        this.GPgroups = groups;
-    }
-
-    public void addGroup(GroupGP group){this.GPgroups.add(group);}
-
     public Node getFinalNode() {
         return finalNode;
     }
@@ -76,31 +78,12 @@ public class Tournament  {
         this.finalNode = finalNode;
     }
 
-    public String GPGetConnections(){
-        String connections = "";
-
-        for (Phase phase: phases) {
-            for (Node node: phase.getGPNodes()) {
-                for(GroupGP group: GPgroups){
-                    if(group.getTeams().contains(node.getCurMatch().getTeam1())){
-                        connections += String.format("""
-                        %s -- %s
-                        """, group.getGroupName(), node.getMatchNameGP());
-                    }
-                }
-
-            }
-        }
-        return connections;
-    }
-
     @Override
     public String toString() {
         return "Tournament{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", phases=" + phases +
-                ", GPgroups=" + GPgroups +
                 '}';
     }
 }

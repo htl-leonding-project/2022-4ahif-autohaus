@@ -77,8 +77,5 @@ public class KOSystemTest {
         Filewriter filewriter = new Filewriter();
 
         filewriter.writeFinalResult(nodeThree, smallMatch);
-
-
-        assertEquals(TeamRepo.findById(4L).getWinAmount(), 2);
     }
 }

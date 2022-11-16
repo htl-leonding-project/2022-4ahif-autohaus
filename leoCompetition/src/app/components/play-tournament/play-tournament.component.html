@@ -1,0 +1,62 @@
+<div class="container" style="margin-top: 2vh; text-align: center;">
+    <h2>{{tournamentName}}</h2>
+    <div class="row"> 
+        <div class="col-8">
+        <!--Tree or List -->
+            <div class="table-responsive" style="min-height: 60vh;">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Team 1</th>
+                            <th>Team 2</th>
+                            <th>Endstand</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let match of matches">
+                            <td>{{match.team1!.name}}</td>
+                            <td>{{match.team2!.name}}</td>
+                            <td *ngIf="(match.pointsTeam1 != match.pointsTeam2);else noResult">
+                                {{match.pointsTeam1}} : {{match.pointsTeam2}}
+                            </td>
+                            <ng-template #noResult><td>Gleichstand</td></ng-template>
+                            <td>
+                                <button [ngClass]="!match.finished && selected.id==0 ? 'btn btn-success' : 'btn btn-success disabled'" (click)="select(match)">Ergebnis bearbeiten</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-control">
+                <div class="row">
+                    <div class="col">
+                        <label for="team1Points" class="control-label">Punkte von</label>
+                        <p for="team1Points" class="control-label" style="font-weight: bold;">{{selected.team1!.name}}</p>
+                        <div *ngIf="selected.id != 0; else noSelected">
+                            <input id="team1Points" #tName="ngModel" type="number" min=0 max=10 [(ngModel)]="selected.pointsTeam1" name="team1Points" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <label for="team2Points" class="control-label">Punkte von</label>
+                        <p for="team2Points" class="control-label" style="font-weight: bold;">{{selected.team2!.name}}</p>
+                        <div *ngIf="selected.id != 0; else noSelected">
+                            <input id="team2Points" #tName="ngModel" type="number" min=0 max=10 [(ngModel)]="selected.pointsTeam2" name="team2Points" class="form-control" required>
+                        </div>
+                    </div>
+                    <ng-template #noSelected>
+                        <input type="number" class="form-control" disabled>
+                    </ng-template>
+                </div>
+                <div class="row" style="margin: 2vh;">
+                    <button type="button" [ngClass]="selected.id != 0 ? 'btn btn-success' : 'btn btn-success disabled'" (click)="clicked()" class="btn btn-success">Speichern</button>
+                </div>
+            </div>
+            <div class="container-fluid" style="text-align: center; margin-top: 2vh;">
+                <button (click)="finishTournament()" [ngClass]="finishedAllMatches == true ? 'btn btn-success' : 'btn btn-success disabled'">Turnier Beenden</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,22 @@
+<div class="container">
+
+    <h1 class="display-2 text-center" style="padding: 0.25em">Teams</h1>
+
+    <table class="table table-hover table-responsive-sm table-bordered">
+        <thead>
+            <tr>
+                <th>Abkürzung</th>
+                <th>Name</th>
+                <th>Gewinne</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let team of teams">
+                <th scope="row">{{team.abbr}}</th>
+                <td>{{team.name}}</td>
+                <td>{{team.winAmount}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <button class="btn btn-success" routerLink="/home">Zurück zur Startseite</button>
+</div>

@@ -24,7 +24,7 @@ public class Filewriter {
 
     //@ConfigProperty(name = "filewriter.target")
     private String TARGET = "asciidocs/images/generated-diagrams/";
-    private String TARGET_FOR_WEB = "src/main/resources/META-INF/resources/img/";
+    private String TARGET_FOR_WEB = "leoCompetition/src/assets/images/generated-diagrams/";
 
     /*public void writeResult(String team01, String team02, int[] result){
 
@@ -55,6 +55,15 @@ public class Filewriter {
 
             String content = String.format("""
                 @startmindmap %s.png
+                    <style>
+                    mindmapDiagram{
+                        node{
+                            BackgroundColor White
+                            
+                        }
+                        LineColor Black
+                    }
+                    </style>
                 title %s
                 """, t.getName(), t.getName()
             );
@@ -134,6 +143,8 @@ public class Filewriter {
             SourceFileReader reader = new SourceFileReader(source);
             List<GeneratedImage> list = reader.getGeneratedImages();
             File png = list.get(0).getPngFile();
+            File old = new File(TARGET+png.getName());
+            old.delete();
 
             png.renameTo(new File(TARGET+png.getName()));
 
