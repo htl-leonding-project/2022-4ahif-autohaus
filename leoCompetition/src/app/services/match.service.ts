@@ -1,8 +1,9 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Match } from '../models/match.model';
+import {environment} from "../../environments/environment";
 
-const API_URL = 'http://localhost:8080/matches'
+const API_URL = environment.URL_BASE_URL + '/matches'
 
 const httpOptions = {
   headers: new HttpHeaders({
