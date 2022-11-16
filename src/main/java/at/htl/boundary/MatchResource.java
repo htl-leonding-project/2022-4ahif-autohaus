@@ -86,7 +86,7 @@ public class MatchResource {
     public Response createMatch(Match match){
         matchRepository.persist(match);
         if (matchRepository.isPersistent(match)){
-            return Response.created(URI.create("/c.handel/matches"+match.getId())).build();
+            return Response.created(URI.create("/api/c.handel/matches"+match.getId())).build();
         }
         return Response.status(Response.Status.BAD_REQUEST).build();
     }
@@ -131,7 +131,7 @@ public class MatchResource {
 
             Templates.matchResult(matchRepository.findById(id));
             return Response.status(301)
-                    .location(URI.create("/c.handel/matches/playMatch/"+id))
+                    .location(URI.create("/api/c.handel/matches/playMatch/"+id))
                     .build();
         } else {
             Match match = matchRepository.findById(id);
@@ -143,7 +143,7 @@ public class MatchResource {
 
             Templates.matchResult(matchRepository.findById(id));
             return Response.status(301)
-                    .location(URI.create("/c.handel/tournaments/matchList/"+match.tournament.getId()))
+                    .location(URI.create("/api/c.handel/tournaments/matchList/"+match.tournament.getId()))
                     .build();
         }
     }
