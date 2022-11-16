@@ -1,0 +1,142 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: db-deployment
+  namespace: student-c-handel
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: compdatabase 
+  template:
+    metadata:
+      labels:
+        app: compdatabase
+    spec:
+      containers:
+        - name: compdatabase
+          image: postgres 
+          ports:
+            - containerPort: 5432
+              name: "postgres"
+          env:
+            - name: POSTGRES_DB
+              value: db 
+            - name: POSTGRES_USER
+              value: app 
+            - name: POSTGRES_PASSWORD
+              value: app 
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-deployment
+  namespace: student-c-handel
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+        - name: backend
+          image: ghcr.io/htl-leonding-project/2022-4ahif-leo-competition-backend
+          env:
+            - name: APP_CREATE_TEAMS
+              value: "false"
+          ports:
+            - containerPort: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-deployment
+  namespace: student-c-handel
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+        - name: frontend
+          image: ghcr.io/htl-leonding-project/2022-4ahif-leo-competition-frontend
+          ports:
+            - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend-svc
+  namespace: student-c-handel
+spec:
+  ports:
+    - port: 80
+      targetPort: 8080
+      protocol: TCP
+      name: http
+  selector:
+    app: backend
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend-svc
+  namespace: student-c-handel
+spec:
+  ports:
+    - port: 80
+      targetPort: 80
+      protocol: TCP
+      name: http
+  selector:
+    app: frontend
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: database-svc
+  namespace: student-c-handel
+spec:
+  ports:
+    - port: 5432
+      targetPort: 5432
+      protocol: TCP
+      name: compdatabase 
+  selector:
+    app: compdatabase
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: backend-ingress
+  namespace: student-c-handel
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+spec:
+  rules:
+    - host: student.cloud.htl-leonding.ac.at
+      http:
+        paths:
+          - path: /c.handel/api(/|$)(.*)$
+            pathType: Prefix
+            backend:
+              service:
+                name: backend-svc
+                port:
+                  number: 80
+          - path: /c.handel(/|$)(.*)$
+            pathType: Prefix
+            backend:
+              service:
+                name: frontend-svc
+                port:
+                  number: 80

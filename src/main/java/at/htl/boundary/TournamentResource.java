@@ -139,7 +139,7 @@ public class TournamentResource {
     @Path("/listTournaments")
     public Response moveToDiagram(@FormParam("name") String name){
         return Response.status(301)
-                .location(URI.create("tournaments/showEndResult/"+name))
+                .location(URI.create("/c.handel/api/tournaments/showEndResult/"+name))
                 .build();
     }
 
@@ -165,7 +165,7 @@ public class TournamentResource {
                 if(tournamentRepository.findByName(tournamentName)!= null){
                     return Response
                             .status(301)
-                            .location(URI.create("tournaments/createTournament"))
+                            .location(URI.create("/c.handel/api/tournaments/createTournament"))
                             .build();
                 }
 
@@ -176,12 +176,12 @@ public class TournamentResource {
 
             return Response
                     .status(301)
-                    .location(URI.create("tournaments/matchList/"+tournamentRepository.findByName(tournamentName).getId()))
+                    .location(URI.create("/c.handel/api/tournaments/matchList/"+tournamentRepository.findByName(tournamentName).getId()))
                     .build();
         }
         return Response
                 .status(301)
-                .location(URI.create("tournaments/createTournament"))
+                .location(URI.create("/c.handel/api/tournaments/createTournament"))
                 .build();
     }
 

@@ -100,7 +100,7 @@ public class MatchResource {
     public Response createMatch(Match match){
         matchRepository.persist(match);
         if (matchRepository.isPersistent(match)){
-            return Response.created(URI.create("/matches"+match.getId())).build();
+            return Response.created(URI.create("/c.handel/api/matches"+match.getId())).build();
         }
         return Response.status(Response.Status.BAD_REQUEST).build();
     }
@@ -127,6 +127,39 @@ public class MatchResource {
     public TemplateInstance matchResult(@PathParam("id") Long id)
     {
         return Templates.matchResult(matchRepository.findById(id));
+    }
+
+
+    @Path("/playMatch/{id}")
+    @POST
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    @Transactional
+    public Response playMatch(
+            @Context UriInfo uriInfo
+            , @PathParam("id") Long id
+            , @FormParam("team1") String team1
+            , @FormParam("team2") String team2
+    ) {
+        if (team1.equals("") || team2.equals("") || team1.equals(team2)) {
+
+            Templates.matchResult(matchRepository.findById(id));
+            return Response.status(301)
+                    .location(URI.create("/c.handel/api/matches/playMatch/"+id))
+                    .build();
+        } else {
+            Match match = matchRepository.findById(id);
+
+            match.setPointsTeam1(Integer.parseInt(team1));
+            match.setPointsTeam2(Integer.parseInt(team2));
+
+            matchRepository.persist(match);
+
+            Templates.matchResult(matchRepository.findById(id));
+            return Response.status(301)
+                    .location(URI.create("/c.handel/api/tournaments/matchList/"+match.tournament.getId()))
+                    .build();
+        }
     }
 
     @Path("/playMatch/{id}")

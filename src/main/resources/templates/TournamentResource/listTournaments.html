@@ -142,13 +142,13 @@
             <th scope="row">{t.getId()}</th>
             <td>{t.getName()}</td>
             <td>
-                <form action="/tournaments/listTournaments" method="post" name="addForm"
+                <form action="/c.handel/api/tournaments/listTournaments" method="post" name="addForm"
                       enctype="application/x-www-form-urlencoded">
                     <button style="margin-top: 10px" class="btn btn-primary" type="submit" name="name" value="{t.getName()}">Anzeigen</button>
                 </form>
             </td>
             <!--<td>
-                <form action="/teams/teamList/" method="post" name="addForm"
+                <form action="/c.handel/api/teams/teamList/" method="post" name="addForm"
                       enctype="application/x-www-form-urlencoded">
                     <button style="margin-top: 10px" class="btn btn-primary" type="submit">Anzeigen</button>
                 </form>

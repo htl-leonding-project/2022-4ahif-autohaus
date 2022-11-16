@@ -32,9 +32,9 @@ ifdef::backend-html5[]
 |HTBLA Leonding
 
 |von-bis
-|09:08-
+|09:08-10:50
 |Dauer
-|XXXX
+|2 Einheiten
 |===
 
 == Besprochene Themen

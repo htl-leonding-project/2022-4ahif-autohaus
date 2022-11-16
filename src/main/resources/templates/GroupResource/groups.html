@@ -2,7 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="webjars/milligram/1.3.0/dist/milligram.min.css"/>
+    <title>Team Liste</title>
     <style>
         h1, h2, h3, h4, h5, h6 {
             margin-bottom: 0.5rem;
@@ -48,6 +50,11 @@
             color: white;
         }
 
+        body {
+            margin: 0;
+            font-family: -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+        }
+
         code {
             font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
             font-size: 87.5%;
@@ -64,6 +71,11 @@
         .right-column {
             padding: .75rem;
             max-width: 25%;
+        }
+
+        .container {
+            display: flex;
+            width: 100%;
         }
 
         li {
@@ -101,24 +113,32 @@
         }
 
     </style>
+    <title>Gruppen erstellen</title>
 </head>
 <body>
-
 <div class="banner lead">
-    <a href="/c.handel/api" class="d-flex justify-content-center">
-        Spielergebniss eintragen - {match.team1.getName()} vs. {match.team2.getName()}
-    </a>
+    <a href="/c.handel/api" class="d-flex justify-content-center">LEO-Competition - {tournament.getName()} Turnier</a>
 </div>
 
-<div class="container">
-    <form action="/c.handel/api/matches/playMatch/{match.getId()}" method="post" name="addForm" enctype="application/x-www-form-urlencoded">
-        <label for="team1">Punkte {match.getTeam1().getName()}:</label>
-        <input class="form-control" type="number" name="team1" id="team1Id" value="{match.getPointsTeam1()}">
-        <br>
-        <label for="team2">Punkte {match.getTeam2().getName()}:</label>
-        <input class="form-control" type="number" name="team2" id="team2Id" value="{match.getPointsTeam2()}">
-        <button style="margin-top: 10px" class="btn btn-success" type="submit">Speichern</button>
-    </form>
-</div>
+<table class="table">
+    {#for g in groups}
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">{g.groupName}</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr>
+            <th scope="row">
+                {#for t in g.teams}
+                    <th>{t.name}</th>
+                {/for}
+            </th>
+            </tr>
+        </tbody>
+    {/for}
+
+</table>
+
 </body>
 </html>
