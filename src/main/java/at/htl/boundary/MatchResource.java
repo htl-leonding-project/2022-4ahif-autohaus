@@ -129,39 +129,6 @@ public class MatchResource {
         return Templates.matchResult(matchRepository.findById(id));
     }
 
-
-    @Path("/playMatch/{id}")
-    @POST
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-    @Transactional
-    public Response playMatch(
-            @Context UriInfo uriInfo
-            , @PathParam("id") Long id
-            , @FormParam("team1") String team1
-            , @FormParam("team2") String team2
-    ) {
-        if (team1.equals("") || team2.equals("") || team1.equals(team2)) {
-
-            Templates.matchResult(matchRepository.findById(id));
-            return Response.status(301)
-                    .location(URI.create("/c.handel/api/matches/playMatch/"+id))
-                    .build();
-        } else {
-            Match match = matchRepository.findById(id);
-
-            match.setPointsTeam1(Integer.parseInt(team1));
-            match.setPointsTeam2(Integer.parseInt(team2));
-
-            matchRepository.persist(match);
-
-            Templates.matchResult(matchRepository.findById(id));
-            return Response.status(301)
-                    .location(URI.create("/c.handel/api/tournaments/matchList/"+match.tournament.getId()))
-                    .build();
-        }
-    }
-
     @Path("/playMatch/{id}")
     @GET
     @Produces(MediaType.TEXT_HTML)
