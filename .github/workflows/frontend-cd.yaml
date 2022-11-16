@@ -2,7 +2,7 @@ name: build-image-frontend
 
 on:
   push:
-    branches: [ format-for-angular]
+    branches: [ main ]
 
 env:
   REGISTRY: ghcr.io
@@ -13,8 +13,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-        with:
-          ref: format-for-angular
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v1
