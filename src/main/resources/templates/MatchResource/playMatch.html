@@ -105,13 +105,13 @@
 <body>
 
 <div class="banner lead">
-    <a href="/api/c.handel" class="d-flex justify-content-center">
+    <a href="/c.handel/api" class="d-flex justify-content-center">
         Spielergebniss eintragen - {match.team1.getName()} vs. {match.team2.getName()}
     </a>
 </div>
 
 <div class="container">
-    <form action="/api/c.handel/matches/playMatch/{match.getId()}" method="post" name="addForm" enctype="application/x-www-form-urlencoded">
+    <form action="/c.handel/api/matches/playMatch/{match.getId()}" method="post" name="addForm" enctype="application/x-www-form-urlencoded">
         <label for="team1">Punkte {match.getTeam1().getName()}:</label>
         <input class="form-control" type="number" name="team1" id="team1Id" value="{match.getPointsTeam1()}">
         <br>
