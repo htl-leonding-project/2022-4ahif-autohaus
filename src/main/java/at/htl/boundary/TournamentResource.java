@@ -14,9 +14,6 @@ import at.htl.control.TeamRepository;
 import at.htl.control.TournamentRepository;
 import at.htl.entity.*;
 import at.htl.filewriter.Filewriter;
-import io.quarkus.qute.CheckedTemplate;
-import io.quarkus.qute.Template;
-import io.quarkus.qute.TemplateInstance;
 import org.jboss.logging.Logger;
 
 import java.io.File;

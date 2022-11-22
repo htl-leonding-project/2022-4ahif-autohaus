@@ -7,16 +7,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Table(name = "T_PHASE")
 public class Phase  {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @Column(name = "P_NAME")
     String nameOfPhase;
+    @Column(name="P_LEVEL")
     int level;
-
-    @Transient
-    List<Node> GPNodes = new ArrayList<>();
 
     public Phase() {
     }
@@ -27,11 +27,6 @@ public class Phase  {
 
     public Phase(String nameOfPhase) {
         this.nameOfPhase = nameOfPhase;
-    }
-
-    public Phase(String nameOfPhase, List<Node> GPNodes) {
-        this.nameOfPhase = nameOfPhase;
-        this.GPNodes = GPNodes;
     }
 
     public Long getId() {
@@ -56,19 +51,6 @@ public class Phase  {
 
     public void setLevel(int level) {
         this.level = level;
-    }
-
-    public List<Node> getGPNodes() {
-        return GPNodes;
-    }
-
-    public void setGPNodes(List<Node> GPNodes) {
-        this.GPNodes = GPNodes;
-    }
-
-    public void addNode(Node node){
-        this.GPNodes.add(node);
-        node.setPhase(this);
     }
 
     @Override
