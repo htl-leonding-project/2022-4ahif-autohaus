@@ -4,8 +4,6 @@ import at.htl.control.NodeRepository;
 import at.htl.control.TeamRepository;
 import at.htl.control.TournamentRepository;
 import at.htl.entity.Team;
-import io.quarkus.qute.CheckedTemplate;
-import io.quarkus.qute.TemplateInstance;
 import org.jboss.logging.Logger;
 
 import javax.inject.Inject;

@@ -4,10 +4,6 @@ import at.htl.control.MatchRepository;
 import at.htl.control.NodeRepository;
 import at.htl.entity.Match;
 import at.htl.entity.Node;
-import at.htl.entity.Team;
-import io.quarkus.qute.CheckedTemplate;
-import io.quarkus.qute.TemplateInstance;
-import org.hibernate.annotations.UpdateTimestamp;
 import org.jboss.logging.Logger;
 
 import javax.inject.Inject;
@@ -17,6 +13,7 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
+import javax.xml.transform.Templates;
 import java.net.URI;
 import java.util.List;
 
@@ -31,12 +28,6 @@ public class MatchResource {
 
     @Inject
     Logger log;
-
-    @CheckedTemplate
-    public static class Templates {
-        public static native TemplateInstance matchResult(Match match);
-        public static native TemplateInstance playMatch(Match match);
-    }
     /**
      * Gibt alle Matches zurück
      * @return
@@ -119,21 +110,6 @@ public class MatchResource {
             return Response.noContent().build();
         }
         return Response.status(Response.Status.BAD_REQUEST).build();
-    }
-
-    @GET
-    @Path("/matchResult/{id}")
-    @Produces(MediaType.TEXT_HTML)
-    public TemplateInstance matchResult(@PathParam("id") Long id)
-    {
-        return Templates.matchResult(matchRepository.findById(id));
-    }
-
-    @Path("/playMatch/{id}")
-    @GET
-    @Produces(MediaType.TEXT_HTML)
-    public TemplateInstance playMatch(@PathParam("id") Long id){
-        return MatchResource.Templates.playMatch(matchRepository.findById(id));
     }
 
     @Path("/update")
