@@ -23,7 +23,7 @@ public class Filewriter {
     private String ORIGIN = "asciidocs/plantuml/Result.puml";
 
     //@ConfigProperty(name = "filewriter.target")
-    private String TARGET = "asciidocs/images/generated-diagrams/";
+    //private String TARGET = "asciidocs/images/generated-diagrams/";
     private String TARGET_FOR_WEB = "leoCompetition/src/assets/images/generated-diagrams/";
 
     /*public void writeResult(String team01, String team02, int[] result){
@@ -143,17 +143,20 @@ public class Filewriter {
             SourceFileReader reader = new SourceFileReader(source);
             List<GeneratedImage> list = reader.getGeneratedImages();
             File png = list.get(0).getPngFile();
-            File old = new File(TARGET+png.getName());
-            old.delete();
+            //File old = new File(TARGET+png.getName());
+            File png_for_web = new File(TARGET_FOR_WEB+png.getName());
 
-            png.renameTo(new File(TARGET+png.getName()));
+
+            //old.delete();
+
+            png.renameTo(new File(TARGET_FOR_WEB+png.getName()));
 
             if(png.createNewFile()) {
                 LOG.info(String.format("new file %s created", png.getName()));
             }else
                 LOG.error("File already exists");
 
-            FileUtils.copyFile(new File(TARGET+png.getName()), new File(TARGET_FOR_WEB+png.getName()));
+            //FileUtils.copyFile(new File(TARGET+png.getName()), new File(TARGET_FOR_WEB+png.getName()));
 
             png.delete();
         }catch(IOException e){
