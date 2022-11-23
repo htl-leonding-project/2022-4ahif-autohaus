@@ -18,6 +18,7 @@ npm install --save-dev cypress
 5. Start Cypress with
 
 ```
-mpx cypress open
+npx cypress open
 ```
+
 
