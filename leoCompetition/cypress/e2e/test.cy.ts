@@ -50,7 +50,7 @@ describe('... Demo Test', () => {
 
         //Start Tournament
         cy.get('.btn')
-        cy.contains('Turnier Starten').click()
+        cy.contains('Turnier starten').click()
         cy.url().should('include', '/play-tournament')
       });
 
@@ -81,6 +81,7 @@ describe('... Demo Test', () => {
 
         cy.get('.btn')
         cy.contains('Speichern').click()
+        timeout: 100
       });
 
       it('... Enter Result Final ...', () => {
@@ -97,7 +98,6 @@ describe('... Demo Test', () => {
         cy.contains('Speichern').click()
 
         cy.get('.btn')
-        cy.contains('Turnier Beenden').click()
-
+        cy.contains('Turnier beenden').click()
       });
 });
