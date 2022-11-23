@@ -1,4 +1,4 @@
-@startmindmap Schulturnier.png
+@startmindmap 1669151570618.png
     <style>
     mindmapDiagram{
         node{
@@ -8,12 +8,12 @@
         LineColor Black
     }
     </style>
-title Schulturnier
+title 1669151570618
 
-- Leondinger Schwammerl 2 \nRandomValue16 1
+- DemoTeam 3 \nAtletico Madrid 2
 
--- Leondinger Schwammerl 4 \nSch�lerInnenvertretung 2
+-- DemoTeam 2 \nAjax Amsterdam 1
 
--- LehrerInnenTeam 2 \nRandomValue16 3
-caption Winner is: Leondinger Schwammerl
+-- AC Mailand 1 \nAtletico Madrid 3
+caption Winner is: DemoTeam
 @endmindmap
