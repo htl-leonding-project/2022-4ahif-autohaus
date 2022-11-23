@@ -1,4 +1,4 @@
-@startmindmap Uniqueness.png
+@startmindmap SamePointsTest.png
     <style>
     mindmapDiagram{
         node{
@@ -8,12 +8,12 @@
         LineColor Black
     }
     </style>
-title Uniqueness
+title SamePointsTest
 
-- Ajax Amsterdam 1 \nAtletico Madrid 3
+- Ajax Amsterdam 1 \nAS Rom 0
 
--- Ajax Amsterdam 2 \nAC Mailand 1
+-- Ajax Amsterdam 1 \nAC Mailand 0
 
--- Atletico Madrid 1 \nAS Rom 0
-caption Winner is: Atletico Madrid
+-- Atletico Madrid 0 \nAS Rom 2
+caption Winner is: Ajax Amsterdam
 @endmindmap
