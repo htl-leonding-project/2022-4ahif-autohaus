@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 @startmindmap SamePointsTest.png
+=======
+@startmindmap 1669151570618.png
+>>>>>>> f72af7aaede0d52ca2d239a90c38947182abffbf
     <style>
     mindmapDiagram{
         node{
@@ -8,6 +12,7 @@
         LineColor Black
     }
     </style>
+<<<<<<< HEAD
 title SamePointsTest
 
 - Ajax Amsterdam 1 \nAS Rom 0
@@ -16,4 +21,14 @@ title SamePointsTest
 
 -- Atletico Madrid 0 \nAS Rom 2
 caption Winner is: Ajax Amsterdam
+=======
+title 1669151570618
+
+- DemoTeam 3 \nAtletico Madrid 2
+
+-- DemoTeam 2 \nAjax Amsterdam 1
+
+-- AC Mailand 1 \nAtletico Madrid 3
+caption Winner is: DemoTeam
+>>>>>>> f72af7aaede0d52ca2d239a90c38947182abffbf
 @endmindmap
