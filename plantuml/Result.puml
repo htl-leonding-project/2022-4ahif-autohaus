@@ -1,4 +1,4 @@
-@startmindmap Uniqueness.png
+@startmindmap 1669151570618.png
     <style>
     mindmapDiagram{
         node{
@@ -8,12 +8,12 @@
         LineColor Black
     }
     </style>
-title Uniqueness
+title 1669151570618
 
-- Ajax Amsterdam 1 \nAtletico Madrid 3
+- DemoTeam 3 \nAtletico Madrid 2
 
--- Ajax Amsterdam 2 \nAC Mailand 1
+-- DemoTeam 2 \nAjax Amsterdam 1
 
--- Atletico Madrid 1 \nAS Rom 0
-caption Winner is: Atletico Madrid
+-- AC Mailand 1 \nAtletico Madrid 3
+caption Winner is: DemoTeam
 @endmindmap
