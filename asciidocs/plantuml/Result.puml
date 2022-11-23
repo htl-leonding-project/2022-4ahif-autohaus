@@ -1,4 +1,4 @@
-@startmindmap SamePointsTest.png
+@startmindmap 1669190334461.png
     <style>
     mindmapDiagram{
         node{
@@ -8,12 +8,12 @@
         LineColor Black
     }
     </style>
-title SamePointsTest
+title 1669190334461
 
-- AC Mailand 7 \nAS Rom 0
+- DemoTeam 3 \nAtletico Madrid 2
 
--- Ajax Amsterdam 1 \nAC Mailand 2
+-- DemoTeam 2 \nAjax Amsterdam 1
 
--- Atletico Madrid 0 \nAS Rom 1
-caption Winner is: AC Mailand
+-- AC Mailand 1 \nAtletico Madrid 3
+caption Winner is: DemoTeam
 @endmindmap
