@@ -9,7 +9,13 @@ YouTrack: https://vm81.htl-leonding.ac.at/projects/2ff43c91-dfb6-41f1-a53c-055d0
 1. Start DerbyDb
 2. Start Quarkus App
 3. Start Angular App
-4. Start Cypress with
+4. Install Cypress with
+
+```
+npm install --save-dev cypress
+```
+
+5. Start Cypress with
 
 ```
 mpx cypress open
