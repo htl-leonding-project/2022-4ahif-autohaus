@@ -41,7 +41,7 @@ public class TournamentResource {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAllTournaments(){
-        List<Tournament> tournaments = tournamentRepository.findAll().list();
+        List<Tournament> tournaments = tournamentRepository.getAllSorted();
         List<TournamentDTO> dtoTournaments = new LinkedList<>();
 
         for (Tournament t: tournaments) {
@@ -181,5 +181,7 @@ public class TournamentResource {
                 .location(URI.create("/c.handel/api/tournaments/createTournament"))
                 .build();
     }
+
+
 
 }

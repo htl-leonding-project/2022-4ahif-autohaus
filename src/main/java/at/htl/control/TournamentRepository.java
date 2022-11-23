@@ -9,6 +9,7 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.persistence.PersistenceException;
 import javax.transaction.Transactional;
+import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -22,6 +23,10 @@ public class TournamentRepository implements PanacheRepository<Tournament> {
 
     @Inject
     NodeRepository nodeRepository;
+
+    public List<Tournament> getAllSorted(){
+        return this.findAll().stream().sorted(Comparator.comparing(Tournament::getStartDate).reversed()).toList();
+    }
 
     @Transactional
     public List<Node> setUpTournament (String name, List<Team> teams) {
