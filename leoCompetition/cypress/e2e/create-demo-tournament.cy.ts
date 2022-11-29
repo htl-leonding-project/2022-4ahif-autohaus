@@ -67,6 +67,7 @@ describe('... Demo Test', () => {
 
         cy.get('.btn')
         cy.contains('Speichern').click()
+        timeout: 100
       });
 
       it('... Enter Result Match 2 ...', () => {
