@@ -13,6 +13,7 @@ YouTrack: https://vm81.htl-leonding.ac.at/projects/2ff43c91-dfb6-41f1-a53c-055d0
 
 ```
 npm install --save-dev cypress
+npm install -D cypress-slow-down
 ```
 
 5. Start Cypress with
