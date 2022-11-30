@@ -1,5 +1,5 @@
-= Besprechungsprotokoll dd.MM.yyyy
-1.0, yyyy-MM-dd
+= Besprechungsprotokoll 29.11.2022
+1.0, 2022-11-29
 ifndef::imagesdir[:imagesdir: ../images]
 :icons: font
 //:sectnums:    // Nummerierung der Überschriften / section numbering
@@ -30,9 +30,9 @@ ifdef::backend-html5[]
 |HTBLA Leonding
 
 |von-bis
-|17:02-
+|17:02-17:17
 |Dauer
-|XXXX
+|15 Min
 |===
 
 == Besprochene Themen
