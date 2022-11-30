@@ -44,9 +44,8 @@ describe('... Demo Test', () => {
 
       it('... Finish Tournament creation ...', () => {
         //Enter Tournament name
-        const tournamentName = Date.now().toString();
         cy.get('#tournamentNameElement')
-          .type(tournamentName, '{enter}')
+          .type(Date.now().toString(), '{enter}')
 
         //Start Tournament
         cy.get('.btn')
