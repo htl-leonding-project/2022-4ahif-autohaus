@@ -1,0 +1,52 @@
+= Besprechungsprotokoll dd.MM.yyyy
+1.0, yyyy-MM-dd
+ifndef::imagesdir[:imagesdir: ../images]
+:icons: font
+//:sectnums:    // Nummerierung der Überschriften / section numbering
+//:toc: left
+
+//Need this blank line after ifdef, don't know why...
+ifdef::backend-html5[]
+
+// https://fontawesome.com/v4.7.0/icons/
+
+
+.Teilnehmer
+|===
+|anwesend
+
+|Lukas Baumgartner
+
+|Joachim Pelzeder
+
+|Thomas W. Stütz
+
+|===
+
+.Ort und Zeit
+[cols=2*]
+|===
+|Ort
+|HTBLA Leonding
+
+|von-bis
+|17:02-
+|Dauer
+|XXXX
+|===
+
+== Besprochene Themen
+
+* Deployment
+** siehe https://github.com/caberger/leocloud[Aberger LeoCloud auf Github]
+
+* Readme überarbeiten mit.
+** Was ist das Projekt
+** Bilder
+** Use case Diagramm
+** Sprechende Beschreibung
+
+== Vereinbarungen und Entscheidungen
+
+* Deployment fixen und wieder auf mindestens einen Namespace deployen.
+* ReadMe wie besprochen überarbeiten, siehe https://github.com/karatelabs/karate[Karate Test auf GitHub]
