@@ -4,7 +4,7 @@ skinparam actorStyle awesome
 actor Spielleiter as s
 
 rectangle Use-Case-Diagram as ablauf {
-  usecase "Teams eingeben" as teameingabe
+  usecase "Teams erstellen und eintragen" as teameingabe
   usecase "Spielplan generieren" as spielplangenerierung
   usecase "Ergebnisse eingeben" as ergebnisseeintragen
   usecase "Spielergebnisse auswerten" as ergebnisseauswerten

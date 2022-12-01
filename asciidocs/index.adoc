@@ -22,11 +22,14 @@ ifdef::backend-html5[]
 link:slides/demo.html#/[open Slides]
 
 == Ausgangslage
-„LeoTurnier“ ist ein Turnierverwaltungsprogramm, das verschieden Arten von Spielsystemen (KO-System, Gruppen-System) verwaltet. Momentan wird die ganze Turniersimulierung durch UnitTests(wie besprochen) durchgeführt.
-
+LeoCompetition ist ein Turnierverwaltungsprogramm,
+welches die Planung, Durchführung und Auswertung eines Turniers erleichtert.
+Momentan wird die Turniersimulierung durch UnitTests und Cypress Tests durchgeführt.
 
 == Ist-Zustand
-Derzeit wird alles über Papier bzw. mit Hilfe von Standard-Büro-Applikationen durchgeführt. Es gibt also keine automatische Datenerfassung sondern nur eine Erfassung auf Papier, vereinfacht gesagt werden die Teams und Gruppen einfach auf ein Papier geschrieben.
+Derzeit wird alles über Papier bzw. mit Hilfe von Standard-Büro-Applikationen durchgeführt.
+Es gibt also keine automatische Datenerfassung sondern nur eine Erfassung auf Papier,
+vereinfacht gesagt werden die Teams und Gruppen einfach auf ein Papier geschrieben.
 (keine Phasen oder Gruppen)
 
 image::Ausgangslage.png[]
