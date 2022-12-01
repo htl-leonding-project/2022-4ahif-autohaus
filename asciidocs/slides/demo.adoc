@@ -30,8 +30,4 @@ image::use_case.png[]
 
 == Klassendiagram (Ko-System)
 
-image::KO_cld.png[]
-
-== Klassendiagram (Gruppenphase)
-
-image::newest_cld.png[]
+image::ko_cld.png[]

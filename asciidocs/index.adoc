@@ -1,7 +1,7 @@
-= Tournament-Management
+= LeoCompetition
 
 Handel Pelzeder Baumgartner
-1.0.4, 2022-12-01
+1.0.5, 2022-12-01
 
 ifndef::imagesdir[:imagesdir: images]
 //:toc-placement!:  // prevents the generation of the doc at this position, so it can be printed afterwards
@@ -16,7 +16,7 @@ ifdef::backend-html5[]
 // print the toc here (not at the default position)
 //toc::[]
 
-== Tournament-Management Slides
+== LeoCompetition Slides
 :hide-uri-scheme:
 
 link:slides/demo.html#/[open Slides]
@@ -40,13 +40,13 @@ Die Planung, Verwaltung und Durchführung verschiedener Arten von Turnieren, sow
 
 === Besprochene Vorlage
 
-image::KO.png[]
+image::ko_discuss.png[]
 
 == Klassendiagramme
 
 === Klassendiagram (KO System)
 
-image::KO_cld.png[]
+image::ko_cld.png[]
 
 == Turnierablauf
 
