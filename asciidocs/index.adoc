@@ -1,7 +1,7 @@
 = Tournament-Management
 
 Handel Pelzeder Baumgartner
-1.0.4, 2022-05-02
+1.0.4, 2022-12-01
 
 ifndef::imagesdir[:imagesdir: images]
 //:toc-placement!:  // prevents the generation of the doc at this position, so it can be printed afterwards
@@ -37,16 +37,13 @@ Die Planung, Verwaltung und Durchführung verschiedener Arten von Turnieren, sow
 
 === Besprochene Vorlage
 
-image::GP.png[]
+image::KO.png[]
 
 == Klassendiagramme
 
 === Klassendiagram (KO System)
 
 image::KO_cld.png[]
-
-=== Klassendiagram (Gruppenphase)
-image::newest_cld.png[]
 
 == Turnierablauf
 
@@ -78,10 +75,14 @@ include::plantuml/use_case.puml[]
 
 * xref:asciidoc/2022-09-20-Besprechung.html[Protokoll-2022-09-20]
 
+* xref:asciidoc/2022-11-29-Besprechung.html[Protokoll-2022-11-29]
+
 == Ist-Zustands-Analyse
 
 * xref:asciidoc/2022-03-08-Ist-Zustand.html[Ist-Zustand-Analyse-2022-03-08]
 
-== Unit Tests
+== Testing
 
-Zurzeit stehen drei Tests zur Verfügung um ein Turnier simulieren zu können.
+Es stehen zwei Unit Test zu Verfügung um die Funktionalität des Backend zu testen.
+
+Zwei weitere Cypress Tests stehen ebenfalls zu Verfügung um die Funktionalität des Frontend zu testen.
