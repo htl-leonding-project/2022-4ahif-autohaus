@@ -53,6 +53,9 @@ public class Phase  {
         this.level = level;
     }
 
+    public void addNode(Node node){
+        node.setPhase(this);
+    }
     @Override
     public String toString() {
         return "Phase level "+level;

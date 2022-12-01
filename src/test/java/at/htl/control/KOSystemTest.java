@@ -1,8 +1,5 @@
 package at.htl.control;
 
-import at.htl.control.MatchRepository;
-import at.htl.control.TeamRepository;
-import at.htl.control.TournamentRepository;
 import at.htl.entity.*;
 import at.htl.filewriter.Filewriter;
 import io.quarkus.test.junit.QuarkusTest;
@@ -10,10 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import javax.inject.Inject;
 import javax.transaction.Transactional;
-import java.util.ArrayList;
 import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @QuarkusTest
 @Transactional
