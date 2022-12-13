@@ -52,4 +52,15 @@ public class TeamResource {
         return Response.status(Response.Status.OK).build();
     }
 
+    @DELETE
+    @Path("/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Transactional
+    public Response delete(
+            @Context UriInfo uriInfo, @PathParam("id") long id
+    ){
+        teamRepo.deleteById(id);
+        return Response.ok().build();
+    }
 }

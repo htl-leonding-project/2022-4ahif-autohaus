@@ -28,4 +28,15 @@ export class TeamListComponent implements OnInit {
     });
   }
 
+  del(team: Team){
+    this.teamService.removeTeam(team.id).subscribe({
+      next:
+      data =>{
+        this.refreshData()
+      },
+      error: e => {
+        alert('Error removing Team');
+      }
+    });
+  }
 }

@@ -8,6 +8,7 @@
                 <th>Abkürzung</th>
                 <th>Name</th>
                 <th>Gewinne</th>
+                <th style="text-align: center;">Löschen</th>
             </tr>
         </thead>
         <tbody>
@@ -15,6 +16,7 @@
                 <th scope="row">{{team.abbr}}</th>
                 <td>{{team.name}}</td>
                 <td>{{team.winAmount}}</td>
+                <td style="text-align: center;"><button class="btn btn-outline-secondary" (click)="del(team)">-</button></td>
             </tr>
         </tbody>
     </table>

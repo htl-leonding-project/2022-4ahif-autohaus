@@ -29,4 +29,8 @@ export class TeamService {
   saveTeam(newTeam: Team){
     return this.httpClient.post<Team>(API_URL, newTeam, httpOptions);
   }
+
+  removeTeam(teamId: number){
+    return this.httpClient.delete(API_URL+"/"+teamId);
+  }
 }
