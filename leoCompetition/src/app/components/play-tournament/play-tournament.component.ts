@@ -20,7 +20,8 @@ export class PlayTournamentComponent implements OnInit {
     team2: {id: 0, name:"", abbr:"", winAmount:0},
     pointsTeam1: 0,
     pointsTeam2: 0,
-    finished: false
+    finished: false,
+    phase: 0
   }
 
   constructor(
@@ -45,7 +46,7 @@ export class PlayTournamentComponent implements OnInit {
       {next:
         data =>{
           this.matches = data
-          this.matches.sort((a,b) => a.id - b.id)
+          this.matches.sort((a,b) => b.phase - a.phase)
         },
         error: error =>{
           alert('Error loading matches');
@@ -88,7 +89,8 @@ export class PlayTournamentComponent implements OnInit {
         team2: {id: 0, name:"", abbr:"", winAmount:0},
         pointsTeam1: 0,
         pointsTeam2: 0,
-        finished: false
+        finished: false,
+        phase: 0
       }
     }
     else{

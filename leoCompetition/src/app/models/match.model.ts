@@ -8,6 +8,6 @@ export interface Match {
     team2: Team,
     pointsTeam1: number,
     pointsTeam2: number,
-    finished: boolean
-
+    finished: boolean,
+    phase: number
 }

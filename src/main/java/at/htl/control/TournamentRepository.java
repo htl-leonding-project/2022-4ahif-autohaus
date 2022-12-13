@@ -192,6 +192,16 @@ public class TournamentRepository implements PanacheRepository<Tournament> {
         }
         return matches;
     }
+    public List<MatchDTO> getMatchesDto(Tournament t) {
+        List<Node> nodes = nodeRepository.getNodesAsList(t.getFinalNode());
+        List<MatchDTO> matches = new LinkedList<>();
+        for (Node node: nodes) {
+            if(node.getCurMatch() != null) {
+                matches.add(new MatchDTO(node.getCurMatch(), node.getPhase()));
+            }
+        }
+        return matches;
+    }
 
     public void endMatch(Tournament t, Match match){
         List<Node> nodes = nodeRepository.getNodesAsList(t.getFinalNode());

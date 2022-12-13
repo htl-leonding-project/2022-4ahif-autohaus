@@ -26,3 +26,23 @@ body{
   ::-webkit-scrollbar-thumb:hover {
     background: #e3b510; 
   }
+
+
+.tr-phase1{
+  background-color: rgba(0, 0, 0, 0);
+}
+
+
+.tr-phase2{
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+
+.tr-phase3{
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+
+.tr-phase4{
+  background-color: rgba(0, 0, 0, 0.3);
+}

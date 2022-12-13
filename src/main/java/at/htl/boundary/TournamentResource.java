@@ -62,7 +62,7 @@ public class TournamentResource {
     @Path("/matches/{name}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getMatches(@PathParam("name") String name){
-        return Response.ok(tournamentRepository.getMatches(tournamentRepository.findByName(name))).build();
+        return Response.ok(tournamentRepository.getMatchesDto(tournamentRepository.findByName(name))).build();
     }
 
     @POST
