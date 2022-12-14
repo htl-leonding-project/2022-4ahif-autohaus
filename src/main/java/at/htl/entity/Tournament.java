@@ -17,6 +17,10 @@ public class Tournament  {
     //erst einmal leer lassen
     @Column(name = "T_Name",length = 30)
     String name;
+
+    @Column(name = "T_Status")
+    Status status;
+
     @Transient
     List<Phase> phases = new ArrayList<>();
 
@@ -30,6 +34,7 @@ public class Tournament  {
     public Tournament(String name) {
         this();
         this.name = name;
+        this.status = Status.IN_PREPARATION;
     }
 
     public Tournament() {
@@ -76,6 +81,14 @@ public class Tournament  {
 
     public void setFinalNode(Node finalNode) {
         this.finalNode = finalNode;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
     }
 
     @Override

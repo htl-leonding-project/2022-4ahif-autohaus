@@ -29,7 +29,8 @@ import java.util.Random;
 public class TournamentResource {
 
     private final String IMAGE_LOCATION="asciidocs/images/generated-diagrams/";
-    private int phaseForCurrentTournament = 5;
+
+    private final String PATH="/c.handel/api/tournaments";
     @Inject
     TeamRepository teamRepository;
     @Inject
@@ -152,6 +153,7 @@ public class TournamentResource {
     ) {
         List<Node> nodes;
         String tournamentName = "";
+        int phaseForCurrentTournament;
         if(ids.size() == 4 || ids.size() == 8 || ids.size() == 16){
             if(name.equals("")){
                 tournamentName = "Turnier_am_"+LocalDateTime.now().format(DateTimeFormatter.BASIC_ISO_DATE);
@@ -162,7 +164,7 @@ public class TournamentResource {
                 if(tournamentRepository.findByName(tournamentName)!= null){
                     return Response
                             .status(301)
-                            .location(URI.create("/c.handel/api/tournaments/createTournament"))
+                            .location(URI.create(PATH+"/createTournament"))
                             .build();
                 }
 
@@ -173,12 +175,12 @@ public class TournamentResource {
 
             return Response
                     .status(301)
-                    .location(URI.create("/c.handel/api/tournaments/matchList/"+tournamentRepository.findByName(tournamentName).getId()))
+                    .location(URI.create(PATH+"/matchList/"+tournamentRepository.findByName(tournamentName).getId()))
                     .build();
         }
         return Response
                 .status(301)
-                .location(URI.create("/c.handel/api/tournaments/createTournament"))
+                .location(URI.create(PATH+"/createTournament"))
                 .build();
     }
 
@@ -195,6 +197,7 @@ public class TournamentResource {
 
     @DELETE
     @Path("/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
     @Transactional
     public Response deleteTournament(
             @PathParam("id") Long id
