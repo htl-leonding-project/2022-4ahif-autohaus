@@ -57,7 +57,7 @@ export class TournamentService {
     return this.httpClient.delete(API_URL+"/"+id)
   }
 
-  getTeams(id:number){
-    return this.httpClient.get<Team[]>(API_URL+"/teams/"+id);
+  getTeams(tournamentName:string){
+    return this.httpClient.get<Team[]>(API_URL+"/teams/"+tournamentName);
   }
 }

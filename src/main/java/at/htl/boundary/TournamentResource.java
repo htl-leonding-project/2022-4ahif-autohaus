@@ -210,8 +210,9 @@ public class TournamentResource {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    @Path("teams/{id}")
-    public Response getTeamsByTournament(@PathParam("id") Long id){
+    @Path("teams/{name}")
+    public Response getTeamsByTournament(@PathParam("name") String name){
+        long id = tournamentRepository.findByName(name).getId();
         return Response.ok(teamRepository.find("tournamentId = ?1",id).stream().toList()).build();
     }
 }
