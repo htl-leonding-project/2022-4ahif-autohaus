@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Match } from 'src/app/models/match.model';
 import { TournamentService } from 'src/app/services/tournament.service';
 import { MatchService } from 'src/app/services/match.service';
+import { NotifierService } from 'angular-notifier';
 
 @Component({
   selector: 'app-play-tournament',
@@ -28,7 +29,8 @@ export class PlayTournamentComponent implements OnInit {
     private route: ActivatedRoute,
     private router:Router, 
     private tournamentService: TournamentService,
-    private matchService: MatchService) { }
+    private matchService: MatchService,
+    private notifier: NotifierService) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(
@@ -49,7 +51,7 @@ export class PlayTournamentComponent implements OnInit {
           this.matches.sort((a,b) => b.phase - a.phase)
         },
         error: error =>{
-          alert('Error loading matches');
+          this.notifier.notify( 'error','Matches konnten nicht geladen werden!');
         }
       });
   }
@@ -62,7 +64,7 @@ export class PlayTournamentComponent implements OnInit {
           this.router.navigate(['/result/'+this.tournamentName.replace(' ', '_')]);
         },
         error: error =>{
-          alert('Error generating diagram')
+          this.notifier.notify( 'error','Diagramm konnten nicht geladen werden!');
         }
     })
   }
@@ -79,7 +81,7 @@ export class PlayTournamentComponent implements OnInit {
             this.checkForTournamentCompletion();
           },
           error: error =>{
-            alert('Error loading matches');
+            this.notifier.notify( 'error','Matches konnten nicht geladen werden!');
           }
       })
 
@@ -94,7 +96,7 @@ export class PlayTournamentComponent implements OnInit {
       }
     }
     else{
-      alert('Only points ranging 0-10 and not equal allowed')
+      this.notifier.notify( 'info','Gleichstand ist nicht erlaubt!');
     }
   }
 
@@ -110,7 +112,7 @@ export class PlayTournamentComponent implements OnInit {
           this.finishedAllMatches = data;
       },
       error: error =>{
-        alert('Error checking for completion');
+        this.notifier.notify( 'error','Fehler beim checken ob Turnier fertig gespielt wurde!');
       }
     });
   }

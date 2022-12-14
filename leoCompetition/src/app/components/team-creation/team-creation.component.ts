@@ -4,6 +4,7 @@ import { TeamService } from 'src/app/services/team.service';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { TournamentService } from 'src/app/services/tournament.service';
+import { NotifierService } from 'angular-notifier';
 
 @Component({
   selector: 'app-team-creation',
@@ -18,7 +19,11 @@ export class TeamCreationComponent implements OnInit {
   allTeams: Team[] = []
   exists: boolean = false;
 
-  constructor(private router: Router, private teamService: TeamService, private tournamentService: TournamentService) { 
+  constructor(
+    private router: Router, 
+    private teamService: TeamService, 
+    private tournamentService: TournamentService, 
+    private notifier: NotifierService) { 
     this.newTeam = {id: 0, abbr: "", name: "", winAmount: 0}
   }
 
@@ -36,7 +41,7 @@ export class TeamCreationComponent implements OnInit {
           this.refreshTeams();
         },
         error: error => {
-          alert('Speichern fehlgeschlagen');
+          this.notifier.notify( 'error','Speichern fehlgeschlagen!');
         }
       });
   }
@@ -48,7 +53,7 @@ export class TeamCreationComponent implements OnInit {
         this.allTeams = this.allTeams.filter((team) => this.addedTeams.find((obj) => {return obj.abbr === team.abbr})== null)
       },
       error: error =>{
-        alert('Error loading teams');
+        this.notifier.notify( 'error','Teams konnten nicht geladen werden!');
       }
     });
 
@@ -76,12 +81,12 @@ export class TeamCreationComponent implements OnInit {
                 this.router.navigate(['play-tournament', this.tournamentName])
               },
               error: error => {
-                alert('Speichern fehlgeschlagen');
+                this.notifier.notify( 'error','Speichern fehlgeschlagen!');
               }
             });
           }
           else{
-            alert('Turnier mit diesem Namen existiert bereits');
+            this.notifier.notify( 'error','Turnier mit diesem Namen existiert bereits');
           }
         }
       });

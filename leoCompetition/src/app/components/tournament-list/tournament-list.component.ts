@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { NotifierService } from 'angular-notifier';
 import { Tournament } from 'src/app/models/tournament.model';
 import { TournamentService } from 'src/app/services/tournament.service';
 
@@ -12,7 +13,10 @@ export class TournamentListComponent implements OnInit {
 
   tournaments: Tournament[] = [];
 
-  constructor(private tournamentService: TournamentService, private router: Router) { }
+  constructor(
+    private tournamentService: TournamentService,
+    private router: Router,
+    private notifier: NotifierService) { }
 
   ngOnInit(): void {
     this.refreshData();
@@ -24,7 +28,7 @@ export class TournamentListComponent implements OnInit {
         this.tournaments = data;
       },
       error: error =>{
-        alert('Error loading tournaments');
+        this.notifier.notify( 'error','Turniere konnten nicht geladen werden!');
       }
     });
   }
@@ -39,7 +43,7 @@ export class TournamentListComponent implements OnInit {
         this.refreshData()
       },
       error: error =>{
-        alert('Error deleting tournament');
+        this.notifier.notify( 'error','Turniere konnte nicht gelöscht werden!');
       }
     })
   }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NotifierService } from 'angular-notifier';
 import { Team } from 'src/app/models/team.model';
 import { TeamService } from 'src/app/services/team.service';
 
@@ -11,7 +12,9 @@ export class TeamListComponent implements OnInit {
 
   teams: Team[] = []
 
-  constructor(private teamService: TeamService) { }
+  constructor(
+    private teamService: TeamService,
+    private notifier: NotifierService) { }
 
   ngOnInit(): void {
     this.refreshData();
@@ -23,19 +26,7 @@ export class TeamListComponent implements OnInit {
         this.teams = data;
       },
       error: error =>{
-        alert('Error loading teams');
-      }
-    });
-  }
-
-  del(team: Team){
-    this.teamService.removeTeam(team.id).subscribe({
-      next:
-      data =>{
-        this.refreshData()
-      },
-      error: e => {
-        alert('Error removing Team');
+        this.notifier.notify( 'error','Teams konnten nicht geladen werden!');
       }
     });
   }

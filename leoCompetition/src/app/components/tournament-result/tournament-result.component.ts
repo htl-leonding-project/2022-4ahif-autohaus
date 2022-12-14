@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Team } from 'src/app/models/team.model';
 import { TournamentService } from 'src/app/services/tournament.service';
+import { NotifierService } from 'angular-notifier';
 
 @Component({
   selector: 'app-tournament-result',
@@ -15,12 +16,16 @@ export class TournamentResultComponent implements OnInit {
   id: number=-1;
   teams: Team[]=[];
   display:boolean = false;
+  private notifier: NotifierService;
 
   constructor(
     private route: ActivatedRoute, 
     private router: Router,
     private http: HttpClient,
-    private tournamentService: TournamentService){}
+    private tournamentService: TournamentService,
+    notifier: NotifierService){
+      this.notifier = notifier;
+    }
 
   ngOnInit(): void {
     
@@ -34,7 +39,7 @@ export class TournamentResultComponent implements OnInit {
             if(params.valueOf() == true)
               this.display = true
             else
-              alert('Turnier wurde nicht beendet!')
+              this.notifier.notify( 'error','Turnier wurde nicht beendet!');
           }
         )
       }
@@ -48,7 +53,7 @@ export class TournamentResultComponent implements OnInit {
         this.teams = data;
       },
       error: e =>{
-        alert('Error loading Teams');
+        this.notifier.notify( 'error', 'Teams konnten nicht geladen werden');
       }
     });
   }

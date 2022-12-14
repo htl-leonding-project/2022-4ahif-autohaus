@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { NotifierService } from 'angular-notifier';
 import { Tournament } from 'src/app/models/tournament.model';
 import { MatchService } from 'src/app/services/match.service';
 import { TeamService } from 'src/app/services/team.service';
@@ -22,8 +23,8 @@ export class HomeComponent implements OnInit {
     private teamService: TeamService,
     private matchService: MatchService,
     private tournamentService: TournamentService,
-    private router: Router
-  ) { }
+    private router: Router,
+    private notifier: NotifierService) {}
 
   ngOnInit(): void {
     this.refreshValues();
@@ -36,7 +37,7 @@ export class HomeComponent implements OnInit {
         this.teamAmount = data;
       },
       error: error => {
-        alert('Error loading teams!');
+        this.notifier.notify( 'error','Teams konnten nicht geladen werden!');
       }
     });
 
@@ -45,7 +46,7 @@ export class HomeComponent implements OnInit {
         this.matchesAmount = data;
       },
       error: error => {
-        alert('Error loading matches!');
+        this.notifier.notify( 'error','Matches konnten nicht geladen werden!');
       }
     });
 
@@ -54,7 +55,7 @@ export class HomeComponent implements OnInit {
         this.tournamentAmount = data;
       },
       error: error => {
-        alert('Error loading tournaments!');
+        this.notifier.notify( 'error','Turniere konnten nicht geladen werden!');
       }
     });
   }
@@ -65,7 +66,7 @@ export class HomeComponent implements OnInit {
         this.tournaments = data;
       },
       error: error =>{
-        alert('Error loading tournaments');
+        this.notifier.notify( 'error','Turniere konnten nicht geladen werden!');
       }
     });
   }
@@ -81,7 +82,7 @@ export class HomeComponent implements OnInit {
         this.refreshValues()
       },
       error: error =>{
-        alert('Error deleting tournament');
+        this.notifier.notify( 'error','Turnier konnte nicht gelöscht werden!');
       }
     })
   }
