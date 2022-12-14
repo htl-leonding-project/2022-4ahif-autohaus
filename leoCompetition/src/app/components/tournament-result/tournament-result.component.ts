@@ -32,28 +32,25 @@ export class TournamentResultComponent implements OnInit {
     this.route.params.subscribe(
       params => {
         this.tournamentName = params['name'];
-        this.id = params['id'];
 
         this.tournamentService.isLastMatchDone(this.tournamentName).subscribe(
           params => {
             if(params.valueOf() == true)
               this.display = true
-            else
-              this.notifier.notify( 'error','Turnier wurde nicht beendet!');
           }
         )
       }
     )
-    this.refreshData(this.id);
+    this.refreshData();
   }
 
-  refreshData(id: number){
-    this.tournamentService.getTeams(id).subscribe({next:
+  refreshData(){
+    this.tournamentService.getTeams(this.tournamentName).subscribe({next:
       data =>{
         this.teams = data;
       },
       error: e =>{
-        this.notifier.notify( 'error', 'Teams konnten nicht geladen werden');
+        
       }
     });
   }
