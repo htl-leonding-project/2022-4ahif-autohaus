@@ -10,7 +10,7 @@ Momentan wird die Turniersimulierung durch UnitTests und Cypress Tests durchgef√
 
 ![alt test](/asciidocs/images/leocompfrontend.png)
 
-## Diagrame
+## Diagramme
 
 <details>
     <summary>Datenbank</summary>
