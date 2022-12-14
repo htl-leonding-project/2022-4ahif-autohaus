@@ -1,14 +1,40 @@
 <div class="container">
-    <div *ngIf="display" style="text-align: center;">
-        <img src="assets/images/generated-diagrams/{{tournamentName}}.png" style="max-height: 70vh;">
+    
+    <h1 class="display-2 text-center" style="padding: 0.25em">{{tournamentName}}</h1>
+
+    <div class="row">
+        <div class="col">
+            <h3 class="text-center">Teilnehmende Teams</h3>
+            <table class="table table-hover table-responsive-sm table-bordered">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Abkürzung</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let team of teams">
+                        <td>{{team.name}}</td>
+                        <td>{{team.abbr}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="col">
+            <div *ngIf="display" style="text-align: center;">
+                <img src="assets/images/generated-diagrams/{{tournamentName}}.png" style="max-height: 70vh;">
+            </div>
+            <div class="mt-2" style="text-align: center;">
+                <button (click)="backToStart()" class="form-group btn btn-success" style="margin:0.5em; text-align: center;">Zurück zur Startseite</button>
+                <a class="form-group btn btn-success" style="margin:0.5em; text-align: center;" download="{{tournamentName}}" href="assets/images/generated-diagrams/{{tournamentName}}.png">Download</a>
+            </div>
+        </div>
     </div>
 
     <div *ngIf="!display" style="text-align: center;" class="mt-2">
         <button (click)="continue()" class="form-group btn btn-success" style=" margin-top: 1em; margin-bottom:0.5em; text-align: center;">Turnier weiter spielen</button>
     </div>
-
-    <div class="mt-2" style="text-align: center;">
-        <button (click)="backToStart()" class="form-group btn btn-success" style="margin:0.5em; text-align: center;">Zurück zur Startseite</button>
-        <a class="form-group btn btn-success" style="margin:0.5em; text-align: center;" download="{{tournamentName}}" href="assets/images/generated-diagrams/{{tournamentName}}.png">Download</a>
-    </div>
+    
+    
 </div>
