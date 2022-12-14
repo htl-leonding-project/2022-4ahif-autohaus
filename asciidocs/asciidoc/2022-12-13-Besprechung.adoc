@@ -52,5 +52,5 @@ ifdef::backend-html5[]
 ** Status zur Turnierliste hinzufügen
 ** Funktionalität: "Vorgefertigte Templates durspielen" hinzufügen
 ** Anstatt alert, ändern zu Status
-** Zustandsdiagramm für die Zuständer des Turniers
+** Zustandsdiagramm für die Zustände des Turniers
 ** Punkte auf Tore ändern
