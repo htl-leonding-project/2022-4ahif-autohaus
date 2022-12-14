@@ -50,7 +50,7 @@ export class TournamentResultComponent implements OnInit {
         this.teams = data;
       },
       error: e =>{
-        
+        this.notifier.notify("error", "Teams konnten nicht geladen werden!")
       }
     });
   }
