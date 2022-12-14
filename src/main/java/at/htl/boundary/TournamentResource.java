@@ -139,7 +139,7 @@ public class TournamentResource {
     @Path("/listTournaments")
     public Response moveToDiagram(@FormParam("name") String name){
         return Response.status(301)
-                .location(URI.create("/c.handel/api/tournaments/showEndResult/"+name))
+                .location(URI.create(PATH+"/showEndResult/"+name))
                 .build();
     }
 
@@ -208,5 +208,10 @@ public class TournamentResource {
         return Response.ok().build();
     }
 
-
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("teams/{id}")
+    public Response getTeamsByTournament(@PathParam("id") Long id){
+        return Response.ok(teamRepository.find("tournamentId = ?1",id).stream().toList()).build();
+    }
 }

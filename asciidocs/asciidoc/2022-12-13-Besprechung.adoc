@@ -42,6 +42,7 @@ ifdef::backend-html5[]
 * Teams brauchen ein Feld "Turnier" um nur die Teams für ein spezifisches Turnier angezeigt werden (Grund: Übersichtlichkeit)
 * Teams dürfen nicht mehr allgemein gespeicher werden.
 * Schreibfehler "Diagrame" umschreiben
+* Statt alert kleine Meldungen am Bildschirmrand
 
 == Vereinbarungen und Entscheidungen
 
