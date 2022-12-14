@@ -24,6 +24,9 @@ public class TournamentRepository implements PanacheRepository<Tournament> {
     @Inject
     NodeRepository nodeRepository;
 
+    @Inject
+    TeamRepository teamRepository;
+
     public List<Tournament> getAllSorted(){
         return this.findAll().stream().sorted(Comparator.comparing(Tournament::getStartDate).reversed()).toList();
     }
@@ -43,6 +46,10 @@ public class TournamentRepository implements PanacheRepository<Tournament> {
 
         matchRepository.persist(matches);
         this.persist(tournament);
+
+        for (Team team:teams) {
+            teamRepository.getTeamByAbbr(team.getAbbr()).setTournamentId(tournament.getId());
+        }
 
         return nodeRepository.getNodesAsList(tournament.getFinalNode());
     }
@@ -268,5 +275,14 @@ public class TournamentRepository implements PanacheRepository<Tournament> {
                     }]}""";
 
         return json;
+    }
+
+    public void deleteTournamentById(Long aLong) {
+
+        for (Team team: teamRepository.getByTournamentId(aLong)) {
+            teamRepository.deleteById(team.getId());
+        }
+
+        this.deleteById(aLong);
     }
 }

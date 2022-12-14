@@ -12,6 +12,7 @@
                 <th>Austragungsdatum</th>
                 <th>Name</th>
                 <th></th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -19,6 +20,7 @@
                 <td>{{tournament.startDate}}</td>
                 <td>{{tournament.name}}</td>
                 <td><button class="btn btn-success" (click)="redirect(tournament.name)">Anzeigen</button></td>
+                <td><button class="btn btn-success" (click)="remove(tournament.id)">Löschen</button></td>
             </tr>
         </tbody>
     </table>

@@ -193,5 +193,15 @@ public class TournamentResource {
         ).build();
     }
 
+    @DELETE
+    @Path("/{id}")
+    @Transactional
+    public Response deleteTournament(
+            @PathParam("id") Long id
+    ){
+        tournamentRepository.deleteTournamentById(id);
+        return Response.ok().build();
+    }
+
 
 }

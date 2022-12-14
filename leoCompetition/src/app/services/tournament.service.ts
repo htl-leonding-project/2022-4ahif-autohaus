@@ -52,4 +52,8 @@ export class TournamentService {
   createDiagram(name:string){
     return this.httpClient.get(API_URL+"/generate/"+name)
   }
+
+  deleteTournament(id:number){
+    return this.httpClient.delete(API_URL+"/"+id)
+  }
 }

@@ -33,4 +33,15 @@ export class TournamentListComponent implements OnInit {
     this.router.navigate(['/result/'+name.replace(' ', '_')]);
   }
 
+  remove(id:number){
+    this.tournamentService.deleteTournament(id).subscribe({next:
+      data => {
+        this.refreshData()
+      },
+      error: error =>{
+        alert('Error deleting tournament');
+      }
+    })
+  }
+
 }

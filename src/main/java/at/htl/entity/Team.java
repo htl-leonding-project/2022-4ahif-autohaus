@@ -22,6 +22,9 @@ public class Team  {
     @Column(name = "T_Overall_Wins")
     private int winAmount;
 
+    @Column(name = "T_Tournament_ID")
+    Long tournamentId;
+
     //region Constructor
     public Team() {
     }
@@ -76,6 +79,14 @@ public class Team  {
 
     public void incrementWinAmount(){
         this.winAmount++;
+    }
+
+    public Long getTournamentId() {
+        return tournamentId;
+    }
+
+    public void setTournamentId(Long tournamentId) {
+        this.tournamentId = tournamentId;
     }
 
     @Override
