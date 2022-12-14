@@ -13,6 +13,8 @@ import { TeamCreationComponent } from './components/team-creation/team-creation.
 import { PlayTournamentComponent } from './components/play-tournament/play-tournament.component';
 import { TournamentResultComponent } from './components/tournament-result/tournament-result.component';
 import { TournamentListComponent } from './components/tournament-list/tournament-list.component';
+import { NotifierModule } from 'angular-notifier';
+
 
 @NgModule({
   declarations: [
@@ -29,7 +31,8 @@ import { TournamentListComponent } from './components/tournament-list/tournament
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
-    CommonModule
+    CommonModule,
+    NotifierModule
   ],
   providers: [],
   bootstrap: [AppComponent]
