@@ -1,3 +1,4 @@
+<div style="max-height: 50vh;">
 <div class = "container" style="margin-top: 30px;">
 <div class="row">
     <div class="col-lg-4 col-sm-6" style="padding-bottom: 20px;">
@@ -32,11 +33,31 @@
         <button type="button" class="btn btn-success btn-lg col-md-4 m-2" routerLink="/new-team">Neues Turnier erstellen</button>
       </div>
     </div>
-    <div class="row">
-      <div class=" btn-group">
-        <button type="button" class="btn btn-success btn-lg col-md-4 m-2" routerLink="/teams">Teams anzeigen</button>
-        <button type="button" class="btn btn-success btn-lg col-md-4 m-2" routerLink="/tournaments">Alle Turniere anzeigen</button>
-      </div>
-    </div>
   </div>
+</div>
+</div>
+<div class="container" style="padding-top: 1em;">
+  <h2 class="text-center">Turniere</h2>
+  <div class="table-responsive" >  
+  <table class="table">
+  <thead>
+      <tr>
+          <th>Austragungsdatum</th>
+          <th>Name</th>
+          <th>Status</th>
+          <th></th>
+          <th></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr *ngFor="let tournament of tournaments">
+          <td>{{tournament.startDate}}</td>
+          <td>{{tournament.name}}</td>
+          <td>{{tournament.status}}</td>
+          <td><button class="btn btn-success" (click)="redirect(tournament.name)">Details</button></td>
+          <td><button class="btn btn-success" (click)="remove(tournament.id)">Löschen</button></td>
+      </tr>
+  </tbody>
+  </table>
+</div>
 </div>

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Tournament } from 'src/app/models/tournament.model';
 import { MatchService } from 'src/app/services/match.service';
 import { TeamService } from 'src/app/services/team.service';
 import { TournamentService } from 'src/app/services/tournament.service';
@@ -14,15 +16,18 @@ export class HomeComponent implements OnInit {
   matchesAmount: number = 0;
   groupsAmount: number = 0;
   tournamentAmount: number = 0;
+  tournaments: Tournament[] = [];
 
   constructor(
     private teamService: TeamService,
     private matchService: MatchService,
-    private tournamentService: TournamentService
+    private tournamentService: TournamentService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
     this.refreshValues();
+    this.refreshTable();
   }
 
   refreshValues(){
@@ -52,6 +57,33 @@ export class HomeComponent implements OnInit {
         alert('Error loading tournaments!');
       }
     });
+  }
+
+  refreshTable(){
+    this.tournamentService.getTournaments().subscribe({next:
+      data =>{
+        this.tournaments = data;
+      },
+      error: error =>{
+        alert('Error loading tournaments');
+      }
+    });
+  }
+
+  redirect(name:String){
+    this.router.navigate(['/result/'+name.replace(' ', '_')]);
+  }
+
+  remove(id:number){
+    this.tournamentService.deleteTournament(id).subscribe({next:
+      data => {
+        this.refreshTable()
+        this.refreshValues()
+      },
+      error: error =>{
+        alert('Error deleting tournament');
+      }
+    })
   }
 
 }
