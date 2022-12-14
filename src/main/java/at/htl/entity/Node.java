@@ -93,6 +93,10 @@ public class Node {
                 this.rightNode.getCurMatch().getWinningTeam()));
     }
 
+    public int getPhaseLevel(){
+        return this.phase.getLevel();
+    }
+
     public String getMatchTableGP(){
         String returnString = String.format("""
                 map Match.%svs%s {

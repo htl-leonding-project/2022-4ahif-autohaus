@@ -214,4 +214,59 @@ public class TournamentRepository implements PanacheRepository<Tournament> {
         node.getCurMatch().endMatch();
         node.getParentNode().setChildMatchWinners();
     }
+
+    public String generateTreeJson(Tournament t){
+        List<Node> nodes = nodeRepository.getNodesAsList(t.getFinalNode());
+        int currentLevel = nodes.get(0).getPhase().getLevel();
+        String json = """
+                {rounds: [
+                            {
+                                type: 'Winnerbracket',
+                                matches: [
+                """;
+
+        nodes.sort(Comparator.comparing(Node::getPhaseLevel).reversed());
+
+        for (Node node:nodes) {
+            if(node.getPhase().getLevel() == currentLevel){
+                if(nodes.get(0) != node)
+                    json += ",";
+            } else {
+                json += """
+                            ]
+                        },""";
+                if(node.getPhase().getLevel() == 1){
+                    json += """
+                            {
+                                            type: 'Final',
+                                            matches: [
+                                      """;
+                } else {
+                    json += """
+                            {
+                                            type: 'Winnerbracket',
+                                            matches: [
+                            """;
+                }
+                currentLevel = node.getPhase().getLevel();
+            }
+            json += String.format("""
+                                    {
+                                        teams: [
+                                            { name: '%s', score: %s},
+                                            { name: '%s', score: %s}
+                                        ]
+                                    }""",
+                    (node.getCurMatch() == null ? " " : node.getCurMatch().getTeam1().getName() ),
+                    (node.getCurMatch() == null ? "0" : node.getCurMatch().pointsTeam1),
+                    (node.getCurMatch() == null ? " " : node.getCurMatch().getTeam2().getName() ),
+                    (node.getCurMatch() == null ? "0" : node.getCurMatch().pointsTeam2));
+        }
+
+        json += """
+                    ]
+                    }]}""";
+
+        return json;
+    }
 }

@@ -182,6 +182,16 @@ public class TournamentResource {
                 .build();
     }
 
+    @GET
+    @Path("/tree/{name}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response generateTree(
+            @PathParam("name") String tournamentName
+    ){
+        return Response.ok(
+                tournamentRepository.generateTreeJson(tournamentRepository.findByName(tournamentName))
+        ).build();
+    }
 
 
 }
