@@ -44,6 +44,7 @@ public class TournamentRepository implements PanacheRepository<Tournament> {
             tournament.setFinalNode(buildLargeNodeTree(matches));
         }
 
+        tournament.setStatus(Status.IN_PROGRESS);
         matchRepository.persist(matches);
         this.persist(tournament);
 

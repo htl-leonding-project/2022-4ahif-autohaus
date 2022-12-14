@@ -10,11 +10,13 @@ public class TournamentDTO {
     Long id;
     String name;
     LocalDate startDate;
+    Status status;
 
-    public TournamentDTO(Long id, String name, LocalDate startDate) {
+    public TournamentDTO(Long id, String name, LocalDate startDate, Status status) {
         this.id = id;
         this.name = name;
         this.startDate = startDate;
+        this.status = status;
     }
 
     public TournamentDTO() {
@@ -42,5 +44,13 @@ public class TournamentDTO {
 
     public void setStartDate(LocalDate startDate) {
         this.startDate = startDate;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
     }
 }
