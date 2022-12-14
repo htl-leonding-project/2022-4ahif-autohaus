@@ -72,4 +72,13 @@ public class KOSystemTest {
 
         filewriter.writeFinalResult(nodeThree, smallMatch);
     }
+
+    @Test
+    public void jsonTest(){
+        List<Team> teams = TeamRepo.setTeamsForTournament(8);
+        TournamentRepo.setUpTournament("Json", teams);
+        Tournament json = TournamentRepo.findByName("Json");
+
+        TournamentRepo.generateTreeJson(json);
+    }
 }
