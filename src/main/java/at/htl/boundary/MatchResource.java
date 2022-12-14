@@ -126,9 +126,6 @@ public class MatchResource {
                 current.getParentNode().setChildMatchWinners();
             }
         }
-        else{
-            current.getCurMatch().getWinningTeam().incrementWinAmount();
-        }
 
         return Response.ok().build();
     }

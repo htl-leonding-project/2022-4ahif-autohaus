@@ -19,9 +19,6 @@ public class Team  {
     @Column(name = "T_Abbr")
     private String abbr; //Abbreviation
 
-    @Column(name = "T_Overall_Wins")
-    private int winAmount;
-
     @Column(name = "T_Tournament_ID")
     Long tournamentId;
 
@@ -65,21 +62,6 @@ public class Team  {
     }
 
     //endregion
-    public String getNameAndAbbr() {
-        return this.getName() + "=>"+ this.getAbbr();
-    }
-
-    public int getWinAmount() {
-        return winAmount;
-    }
-
-    public void setWinAmount(int amount) {
-        this.winAmount = amount;
-    }
-
-    public void incrementWinAmount(){
-        this.winAmount++;
-    }
 
     public Long getTournamentId() {
         return tournamentId;
