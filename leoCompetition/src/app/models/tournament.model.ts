@@ -2,5 +2,6 @@ export interface Tournament {
 
     id: number,
     name: String,
-    startDate: Date | null
+    startDate: Date | null,
+    status: number
 }
