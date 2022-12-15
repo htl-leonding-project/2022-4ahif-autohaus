@@ -5,6 +5,7 @@ import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { TournamentService } from 'src/app/services/tournament.service';
 import { NotifierService } from 'angular-notifier';
+import * as React from 'react';
 
 @Component({
   selector: 'app-team-creation',
@@ -19,8 +20,8 @@ export class TeamCreationComponent implements OnInit {
   allTeams: Team[] = []
   exists: boolean = false;
   fileContent: string | ArrayBuffer | null = '';
-  lines = []; //for headings
-  linesR = [];
+  lines: any[] = []; //for headings
+  linesR: any[] = [];
 
   constructor(
     private router: Router, 
@@ -31,6 +32,61 @@ export class TeamCreationComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+    const input: any = document.getElementById('input');
+    input.type = 'file';
+    input.accept = '.csv';
+    
+    input.onchange = (event: React.ChangeEvent<HTMLInputElement>) => {
+      const file = event.target.files![0];
+      const reader = new FileReader();
+
+      reader.readAsText(file);
+      reader.onload = (e) => {
+        let csv: any = reader.result;
+        let allTextLines = [];
+        allTextLines = csv.split(/\r|\n|\r/);
+      
+        let headers = allTextLines[0].split(';')
+        let data = headers;
+        let tarr = [];
+        for(let j = 0; j < headers.length; j++){
+          tarr.push(data[j]);
+        }
+
+        this.lines.push(tarr);
+
+        if(this.lines[0][0] == "name" && this.lines[0][1]=="abbr"){
+        let tarrR = [];
+          
+          let arrl = allTextLines.length;
+          let rows = [];
+          for(let i = 1; i < arrl; i++){
+          rows.push(allTextLines[i].split(';'));
+         
+          }
+          
+          for (let j = 0; j < arrl; j++) {
+      
+              tarrR.push(rows[j]);
+              
+          }
+          this.linesR.push(tarrR);
+
+          console.log(this.linesR);
+
+          for (let i = 1; i < this.linesR[0].length; i+=2) {
+            console.log(this.linesR[0][i][0]);
+            console.log(this.linesR[0][i][1])
+            this.select({id: this.newTeam.id, name: this.linesR[0][i][0], abbr: this.linesR[0][i][1].toUpperCase()});
+            this.newTeam.abbr = "";
+            this.newTeam.name = "";
+          }
+
+        }
+      }
+    };
+
   }
 
   onSubmit(teamForm: NgForm){
@@ -83,4 +139,6 @@ export class TeamCreationComponent implements OnInit {
       });
     }
   }
+
+
 }
