@@ -62,10 +62,6 @@ public class Match{
     public int getPointsTeam2(){return this.pointsTeam2;}
 
     public void setPointsTeam2(int amount){ this.pointsTeam2 = amount; }
-
-    public void endMatch(){
-        getWinningTeam().incrementWinAmount();
-    }
     //endregion
 
 

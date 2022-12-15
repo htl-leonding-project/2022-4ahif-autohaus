@@ -36,14 +36,14 @@
                         <label for="team1Points" class="control-label">Punkte von</label>
                         <p for="team1Points" class="control-label" style="font-weight: bold;">{{selected.team1!.name}}</p>
                         <div *ngIf="selected.id != 0; else noSelected">
-                            <input id="team1Points" #tName="ngModel" type="number" min=0 max=10 [(ngModel)]="selected.pointsTeam1" name="team1Points" class="form-control" required>
+                            <input id="team1Points" #tName="ngModel" type="number" min=0 [(ngModel)]="selected.pointsTeam1" name="team1Points" class="form-control" required>
                         </div>
                     </div>
                     <div class="col">
                         <label for="team2Points" class="control-label">Punkte von</label>
                         <p for="team2Points" class="control-label" style="font-weight: bold;">{{selected.team2!.name}}</p>
                         <div *ngIf="selected.id != 0; else noSelected">
-                            <input id="team2Points" #tName="ngModel" type="number" min=0 max=10 [(ngModel)]="selected.pointsTeam2" name="team2Points" class="form-control" required>
+                            <input id="team2Points" #tName="ngModel" type="number" min=0 [(ngModel)]="selected.pointsTeam2" name="team2Points" class="form-control" required>
                         </div>
                     </div>
                     <ng-template #noSelected>

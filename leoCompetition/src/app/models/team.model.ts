@@ -2,7 +2,5 @@ export interface Team {
 
     abbr: String,
     id: number,
-    name: String,
-    winAmount: number
-
+    name: String
 }

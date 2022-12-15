@@ -18,55 +18,35 @@ export class TeamCreationComponent implements OnInit {
   addedTeams: Team[] = []
   allTeams: Team[] = []
   exists: boolean = false;
+  fileContent: string | ArrayBuffer | null = '';
+  lines = []; //for headings
+  linesR = [];
 
   constructor(
     private router: Router, 
     private teamService: TeamService, 
     private tournamentService: TournamentService, 
     private notifier: NotifierService) { 
-    this.newTeam = {id: 0, abbr: "", name: "", winAmount: 0}
+    this.newTeam = {id: 0, abbr: "", name: ""}
   }
 
   ngOnInit(): void {
-    this.refreshTeams();
   }
 
   onSubmit(teamForm: NgForm){
-    if(teamForm.valid)
-      this.teamService.saveTeam(this.newTeam).subscribe({next:
-        data => {
-          this.select({id: this.newTeam.id, name: this.newTeam.name, abbr: this.newTeam.abbr.toUpperCase(), winAmount: this.newTeam.winAmount});
+    if(teamForm.valid){
+          this.select({id: this.newTeam.id, name: this.newTeam.name, abbr: this.newTeam.abbr.toUpperCase()});
           this.newTeam.abbr = "";
           this.newTeam.name = "";
-          this.refreshTeams();
-        },
-        error: error => {
-          this.notifier.notify( 'error','Speichern fehlgeschlagen!');
-        }
-      });
-  }
-
-  refreshTeams(){
-    this.teamService.getTeams().subscribe({next:
-      data =>{
-        this.allTeams = data;
-        this.allTeams = this.allTeams.filter((team) => this.addedTeams.find((obj) => {return obj.abbr === team.abbr})== null)
-      },
-      error: error =>{
-        this.notifier.notify( 'error','Teams konnten nicht geladen werden!');
-      }
-    });
-
+    }
   }
 
   select(selected: Team){
     this.addedTeams.push(selected);
-    this.refreshTeams();
   }
 
   deselect(selected: Team){
     this.addedTeams = this.addedTeams.filter((team) => team.id !== selected.id)
-    this.refreshTeams();
   }
 
   create(){
@@ -76,6 +56,12 @@ export class TeamCreationComponent implements OnInit {
           this.exists = data;
           
           if(this.exists == false){
+            this.addedTeams.forEach(team => {
+              this.teamService.saveTeam(team).subscribe({
+                error: error => {
+                  this.notifier.notify('error','Teams speichern fehlgeschlagen!');
+                }})
+            });
             this.tournamentService.saveTournament(this.tournamentName, this.addedTeams).subscribe({next:
               data => {
                 this.router.navigate(['play-tournament', this.tournamentName])

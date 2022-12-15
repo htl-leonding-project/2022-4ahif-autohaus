@@ -17,8 +17,8 @@ export class PlayTournamentComponent implements OnInit {
   matches:Match[]=[];
   selected:Match = {
     id: 0,
-    team1: {id: 0, name:"", abbr:"", winAmount:0},
-    team2: {id: 0, name:"", abbr:"", winAmount:0},
+    team1: {id: 0, name:"", abbr:""},
+    team2: {id: 0, name:"", abbr:""},
     pointsTeam1: 0,
     pointsTeam2: 0,
     finished: false,
@@ -71,30 +71,32 @@ export class PlayTournamentComponent implements OnInit {
 
   clicked(){
 
-    if(this.selected.pointsTeam1 != this.selected.pointsTeam2 && 
-      this.selected.pointsTeam1 <= 10 && this.selected.pointsTeam2 <= 10 &&
-      this.selected.pointsTeam1 >= 0 && this.selected.pointsTeam2 >= 0){
-      this.matchService.updateMatch(this.selected).subscribe({
-        next:
-          data =>{   
-            this.refreshMatches(this.tournamentName);
-            this.checkForTournamentCompletion();
-          },
-          error: error =>{
-            this.notifier.notify( 'error','Matches konnten nicht geladen werden!');
-          }
-      })
+    if(this.selected.pointsTeam1 != this.selected.pointsTeam2)
+      if(this.selected.pointsTeam1 >= 0 && this.selected.pointsTeam2 >= 0){
+        this.matchService.updateMatch(this.selected).subscribe({
+          next:
+            data =>{   
+              this.refreshMatches(this.tournamentName);
+              this.checkForTournamentCompletion();
+            },
+            error: error =>{
+              this.notifier.notify( 'error','Matches konnten nicht geladen werden!');
+            }
+        })
 
-      this.selected={
-        id: 0,
-        team1: {id: 0, name:"", abbr:"", winAmount:0},
-        team2: {id: 0, name:"", abbr:"", winAmount:0},
-        pointsTeam1: 0,
-        pointsTeam2: 0,
-        finished: false,
-        phase: 0
+        this.selected={
+          id: 0,
+          team1: {id: 0, name:"", abbr:""},
+          team2: {id: 0, name:"", abbr:""},
+          pointsTeam1: 0,
+          pointsTeam2: 0,
+          finished: false,
+          phase: 0
+        }
+      
+      }else{
+        this.notifier.notify('info', 'Nur positive Punkte erlaubt!')
       }
-    }
     else{
       this.notifier.notify( 'info','Gleichstand ist nicht erlaubt!');
     }

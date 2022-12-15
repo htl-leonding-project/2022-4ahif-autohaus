@@ -9,14 +9,12 @@
             <tr>
                 <th>Abkürzung</th>
                 <th>Name</th>
-                <th>Gewinne</th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let team of teams">
                 <th scope="row">{{team.abbr}}</th>
                 <td>{{team.name}}</td>
-                <td>{{team.winAmount}}</td>
             </tr>
         </tbody>
     </table>

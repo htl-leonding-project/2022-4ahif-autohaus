@@ -144,7 +144,7 @@ public class Filewriter {
             List<GeneratedImage> list = reader.getGeneratedImages();
             File png = list.get(0).getPngFile();
             //File old = new File(TARGET+png.getName());
-            File png_for_web = new File(TARGET_FOR_WEB+png.getName());
+            File old = new File(TARGET_FOR_WEB+png.getName());
 
 
             //old.delete();
@@ -153,8 +153,7 @@ public class Filewriter {
 
             if(png.createNewFile()) {
                 LOG.info(String.format("new file %s created", png.getName()));
-            }else
-                LOG.error("File already exists");
+            }
 
             //FileUtils.copyFile(new File(TARGET+png.getName()), new File(TARGET_FOR_WEB+png.getName()));
 
