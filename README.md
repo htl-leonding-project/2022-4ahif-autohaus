@@ -20,6 +20,13 @@ Momentan wird die Turniersimulierung durch UnitTests und Cypress Tests durchgefÃ
 </details>
 
 <details>
+    <summary>Zustandsdiagramm</summary>
+
+![alt test](/asciidocs/images/state_diagram_tournament.png)
+
+</details>
+
+<details>
     <summary>Use-Case</summary>
 
 ![alt test](/asciidocs/images/use_case.png)

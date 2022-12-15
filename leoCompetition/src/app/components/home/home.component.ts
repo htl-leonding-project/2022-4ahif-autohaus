@@ -37,7 +37,7 @@ export class HomeComponent implements OnInit {
         this.teamAmount = data;
       },
       error: error => {
-        this.notifier.notify( 'error','Teams konnten nicht geladen werden!');
+        this.notifier.notify( 'error','Anzahl Teams konnten nicht geladen werden!');
       }
     });
 
@@ -46,7 +46,7 @@ export class HomeComponent implements OnInit {
         this.matchesAmount = data;
       },
       error: error => {
-        this.notifier.notify( 'error','Matches konnten nicht geladen werden!');
+        this.notifier.notify( 'error','Anzahl Matches konnten nicht geladen werden!');
       }
     });
 
@@ -55,7 +55,7 @@ export class HomeComponent implements OnInit {
         this.tournamentAmount = data;
       },
       error: error => {
-        this.notifier.notify( 'error','Turniere konnten nicht geladen werden!');
+        this.notifier.notify( 'error','Anzahl Turniere konnten nicht geladen werden!');
       }
     });
   }
@@ -66,7 +66,7 @@ export class HomeComponent implements OnInit {
         this.tournaments = data;
       },
       error: error =>{
-        this.notifier.notify( 'error','Turniere konnten nicht geladen werden!');
+        this.notifier.notify( 'error','Liste der Turniere konnten nicht geladen werden!');
       }
     });
   }
@@ -80,6 +80,7 @@ export class HomeComponent implements OnInit {
       data => {
         this.refreshTable()
         this.refreshValues()
+        this.notifier.notify('success', 'Turnier wurde erfolgreich gelöscht!')
       },
       error: error =>{
         this.notifier.notify( 'error','Turnier konnte nicht gelöscht werden!');
