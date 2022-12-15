@@ -21,8 +21,12 @@ public class MatchRepository implements PanacheRepository<Match> {
         List<Match> matches = new LinkedList<>();
 
         for(int i = 0; i < teams.size(); i+=2){
-            matches.add(new Match(teamRepository.getTeamByAbbr(teams.get(i).getAbbr()),
-                    teamRepository.getTeamByAbbr(teams.get(i+1).getAbbr())));
+            matches.add(new Match(
+                    teamRepository.find(
+                            "tournamentId=?1 and abbr=?2", -1L, teams.get(i).getAbbr()
+                    ).firstResult(),
+                    teamRepository.find("tournamentId=?1 and abbr=?2", -1L, teams.get(i+1).getAbbr()
+                    ).firstResult()));
         }
 
         return matches;
