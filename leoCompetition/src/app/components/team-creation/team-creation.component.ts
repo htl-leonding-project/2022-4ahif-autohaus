@@ -19,7 +19,6 @@ export class TeamCreationComponent implements OnInit {
   addedTeams: Team[] = []
   allTeams: Team[] = []
   exists: boolean = false;
-  fileContent: string | ArrayBuffer | null = '';
   lines: any[] = []; //for headings
   linesR: any[] = [];
 
@@ -86,7 +85,8 @@ export class TeamCreationComponent implements OnInit {
         }
       }
     };
-
+    this.lines  = []; //for headings
+    this.linesR = [];
   }
 
   onSubmit(teamForm: NgForm){

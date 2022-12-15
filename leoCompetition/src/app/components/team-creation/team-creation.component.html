@@ -1,3 +1,6 @@
+<script src="https://unpkg.com/dropzone@6.0.0-beta.1/dist/dropzone-min.js"></script>
+<link href="https://unpkg.com/dropzone@6.0.0-beta.1/dist/dropzone.css" rel="stylesheet" type="text/css" />
+
 <div class="row justify-content-center" style="margin: 0;">
     <div class="col-sm-6 col-lg-4">
         <h2 style="text-align: center;">Neues Team erstellen</h2>
@@ -23,7 +26,11 @@
         <!--Premade Teams here-->
         <h2 style="text-align: center;">Teams hinzufügen</h2>
 
-        <input id="input" type=".csv" />
+        
+
+        <form action="/target" class="dropzone" >
+            <input id="input" type="file" style="height: 30vh;" />
+        </form>
 
     </div>
     <div class="col-sm-6 col-lg-4">
