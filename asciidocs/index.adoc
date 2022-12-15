@@ -1,7 +1,7 @@
 = LeoCompetition
 
 Handel Pelzeder Baumgartner
-1.0.5, 2022-12-01
+1.0.6, 2022-12-15
 
 ifndef::imagesdir[:imagesdir: images]
 //:toc-placement!:  // prevents the generation of the doc at this position, so it can be printed afterwards
@@ -48,13 +48,13 @@ image::ko_discuss.png[]
 
 image::ko_cld.png[]
 
-== Turnierablauf
+== Use-Case
 
-[plantuml]
-----
-include::plantuml/use_case.puml[]
-----
+image::use_case.png[]
 
+== Zustandsdiagramm
+
+image::state_diagram_tournament.png[400,600]
 
 == Protokolle
 
@@ -79,6 +79,8 @@ include::plantuml/use_case.puml[]
 * xref:asciidoc/2022-09-20-Besprechung.html[Protokoll-2022-09-20]
 
 * xref:asciidoc/2022-11-29-Besprechung.html[Protokoll-2022-11-29]
+
+* xref:asciidoc/2022-12-13-Besprechung.html[Protokoll-2022-12-13]
 
 == Ist-Zustands-Analyse
 
