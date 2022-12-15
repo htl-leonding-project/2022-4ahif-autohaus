@@ -63,7 +63,7 @@ public class TournamentResource {
     @Path("/matches/{name}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getMatches(@PathParam("name") String name){
-        return Response.ok(tournamentRepository.getMatchesDto(tournamentRepository.findByName(name))).build();
+        return Response.ok(tournamentRepository.getMatchesDto(tournamentRepository.findByName(name.replace(" ", "_")))).build();
     }
 
     @POST
@@ -74,7 +74,7 @@ public class TournamentResource {
     public Response create(
             @PathParam("name") String name, List<Team> teams
     ) {
-        tournamentRepository.setUpTournament(name, teams);
+        tournamentRepository.setUpTournament(name.replace(" ", "_"), teams);
         return Response.status(Response.Status.OK).build();
     }
 
@@ -84,8 +84,9 @@ public class TournamentResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @Transactional
     public Response finished(
-            @PathParam("name") String name
+            @PathParam("name") String nameUnchanged
     ) {
+        String name = nameUnchanged.replace(" ", "_");
         if(tournamentRepository.findByName(name).getFinalNode().getCurMatch()!=null)
             if(tournamentRepository.findByName(name).getFinalNode().getCurMatch().getWinningTeam()!= null) {
                 tournamentRepository.findByName(name).setStatus(Status.FINISHED);
@@ -113,7 +114,7 @@ public class TournamentResource {
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public Response tournamentNameExists(@PathParam("name") String name){
-        if(tournamentRepository.findByName(name) != null)
+        if(tournamentRepository.findByName(name.replace(" ","_")) != null)
             return Response.ok(true).build();
         return Response.ok(false).build();
     }
@@ -122,8 +123,9 @@ public class TournamentResource {
     @Path("/generate/{name}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response generateDiagram(@PathParam("name") String name){
+    public Response generateDiagram(@PathParam("name") String nameUnchanged){
         Filewriter filewriter = new Filewriter();
+        String name = nameUnchanged.replace(" ", "_");
 
         filewriter.writeFinalResult(
                 tournamentRepository.findByName(name).getFinalNode(),
@@ -139,7 +141,7 @@ public class TournamentResource {
     @Path("/listTournaments")
     public Response moveToDiagram(@FormParam("name") String name){
         return Response.status(301)
-                .location(URI.create(PATH+"/showEndResult/"+name))
+                .location(URI.create(PATH+"/showEndResult/"+name.replace(" ", "_")))
                 .build();
     }
 
@@ -150,13 +152,13 @@ public class TournamentResource {
     @Transactional
     public Response createTournament(
             @Context UriInfo uriInfo
-            , @FormParam("id") List<Long> ids
+            , @FormParam("id") List<Team> teams
             , @FormParam("tournamentName") String name
     ) {
         List<Node> nodes;
         String tournamentName = "";
         int phaseForCurrentTournament;
-        if(ids.size() == 4 || ids.size() == 8 || ids.size() == 16){
+        if(teams.size() == 4 || teams.size() == 8 || teams.size() == 16){
             if(name.equals("")){
                 tournamentName = "Turnier_am_"+LocalDateTime.now().format(DateTimeFormatter.BASIC_ISO_DATE);
             }
@@ -171,7 +173,10 @@ public class TournamentResource {
                 }
 
             }
-            nodes = tournamentRepository.setUpTournament(tournamentName, teamRepository.getTeamsByIds(ids));
+
+            teamRepository.persist(teams);
+
+            nodes = tournamentRepository.setUpTournament(tournamentName, teams);
             phaseForCurrentTournament = nodes.get(0).getPhase().getLevel();
             log.info(phaseForCurrentTournament);
 
@@ -184,17 +189,6 @@ public class TournamentResource {
                 .status(301)
                 .location(URI.create(PATH+"/createTournament"))
                 .build();
-    }
-
-    @GET
-    @Path("/tree/{name}")
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response generateTree(
-            @PathParam("name") String tournamentName
-    ){
-        return Response.ok(
-                tournamentRepository.generateTreeJson(tournamentRepository.findByName(tournamentName))
-        ).build();
     }
 
     @DELETE
@@ -212,7 +206,7 @@ public class TournamentResource {
     @Produces(MediaType.APPLICATION_JSON)
     @Path("teams/{name}")
     public Response getTeamsByTournament(@PathParam("name") String name){
-        long id = tournamentRepository.findByName(name).getId();
+        long id = tournamentRepository.findByName(name.replace(" ", "_")).getId();
         return Response.ok(teamRepository.find("tournamentId = ?1",id).stream().toList()).build();
     }
 }

@@ -43,15 +43,15 @@ public class TournamentRepository implements PanacheRepository<Tournament> {
         } else if (teams.size() == 16){
             tournament.setFinalNode(buildLargeNodeTree(matches));
         }
-
         tournament.setStatus(Status.IN_PROGRESS);
         matchRepository.persist(matches);
         this.persist(tournament);
 
         for (Team team:teams) {
-            teamRepository.getTeamByAbbr(team.getAbbr()).setTournamentId(tournament.getId());
+            teamRepository.find("tournamentId=?1 and abbr=?2", -1L, team.getAbbr())
+                    .firstResult()
+                    .setTournamentId(tournament.getId());
         }
-
         return nodeRepository.getNodesAsList(tournament.getFinalNode());
     }
 

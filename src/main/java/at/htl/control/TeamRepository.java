@@ -33,22 +33,6 @@ public class TeamRepository implements PanacheRepository<Team> {
                 .getResultList();
     }
 
-    @Override
-    public void persist(Team team) {
-        if(this.find("name = ?1 and abbr = ?2", team.getName(), team.getAbbr()).count() > 0) {
-            log.error("Team with same attributes already saved");
-        }
-        else {
-            PanacheRepository.super.persist(team);
-        }
-    }
-
-    public List<Long> getUnusedTeamIds() {
-        return this.getEntityManager()
-                .createQuery("select id from Team where id not in (select team.id from GroupGP ggp join ggp.teams team)",
-                        Long.class).getResultList();
-    }
-
     public List<Team> getAllSorted(){
         return this.findAll().stream().sorted(Comparator.comparing(Team::getAbbr)).toList();
     }

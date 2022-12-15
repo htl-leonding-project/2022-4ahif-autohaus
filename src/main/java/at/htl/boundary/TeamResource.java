@@ -46,9 +46,10 @@ public class TeamResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @Transactional
     public Response create(
-            @Context UriInfo uriInfo, Team newTeam
+            @Context UriInfo uriInfo,
+            Team newTeam
     ) {
-        teamRepo.persist(new Team(newTeam.getName(), newTeam.getAbbr()));
+        teamRepo.persist(new Team(newTeam.getName(), newTeam.getAbbr(), -1L));
         return Response.status(Response.Status.OK).build();
     }
 

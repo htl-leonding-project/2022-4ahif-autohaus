@@ -35,9 +35,14 @@ export class TeamCreationComponent implements OnInit {
 
   onSubmit(teamForm: NgForm){
     if(teamForm.valid){
+      if(this.addedTeams.find((team) => team.abbr.toLocaleUpperCase() == this.newTeam.abbr.toLocaleUpperCase())==null){
           this.select({id: this.newTeam.id, name: this.newTeam.name, abbr: this.newTeam.abbr.toUpperCase()});
           this.newTeam.abbr = "";
           this.newTeam.name = "";
+      }
+      else{
+        this.notifier.notify('info','Teams sollen unterscheidbar sein');
+      }
     }
   }
 
@@ -46,7 +51,7 @@ export class TeamCreationComponent implements OnInit {
   }
 
   deselect(selected: Team){
-    this.addedTeams = this.addedTeams.filter((team) => team.id !== selected.id)
+    this.addedTeams = this.addedTeams.filter((team) => team.abbr !== selected.abbr)
   }
 
   create(){

@@ -9,7 +9,7 @@ import javax.persistence.*;
 public class Team  {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "T_ID")
     Long id;
 
@@ -30,9 +30,10 @@ public class Team  {
         this.name = name;
     }
 
-    public Team(String name, String abbr) {
+    public Team(String name, String abbr, long tournamentId) {
         this.name = name;
         this.abbr = abbr.toUpperCase();
+        this.tournamentId = tournamentId;
     }
     //endregion
     //region Getter & Setter
