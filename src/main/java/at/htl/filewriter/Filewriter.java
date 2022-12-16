@@ -22,6 +22,8 @@ public class Filewriter {
     //@ConfigProperty(name = "filewriter.origin")
     private String ORIGIN = "asciidocs/plantuml/Result.puml";
 
+    private String ORIGIN_PATH = "asciidocs/plantuml/";
+
     //@ConfigProperty(name = "filewriter.target")
     private String TARGET = "asciidocs/images/generated-diagrams/";
     private String TARGET_FOR_WEB = "leoCompetition/src/assets/images/generated-diagrams/";
@@ -153,6 +155,9 @@ public class Filewriter {
             if(png.createNewFile()) {
                 LOG.info(String.format("new file %s created", png.getName()));
             }
+
+            old = new File(ORIGIN_PATH+png.getName());
+            old.delete();
             //FileUtils.copyFile(new File(TARGET+png.getName()), new File(TARGET_FOR_WEB+png.getName()));
         }catch(IOException e){
             LOG.error("no file to convert!");
