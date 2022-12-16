@@ -145,19 +145,13 @@ public class Filewriter {
             File png = list.get(0).getPngFile();
             //File old = new File(TARGET+png.getName());
             File old = new File(TARGET_FOR_WEB+png.getName());
-
-
-            //old.delete();
+            old.delete();
 
             png.renameTo(new File(TARGET_FOR_WEB+png.getName()));
-
             if(png.createNewFile()) {
                 LOG.info(String.format("new file %s created", png.getName()));
             }
-
             //FileUtils.copyFile(new File(TARGET+png.getName()), new File(TARGET_FOR_WEB+png.getName()));
-
-            png.delete();
         }catch(IOException e){
             LOG.error("no file to convert!");
         }
