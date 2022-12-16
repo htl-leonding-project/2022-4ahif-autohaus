@@ -23,7 +23,7 @@ public class Filewriter {
     private String ORIGIN = "asciidocs/plantuml/Result.puml";
 
     //@ConfigProperty(name = "filewriter.target")
-    //private String TARGET = "asciidocs/images/generated-diagrams/";
+    private String TARGET = "asciidocs/images/generated-diagrams/";
     private String TARGET_FOR_WEB = "leoCompetition/src/assets/images/generated-diagrams/";
 
     /*public void writeResult(String team01, String team02, int[] result){
@@ -145,6 +145,8 @@ public class Filewriter {
             File png = list.get(0).getPngFile();
             //File old = new File(TARGET+png.getName());
             File old = new File(TARGET_FOR_WEB+png.getName());
+            old.delete();
+            old = new File(TARGET+png.getName());
             old.delete();
 
             png.renameTo(new File(TARGET_FOR_WEB+png.getName()));
