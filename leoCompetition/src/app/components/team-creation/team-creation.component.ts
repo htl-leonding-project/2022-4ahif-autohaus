@@ -45,6 +45,8 @@ export class TeamCreationComponent implements OnInit {
         let csv: any = reader.result;
         let allTextLines = [];
         allTextLines = csv.split(/\r|\n|\r/);
+
+        console.log("file uploaded: " +file.name)
       
         let headers = allTextLines[0].split(';')
         let data = headers;
@@ -87,6 +89,8 @@ export class TeamCreationComponent implements OnInit {
     };
     this.lines  = []; //for headings
     this.linesR = [];
+
+
   }
 
   onSubmit(teamForm: NgForm){

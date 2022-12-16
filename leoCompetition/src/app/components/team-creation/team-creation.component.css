@@ -26,3 +26,38 @@ body{
   ::-webkit-scrollbar-thumb:hover {
     background: #e3b510; 
   }
+
+  
+#wrapper {
+  width:500px;
+  margin:0 auto;
+  margin-top:40px;
+  width: 20em;
+  line-height: 10em;
+  color: gray;
+  border-radius: 7px;
+  border: 1px dashed gray;
+  text-align: center;
+}
+
+.custom-file-input::-webkit-file-upload-button {
+  visibility: hidden;
+}
+.custom-file-input::before {
+  content: '.csv File hier einfügen';
+  display: inline-block;
+  outline: none;
+  white-space: nowrap;
+  cursor: pointer;
+  text-shadow: 1px 1px #fff;
+  font-weight: 700;
+  font-size: 10pt;
+  margin:0 auto;
+  margin-top:40px;
+  width: 100%;
+  line-height: 10em;
+  color: gray;
+  border-radius: 7px;
+  border: 1px dashed gray;
+  text-align: center;
+}
