@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NotifierService } from 'angular-notifier';
 import { Team } from 'src/app/models/team.model';
-import { MatchService } from 'src/app/services/match.service';
 import { TournamentService } from 'src/app/services/tournament.service';
+import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-prepare-tournament',
@@ -11,14 +11,13 @@ import { TournamentService } from 'src/app/services/tournament.service';
   styleUrls: ['./prepare-tournament.component.css']
 })
 export class PrepareTournamentComponent implements OnInit {
-
   teams: Team[] = [];
   tournamentName: string = "";
   teamsH1: Team[] = [];
   teamsH2: Team[] = [];
 
   constructor(private route: ActivatedRoute,
-    private router:Router, 
+    private router:Router,
     private tournamentService: TournamentService,
     private notifier: NotifierService) { }
 
@@ -29,15 +28,12 @@ export class PrepareTournamentComponent implements OnInit {
         this.loadData()
       }
     )
-
-    
   }
 
   loadData(){
     this.tournamentService.getTeams(this.tournamentName).subscribe({next:
       data =>{
         this.teams = data;
-
         this.teams.sort((a:Team,b:Team) => a.id - b.id)
 
         length = this.teams.length;
@@ -52,8 +48,35 @@ export class PrepareTournamentComponent implements OnInit {
     })
   }
 
+  drop(event: CdkDragDrop<Team[]>){
+    if(event.previousContainer === event.container) {
+      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+    } else {
+      if(event.currentIndex !== this.teamsH2.length+1){
+        transferArrayItem(
+          event.container.data,
+          event.previousContainer.data,
+          event.currentIndex,
+          event.currentIndex+1,
+        )
+      } else {
+        transferArrayItem(
+          event.container.data,
+          event.previousContainer.data,
+          event.currentIndex,
+          event.currentIndex-1,
+        )
+      }
+      transferArrayItem(
+        event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex,
+      );
+    }
+  }
+
   startMatches(){
-    if(this.teamsH1.length == this.teamsH2.length){
       for (let i = 0; i < this.teamsH1.length; i++) {
         this.teams.push(this.teamsH1[i])
         this.teams.push(this.teamsH2[i])
@@ -67,7 +90,5 @@ export class PrepareTournamentComponent implements OnInit {
           this.notifier.notify( 'error','Teams konnten nicht in Matches gespeichert werden!');
         }
       });
-    }
   }
-
 }
