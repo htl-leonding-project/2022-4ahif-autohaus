@@ -27,6 +27,17 @@
     </ul>
   </div>
 
+  <div [ngClass]="{'arrow-pointer': router.url.indexOf('/preparation'), 'arrow-pointer-active': !router.url.indexOf('/preparation')}" style="display: inline-block">
+    <ul class="ps-5">
+      <li class="pt-4" style="list-style: none;">
+        <label>Turnier</label>
+      </li>
+      <li style="list-style: none;">
+        <label>vorbereiten</label>
+      </li>
+    </ul>
+  </div>
+
   <div [ngClass]="{'arrow-pointer': router.url.indexOf('/play-tournament'), 'arrow-pointer-active': !router.url.indexOf('/play-tournament')}" style="display: inline-block">
     <ul class="ps-5">
       <li class="pt-4" style="list-style: none;">
