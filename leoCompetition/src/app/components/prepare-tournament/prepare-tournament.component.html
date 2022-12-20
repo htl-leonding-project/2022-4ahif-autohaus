@@ -7,12 +7,14 @@
                 <tr>
                     <th>Name</th>
                     <th>Abkürzung</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
                 <tr draggable="true" *ngFor="let team of teamsH1">
                     <td>{{team.name}}</td>
                     <td>{{team.abbr}}</td>
+                    <td>{{team.id}}</td>
                 </tr>
             </tbody>
         </table>
@@ -39,12 +41,14 @@
                 <tr>
                     <th>Name</th>
                     <th>Abkürzung</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
                 <tr draggable="true" *ngFor="let team of teamsH2">
                     <td>{{team.name}}</td>
                     <td>{{team.abbr}}</td>
+                    <td>{{team.id}}</td>
                 </tr>
             </tbody>
         </table>

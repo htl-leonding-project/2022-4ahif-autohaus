@@ -40,8 +40,10 @@ export class PrepareTournamentComponent implements OnInit {
 
         this.teams.sort((a:Team,b:Team) => a.id - b.id)
 
-        this.teamsH1 = this.teams.splice(0, this.teams.length/2)
-        this.teamsH2 = this.teams.splice(this.teams.length/2-1, this.teams.length)
+        length = this.teams.length;
+
+        this.teamsH1 = this.teams.splice(0, length/2)
+        this.teamsH2 = this.teams.splice(0, length/2)
         this.teams = [];
       },
       error: error =>{
