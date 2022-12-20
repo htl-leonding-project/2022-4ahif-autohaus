@@ -10,9 +10,9 @@
                 </tr>
             </thead>
             <tbody>
-                <tr draggable="true">
-                    <td>AA</td>
-                    <td>A</td>
+                <tr draggable="true" *ngFor="let team of teamsH1">
+                    <td>{{team.name}}</td>
+                    <td>{{team.abbr}}</td>
                 </tr>
             </tbody>
         </table>
@@ -29,9 +29,9 @@
                 </tr>
             </thead>
             <tbody>
-                <tr draggable="true">
-                    <td>BB</td>
-                    <td>B</td>
+                <tr draggable="true" *ngFor="let team of teamsH2">
+                    <td>{{team.name}}</td>
+                    <td>{{team.abbr}}</td>
                 </tr>
             </tbody>
         </table>
