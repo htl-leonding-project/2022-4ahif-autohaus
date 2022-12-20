@@ -4,6 +4,7 @@ import { NotifierService } from 'angular-notifier';
 import { Team } from 'src/app/models/team.model';
 import { MatchService } from 'src/app/services/match.service';
 import { TournamentService } from 'src/app/services/tournament.service';
+import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-prepare-tournament',
@@ -29,8 +30,19 @@ export class PrepareTournamentComponent implements OnInit {
         this.loadData()
       }
     )
+  }
 
-    
+  drop(event: CdkDragDrop<string[]>) {
+    if (event.previousContainer === event.container) {
+      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+    } else {
+      transferArrayItem(
+        event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex,
+      );
+    }
   }
 
   loadData(){
