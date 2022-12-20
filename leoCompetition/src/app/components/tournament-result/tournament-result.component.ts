@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Team } from 'src/app/models/team.model';
 import { TournamentService } from 'src/app/services/tournament.service';
 import { NotifierService } from 'angular-notifier';
+import { Tournament } from 'src/app/models/tournament.model';
 
 @Component({
   selector: 'app-tournament-result',
@@ -15,13 +16,12 @@ export class TournamentResultComponent implements OnInit {
   tournamentName:string="";
   id: number=-1;
   teams: Team[]=[];
-  display:boolean = false;
+  state: string = "";
   private notifier: NotifierService;
 
   constructor(
     private route: ActivatedRoute, 
     private router: Router,
-    private http: HttpClient,
     private tournamentService: TournamentService,
     notifier: NotifierService){
       this.notifier = notifier;
@@ -33,12 +33,15 @@ export class TournamentResultComponent implements OnInit {
       params => {
         this.tournamentName = params['name'];
 
-        this.tournamentService.isLastMatchDone(this.tournamentName).subscribe(
-          params => {
-            if(params.valueOf() == true)
-              this.display = true
+        this.tournamentService.getTournaments().subscribe({next:
+          data =>{
+            this.state = data.find(t => t.name == this.tournamentName)!.status.toString()
+            console.log(this.state)
+          },
+          error: e =>{
+            this.notifier.notify("error", "Turnier konnte nicht geladen werden!")
           }
-        )
+        });
       }
     )
     this.refreshData();
@@ -59,7 +62,11 @@ export class TournamentResultComponent implements OnInit {
       this.router.navigate(['/home']);
   }
 
-  continue(){
+  continuePlaying(){
     this.router.navigate(['/play-tournament/'+this.tournamentName]);
+  }
+
+  continuePlanning(){
+    this.router.navigate(['/preparation/'+this.tournamentName]);
   }
 }

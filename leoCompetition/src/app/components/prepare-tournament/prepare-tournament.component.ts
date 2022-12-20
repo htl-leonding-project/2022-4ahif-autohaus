@@ -37,8 +37,12 @@ export class PrepareTournamentComponent implements OnInit {
     this.tournamentService.getTeams(this.tournamentName).subscribe({next:
       data =>{
         this.teams = data;
+
+        this.teams.sort((a:Team,b:Team) => a.id - b.id)
+
         this.teamsH1 = this.teams.splice(0, this.teams.length/2)
         this.teamsH2 = this.teams.splice(this.teams.length/2-1, this.teams.length)
+        this.teams = [];
       },
       error: error =>{
         this.notifier.notify( 'error','Teams konnten nicht geladen werden!');
@@ -47,7 +51,21 @@ export class PrepareTournamentComponent implements OnInit {
   }
 
   startMatches(){
+    if(this.teamsH1.length == this.teamsH2.length){
+      for (let i = 0; i < this.teamsH1.length; i++) {
+        this.teams.push(this.teamsH1[i])
+        this.teams.push(this.teamsH2[i])
+      }
 
+      this.tournamentService.setUpMatchesForTournament(this.tournamentName, this.teams).subscribe({next:
+        data =>{
+          this.router.navigate(['play-tournament', this.tournamentName])
+        },
+        error: error =>{
+          this.notifier.notify( 'error','Teams konnten nicht in Matches gespeichert werden!');
+        }
+      });
+    }
   }
 
 }

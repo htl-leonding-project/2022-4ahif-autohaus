@@ -81,8 +81,6 @@ export class TeamCreationComponent implements OnInit {
             console.log(this.linesR);
 
             for (let i = 1; i < this.linesR[0].length; i+=2) {
-              console.log(this.linesR[0][i][0]);
-              console.log(this.linesR[0][i][1])
               this.select({id: this.newTeam.id, name: this.linesR[0][i][0], abbr: this.linesR[0][i][1].toUpperCase()});
               this.newTeam.abbr = "";
               this.newTeam.name = "";

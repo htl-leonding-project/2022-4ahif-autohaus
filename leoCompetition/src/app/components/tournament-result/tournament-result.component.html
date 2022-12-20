@@ -1,4 +1,4 @@
-<div class="container" *ngIf="display">
+<div class="container" *ngIf="state == 'FINISHED'">
     
     <h1 class="display-2 text-center" style="padding: 0.25em">{{tournamentName}}</h1>
 
@@ -32,19 +32,33 @@
     </div>
 </div>
 
-<div *ngIf="!display" style="display:flex; justify-content:center" class="mt-5">
+<div *ngIf="state == 'IN_PROGRESS'" style="display:flex; justify-content:center" class="mt-5">
 <div class="row">
     <div class="card" style="width: 18rem;">
         <div class="card-body">
             <h5 class="card-title">{{tournamentName}}</h5>
             <p class="card-text">Das Turnier {{tournamentName}} wurde nicht beendet.</p>
             <div style="display:flex; justify-content:center">
-                <button (click)="continue()" class="form-group btn btn-success" style=" margin-top: 1em; margin-bottom:0.5em; text-align: center;">Turnier fortführen</button>
+                <button (click)="continuePlaying()" class="form-group btn btn-success" style=" margin-top: 1em; margin-bottom:0.5em; text-align: center;">Turnier fortführen</button>
             </div>
         </div>
       </div>
     </div>
 </div>
+
+<div *ngIf="state == 'IN_PREPARATION'" style="display:flex; justify-content:center" class="mt-5">
+    <div class="row">
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">{{tournamentName}}</h5>
+                <p class="card-text">Das Turnier {{tournamentName}} wurde noch nicht gestartet!</p>
+                <div style="display:flex; justify-content:center">
+                    <button (click)="continuePlanning()" class="form-group btn btn-success" style=" margin-top: 1em; margin-bottom:0.5em; text-align: center;">Turnier vorbereiten</button>
+                </div>
+            </div>
+          </div>
+        </div>
+    </div>
 
 <div style="justify-content: center; display: flex;" class="container">
     <button (click)="backToStart()" class="btn btn-success" style="margin:0.5em; text-align: center;">Zurück zur Startseite</button>

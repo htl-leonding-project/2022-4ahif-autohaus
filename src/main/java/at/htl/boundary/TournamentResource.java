@@ -214,7 +214,12 @@ public class TournamentResource {
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("set-matches/{name}")
-    public Response setUpMatches(@PathParam("name") String name, @FormParam("teams") List<Team> teams){
+    @Transactional
+    public Response setUpMatches(
+            @Context UriInfo uriInfo,
+            @PathParam("name") String name,
+            List<Team> teams
+    ){
         tournamentRepository.generateMatches(name, teams);
         return Response.ok().build();
     }
