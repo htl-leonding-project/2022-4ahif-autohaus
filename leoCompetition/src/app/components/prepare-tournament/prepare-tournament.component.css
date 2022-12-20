@@ -1,7 +1,9 @@
-tr.draggable {
-    cursor: grab;
-}
-
-tr.draggable.active {
-    border-bottom: 2px solid black;
-}
+/* Animate items as they're being sorted. */
+.cdk-drop-list-dragging .cdk-drag {
+    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+  }
+  
+  /* Animate an item that has been dropped. */
+  .cdk-drag-animating {
+    transition: transform 300ms cubic-bezier(0, 0, 0.2, 1);
+  }
