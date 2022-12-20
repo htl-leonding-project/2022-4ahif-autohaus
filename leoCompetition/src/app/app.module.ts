@@ -14,6 +14,7 @@ import { PlayTournamentComponent } from './components/play-tournament/play-tourn
 import { TournamentResultComponent } from './components/tournament-result/tournament-result.component';
 import { TournamentListComponent } from './components/tournament-list/tournament-list.component';
 import { NotifierModule, NotifierOptions } from 'angular-notifier';
+import { PrepareTournamentComponent } from './components/prepare-tournament/prepare-tournament.component';
 
 /**
  * Custom angular notifier options
@@ -67,7 +68,8 @@ const customNotifierOptions: NotifierOptions = {
     TeamCreationComponent,
     PlayTournamentComponent,
     TournamentResultComponent,
-    TournamentListComponent
+    TournamentListComponent,
+    PrepareTournamentComponent
   ],
   imports: [
     BrowserModule,

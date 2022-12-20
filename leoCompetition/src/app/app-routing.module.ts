@@ -6,6 +6,7 @@ import { TeamCreationComponent } from './components/team-creation/team-creation.
 import { TeamListComponent } from './components/team-list/team-list.component';
 import { TournamentListComponent } from './components/tournament-list/tournament-list.component';
 import { TournamentResultComponent } from './components/tournament-result/tournament-result.component';
+import { PrepareTournamentComponent } from './components/prepare-tournament/prepare-tournament.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -14,7 +15,8 @@ const routes: Routes = [
   {path: 'new-team', component: TeamCreationComponent},
   {path: 'play-tournament/:name', component: PlayTournamentComponent},
   {path: 'result/:name', component: TournamentResultComponent},
-  {path: 'tournaments', component: TournamentListComponent}
+  {path: 'tournaments', component: TournamentListComponent},
+  {path: 'preparation/:name', component: PrepareTournamentComponent}
 ];
 
 @NgModule({
