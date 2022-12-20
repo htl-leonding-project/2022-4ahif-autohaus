@@ -26,10 +26,10 @@ public class DynamicKOTests {
 
         Tournament tournament = new Tournament("Four-Teams-Test");
 
-        Team team01 = new Team("team01");
-        Team team02 = new Team("team02");
-        Team team03 = new Team("team03");
-        Team team04 = new Team("team04");
+        Team team01 = new Team("team01", "t1");
+        Team team02 = new Team("team02", "t2");
+        Team team03 = new Team("team03", "t3");
+        Team team04 = new Team("team04", "t4");
 
         Match match12 = new Match(team01, team02);
         Match match34 = new Match(team03, team04);
@@ -85,14 +85,14 @@ public class DynamicKOTests {
 
         Tournament tournament = new Tournament("Eight-Teams-Test");
 
-        Team team01 = new Team("team01");
-        Team team02 = new Team("team02");
-        Team team03 = new Team("team03");
-        Team team04 = new Team("team04");
-        Team team05 = new Team("team05");
-        Team team06 = new Team("team06");
-        Team team07 = new Team("team07");
-        Team team08 = new Team("team08");
+        Team team01 = new Team("team01", "t1");
+        Team team02 = new Team("team02", "t2");
+        Team team03 = new Team("team03", "t3");
+        Team team04 = new Team("team04", "t4");
+        Team team05 = new Team("team05", "t5");
+        Team team06 = new Team("team06", "t6");
+        Team team07 = new Team("team07", "t7");
+        Team team08 = new Team("team08", "t8");
 
         //Namensgebung der Matches
         //match12 -> team01 spielt gegen team02
@@ -188,22 +188,22 @@ public class DynamicKOTests {
 
         Tournament tournament = new Tournament("Sixteen-Teams-Test");
 
-        Team team01 = new Team("team01");
-        Team team02 = new Team("team02");
-        Team team03 = new Team("team03");
-        Team team04 = new Team("team04");
-        Team team05 = new Team("team05");
-        Team team06 = new Team("team06");
-        Team team07 = new Team("team07");
-        Team team08 = new Team("team08");
-        Team team09 = new Team("team09");
-        Team team10 = new Team("team10");
-        Team team11 = new Team("team11");
-        Team team12 = new Team("team12");
-        Team team13 = new Team("team13");
-        Team team14 = new Team("team14");
-        Team team15 = new Team("team15");
-        Team team16 = new Team("team16");
+        Team team01 = new Team("team01", "t1");
+        Team team02 = new Team("team02", "t2");
+        Team team03 = new Team("team03", "t3");
+        Team team04 = new Team("team04", "t4");
+        Team team05 = new Team("team05", "t5");
+        Team team06 = new Team("team06", "t6");
+        Team team07 = new Team("team07", "t7");
+        Team team08 = new Team("team08", "t8");
+        Team team09 = new Team("team09", "t9");
+        Team team10 = new Team("team10", "t10");
+        Team team11 = new Team("team11", "t11");
+        Team team12 = new Team("team12", "t12");
+        Team team13 = new Team("team13", "t13");
+        Team team14 = new Team("team14", "t14");
+        Team team15 = new Team("team15", "t15");
+        Team team16 = new Team("team16", "t16");
 
         Match match1 = new Match(team01, team02);
         Match match2 = new Match(team03, team04);

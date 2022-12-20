@@ -209,4 +209,13 @@ public class TournamentResource {
         long id = tournamentRepository.findByName(name.replace(" ", "_")).getId();
         return Response.ok(teamRepository.find("tournamentId = ?1",id).stream().toList()).build();
     }
+
+    @POST
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Path("set-matches/{name}")
+    public Response setUpMatches(@PathParam("name") String name, @FormParam("teams") List<Team> teams){
+        tournamentRepository.generateMatches(name, teams);
+        return Response.ok().build();
+    }
 }
