@@ -6,7 +6,7 @@
     color: white;
     clip-path: polygon(0 0, 30% 50%, 0 100%, 70% 100%, 100% 50%, 70% 0);
     display: flex;
-    padding-left: 1rem;
+    padding-right: 2em;
 }
 
 
@@ -18,5 +18,5 @@
     color: white;
     clip-path: polygon(0 0, 30% 50%, 0 100%, 70% 100%, 100% 50%, 70% 0);
     display: flex;
-    padding-left: 1rem;
+    padding-right: 2em;
 }

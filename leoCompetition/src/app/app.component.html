@@ -17,7 +17,7 @@
 
 <div class="container-fluid mt-4" style="display:flex; justify-content:center">
   <div [ngClass]="{'arrow-pointer': router.url !== '/new-team', 'arrow-pointer-active': router.url === '/new-team'}" style="display: inline-block">
-    <ul class="ps-5">
+    <ul class="ps-5" style="text-align: center;">
       <li class="pt-4" style="list-style: none;">
         <label>Turnier</label>
       </li>
@@ -28,7 +28,7 @@
   </div>
 
   <div [ngClass]="{'arrow-pointer': router.url.indexOf('/preparation'), 'arrow-pointer-active': !router.url.indexOf('/preparation')}" style="display: inline-block">
-    <ul class="ps-5">
+    <ul class="ps-5" style="text-align: center;">
       <li class="pt-4" style="list-style: none;">
         <label>Turnier</label>
       </li>
@@ -39,7 +39,7 @@
   </div>
 
   <div [ngClass]="{'arrow-pointer': router.url.indexOf('/play-tournament'), 'arrow-pointer-active': !router.url.indexOf('/play-tournament')}" style="display: inline-block">
-    <ul class="ps-5">
+    <ul class="ps-5" style="text-align: center;">
       <li class="pt-4" style="list-style: none;">
         <label>Turnier</label>
       </li>
@@ -50,7 +50,7 @@
   </div>
 
   <div [ngClass]="{'arrow-pointer': router.url.indexOf('/result'), 'arrow-pointer-active': !router.url.indexOf('/result')}" style="display: inline-block">
-    <ul class="ps-5">
+    <ul class="ps-5" style="text-align: center;">
       <li class="pt-4" style="list-style: none;">
         <label>Turnier</label>
       </li>
