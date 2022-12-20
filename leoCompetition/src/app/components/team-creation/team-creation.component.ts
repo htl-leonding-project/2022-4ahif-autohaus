@@ -112,7 +112,7 @@ export class TeamCreationComponent implements OnInit {
           this.newTeam.name = "";
       }
       else{
-        this.notifier.notify('info','Teams sollen unterscheidbar sein');
+        this.notifier.notify('info','Teams sollen per Abkürzung unterscheidbar sein');
       }
     }
   }
@@ -132,26 +132,32 @@ export class TeamCreationComponent implements OnInit {
           this.exists = data;
           
           if(this.exists == false){
-            this.addedTeams.forEach(team => {
-              this.teamService.saveTeam(team).subscribe({
+            if(this.addedTeams.length==4 || this.addedTeams.length==8 || this.addedTeams.length==16){
+              this.addedTeams.forEach(team => {
+                this.teamService.saveTeam(team).subscribe({
+                  error: error => {
+                    this.notifier.notify('error','Teams speichern fehlgeschlagen!');
+                  }})
+              });
+              this.tournamentService.saveTournament(this.tournamentName, this.addedTeams).subscribe({next:
+                data => {
+                  this.router.navigate(['play-tournament', this.tournamentName])
+                },
                 error: error => {
-                  this.notifier.notify('error','Teams speichern fehlgeschlagen!');
-                }})
-            });
-            this.tournamentService.saveTournament(this.tournamentName, this.addedTeams).subscribe({next:
-              data => {
-                this.router.navigate(['play-tournament', this.tournamentName])
-              },
-              error: error => {
-                this.notifier.notify( 'error','Speichern fehlgeschlagen!');
-              }
-            });
+                  this.notifier.notify( 'error','Speichern fehlgeschlagen!');
+                }
+              });
+            } else {
+              this.notifier.notify('info', 'Teamanzahl muss in den Bereichen 4, 8 oder 16 liegen');
+            }
           }
           else{
             this.notifier.notify( 'error','Turnier mit diesem Namen existiert bereits');
           }
         }
       });
+    } else {
+      this.notifier.notify('info', 'Das Turnier braucht einen Namen');
     }
   }
 

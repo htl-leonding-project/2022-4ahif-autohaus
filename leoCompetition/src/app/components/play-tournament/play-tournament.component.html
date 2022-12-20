@@ -15,8 +15,8 @@
                     </thead>
                     <tbody>
                         <tr *ngFor="let match of matches">
-                            <td>{{match.team1!.name}}</td>
-                            <td>{{match.team2!.name}}</td>
+                            <td>{{match.team1!.name}} <br> {{match.team1!.abbr}}</td>
+                            <td>{{match.team2!.name}} <br> {{match.team2!.abbr}}</td>
                             <td *ngIf="(match.pointsTeam1 != match.pointsTeam2);else noResult">
                                 {{match.pointsTeam1}} : {{match.pointsTeam2}}
                             </td>
