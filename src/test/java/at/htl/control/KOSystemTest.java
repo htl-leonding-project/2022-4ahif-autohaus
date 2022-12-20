@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import javax.inject.Inject;
 import javax.transaction.Transactional;
+import java.util.LinkedList;
 import java.util.List;
 
 @QuarkusTest
@@ -75,10 +76,18 @@ public class KOSystemTest {
 
     @Test
     public void jsonTest(){
-        List<Team> teams = TeamRepo.setTeamsForTournament(8);
-        TournamentRepo.setUpTournament("Json", teams);
-        Tournament json = TournamentRepo.findByName("Json");
+        List<Team> teams = new LinkedList<>();
 
-        TournamentRepo.generateTreeJson(json);
+        teams.add(new Team("Team1", "T1", -1L));
+        teams.add(new Team("Team2", "T2", -1L));
+        teams.add(new Team("Team3", "T3", -1L));
+        teams.add(new Team("Team4", "T4", -1L));
+
+        TeamRepo.persist(teams);
+
+        TournamentRepo.setUpTournament("NoMatch2", teams);
+        Tournament json = TournamentRepo.findByName("NoMatch2");
+
+        TournamentRepo.generateMatches("NoMatch2", teams);
     }
 }

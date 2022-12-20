@@ -23,17 +23,22 @@ public class Team  {
     Long tournamentId;
 
     //region Constructor
-    public Team() {
-    }
-
     public Team(String name) {
         this.name = name;
     }
 
-    public Team(String name, String abbr, long tournamentId) {
-        this.name = name;
+    public Team(String name, String abbr) {
+        this(name);
         this.abbr = abbr.toUpperCase();
+    }
+
+    public Team(String name, String abbr, long tournamentId) {
+        this(name,abbr);
         this.tournamentId = tournamentId;
+    }
+
+    public Team() {
+
     }
     //endregion
     //region Getter & Setter

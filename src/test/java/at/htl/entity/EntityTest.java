@@ -19,8 +19,8 @@ public class EntityTest {
         final String name1 = "team01";
         final String name2 = "team02";
 
-        Team team01 = new Team(name1);
-        Team team02 = new Team(name2);
+        Team team01 = new Team(name1, "t1");
+        Team team02 = new Team(name2, "t2");
         Match match = new Match();
         match.setTeam1(team01);
         match.setTeam2(team02);
@@ -39,10 +39,10 @@ public class EntityTest {
         final String name3 = "team03";
         final String name4 = "team04";
 
-        Team team01 = new Team(name1);
-        Team team02 = new Team(name2);
-        Team team03 = new Team(name3);
-        Team team04 = new Team(name4);
+        Team team01 = new Team(name1, "t1");
+        Team team02 = new Team(name2, "t2");
+        Team team03 = new Team(name3, "t3");
+        Team team04 = new Team(name4, "t4");
 
         Match match01 = new Match();
         Match match02 = new Match();
@@ -75,10 +75,10 @@ public class EntityTest {
         final String name3 = "team03";
         final String name4 = "team04";
 
-        Team team01 = new Team(name1);
-        Team team02 = new Team(name2);
-        Team team03 = new Team(name3);
-        Team team04 = new Team(name4);
+        Team team01 = new Team(name1, "t1");
+        Team team02 = new Team(name2, "t2");
+        Team team03 = new Team(name3, "t3");
+        Team team04 = new Team(name4, "t4");
 
         Match match01 = new Match();
         Match match02 = new Match();
@@ -133,8 +133,8 @@ public class EntityTest {
         node01.setParentNode(node03);
         node02.setParentNode(node03);
 
-        Match match01 = new Match(new Team("Team1"), new Team("Team2"));
-        Match match02 = new Match(new Team("Team3"), new Team("Team4"));
+        Match match01 = new Match(new Team("Team1", "t1"), new Team("Team2", "t2"));
+        Match match02 = new Match(new Team("Team3", "t3"), new Team("Team4", "t4"));
 
         node01.setCurMatch(match01);
         node02.setCurMatch(match02);
@@ -166,14 +166,14 @@ public class EntityTest {
 
         Tournament tournament = new Tournament("Test-Tournament");
 
-        Team team01 = new Team("team01");
-        Team team02 = new Team("team02");
-        Team team03 = new Team("team03");
-        Team team04 = new Team("team04");
-        Team team05 = new Team("team05");
-        Team team06 = new Team("team06");
-        Team team07 = new Team("team07");
-        Team team08 = new Team("team08");
+        Team team01 = new Team("team01", "t1");
+        Team team02 = new Team("team02", "t2");
+        Team team03 = new Team("team03", "t3");
+        Team team04 = new Team("team04", "t4");
+        Team team05 = new Team("team05", "t5");
+        Team team06 = new Team("team06", "t6");
+        Team team07 = new Team("team07", "t7");
+        Team team08 = new Team("team08", "t8");
 
         Node node21 = new Node();
 
