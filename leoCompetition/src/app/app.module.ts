@@ -8,11 +8,9 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 
 import { HttpClientModule } from '@angular/common/http';
-import { TeamListComponent } from './components/team-list/team-list.component';
 import { TeamCreationComponent } from './components/team-creation/team-creation.component';
 import { PlayTournamentComponent } from './components/play-tournament/play-tournament.component';
 import { TournamentResultComponent } from './components/tournament-result/tournament-result.component';
-import { TournamentListComponent } from './components/tournament-list/tournament-list.component';
 import { NotifierModule, NotifierOptions } from 'angular-notifier';
 import { PrepareTournamentComponent } from './components/prepare-tournament/prepare-tournament.component';
 
@@ -64,11 +62,9 @@ const customNotifierOptions: NotifierOptions = {
   declarations: [
     AppComponent,
     HomeComponent,
-    TeamListComponent,
     TeamCreationComponent,
     PlayTournamentComponent,
     TournamentResultComponent,
-    TournamentListComponent,
     PrepareTournamentComponent
   ],
   imports: [
