@@ -1,0 +1,7 @@
+tr.draggable {
+    cursor: grab;
+}
+
+tr.draggable.active {
+    border-bottom: 2px solid black;
+}

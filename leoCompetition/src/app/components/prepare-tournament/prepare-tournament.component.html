@@ -10,7 +10,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr draggable="true" *ngFor="let team of teamsH1">
+                <tr class="draggable" [class.active]="draggedOverIndex == i" draggable="true" (dragover)="allowDrop($event, i)" (dragstart)="onDragStart(i)" (drop)="onDrop($event, i)" *ngFor="let team of teamsH1; let i = index">
                     <td>{{team.name}}</td>
                     <td>{{team.abbr}}</td>
                 </tr>
@@ -39,12 +39,14 @@
                 <tr>
                     <th>Name</th>
                     <th>Abkürzung</th>
+                    <th>Id</th>
                 </tr>
             </thead>
             <tbody>
-                <tr draggable="true" *ngFor="let team of teamsH2">
+                <tr class="draggable" [class.active]="draggedOverIndex == i" draggable="true" (dragover)="allowDrop($event, i)" (dragstart)="onDragStart(i)" (drop)="onDrop($event, i)" *ngFor="let team of teamsH2; let i = index">
                     <td>{{team.name}}</td>
                     <td>{{team.abbr}}</td>
+                    <td>{{team.id}}</td>
                 </tr>
             </tbody>
         </table>

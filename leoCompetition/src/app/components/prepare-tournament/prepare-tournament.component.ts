@@ -16,6 +16,8 @@ export class PrepareTournamentComponent implements OnInit {
   tournamentName: string = "";
   teamsH1: Team[] = [];
   teamsH2: Team[] = [];
+  private draggedIndex: number = -1;
+  public draggedOverIndex: number = -1;
 
   constructor(private route: ActivatedRoute,
     private router:Router, 
@@ -29,8 +31,6 @@ export class PrepareTournamentComponent implements OnInit {
         this.loadData()
       }
     )
-
-    
   }
 
   loadData(){
@@ -38,12 +38,41 @@ export class PrepareTournamentComponent implements OnInit {
       data =>{
         this.teams = data;
         this.teamsH1 = this.teams.splice(0, this.teams.length/2)
-        this.teamsH2 = this.teams.splice(this.teams.length/2-1, this.teams.length)
+        this.teamsH2 = this.teams
       },
       error: error =>{
         this.notifier.notify( 'error','Teams konnten nicht geladen werden!');
       }
     })
+  }
+  
+  onDragStart(index: any): void {
+    this.draggedIndex = index;
+  }
+
+  allowDrop($event: any, index: any): void {
+    this.draggedOverIndex = index;
+    $event.preventDefault();
+  }
+
+  onDrop($event: any, index: any): void {
+    $event.preventDefault();
+    console.log(this.draggedOverIndex)
+    console.log(this.draggedIndex)
+    console.log($event.target)
+    const team = this.teams[this.draggedIndex];
+    this.teams.splice(this.draggedIndex, 1);
+    this.teams.splice(index, 0, team);
+    this.teamsH1 = this.teams.splice(0, this.teams.length/2);
+    this.teamsH2 = this.teams;
+    this.teamsH1.forEach(element => {
+      console.log(element.name)
+    });
+    this.teamsH2.forEach(element => {
+      console.log(element.name)
+    });
+    this.draggedIndex = -1;
+    this.draggedOverIndex = -1;
   }
 
   startMatches(){
