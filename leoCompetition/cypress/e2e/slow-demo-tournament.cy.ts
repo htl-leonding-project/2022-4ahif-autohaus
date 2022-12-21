@@ -3,9 +3,12 @@ import { slowCypressDown } from 'cypress-slow-down'
 
 slowCypressDown(500)
 
+
+var DATE = Date.now().toString();
+
 describe('... Demo Test', () => {
     beforeEach(() => {
-        // Navigate Start Page and create new Tournament
+        cy.viewport(1200, 800)
       });
 
       it('... Create new Tournament', () => {
@@ -16,6 +19,7 @@ describe('... Demo Test', () => {
       });
     
       it('... Create new Team ...', () => {
+        cy.visit('http://localhost:4200/new-team')
         cy.url().should('include', '/new-team')
         
         //Enter new Team name
@@ -25,38 +29,52 @@ describe('... Demo Test', () => {
         //Enter new Team abbr
         cy.get('#abbrElement')
           .type('DT{enter}')
+        
+        //Enter new Team name
+        cy.get('#nameElement')
+          .type('Schüler{enter}')
 
-        //Press the save button
-        cy.get('.btn')
-        cy.contains('Speichern').click()
-      });
+        //Enter new Team abbr
+        cy.get('#abbrElement')
+          .type('S{enter}')
 
-      it('... Add Teams to Tournament ...', () => {
-        //Add pre-created Team to Tournament
-        cy.get('.btn')
-        cy.contains('+').click()
-        timeout: 10000
+        
+        //Enter new Team name
+        cy.get('#nameElement')
+          .type('Christoph{enter}')
 
-        cy.get('.btn')
-        cy.contains('+').click()
-        timeout: 10000
+        //Enter new Team abbr
+        cy.get('#abbrElement')
+          .type('CH{enter}')
+        
+        //Enter new Team name
+        cy.get('#nameElement')
+          .type('Leondinger Schwammerl{enter}')
 
-        cy.get('.btn')
-        cy.contains('+').click()
-      });
+        //Enter new Team abbr
+        cy.get('#abbrElement')
+          .type('LS{enter}')
 
-      it('... Finish Tournament creation ...', () => {
-        //Enter Tournament name
+
+        //Enter Tournament Name
         cy.get('#tournamentNameElement')
-          .type(Date.now().toString(), '{enter}')
+          .type(DATE, '{enter}')
 
         //Start Tournament
         cy.get('.btn')
         cy.contains('Turnier starten').click()
-        cy.url().should('include', '/play-tournament')
+        cy.url().should('include', '/preparation')
       });
 
-      it('... Enter Result Match 1...', () => {
+      it('... Set Matches ...', () => {
+        cy.visit('http://localhost:4200/preparation/'+DATE)
+        cy.get('.btn')
+        cy.contains('Turnier starten').click()
+        cy.url().should('include', '/play-tournament')
+      })
+
+      it('... Enter Results ...', () => {
+        cy.visit('http://localhost:4200/play-tournament/'+DATE)
         //Enter Result of First Match
         cy.get('.btn')
         cy.contains('Ergebnis bearbeiten').click()
@@ -70,10 +88,8 @@ describe('... Demo Test', () => {
         cy.get('.btn')
         cy.contains('Speichern').click()
         timeout: 100
-      });
 
-      it('... Enter Result Match 2 ...', () => {
-        //Enter Result of Second Match
+        //Enter Result of 2nd Match
         cy.get('.btn').eq(1).click()
 
         cy.get('#team1Points')
@@ -85,9 +101,7 @@ describe('... Demo Test', () => {
         cy.get('.btn')
         cy.contains('Speichern').click()
         timeout: 100
-      });
 
-      it('... Enter Result Final ...', () => {
         //Enter Result of Final Match
         cy.get('.btn').eq(2).click()
 

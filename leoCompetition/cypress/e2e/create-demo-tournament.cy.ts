@@ -75,8 +75,15 @@ describe('... Demo Test', () => {
         //Start Tournament
         cy.get('.btn')
         cy.contains('Turnier starten').click()
-        cy.url().should('include', '/play-tournament')
+        cy.url().should('include', '/preparation')
       });
+
+      it('... Set Matches ...', () => {
+        cy.visit('http://localhost:4200/preparation/'+DATE)
+        cy.get('.btn')
+        cy.contains('Turnier starten').click()
+        cy.url().should('include', '/play-tournament')
+      })
 
       it('... Enter Results ...', () => {
         cy.visit('http://localhost:4200/play-tournament/'+DATE)
