@@ -15,7 +15,7 @@ public class Tournament  {
     @Column(name = "T_ID")
     private Long id;
     //erst einmal leer lassen
-    @Column(name = "T_Name",length = 30)
+    @Column(name = "T_Name")
     String name;
 
     @Column(name = "T_Status")

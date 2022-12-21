@@ -14,7 +14,7 @@ import * as React from 'react';
 })
 export class TeamCreationComponent implements OnInit {
 
-  tournamentName: string = "";
+  tournamentName: string ="";
   newTeam: Team;
   addedTeams: Team[] = []
   allTeams: Team[] = []
@@ -124,6 +124,7 @@ export class TeamCreationComponent implements OnInit {
   }
 
   create(){
+    console.log(this.tournamentName)
     if(this.tournamentName != ""){
       this.tournamentService.exists(this.tournamentName).subscribe({next:
         data => {
@@ -139,7 +140,8 @@ export class TeamCreationComponent implements OnInit {
               });
               this.tournamentService.saveTournament(this.tournamentName, this.addedTeams).subscribe({next:
                 data => {
-                  this.router.navigate(['preparation', this.tournamentName])
+                  console.log(data)
+                  this.router.navigate(['preparation', data])
                 },
                 error: error => {
                   this.notifier.notify( 'error','Speichern fehlgeschlagen!');

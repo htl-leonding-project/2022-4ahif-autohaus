@@ -30,7 +30,7 @@ export class TournamentService {
   }
 
   saveTournament(tournamentName: String, teams: Team[]){
-    return this.httpClient.post<Tournament>(API_URL+"/"+tournamentName, teams, httpOptions);
+    return this.httpClient.post<String>(API_URL+"/"+tournamentName, teams, httpOptions);
   }
 
   getMatchesForTournament(name: String) {
