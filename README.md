@@ -35,11 +35,11 @@ Momentan wird die Turniersimulierung durch UnitTests und Cypress Tests durchgef√
 
 ## Links
 
-Repository: https://github.com/htl-leonding-project/2022-4ahif-leo-competition
+* <a href="https://github.com/htl-leonding-project/2022-4ahif-leo-competition" target="_blank"> Repository </a>
 
-GitHub-Pages: https://htl-leonding-project.github.io/2022-4ahif-leo-competition/
+* <a href="https://htl-leonding-project.github.io/2022-4ahif-leo-competition/" target="_blank"> Gh-Pages </a>
 
-YouTrack: https://vm81.htl-leonding.ac.at/projects/2ff43c91-dfb6-41f1-a53c-055d062b0a93
+* <a href="https://vm81.htl-leonding.ac.at/projects/2ff43c91-dfb6-41f1-a53c-055d062b0a93" target="_blank"> YouTrack </a>
 
 ## Cypress
 
