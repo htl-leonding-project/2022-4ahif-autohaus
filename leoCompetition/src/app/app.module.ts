@@ -14,6 +14,7 @@ import { TournamentResultComponent } from './components/tournament-result/tourna
 import { NotifierModule, NotifierOptions } from 'angular-notifier';
 import { PrepareTournamentComponent } from './components/prepare-tournament/prepare-tournament.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 /**
  * Custom angular notifier options
@@ -75,7 +76,8 @@ const customNotifierOptions: NotifierOptions = {
     HttpClientModule,
     CommonModule,
     NotifierModule.withConfig(customNotifierOptions),
-    DragDropModule
+    DragDropModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
