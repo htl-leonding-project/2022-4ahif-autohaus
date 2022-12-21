@@ -156,7 +156,7 @@ public class TournamentResource {
             , @FormParam("tournamentName") String name
     ) {
         List<Node> nodes;
-        String tournamentName = "";
+        String tournamentName = name.replace(" ", "_");
         int phaseForCurrentTournament;
         if(teams.size() == 4 || teams.size() == 8 || teams.size() == 16){
             if(name.equals("")){
@@ -220,7 +220,7 @@ public class TournamentResource {
             @PathParam("name") String name,
             List<Team> teams
     ){
-        tournamentRepository.generateMatches(name, teams);
+        tournamentRepository.generateMatches(name.replace(" ", "_"), teams);
         return Response.ok().build();
     }
 }
