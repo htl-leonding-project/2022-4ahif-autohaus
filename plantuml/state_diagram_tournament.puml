@@ -1,20 +1,21 @@
 @startuml
-left to right direction
 
-scale 350 width
-[*] --> IN_PREPARATION
-IN_PREPARATION --> IN_PROGRESS
-IN_PROGRESS --> FINISHED
-IN_PROGRESS --> CANCELED
-IN_PREPARATION --> CANCELED
-CANCELED --> IN_PREPARATION
-CANCELED --> IN_PROGRESS
+[*] --> IN_PREPARATION : Turnier erstellen
+
+IN_PREPARATION --> READY : Matches setzten
+
+READY --> IN_PROGRESS : Erstes Matchergebnis eintragen
+
+READY <-- IN_PROGRESS : Turnier abbrechen
+
+IN_PROGRESS --> FINISHED : Turnier auswerten
 
 state IN_PREPARATION
+
+state READY
 
 state IN_PROGRESS
 
 state FINISHED
 
-state CANCELED
 @enduml
