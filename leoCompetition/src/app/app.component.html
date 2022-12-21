@@ -14,7 +14,17 @@
     </div>
 </nav>-->
 
+<div class="turn-device-notification" *ngIf="!correctOrientation">
+  <label style="margin-top:80%;">
+    <fa-stack size="5x">
+      <fa-icon [icon]="faMobileScreen" [style]="{'color': 'white'}" stackItemSize="1x" transform="shrink-4"></fa-icon>
+      <fa-icon [icon]="faRotate" [style]="{'color': 'white'}" stackItemSize="2x" class="fa-light" [spin]="true"></fa-icon>
+    </fa-stack>
+  </label>
 
+</div>
+
+<div *ngIf="correctOrientation">
 <div class="container-fluid mt-4" style="display:flex; justify-content:center">
   <div [ngClass]="{'arrow-pointer': router.url !== '/new-team', 'arrow-pointer-active': router.url === '/new-team'}" style="display: inline-block">
     <ul class="ps-5" style="text-align: center;">
@@ -64,3 +74,4 @@
 <router-outlet></router-outlet>
 
 <notifier-container></notifier-container>
+</div>
