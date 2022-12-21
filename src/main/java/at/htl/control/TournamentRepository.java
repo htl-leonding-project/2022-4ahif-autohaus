@@ -276,22 +276,4 @@ public class TournamentRepository implements PanacheRepository<Tournament> {
 
         this.deleteById(aLong);
     }
-
-    public String removeIllegalCharactersFromTournamentName(String name) {
-        // remove illegal characters and replace with a more friendly char ;)
-        String newName = name.trim();
-
-        // remove illegal characters
-        newName = newName.replaceAll("[^a-zA-Z0-9\\-]", "_");
-
-        //remove the _ if at the end
-        if (newName.endsWith("_")) {
-            newName = newName.substring(0, newName.length() - 1);
-        }
-
-        // replace double or more spaces with a single one
-        newName = newName.replaceAll("_{2,}", "_");
-
-        return newName;
-    }
 }

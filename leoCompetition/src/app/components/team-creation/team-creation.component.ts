@@ -124,6 +124,8 @@ export class TeamCreationComponent implements OnInit {
   }
 
   create(){
+    this.formatName();
+
     console.log(this.tournamentName)
     if(this.tournamentName != ""){
       this.tournamentService.exists(this.tournamentName).subscribe({next:
@@ -141,7 +143,7 @@ export class TeamCreationComponent implements OnInit {
               this.tournamentService.saveTournament(this.tournamentName, this.addedTeams).subscribe({next:
                 data => {
                   console.log(data)
-                  this.router.navigate(['preparation', data])
+                  this.router.navigate(['preparation', this.tournamentName])
                 },
                 error: error => {
                   this.notifier.notify( 'error','Speichern fehlgeschlagen!');
@@ -161,5 +163,7 @@ export class TeamCreationComponent implements OnInit {
     }
   }
 
-
+  formatName(){
+    this.tournamentName = this.tournamentName.replace(/#|§|'|"|`|!|%|&|\?|/g, "");
+  }
 }

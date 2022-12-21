@@ -14,7 +14,7 @@ public class TournamentDTO {
 
     public TournamentDTO(Long id, String name, LocalDate startDate, Status status) {
         this.id = id;
-        this.name = removeIllegalCharactersFromTournamentName(name);
+        this.name = name;
         this.startDate = startDate;
         this.status = status;
     }
@@ -35,7 +35,7 @@ public class TournamentDTO {
     }
 
     public void setName(String name) {
-        this.name = removeIllegalCharactersFromTournamentName(name);
+        this.name = name;
     }
 
     public LocalDate getStartDate() {
@@ -52,21 +52,5 @@ public class TournamentDTO {
 
     public void setStatus(Status status) {
         this.status = status;
-    }
-
-    public String removeIllegalCharactersFromTournamentName(String name) {
-
-        // remove illegal characters
-        String newName = name.replaceAll("[:\\\\/*?|<>]", "_");
-
-        // replace double or more spaces with a single one
-        newName = newName.replaceAll("_{2,}", "_");
-
-        //remove the _ if at the end
-        if (newName.endsWith("_")) {
-            newName = newName.substring(0, newName.length() - 1);
-        }
-
-        return newName;
     }
 }
