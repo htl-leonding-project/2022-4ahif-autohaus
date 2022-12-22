@@ -64,4 +64,8 @@ export class TournamentService {
   getTeams(tournamentName:string){
     return this.httpClient.get<Team[]>(API_URL+"/teams/"+tournamentName);
   }
+
+  reset(tournamentName:string){
+    return this.httpClient.post(API_URL+"/reset/"+tournamentName, httpOptions);
+  }
 }
