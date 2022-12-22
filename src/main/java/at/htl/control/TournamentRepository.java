@@ -276,4 +276,20 @@ public class TournamentRepository implements PanacheRepository<Tournament> {
 
         this.deleteById(aLong);
     }
+
+    public void resetTournament(String name) {
+
+        Tournament reset = this.findByName(name);
+        List<Node> nodes = nodeRepository.getNodesAsList(reset.getFinalNode());
+
+        for (Node node:nodes) {
+            if(node.getCurMatch() != null) {
+                matchRepository.delete(node.getCurMatch());
+                node.setCurMatch(null);
+            }
+        }
+
+        reset.setStatus(Status.READY);
+        this.persist(reset);
+    }
 }

@@ -118,4 +118,13 @@ export class PlayTournamentComponent implements OnInit {
       }
     });
   }
+
+  reset(){
+    this.tournamentService.reset(this.tournamentName).subscribe({
+      next:
+        data =>{
+          this.router.navigate(['/home']);
+        }
+    })
+  }
 }
