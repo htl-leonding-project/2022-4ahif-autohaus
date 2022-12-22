@@ -50,7 +50,7 @@
                             <label>{{selected.team2!.abbr}}</label>
                         </div>
                         <div class="d-none d-lg-block">
-                            <p for="team2Points" class="control-label" style="font-weight: bold;">{{selected.team2!.name}}</p>
+                            <label for="team2Points" class="control-label" style="font-weight: bold;">{{selected.team2!.name}}</label>
                         </div>
                         <div *ngIf="selected.id != 0; else noSelected">
                             <input id="team2Points" #tName="ngModel" type="number" min=0 [(ngModel)]="selected.pointsTeam2" name="team2Points" class="form-control" required>
