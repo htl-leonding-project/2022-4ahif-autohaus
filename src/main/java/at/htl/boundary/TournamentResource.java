@@ -233,4 +233,18 @@ public class TournamentResource {
         tournamentRepository.generateMatches(name, teams);
         return Response.ok().build();
     }
+
+    @POST
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Path("reset/{name}")
+    @Transactional
+    public Response resetTournament(
+            @Context UriInfo uriInfo,
+            @PathParam("name") String name
+    ){
+        tournamentRepository.resetTournament(name);
+        return Response.ok().build();
+    }
+
 }

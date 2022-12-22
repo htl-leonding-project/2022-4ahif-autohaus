@@ -55,6 +55,7 @@
                 </div>
             </div>
             <div class="container-fluid" style="text-align: center; margin-top: 2vh;">
+                <button (click)="reset()" class="btn btn-success me-2">Turnier abbrechen</button>
                 <button (click)="finishTournament()" [ngClass]="finishedAllMatches == true ? 'btn btn-success' : 'btn btn-success disabled'">Turnier beenden</button>
             </div>
         </div>
