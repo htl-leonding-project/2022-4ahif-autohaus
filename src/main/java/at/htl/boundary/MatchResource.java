@@ -7,6 +7,7 @@ import at.htl.entity.Match;
 import at.htl.entity.Node;
 import at.htl.entity.Status;
 import at.htl.entity.Tournament;
+import net.sourceforge.plantuml.ugraphic.color.HColorUtils;
 import org.jboss.logging.Logger;
 
 import javax.inject.Inject;
@@ -129,16 +130,20 @@ public class MatchResource {
                 .find("id = ?1", match.team1.getTournamentId())
                 .firstResult();
 
-        newTournament.setStatus(Status.IN_PROGRESS);
-        tournamentRepository.persist(newTournament);
-
         current.getCurMatch().setPointsTeam1(match.pointsTeam1);
         current.getCurMatch().setPointsTeam2(match.pointsTeam2);
         if(current.getParentNode() != null) {
+
             if(current.getParentNode().areChildrenComplete()){
-                current.getParentNode().setChildMatchWinners();
+                Node parent = current.getParentNode();
+                parent.setChildMatchWinners();
+                log.info(parent.getCurMatch() + " " + parent.getId());
+                nodeRepository.persist(parent);
             }
         }
+
+        newTournament.setStatus(Status.IN_PROGRESS);
+        tournamentRepository.persist(newTournament);
 
         return Response.ok().build();
     }
