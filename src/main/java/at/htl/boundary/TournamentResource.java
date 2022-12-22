@@ -78,8 +78,7 @@ public class TournamentResource {
             @PathParam("name") String name, List<Team> teams
     ) {
         log.info(name + " create");
-        tournamentRepository
-                .setUpTournament(name, teams);
+        tournamentRepository.setUpTournament(name, teams);
         return Response
                 .ok()
                 .build();

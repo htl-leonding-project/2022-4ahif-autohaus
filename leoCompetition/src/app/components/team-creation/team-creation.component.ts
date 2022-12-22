@@ -165,5 +165,6 @@ export class TeamCreationComponent implements OnInit {
 
   formatName(){
     this.tournamentName = this.tournamentName.replace(/#|§|'|"|`|!|%|&|\?|/g, "");
+    this.tournamentName = this.tournamentName.replace(" ", "_")
   }
 }

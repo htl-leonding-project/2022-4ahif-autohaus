@@ -2,8 +2,11 @@ package at.htl.boundary;
 
 import at.htl.control.MatchRepository;
 import at.htl.control.NodeRepository;
+import at.htl.control.TournamentRepository;
 import at.htl.entity.Match;
 import at.htl.entity.Node;
+import at.htl.entity.Status;
+import at.htl.entity.Tournament;
 import org.jboss.logging.Logger;
 
 import javax.inject.Inject;
@@ -25,6 +28,9 @@ public class MatchResource {
 
     @Inject
     NodeRepository nodeRepository;
+
+    @Inject
+    TournamentRepository tournamentRepository;
 
     @Inject
     Logger log;
@@ -119,6 +125,13 @@ public class MatchResource {
     @Transactional
     public Response update(Match match){
         Node current = nodeRepository.getNodeByMatch(match);
+        Tournament newTournament = tournamentRepository
+                .find("id = ?1", match.team1.getTournamentId())
+                .firstResult();
+
+        newTournament.setStatus(Status.IN_PROGRESS);
+        tournamentRepository.persist(newTournament);
+
         current.getCurMatch().setPointsTeam1(match.pointsTeam1);
         current.getCurMatch().setPointsTeam2(match.pointsTeam2);
         if(current.getParentNode() != null) {

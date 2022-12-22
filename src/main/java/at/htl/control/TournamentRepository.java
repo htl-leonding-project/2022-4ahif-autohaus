@@ -58,7 +58,7 @@ public class TournamentRepository implements PanacheRepository<Tournament> {
     public void generateMatches (String name, List<Team> teams){
         Tournament tournament = this.findByName(name);
 
-        tournament.setStatus(Status.IN_PROGRESS);
+        tournament.setStatus(Status.READY);
 
         List<Node> nodes = nodeRepository.getNodesAsList(tournament.getFinalNode());
 
