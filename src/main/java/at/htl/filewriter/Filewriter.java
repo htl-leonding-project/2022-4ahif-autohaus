@@ -60,6 +60,14 @@ public class Filewriter {
             if(!Files.exists(originPath)) {
                 Files.createDirectories(Paths.get(ORIGIN_PATH));
             }
+            Path targetPath = Paths.get(TARGET);
+            if(!Files.exists(targetPath)) {
+                Files.createDirectories(Paths.get(TARGET));
+            }
+            Path webTargetPath = Paths.get(TARGET_FOR_WEB);
+            if(!Files.exists(webTargetPath)) {
+                Files.createDirectories(Paths.get(TARGET_FOR_WEB));
+            }
             FileWriter file = new FileWriter(ORIGIN);
 
             String content = String.format("""
