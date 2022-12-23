@@ -2,7 +2,7 @@
 <div class="container" style="margin-top: 4vh; text-align: center;">
   <h2 class="mb-3">{{tournamentName}}</h2>
 <div class="row">
-  <div class="col">
+  <div class="col col-md-4">
     <div class="example-container">
       <div
         cdkDropList
@@ -16,20 +16,15 @@
 
   <div class="d-flex col align-items-center" style="min-height: 100%; text-align: center; justify-content: center;">
       <table class="table" style="border: none;">
-          <thead>
-              <tr>
-                  <th class="border-0"></th>
-              </tr>
-          </thead>
           <tbody>
               <tr *ngFor="let team of teamsH1">
-                  <td class="border-0"><h5>vs.</h5></td>
+                  <td class="border-0"><h5 style="padding: 7px;">vs.</h5></td>
               </tr>
           </tbody>
       </table>
   </div>
 
-  <div class="col">
+  <div class="col col-md-4">
     <div class="example-container">
       <div
         cdkDropList

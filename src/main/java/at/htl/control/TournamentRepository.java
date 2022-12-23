@@ -57,13 +57,20 @@ public class TournamentRepository implements PanacheRepository<Tournament> {
     @Transactional
     public void generateMatches (String name, List<Team> teams){
         Tournament tournament = this.findByName(name);
-
         tournament.setStatus(Status.READY);
-
         List<Node> nodes = nodeRepository.getNodesAsList(tournament.getFinalNode());
+        List<Node> firstNodes = new LinkedList<>();
+
+        if(teams.size() == 4) {
+            firstNodes = nodes.stream().filter((node -> node.getPhase().getLevel() == 2)).toList();
+        } else if (teams.size() == 8) {
+            firstNodes = nodes.stream().filter((node -> node.getPhase().getLevel() == 3)).toList();
+        } else {
+            firstNodes = nodes.stream().filter((node -> node.getPhase().getLevel() == 4)).toList();
+        }
 
         for (int i = 0; i < teams.size(); i+=2) {
-            nodes.get(i/2).setCurMatch(new Match(teams.get(i), teams.get(i+1)));
+            firstNodes.get(i/2).setCurMatch(new Match(teams.get(i), teams.get(i+1)));
         }
     }
 
