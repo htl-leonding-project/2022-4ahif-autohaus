@@ -6,6 +6,17 @@ LeoCompetition ist ein Turnierverwaltungsprogramm,
 welches die Planung, Durchführung und Auswertung eines Turniers erleichtert.
 Momentan wird die Turniersimulierung durch UnitTests und Cypress Tests durchgeführt.
 
+## Deployment
+
+<details>
+    <summary>Aktuelle Version</summary>
+
+![alt test](asciidocs/images/QR-Webseite.png)
+
+* <a href="https://student.cloud.htl-leonding.ac.at/c.handel/leocompetition/home" target="_blank"> Link </a>
+
+</details>
+
 ## Frontend
 
 ![alt test](/asciidocs/images/leocompfrontend.png)
