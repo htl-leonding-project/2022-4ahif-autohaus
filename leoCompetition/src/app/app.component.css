@@ -33,3 +33,8 @@
 .centered-label{
     color:white
 }
+
+.footer {
+    position: fixed;
+    bottom: 0;
+}
