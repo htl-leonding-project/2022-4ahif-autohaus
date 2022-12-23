@@ -12,6 +12,9 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 import java.util.Stack;
 
@@ -53,6 +56,10 @@ public class Filewriter {
         Node currentNode = finalNode;
         Stack<Node> nodeStack = new Stack<>();
         try{
+            Path originPath = Paths.get(ORIGIN_PATH);
+            if(!Files.exists(originPath)) {
+                Files.createDirectories(Paths.get(ORIGIN_PATH));
+            }
             FileWriter file = new FileWriter(ORIGIN);
 
             String content = String.format("""
