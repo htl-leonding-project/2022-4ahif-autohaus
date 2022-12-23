@@ -44,6 +44,8 @@ ifdef::backend-html5[]
 
 == Vereinbarungen und Entscheidungen
 
-* kleine Versionsnummer für bei jedes neue Deployment hinzufügen (Footer)
+* kleine Versionsnummer für bei jedes neue Deployment hinzufügen (irgendwo ganz klein)
 
 * Doku für Deployment (eventuell mit extra Readme)
+
+* Force Rotation für IPhones
