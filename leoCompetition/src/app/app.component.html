@@ -28,53 +28,59 @@
 </div>
 
 <div *ngIf="correctOrientation">
-<div class="container-fluid mt-4" style="display:flex; justify-content:center">
-  <div [ngClass]="{'arrow-pointer': router.url !== '/new-team', 'arrow-pointer-active': router.url === '/new-team'}" style="display: inline-block">
-    <ul class="ps-5" style="text-align: center;">
-      <li class="pt-4" style="list-style: none;">
-        <label>Turnier</label>
-      </li>
-      <li style="list-style: none;">
-        <label>erstellen</label>
-      </li>
-    </ul>
+  <div class="container-fluid mt-4" style="display:flex; justify-content:center">
+    <div [ngClass]="{'arrow-pointer': router.url !== '/new-team', 'arrow-pointer-active': router.url === '/new-team'}" style="display: inline-block">
+      <ul class="ps-5" style="text-align: center;">
+        <li class="pt-4" style="list-style: none;">
+          <label>Turnier</label>
+        </li>
+        <li style="list-style: none;">
+          <label>erstellen</label>
+        </li>
+      </ul>
+    </div>
+
+    <div [ngClass]="{'arrow-pointer': router.url.indexOf('/preparation'), 'arrow-pointer-active': !router.url.indexOf('/preparation')}" style="display: inline-block">
+      <ul class="ps-5" style="text-align: center;">
+        <li class="pt-4" style="list-style: none;">
+          <label>Turnier</label>
+        </li>
+        <li style="list-style: none;">
+          <label>vorbereiten</label>
+        </li>
+      </ul>
+    </div>
+
+    <div [ngClass]="{'arrow-pointer': router.url.indexOf('/play-tournament'), 'arrow-pointer-active': !router.url.indexOf('/play-tournament')}" style="display: inline-block">
+      <ul class="ps-5" style="text-align: center;">
+        <li class="pt-4" style="list-style: none;">
+          <label>Turnier</label>
+        </li>
+        <li style="list-style: none;">
+          <label>spielen</label>
+        </li>
+      </ul>
+    </div>
+
+    <div [ngClass]="{'arrow-pointer': router.url.indexOf('/result'), 'arrow-pointer-active': !router.url.indexOf('/result')}" style="display: inline-block">
+      <ul class="ps-5" style="text-align: center;">
+        <li class="pt-4" style="list-style: none;">
+          <label>Turnier</label>
+        </li>
+        <li style="list-style: none;">
+          <label>auswerten</label>
+        </li>
+      </ul>
+    </div>
   </div>
 
-  <div [ngClass]="{'arrow-pointer': router.url.indexOf('/preparation'), 'arrow-pointer-active': !router.url.indexOf('/preparation')}" style="display: inline-block">
-    <ul class="ps-5" style="text-align: center;">
-      <li class="pt-4" style="list-style: none;">
-        <label>Turnier</label>
-      </li>
-      <li style="list-style: none;">
-        <label>vorbereiten</label>
-      </li>
-    </ul>
-  </div>
+  <router-outlet></router-outlet>
 
-  <div [ngClass]="{'arrow-pointer': router.url.indexOf('/play-tournament'), 'arrow-pointer-active': !router.url.indexOf('/play-tournament')}" style="display: inline-block">
-    <ul class="ps-5" style="text-align: center;">
-      <li class="pt-4" style="list-style: none;">
-        <label>Turnier</label>
-      </li>
-      <li style="list-style: none;">
-        <label>spielen</label>
-      </li>
-    </ul>
-  </div>
+  <notifier-container></notifier-container>
 
-  <div [ngClass]="{'arrow-pointer': router.url.indexOf('/result'), 'arrow-pointer-active': !router.url.indexOf('/result')}" style="display: inline-block">
-    <ul class="ps-5" style="text-align: center;">
-      <li class="pt-4" style="list-style: none;">
-        <label>Turnier</label>
-      </li>
-      <li style="list-style: none;">
-        <label>auswerten</label>
-      </li>
-    </ul>
-  </div>
-</div>
-
-<router-outlet></router-outlet>
-
-<notifier-container></notifier-container>
+  <footer class="footer text-center text-lg-start bg-light text-muted">
+    <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+      Version: 1.0.0
+    </div>
+  </footer>
 </div>
