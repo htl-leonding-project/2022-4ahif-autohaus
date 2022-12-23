@@ -14,6 +14,8 @@ export class AppComponent {
   faMobileScreen = faMobileScreen;
   faRotate = faRotate;
 
+  orientation: string = "";
+
   constructor(public router: Router){
   }
 
@@ -23,6 +25,8 @@ export class AppComponent {
     } else {
       this.correctOrientation = true;
     }
+
+    this.orientation = screen.orientation.type;
 
     window.addEventListener("orientationchange", function(){
       this.window.location.reload()
