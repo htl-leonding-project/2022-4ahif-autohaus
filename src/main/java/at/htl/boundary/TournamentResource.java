@@ -46,7 +46,7 @@ public class TournamentResource {
         List<TournamentDTO> dtoTournaments = new LinkedList<>();
 
         for (Tournament t: tournaments) {
-            dtoTournaments.add(new TournamentDTO(t.getId(), t.getName(), t.getStartDate(), t.getStatus()));
+            dtoTournaments.add(new TournamentDTO(t.getId(), t.getName(), t.getStartDate(), t.getStatus(), t.getAbbrOfWinnerTeam()));
         }
 
         return Response.ok(dtoTournaments).build();
@@ -95,6 +95,7 @@ public class TournamentResource {
         if(tournamentRepository.findByName(name).getFinalNode().getCurMatch()!=null)
             if(tournamentRepository.findByName(name).getFinalNode().getCurMatch().getWinningTeam()!= null) {
                 tournamentRepository.findByName(name).setStatus(Status.FINISHED);
+                tournamentRepository.setWinningTeamAbbr(name);
                 return Response.ok(true).build();
             }
         return Response.ok(false).build();

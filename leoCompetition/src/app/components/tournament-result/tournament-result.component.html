@@ -14,7 +14,8 @@
                 </thead>
                 <tbody>
                     <tr *ngFor="let team of teams">
-                        <td>{{team.name}}</td>
+                        <td *ngIf="team.abbr == tournamentWinner; else elseBlock">{{team.name}} <fa-icon [icon]="faCrown"></fa-icon></td>
+                        <ng-template #elseBlock><td>{{team.name}}</td></ng-template>
                         <td>{{team.abbr}}</td>
                     </tr>
                 </tbody>
