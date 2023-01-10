@@ -14,19 +14,19 @@ export class AppComponent {
   faMobileScreen = faMobileScreen;
   faRotate = faRotate;
 
-  orientation: string = "";
+  curOrientation: string = "";
 
   constructor(public router: Router){
   }
 
   ngOnInit(): void {
-    if(screen.orientation.type == "portrait-secondary" || screen.orientation.type == "portrait-primary"){
+    if(window.innerWidth < window.innerHeight){
       this.correctOrientation = false;
+      this.curOrientation = "portrait"
     } else {
       this.correctOrientation = true;
+      this.curOrientation = "landscape"
     }
-
-    this.orientation = screen.orientation.type;
 
     window.addEventListener("orientationchange", function(){
       this.window.location.reload()
