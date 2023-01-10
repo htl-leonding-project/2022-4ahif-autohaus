@@ -1,7 +1,7 @@
 .arrow-pointer {
     width: 11rem;
     height: 6rem;
-    background: #e3b510;
+    background: #87C159;
     font-weight: 400;
     color: white;
     clip-path: polygon(0 0, 30% 50%, 0 100%, 70% 100%, 100% 50%, 70% 0);
@@ -13,7 +13,7 @@
 .arrow-pointer-active {
     width: 11rem;
     height: 6rem;
-    background: #e38110;
+    background: #058240;
     font-weight: 400;
     color: white;
     clip-path: polygon(0 0, 30% 50%, 0 100%, 70% 100%, 100% 50%, 70% 0);

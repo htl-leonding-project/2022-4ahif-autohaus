@@ -5,6 +5,7 @@ import { Team } from 'src/app/models/team.model';
 import { TournamentService } from 'src/app/services/tournament.service';
 import { NotifierService } from 'angular-notifier';
 import { Tournament } from 'src/app/models/tournament.model';
+import { faCrown } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-tournament-result',
@@ -17,7 +18,10 @@ export class TournamentResultComponent implements OnInit {
   id: number=-1;
   teams: Team[]=[];
   state: string = "";
+  tournamentWinner: string = "";
   private notifier: NotifierService;
+
+  faCrown = faCrown;
 
   constructor(
     private route: ActivatedRoute, 
@@ -37,6 +41,7 @@ export class TournamentResultComponent implements OnInit {
           data =>{
             this.state = data.find(t => t.name == this.tournamentName)!.status.toString()
             console.log(this.state)
+            this.tournamentWinner = data.find(t => t.name == this.tournamentName)!.abbrOfWinnerTeam.toString()
           },
           error: e =>{
             this.notifier.notify("error", "Turnier konnte nicht geladen werden!")

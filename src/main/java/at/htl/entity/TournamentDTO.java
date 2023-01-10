@@ -12,11 +12,14 @@ public class TournamentDTO {
     LocalDate startDate;
     Status status;
 
-    public TournamentDTO(Long id, String name, LocalDate startDate, Status status) {
+    String abbrOfWinnerTeam = "";
+
+    public TournamentDTO(Long id, String name, LocalDate startDate, Status status, String abbrOfWinnerTeam) {
         this.id = id;
         this.name = name;
         this.startDate = startDate;
         this.status = status;
+        this.abbrOfWinnerTeam = abbrOfWinnerTeam;
     }
 
     public TournamentDTO() {
@@ -52,5 +55,13 @@ public class TournamentDTO {
 
     public void setStatus(Status status) {
         this.status = status;
+    }
+
+    public String getAbbrOfWinnerTeam() {
+        return abbrOfWinnerTeam;
+    }
+
+    public void setAbbrOfWinnerTeam(String abbrOfWinnerTeam) {
+        this.abbrOfWinnerTeam = abbrOfWinnerTeam;
     }
 }

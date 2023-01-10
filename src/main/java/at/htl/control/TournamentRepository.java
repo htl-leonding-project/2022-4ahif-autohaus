@@ -299,4 +299,12 @@ public class TournamentRepository implements PanacheRepository<Tournament> {
         reset.setStatus(Status.READY);
         this.persist(reset);
     }
+
+    public void setWinningTeamAbbr(String tournamentName){
+        Tournament t = this.findByName(tournamentName);
+
+        t.setAbbrOfWinnerTeam(t.getFinalNode().getCurMatch().getWinningTeam().getAbbr());
+
+        this.persist(t);
+    }
 }

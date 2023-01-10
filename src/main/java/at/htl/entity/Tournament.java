@@ -31,6 +31,9 @@ public class Tournament  {
     @Column(name="T_StartDate")
     LocalDate startDate;
 
+    @Column(name="T_Winner_Abbr")
+    String abbrOfWinnerTeam = "";
+
     public Tournament(String name) {
         this();
         this.name = name;
@@ -98,5 +101,13 @@ public class Tournament  {
                 ", name='" + name + '\'' +
                 ", phases=" + phases +
                 '}';
+    }
+
+    public String getAbbrOfWinnerTeam() {
+        return abbrOfWinnerTeam;
+    }
+
+    public void setAbbrOfWinnerTeam(String abbrOfWinnerTeam) {
+        this.abbrOfWinnerTeam = abbrOfWinnerTeam;
     }
 }
