@@ -43,3 +43,5 @@ Thumbs.db
 
 src/assets/images/generated-diagrams/*
 cypress/downloads/*
+cypress/Videos
+cypress/Screenshots

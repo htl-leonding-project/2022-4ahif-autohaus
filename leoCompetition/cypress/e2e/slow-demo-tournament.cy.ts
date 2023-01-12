@@ -1,8 +1,7 @@
 import { timeout } from "rxjs";
 import { slowCypressDown } from 'cypress-slow-down'
 
-slowCypressDown(500)
-
+slowCypressDown(200)
 
 var DATE = Date.now().toString();
 
@@ -24,37 +23,53 @@ describe('... Demo Test', () => {
         
         //Enter new Team name
         cy.get('#nameElement')
-          .type('DemoTeam{enter}')
+          .type('FC Liverpool{enter}')
 
         //Enter new Team abbr
         cy.get('#abbrElement')
-          .type('DT{enter}')
+          .type('FCL{enter}')
+
+        //Press the save button
+        cy.get('.btn')
+        cy.contains('Speichern').click()
         
         //Enter new Team name
         cy.get('#nameElement')
-          .type('Schüler{enter}')
+          .type('Manchester United{enter}')
 
         //Enter new Team abbr
         cy.get('#abbrElement')
-          .type('S{enter}')
+          .type('MU{enter}')
 
+        //Press the save button
+        cy.get('.btn')
+        cy.contains('Speichern').click()
+        cy.url().should('include', '/new-team')
         
         //Enter new Team name
         cy.get('#nameElement')
-          .type('Christoph{enter}')
+          .type('Real Madrid{enter}')
 
         //Enter new Team abbr
         cy.get('#abbrElement')
-          .type('CH{enter}')
+          .type('RM{enter}')
+
+        //Press the save button
+        cy.get('.btn')
+        cy.contains('Speichern').click()
+        cy.url().should('include', '/new-team')
         
         //Enter new Team name
         cy.get('#nameElement')
-          .type('Leondinger Schwammerl{enter}')
+          .type('RB Salzburg{enter}')
 
         //Enter new Team abbr
         cy.get('#abbrElement')
-          .type('LS{enter}')
+          .type('RBS{enter}')
 
+        //Press the save button
+        cy.get('.btn')
+        cy.contains('Speichern').click()
 
         //Enter Tournament Name
         cy.get('#tournamentNameElement')
@@ -74,7 +89,7 @@ describe('... Demo Test', () => {
       })
 
       it('... Enter Results ...', () => {
-        cy.visit('http://localhost:4200/play-tournament/'+DATE)
+        cy.visit('http://localhost:4200/play-tournament'+DATE)
         //Enter Result of First Match
         cy.get('.btn')
         cy.contains('Ergebnis bearbeiten').click()
