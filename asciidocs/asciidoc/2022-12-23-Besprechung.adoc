@@ -1,5 +1,5 @@
-= Besprechungsprotokoll 20.12.2022
-1.0, 2022-12-20
+= Besprechungsprotokoll 23.12.2022
+1.0, 2022-12-23
 ifndef::imagesdir[:imagesdir: ../images]
 :icons: font
 //:sectnums:    // Nummerierung der Überschriften / section numbering
@@ -10,10 +10,11 @@ ifdef::backend-html5[]
 
 // https://fontawesome.com/v4.7.0/icons/
 
-
 .Teilnehmer
 |===
 |anwesend
+
+|Christoph Handel
 
 |Lukas Baumgartner
 
@@ -30,22 +31,21 @@ ifdef::backend-html5[]
 |HTBLA Leonding
 
 |von-bis
-|17:15 - 17:30
+|10:30-10:40
 |Dauer
-|15 Minuten
+|10 Minuten
 |===
 
 == Besprochene Themen
 
-* Neue Funktionen wurden gezeigt.
+* Deployment -> leoCloud
 
-* Matches mit Drag-And-Drop noch nicht fertig.
+* Deployment Pipelines
 
 == Vereinbarungen und Entscheidungen
 
-* Zustandsdiagramm überarbeiten
-** In_Preparation, Ready, In_Process, Finished
+* kleine Versionsnummer für bei jedes neue Deployment hinzufügen (irgendwo ganz klein)
 
-* Handy zum rotieren zwingen
+* Doku für Deployment (eventuell mit extra Readme)
 
-* Deployment
+* Force Rotation für IPhones

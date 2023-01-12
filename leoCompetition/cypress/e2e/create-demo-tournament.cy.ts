@@ -20,11 +20,11 @@ describe('... Demo Test', () => {
         
         //Enter new Team name
         cy.get('#nameElement')
-          .type('DemoTeam{enter}')
+          .type('FC Liverpool{enter}')
 
         //Enter new Team abbr
         cy.get('#abbrElement')
-          .type('DT{enter}')
+          .type('FCL{enter}')
 
         //Press the save button
         cy.get('.btn')
@@ -32,24 +32,11 @@ describe('... Demo Test', () => {
         
         //Enter new Team name
         cy.get('#nameElement')
-          .type('Schüler{enter}')
+          .type('Manchester United{enter}')
 
         //Enter new Team abbr
         cy.get('#abbrElement')
-          .type('S{enter}')
-
-        //Press the save button
-        cy.get('.btn')
-        cy.contains('Speichern').click()
-        cy.url().should('include', '/new-team')
-        
-        //Enter new Team name
-        cy.get('#nameElement')
-          .type('Christoph{enter}')
-
-        //Enter new Team abbr
-        cy.get('#abbrElement')
-          .type('CH{enter}')
+          .type('MU{enter}')
 
         //Press the save button
         cy.get('.btn')
@@ -58,11 +45,24 @@ describe('... Demo Test', () => {
         
         //Enter new Team name
         cy.get('#nameElement')
-          .type('Leondinger Schwammerl{enter}')
+          .type('Real Madrid{enter}')
 
         //Enter new Team abbr
         cy.get('#abbrElement')
-          .type('LS{enter}')
+          .type('RM{enter}')
+
+        //Press the save button
+        cy.get('.btn')
+        cy.contains('Speichern').click()
+        cy.url().should('include', '/new-team')
+        
+        //Enter new Team name
+        cy.get('#nameElement')
+          .type('RB Salzburg{enter}')
+
+        //Enter new Team abbr
+        cy.get('#abbrElement')
+          .type('RBS{enter}')
 
         //Press the save button
         cy.get('.btn')
@@ -118,10 +118,10 @@ describe('... Demo Test', () => {
         cy.get('.btn').eq(2).click()
 
         cy.get('#team1Points')
-          .type('{backspace}3{enter}')
+          .type('{backspace}2{enter}')
 
         cy.get('#team2Points')
-          .type('{backspace}2{enter}')
+          .type('{backspace}3{enter}')
 
         cy.get('.btn')
         cy.contains('Speichern').click()

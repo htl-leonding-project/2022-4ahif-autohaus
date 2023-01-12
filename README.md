@@ -4,7 +4,14 @@
 
 LeoCompetition ist ein Turnierverwaltungsprogramm,
 welches die Planung, Durchführung und Auswertung eines Turniers erleichtert.
-Momentan wird die Turniersimulierung durch UnitTests und Cypress Tests durchgeführt.
+Durch das Deployment kann man ein Turnier mittels unten angeführten Link durchführen.
+Für Handys verwenden Sie den 
+<details>
+    <summary>QR-Code</summary>
+
+![alt test](asciidocs/images/QR-Webseite.png)
+
+</details>
 
 ## Deployment
 
