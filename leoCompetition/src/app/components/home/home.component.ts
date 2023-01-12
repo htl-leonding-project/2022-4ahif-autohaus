@@ -76,8 +76,8 @@ export class HomeComponent implements OnInit {
   }
 
   remove(t:Tournament){
-    console.log()
-    if(Date.now()+(24*60*60*1000) < Date.parse(t.startDate!.toString())+(24*60*60*1000)){
+    console.log(t.id)
+    if(Date.now()+(24*60*60*1000) < Date.parse(t.startDate!.toString())+(24*60*60*1000) || t.status == "FINISHED"){
       this.tournamentService.deleteTournament(t.id).subscribe({next:
         data => {
           this.refreshTable()
