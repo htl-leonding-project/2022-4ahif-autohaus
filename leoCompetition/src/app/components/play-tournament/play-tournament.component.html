@@ -56,8 +56,17 @@
                             <input id="team2Points" #tName="ngModel" type="number" min=0 [(ngModel)]="selected.pointsTeam2" name="team2Points" class="form-control" required>
                         </div>
                     </div>
+                    <div class="col">
+                        <label for="textField" class="control-label">Notizen</label>
+                        <div class="d-block" *ngIf="selected.id != 0; else noText">
+                            <input class="form-control" [(ngModel)]="selected.textField"/>
+                        </div>
+                    </div>
                     <ng-template #noSelected>
                         <input type="number" class="form-control" disabled>
+                    </ng-template>
+                    <ng-template #noText>
+                        <input type="text" class="form-control" disabled>
                     </ng-template>
                 </div>
                 <div class="row" style="margin: 2vh;">

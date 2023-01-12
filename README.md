@@ -15,6 +15,18 @@ Für Handys verwenden Sie den
 
 ## Deployment
 
+### Beschreibung
+
+Immer wenn ein Push Ereignis wie ein Merge oder ein Commit auf dem Main Branch ausgeführt wird, baut Github Actions ein mehrstuefiges Docker Image unserer Quarkus Anwendung. Anschließend wird das Image in die Github Container Registry gepusht.
+
+Nach diesem Schritt wird der Deploy-Job gestartet und die Änderungen werden in den k8s-Manifesten aktualisiert.
+
+Zuletzt wird ein Trigger ausgefuehrt, der das neueste Image aus der Github Container Registry zieht und das leocloud-demo deployment neu startet.
+
+Mithilfe von Flags, die wir extra für unsere Datenbank angelegt haben, können wir festlegen, ob die DB neu gestartet werden sollte oder nicht.
+
+![alt test](asciidocs/images/deployment%20flag.png)
+
 <details>
     <summary>Aktuelle Version</summary>
 

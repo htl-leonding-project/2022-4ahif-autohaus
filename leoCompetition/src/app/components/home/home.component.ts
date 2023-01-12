@@ -75,17 +75,22 @@ export class HomeComponent implements OnInit {
     this.router.navigate(['/result/'+name.replace(' ', '_')]);
   }
 
-  remove(id:number){
-    this.tournamentService.deleteTournament(id).subscribe({next:
-      data => {
-        this.refreshTable()
-        this.refreshValues()
-        this.notifier.notify('success', 'Turnier wurde erfolgreich gelöscht!')
-      },
-      error: error =>{
-        this.notifier.notify( 'error','Turnier konnte nicht gelöscht werden!');
-      }
-    })
+  remove(t:Tournament){
+    console.log(t.id)
+    if(Date.now()+(24*60*60*1000) < Date.parse(t.startDate!.toString())+(24*60*60*1000) || t.status == "FINISHED"){
+      this.tournamentService.deleteTournament(t.id).subscribe({next:
+        data => {
+          this.refreshTable()
+          this.refreshValues()
+          this.notifier.notify('success', 'Turnier wurde erfolgreich gelöscht!')
+        },
+        error: error =>{
+          this.notifier.notify( 'error','Turnier konnte nicht gelöscht werden!');
+        }
+      })
+    } else {
+      this.notifier.notify( 'info','Aus Sicherheitsgründen können Turniere erst nach 24 Stunden gelöscht werden.');
+    }
   }
 
 }

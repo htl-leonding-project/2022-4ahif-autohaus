@@ -27,6 +27,10 @@ public class Match{
     @Column(name = "M_Finished")
     public boolean finished = false;
 
+    @Column(name = "M_TextFIeld")
+    public String textField;
+
+
     //resultOfMatch[0] -> GoalsTeam1
     //resultOfMatch[1] -> GoalsTeam2
 
@@ -62,8 +66,14 @@ public class Match{
     public int getPointsTeam2(){return this.pointsTeam2;}
 
     public void setPointsTeam2(int amount){ this.pointsTeam2 = amount; }
-    //endregion
 
+    public String getTextField() {
+        return textField;
+    }
+
+    public void setTextField(String textField) {
+        this.textField = textField;
+    }
 
     public Long getId() {
         return id;
@@ -80,6 +90,7 @@ public class Match{
     public void setFinished(boolean finished) {
         this.finished = finished;
     }
+    //endregion
 
     public Team getWinningTeam(){
         if(pointsTeam1 > pointsTeam2) {

@@ -130,8 +130,9 @@ public class MatchResource {
                 .find("id = ?1", match.team1.getTournamentId())
                 .firstResult();
 
-        current.getCurMatch().setPointsTeam1(match.pointsTeam1);
-        current.getCurMatch().setPointsTeam2(match.pointsTeam2);
+        current.getCurMatch().setPointsTeam1(match.getPointsTeam1());
+        current.getCurMatch().setPointsTeam2(match.getPointsTeam2());
+        current.getCurMatch().setTextField(match.getTextField());
         if(current.getParentNode() != null) {
 
             if(current.getParentNode().areChildrenComplete()){
