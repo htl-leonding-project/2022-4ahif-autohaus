@@ -12,10 +12,9 @@ public class MatchDTO {
     public Team team2;
     public int pointsTeam1;
     public int pointsTeam2;
-
     public boolean finished = false;
-
     public int phase;
+    public  String textField;
 
     public MatchDTO(Long id, Team team1, Team team2, int pointsTeam1, int pointsTeam2, boolean finished, int phase) {
         this.id = id;
@@ -25,6 +24,7 @@ public class MatchDTO {
         this.pointsTeam2 = pointsTeam2;
         this.finished = finished;
         this.phase = phase;
+        this.textField = "";
     }
 
     public MatchDTO(Match match, Phase phase){
@@ -34,7 +34,8 @@ public class MatchDTO {
         this.pointsTeam1 = match.getPointsTeam1();
         this.pointsTeam2 = match.getPointsTeam2();
         this.finished = match.isFinished();
-        this.phase = phase.level;
+        this.phase = phase.getLevel();
+        this.textField = match.getTextField();
     }
 
     public Long getId() {

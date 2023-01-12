@@ -44,7 +44,7 @@ ifdef::backend-html5[]
 == Vereinbarungen und Entscheidungen
 
 * Zustandsdiagramm überarbeiten
-** In_Preperation, Ready, In_Process, Finished
+** In_Preparation, Ready, In_Process, Finished
 
 * Handy zum rotieren zwingen
 

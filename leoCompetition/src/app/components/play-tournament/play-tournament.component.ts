@@ -22,7 +22,8 @@ export class PlayTournamentComponent implements OnInit {
     pointsTeam1: 0,
     pointsTeam2: 0,
     finished: false,
-    phase: 0
+    phase: 0,
+    textField: ""
   }
 
   constructor(
@@ -91,7 +92,8 @@ export class PlayTournamentComponent implements OnInit {
           pointsTeam1: 0,
           pointsTeam2: 0,
           finished: false,
-          phase: 0
+          phase: 0,
+          textField: ""
         }
       
       }else{
