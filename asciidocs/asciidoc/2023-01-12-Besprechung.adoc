@@ -1,0 +1,54 @@
+= Besprechungsprotokoll dd.MM.yyyy
+1.0, yyyy-MM-dd
+ifndef::imagesdir[:imagesdir: ../images]
+:icons: font
+//:sectnums:    // Nummerierung der Überschriften / section numbering
+//:toc: left
+
+//Need this blank line after ifdef, don't know why...
+ifdef::backend-html5[]
+
+// https://fontawesome.com/v4.7.0/icons/
+
+
+.Teilnehmer
+|===
+|anwesend
+
+|Christoph Handel
+
+|Lukas Baumgartner
+
+|Joachim Pelzeder
+
+|Thomas W. Stütz
+
+|===
+
+.Ort und Zeit
+[cols=2*]
+|===
+|Ort
+|HTBLA Leonding
+
+|von-bis
+|11:55-12:10
+|Dauer
+|15 Minuten
+|===
+
+== Besprochene Themen
+
+* Projektvideo
+
+== Vereinbarungen und Entscheidungen
+
+* Szenen mit Michael rausschneiden
+
+* Schauen wegen Copy-Right free music
+
+* Eintragen der Tore hervorheben
+
+* Gewinner am Ende besser hervorheben
+
+* Videoqualität verbessern

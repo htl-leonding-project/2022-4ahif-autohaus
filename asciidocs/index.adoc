@@ -86,6 +86,8 @@ image::state_diagram_tournament.png[400,600]
 
 * xref:asciidoc/2022-12-23-Besprechung.html[Protokoll-2022-12-23]
 
+* xref:asciidoc/2023-01-12-Besprechung.html[Protokoll-2023-01-12]
+
 == Ist-Zustands-Analyse
 
 * xref:asciidoc/2022-03-08-Ist-Zustand.html[Ist-Zustand-Analyse-2022-03-08]
