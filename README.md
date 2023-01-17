@@ -17,7 +17,7 @@ Für Handys verwenden Sie den
 
 ![alt test](asciidocs/images/poster.png)
 
-## [Download Poster](asciidocs/images/LeoComp_Plakat.pdf)
+## [Open Poster](asciidocs/images/LeoComp_Plakat.pdf)
 
 
 ## Deployment
