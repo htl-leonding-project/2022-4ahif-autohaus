@@ -13,6 +13,13 @@ Für Handys verwenden Sie den
 
 </details>
 
+## Poster
+
+![alt test](asciidocs/images/poster.png)
+
+## [Download Poster](asciidocs/images/LeoComp_Plakat.pdf)
+
+
 ## Deployment
 
 ### Beschreibung
