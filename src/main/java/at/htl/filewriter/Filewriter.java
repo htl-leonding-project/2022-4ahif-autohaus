@@ -29,7 +29,8 @@ public class Filewriter {
 
     //@ConfigProperty(name = "filewriter.target")
     private String TARGET = "asciidocs/images/generated-diagrams/";
-    private String TARGET_FOR_WEB = "leoCompetition/src/assets/images/generated-diagrams/";
+    @ConfigProperty(name = "app.img.directory", defaultValue = "leoCompetition/src/assets/images/generated-diagrams/")
+    public String TARGET_FOR_WEB;
 
     /*public void writeResult(String team01, String team02, int[] result){
 
