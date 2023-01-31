@@ -54,7 +54,7 @@
           <td>{{tournament.startDate}}</td>
           <td>{{tournament.status}}</td>
           <td>{{tournament.name}}</td>
-          <td><button [ngClass]="tournament.status == 'IN_PROGRESS' ? 'btn btn-success disabled' : 'btn btn-success'" (click)="redirect(tournament.name)">Details</button></td>
+          <td><button [ngClass]="tournament.status == 'IN_PROGRESS' || tournament.status == 'IN_PREPARATION' ? 'btn btn-success disabled' : 'btn btn-success'" (click)="redirect(tournament.name)">Details</button></td>
           <td><button class="btn btn-success" (click)="remove(tournament)">Löschen</button></td>
       </tr>
   </tbody>

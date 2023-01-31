@@ -61,6 +61,8 @@ export class TournamentResultComponent implements OnInit {
         this.notifier.notify("error", "Teams konnten nicht geladen werden!")
       }
     });
+
+    this.teams.filter(t => t.name.match(this.tournamentWinner));
   }
 
   backToStart(){
