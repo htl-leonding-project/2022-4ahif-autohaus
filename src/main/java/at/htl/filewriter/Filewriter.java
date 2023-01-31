@@ -65,6 +65,7 @@ public class Filewriter {
             if(!Files.exists(targetPath)) {
                 Files.createDirectories(Paths.get(TARGET));
             }
+            System.out.println(TARGET_FOR_WEB);
             Path webTargetPath = Paths.get(TARGET_FOR_WEB);
             if(!Files.exists(webTargetPath)) {
                 Files.createDirectories(Paths.get(TARGET_FOR_WEB));
