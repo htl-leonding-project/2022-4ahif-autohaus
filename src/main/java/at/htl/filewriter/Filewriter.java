@@ -8,6 +8,7 @@ import org.apache.commons.io.FileUtils;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 import org.jboss.logging.Logger;
 
+import javax.inject.Singleton;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -18,6 +19,7 @@ import java.nio.file.Paths;
 import java.util.List;
 import java.util.Stack;
 
+@Singleton
 public class Filewriter {
 
     private static final Logger LOG = Logger.getLogger("FileWriter");
