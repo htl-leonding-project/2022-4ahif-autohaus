@@ -170,6 +170,7 @@ public class Filewriter {
                 old.delete();
             }
             png.renameTo(new File(TARGET_FOR_WEB+png.getName()));
+            FileUtils.moveFile(png, new File(TARGET_FOR_WEB+png.getName()));
             if(png.createNewFile()) {
                 LOG.info(String.format("new file %s created", png.getName()));
             }
