@@ -6,6 +6,7 @@ import { TournamentService } from 'src/app/services/tournament.service';
 import { NotifierService } from 'angular-notifier';
 import { Tournament } from 'src/app/models/tournament.model';
 import { faCrown } from '@fortawesome/free-solid-svg-icons';
+import {environment} from "../../../environments/environment";
 
 @Component({
   selector: 'app-tournament-result',
@@ -22,9 +23,9 @@ export class TournamentResultComponent implements OnInit {
   private notifier: NotifierService;
 
   faCrown = faCrown;
-
+  environment: any = environment; //pass through for html
   constructor(
-    private route: ActivatedRoute, 
+    private route: ActivatedRoute,
     private router: Router,
     private tournamentService: TournamentService,
     notifier: NotifierService){
@@ -32,7 +33,7 @@ export class TournamentResultComponent implements OnInit {
     }
 
   ngOnInit(): void {
-    
+
     this.route.params.subscribe(
       params => {
         this.tournamentName = params['name'];

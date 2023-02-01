@@ -1,5 +1,5 @@
 <div class="container" *ngIf="state == 'FINISHED'">
-    
+
     <h1 class="display-2 text-center" style="padding: 0.25em">{{tournamentName}}</h1>
 
     <div class="row">
@@ -20,13 +20,13 @@
                 </tbody>
             </table>
         </div>
-        
+
         <div class="col col-md-6">
             <div style="text-align: center;">
-                <img src="assets/images/generated-diagrams/{{tournamentName}}.png" style="max-height: 70vh;">
+                <img src="{{environment.IMAGE_URL}}/{{tournamentName}}.png" style="max-height: 70vh;">
             </div>
             <div class="mt-2" style="text-align: center;">
-                <a class="form-group btn btn-success" style="margin:0.5em; text-align: center;" download="{{tournamentName}}" href="assets/images/generated-diagrams/{{tournamentName}}.png">Download</a>
+                <a class="form-group btn btn-success" style="margin:0.5em; text-align: center;" download="{{tournamentName}}" href="{{environment.IMAGE_URL}}/{{tournamentName}}.png">Download</a>
             </div>
         </div>
     </div>
