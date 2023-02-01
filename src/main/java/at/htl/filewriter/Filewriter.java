@@ -164,15 +164,16 @@ public class Filewriter {
             SourceFileReader reader = new SourceFileReader(source);
             List<GeneratedImage> list = reader.getGeneratedImages();
             File png = list.get(0).getPngFile();
+            System.out.println(png.getAbsolutePath());
             //File old = new File(TARGET+png.getName());
-            File old = new File(TARGET_FOR_WEB+png.getName());
+            /*File old = new File(TARGET_FOR_WEB+png.getName());
             old.delete();
             old = new File(TARGET+png.getName());
             old.delete();
             png.renameTo(new File(TARGET_FOR_WEB+png.getName()));
             if(png.createNewFile()) {
                 LOG.info(String.format("new file %s created", png.getName()));
-            }
+            }*/
             //FileUtils.copyFile(new File(TARGET+png.getName()), new File(TARGET_FOR_WEB+png.getName()));
         }catch(IOException e){
             LOG.error("no file to convert!");
