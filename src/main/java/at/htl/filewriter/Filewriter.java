@@ -68,7 +68,6 @@ public class Filewriter {
             if(!Files.exists(targetPath)) {
                 Files.createDirectories(Paths.get(TARGET));
             }
-            System.out.println(TARGET_FOR_WEB);
             Path webTargetPath = Paths.get(TARGET_FOR_WEB);
             if(!Files.exists(webTargetPath)) {
                 Files.createDirectories(Paths.get(TARGET_FOR_WEB));
@@ -165,24 +164,15 @@ public class Filewriter {
             SourceFileReader reader = new SourceFileReader(source);
             List<GeneratedImage> list = reader.getGeneratedImages();
             File png = list.get(0).getPngFile();
-            System.out.println("1"+png.getAbsolutePath());
             //File old = new File(TARGET+png.getName());
             File old = new File(TARGET_FOR_WEB+png.getName());
             old.delete();
-            System.out.println("3"+TARGET+png.getName());
             old = new File(TARGET+png.getName());
             old.delete();
-
-            System.out.println("4"+TARGET_FOR_WEB+png.getName());
             png.renameTo(new File(TARGET_FOR_WEB+png.getName()));
-            System.out.println("5"+png.getName());
             if(png.createNewFile()) {
                 LOG.info(String.format("new file %s created", png.getName()));
             }
-
-            System.out.println("5"+old.getAbsolutePath());
-            old = new File(ORIGIN_PATH+png.getName());
-            old.delete();
             //FileUtils.copyFile(new File(TARGET+png.getName()), new File(TARGET_FOR_WEB+png.getName()));
         }catch(IOException e){
             LOG.error("no file to convert!");
