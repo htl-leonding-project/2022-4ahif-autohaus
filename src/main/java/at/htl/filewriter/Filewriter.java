@@ -8,6 +8,8 @@ import org.apache.commons.io.FileUtils;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 import org.jboss.logging.Logger;
 
+import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Singleton;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -18,6 +20,7 @@ import java.nio.file.Paths;
 import java.util.List;
 import java.util.Stack;
 
+@ApplicationScoped
 public class Filewriter {
 
     private static final Logger LOG = Logger.getLogger("FileWriter");
@@ -29,7 +32,8 @@ public class Filewriter {
 
     //@ConfigProperty(name = "filewriter.target")
     private String TARGET = "asciidocs/images/generated-diagrams/";
-    private String TARGET_FOR_WEB = "leoCompetition/src/assets/images/generated-diagrams/";
+    @ConfigProperty(name = "app.img.directory", defaultValue = "leoCompetition/src/assets/images/generated-diagrams/")
+    public String TARGET_FOR_WEB;
 
     /*public void writeResult(String team01, String team02, int[] result){
 
@@ -160,19 +164,16 @@ public class Filewriter {
             SourceFileReader reader = new SourceFileReader(source);
             List<GeneratedImage> list = reader.getGeneratedImages();
             File png = list.get(0).getPngFile();
-            //File old = new File(TARGET+png.getName());
+            System.out.println(png.getAbsolutePath());
             File old = new File(TARGET_FOR_WEB+png.getName());
-            old.delete();
-            old = new File(TARGET+png.getName());
-            old.delete();
-
+            if(old.exists()) {
+                old.delete();
+            }
             png.renameTo(new File(TARGET_FOR_WEB+png.getName()));
+            FileUtils.moveFile(png, new File(TARGET_FOR_WEB+png.getName()));
             if(png.createNewFile()) {
                 LOG.info(String.format("new file %s created", png.getName()));
             }
-
-            old = new File(ORIGIN_PATH+png.getName());
-            old.delete();
             //FileUtils.copyFile(new File(TARGET+png.getName()), new File(TARGET_FOR_WEB+png.getName()));
         }catch(IOException e){
             LOG.error("no file to convert!");

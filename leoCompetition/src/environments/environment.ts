@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  URL_BASE_URL: 'http://localhost:8080'
+  URL_BASE_URL: 'http://localhost:8080',
+  IMAGE_URL: 'assets/images/generated-diagrams'
 };
 
 /*

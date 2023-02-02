@@ -35,6 +35,8 @@ public class TournamentResource {
     TeamRepository teamRepository;
     @Inject
     TournamentRepository tournamentRepository;
+    @Inject
+    Filewriter filewriter;
 
     @Inject
     Logger log;
@@ -132,8 +134,6 @@ public class TournamentResource {
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public Response generateDiagram(@PathParam("name") String name){
-        Filewriter filewriter = new Filewriter();
-
         filewriter.writeFinalResult(
                 tournamentRepository.findByName(name).getFinalNode(),
                 tournamentRepository.findByName(name)
