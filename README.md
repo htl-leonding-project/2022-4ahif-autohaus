@@ -1,11 +1,12 @@
-# LeoCompetition 
+# LeoCompetition
 
 ![alt test](asciidocs/images/logo.png)
 
 LeoCompetition ist ein Turnierverwaltungsprogramm,
 welches die Planung, Durchführung und Auswertung eines Turniers erleichtert.
-Durch das Deployment kann man ein Turnier mittels unten angeführten Link durchführen.
-Für Handys verwenden Sie den 
+Durch das Deployment kann man ein Turnier mittels des 
+<a href="https://github.com/htl-leonding-project/2022-4ahif-leo-competition" target="_blank"> Links </a> durchführen.
+Für Handys verwenden Sie den
 <details>
     <summary>QR-Code</summary>
 
@@ -20,6 +21,8 @@ Für Handys verwenden Sie den
 * <a href="https://htl-leonding-project.github.io/2022-4ahif-leo-competition/" target="_blank"> Gh-Pages </a>
 
 * <a href="https://vm81.htl-leonding.ac.at/projects/2ff43c91-dfb6-41f1-a53c-055d062b0a93" target="_blank"> YouTrack </a>
+
+* <a href="https://github.com/htl-leonding-project/2022-4ahif-leo-competition" target="_blank"> Deployment </a>
 
 ## Poster
 
