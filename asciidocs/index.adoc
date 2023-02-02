@@ -21,6 +21,10 @@ ifdef::backend-html5[]
 
 link:slides/demo.html#/[open Slides]
 
+== Poster
+
+image::LeoComp_Plakat.png[]
+
 == Ausgangslage
 LeoCompetition ist ein Turnierverwaltungsprogramm,
 welches die Planung, Durchführung und Auswertung eines Turniers erleichtert.
