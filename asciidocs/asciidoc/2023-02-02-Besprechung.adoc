@@ -1,0 +1,63 @@
+= Besprechungsprotokoll dd.MM.yyyy
+1.0, yyyy-MM-dd
+ifndef::imagesdir[:imagesdir: ../images]
+:icons: font
+//:sectnums:    // Nummerierung der Überschriften / section numbering
+//:toc: left
+
+//Need this blank line after ifdef, don't know why...
+ifdef::backend-html5[]
+
+// https://fontawesome.com/v4.7.0/icons/
+
+
+.Teilnehmer
+|===
+|anwesend
+
+|Christoph Handel
+
+|Lukas Baumgartner
+
+|Joachim Pelzeder
+
+|Thomas W. Stütz
+
+|===
+
+.Ort und Zeit
+[cols=2*]
+|===
+|Ort
+|HTBLA Leonding
+
+|von-bis
+|11:10-12:00
+|Dauer
+|50 Minuten
+|===
+
+== Besprochene Themen
+
+Präsentieren des Projektes
+
+Diagram wird nun auf Deployment hergezeigt
+
+Image Server nginx
+
+Notenbesprechung
+
+== Vereinbarungen und Entscheidungen
+
+Man könnte Result.puml als varchar2 mit REST an das frontend schicken
+und dort dann puml zu png
+
+Konstanten in Enviroment file anstatt direkt im JAVA Code (String)
+oder mindestends in Application.properties
+
+Fehlermeldungen überarbeiten
+
+Runde-Abschließen Button
+
+image::2023-02-02_01.png[]
+
