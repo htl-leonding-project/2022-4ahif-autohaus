@@ -32,6 +32,7 @@ für den Benutzer vereinfacht.
 Vereinfachung der Turnierplanung, -verwaltung und Durchführung.
 Spielsystemen KO-System
 Frontend für Mobilgeräte
+
 :page-background-image: image:football-field-488387_1920.jpg[]
 
 
