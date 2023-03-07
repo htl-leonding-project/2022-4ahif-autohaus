@@ -16,7 +16,7 @@ image:BierPong.webp[background, size=cover]
 
 Turniere / Wettbewerbe können nur schwer geplant, verwaltet und visualisiert werden.
 
-image:BierPong.webp[background, size=cover]
+image::puzzle-693870_1920.jpg[background, size=cover]
 
 
 == Aufgabenstellung
@@ -24,7 +24,7 @@ image:BierPong.webp[background, size=cover]
 Applikation erstellen, die das Planen, Verwalten und Durchführen von Turnieren
 für den Benutzer vereinfacht.
 
-image:puzzle-693870_1920.jpg[background, size=cover]
+image::puzzle-693870_1920.jpg[background, size=cover]
 
 
 == Ziele
@@ -33,7 +33,7 @@ Vereinfachung der Turnierplanung, -verwaltung und Durchführung.
 Spielsystemen KO-System
 Frontend für Mobilgeräte
 
-image:football-field-488387_1920.jpg[background, size=cover]
+image::football-field-488387_1920.jpg[background, size=cover]
 
 
 == Use-Case Diagram
@@ -43,7 +43,7 @@ image::use_case.png[]
 [.lightbg,background="demo.png, background-opacity="0.8"]
 == Live Demo
 
-image:demo.png[background, size=cover]
+image::demo.png[background, size=cover]
 
 
 
