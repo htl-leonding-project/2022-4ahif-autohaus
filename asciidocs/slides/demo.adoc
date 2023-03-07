@@ -10,13 +10,13 @@ image::BierPong.webp[background, size=cover]
 „LeoTurnier“ ist ein Turnierverwaltungsprogramm, das verschieden Arten von Spielsystemen
 (KO-System, Gruppen-System) verwaltet.
 
-:page-background-image: image:home-office-599475_1920.jpg[]
+image:home-office-599475_1920.jpg[]
 
 == Problem
 
 Turniere / Wettbewerbe können nur schwer geplant, verwaltet und visualisiert werden.
 
-:page-background-image: image:puzzle-693870_1920.jpg[]
+image:puzzle-693870_1920.jpg[]
 
 
 == Aufgabenstellung
@@ -24,7 +24,7 @@ Turniere / Wettbewerbe können nur schwer geplant, verwaltet und visualisiert we
 Applikation erstellen, die das Planen, Verwalten und Durchführen von Turnieren
 für den Benutzer vereinfacht.
 
-:page-background-image: image:puzzle-693870_1920.jpg[]
+image:puzzle-693870_1920.jpg[]
 
 
 == Ziele
@@ -33,7 +33,7 @@ Vereinfachung der Turnierplanung, -verwaltung und Durchführung.
 Spielsystemen KO-System
 Frontend für Mobilgeräte
 
-:page-background-image: image:football-field-488387_1920.jpg[]
+image:football-field-488387_1920.jpg[]
 
 
 == Use-Case Diagram
@@ -43,7 +43,7 @@ image::use_case.png[]
 [.lightbg,background="demo.png, background-opacity="0.8"]
 == Live Demo
 
-:page-background-image: image:demo.png[]
+image:demo.png[]
 
 
 
