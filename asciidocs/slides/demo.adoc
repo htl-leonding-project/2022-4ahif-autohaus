@@ -11,7 +11,7 @@ image::BierPong.webp[background, size=cover]
 (KO-System, Gruppen-System) verwaltet.
 
 
-== Problem
+== Problem{color: white}
 
 Turniere / Wettbewerbe können nur schwer geplant, verwaltet und visualisiert werden.{color: white}
 
