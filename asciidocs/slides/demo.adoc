@@ -13,7 +13,7 @@ image::BierPong.webp[background, size=cover]
 
 == Problem
 
-Turniere / Wettbewerbe können nur schwer geplant, verwaltet und visualisiert werden.
+Turniere / Wettbewerbe können nur schwer geplant, verwaltet und visualisiert werden.{color: white}
 
 :page-background-image: image:problem.png[]
 
@@ -22,6 +22,7 @@ Turniere / Wettbewerbe können nur schwer geplant, verwaltet und visualisiert we
 
 Applikation erstellen, die das Planen, Verwalten und Durchführen von Turnieren
 für den Benutzer vereinfacht.
+
 :page-background-image: image:puzzle-693870_1920.jpg[]
 
 
