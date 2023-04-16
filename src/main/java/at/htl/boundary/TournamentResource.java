@@ -30,7 +30,7 @@ public class TournamentResource {
 
     private final String IMAGE_LOCATION="asciidocs/images/generated-diagrams/";
 
-    private final String PATH="/c.handel/api/tournaments";
+    private final String PATH="/t.stuetz/api/tournaments";
     @Inject
     TeamRepository teamRepository;
     @Inject

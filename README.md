@@ -50,7 +50,7 @@ Mithilfe von Flags, die wir extra für unsere Datenbank angelegt haben, können 
 
 ![alt test](asciidocs/images/QR-Webseite.png)
 
-* <a href="https://student.cloud.htl-leonding.ac.at/c.handel/leocompetition/home" target="_blank"> Link </a>
+* <a href="https://student.cloud.htl-leonding.ac.at/t.stuetz/leocompetition/home" target="_blank"> Link </a>
 
 </details>
 

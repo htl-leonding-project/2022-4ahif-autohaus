@@ -98,7 +98,7 @@ public class MatchResource {
     public Response createMatch(Match match){
         matchRepository.persist(match);
         if (matchRepository.isPersistent(match)){
-            return Response.created(URI.create("/c.handel/api/matches"+match.getId())).build();
+            return Response.created(URI.create("/t.stuetz/api/matches"+match.getId())).build();
         }
         return Response.status(Response.Status.BAD_REQUEST).build();
     }
